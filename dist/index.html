@@ -15,8 +15,7 @@
   <meta property="og:title" content="Machine Made Worlds — AI, automation &amp; the future we build">
   <meta property="og:description" content="Sharp essays, practical guides and field notes on AI and automation.">
   <meta property="og:url" content="https://machinemadeworlds.com/">
-  <meta property="og:image" content="https://machinemadeworlds.com/og-cover.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Machine Made Worlds — AI, automation &amp; the future we build">
   <meta name="twitter:description" content="Sharp essays, practical guides and field notes on AI and automation.">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Machine Made Worlds","url":"https://machinemadeworlds.com/","description":"AI, automation & the future we build","inLanguage":"en"}</script>
@@ -33,16 +32,15 @@
       <nav class="nav" aria-label="Primary">
         <a href="/blog/" >Blog</a>
         <a href="/about/" >About</a>
-        <a href="/blog/" style="background:var(--text);color:var(--bg);">Subscribe</a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="wrap">
     <section class="hero">
-      <span class="eyebrow"><i></i> Static • Fast • Human-curated</span>
-      <h1>Ideas for a world<br>built with machines.</h1>
-      <p>We track how AI reshapes work, creativity and culture — without hype. Essays, teardowns and practical playbooks for builders.</p>
+      <span class="eyebrow"><i></i> Tested • Sourced • Static</span>
+      <h1>Field notes from people who run machines in production.</h1>
+      <p>Essays, guides and field notes on AI that ships — measured on real hardware, reviewed by humans, published as fast static pages. No hype, no trackers.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="/blog/">Explore the blog →</a>
         <a class="btn btn-ghost" href="/about/">About the project</a>
@@ -53,28 +51,41 @@
       <h2>Latest</h2>
       <a href="/blog/">View all →</a>
     </div>
-    <div class="grid cols-2">
-      <a class="card" href="/posts/local-agent-team/">
-        <div class="card-meta"><span class="tag">Essay</span> <span>Sep 05, 2026</span> <span class="dot"></span> <span>6 min</span></div>
-        <h3>Running a Local Agent Team That Actually Ships</h3>
-        <p>One director, three specialists, one workspace: the minimal crew for an autonomous site — draft, review, approve, then publish.</p>
-      </a>
-      <a class="card" href="/posts/small-models-rtx2060/">
-        <div class="card-meta"><span class="tag purple">Guide</span> <span>Sep 05, 2026</span> <span class="dot"></span> <span>7 min</span></div>
-        <h3>Small Models That Fit a 6 GB RTX 2060</h3>
-        <p>What really runs in 6 GB VRAM — and what to offload to CPU without killing speed. Tested on a real RTX 2060.</p>
-      </a>
-      <a class="card" href="/posts/autonomous-website-ops/">
-        <div class="card-meta"><span class="tag">Field note</span> <span>Sep 05, 2026</span> <span class="dot"></span> <span>6 min</span></div>
-        <h3>Autonomous Website Ops: Static First, Approve Before Publish</h3>
-        <p>The loop we use: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.</p>
-      </a>
-      <a class="card" href="/blog/">
-        <div class="card-meta"><span class="tag purple">Browse</span> <span>All topics</span></div>
-        <h3>More essays &amp; guides →</h3>
-        <p>Visit the blog index for the full archive, filters and RSS-ready list.</p>
+    <div class="grid">
+      <a class="card card-featured" href="/posts/small-models-rtx2060/">
+        <div class="card-top"><span class="series">Featured · Guide</span><span class="tested">Tested · RTX 2060</span></div>
+        <div class="card-meta"><span class="tag purple">Guide</span> <time datetime="2026-09-05">Sep 05, 2026</time> <span class="dot"></span> <span>7 min read</span></div>
+        <h2>Small Models That Fit a 6 GB RTX 2060</h2>
+        <p>What really runs in 6 GB VRAM — and what to offload to CPU without killing speed. Measured on a real RTX 2060.</p>
       </a>
     </div>
+
+    <ul class="grid cols-2 card-list" role="list" aria-label="Latest posts">
+      <li>
+        <a class="card" href="/posts/local-agent-team/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">01</span><span class="series">Local ops</span></div>
+          <div class="card-meta"><span class="tag">Essay</span> <time datetime="2026-09-05">Sep 05, 2026</time> <span class="dot"></span> <span>6 min read</span></div>
+          <h3>Running a Local Agent Team That Actually Ships</h3>
+          <p>One director, three specialists, one workspace: the minimal crew for an autonomous site — draft, review, approve, then publish.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="/posts/autonomous-website-ops/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">02</span><span class="series">Site ops</span></div>
+          <div class="card-meta"><span class="tag">Field note</span> <time datetime="2026-09-05">Sep 05, 2026</time> <span class="dot"></span> <span>6 min read</span> <span class="dot"></span> <span class="tested">In production</span></div>
+          <h3>Autonomous Website Ops: Static First</h3>
+          <p>The loop we use: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="/blog/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">03</span><span class="series">Index</span></div>
+          <div class="card-meta"><span class="tag purple">Browse</span> <span>All topics</span></div>
+          <h3>More essays &amp; guides →</h3>
+          <p>Visit the blog index for the full archive, filters and RSS-ready list.</p>
+        </a>
+      </li>
+    </ul>
 
     <hr class="hr">
     <div class="grid cols-2">
@@ -86,7 +97,7 @@
       <div class="box">
         <h3>Newsletter — coming soon</h3>
         <p>One email per week. No spam, unsubscribe anytime. Until then, bookmark the <a href="/blog/">blog</a> or grab the <a href="/sitemap.xml">sitemap</a>.</p>
-        <span class="muted" style="font-size:13px">RSS: <code>/sitemap.xml</code> • <code>/robots.txt</code></span>
+        <span class="muted rss-line">RSS: <code>/sitemap.xml</code> • <code>/robots.txt</code></span>
       </div>
     </div>
   </main>
@@ -95,7 +106,7 @@
     <div class="wrap footer-grid">
       <div>
         <strong>Machine Made Worlds</strong> <span class="muted">© 2026. Static English-language AI blog.</span>
-        <div class="muted" style="margin-top:6px;font-size:12px">Hosted on Hostinger. Deploy artifact: <code>dist/</code> → <code>public_html</code>.</div>
+        <div class="muted foot-note">Hosted on Hostinger. Deploy artifact: <code>dist/</code> → <code>public_html</code>.</div>
       </div>
       <div class="footer-links">
         <a href="/blog/">Blog</a>
