@@ -89,6 +89,50 @@ def load_posts(root, site):
     return sorted(posts, key=lambda p: (p['date'], p['slug']), reverse=True)
 
 
+BUILDLOG_KINDS = frozenset(('Shipped', 'Fix', 'Experiment', 'Note'))
+
+
+def validate_buildlog(p, site):
+    # Gate parity with posts: same allowlist, same field limits, zero relaxations.
+    validate_post(p, site)
+    if p.get('kind') not in BUILDLOG_KINDS:
+        raise ValueError('Invalid buildlog kind')
+    # Spec MAC-47 item 1: provenance metadata, required on published entries.
+    if not isinstance(p.get('mac_id'), str) or not re.fullmatch(r'MAC-\d{1,6}', p['mac_id']):
+        raise ValueError('Invalid buildlog mac_id')
+    if not isinstance(p.get('pr'), str) or not re.fullmatch(r'(#\d{1,6}|n/a)', p['pr']):
+        raise ValueError('Invalid buildlog pr')
+    if not isinstance(p.get('commit'), str) or not re.fullmatch(r'([0-9a-f]{7,40}|n/a)', p['commit']):
+        raise ValueError('Invalid buildlog commit')
+    agents = p.get('agents')
+    if (not isinstance(agents, list) or not agents
+            or any(not isinstance(a, str) or not a.strip() or len(a) > 40 for a in agents)):
+        raise ValueError('Invalid buildlog agents')
+
+
+def load_buildlog(root, site):
+    entries = []
+    folder = root / 'content/buildlog'
+    if not folder.is_dir():
+        return []
+    for path in sorted(folder.glob('*.json')):
+        p = json.loads(path.read_text(encoding='utf-8'))
+        if type(p.get('draft', False)) is not bool:
+            raise ValueError('draft must be a JSON boolean')
+        # Drafts may be incomplete and never enter the publish artifact.
+        if p.get('draft', False):
+            continue
+        p['slug'] = path.stem
+        p['body'] = path.with_suffix('.html').read_text(encoding='utf-8')
+        validate_buildlog(p, site)
+        p['url'] = '/build-log/' + p['slug'] + '/'
+        p['topic_name'] = site['topics'][p['topic']]
+        p['reading'] = max(1, math.ceil(len(plain(p['body']).split()) / 220))
+        p['date_label'] = date.fromisoformat(p['date']).strftime('%b %d, %Y')
+        entries.append(p)
+    return sorted(entries, key=lambda p: (p['date'], p['slug']), reverse=True)
+
+
 def template(root, filename, **values):
     return Template((root / 'templates' / filename).read_text(encoding='utf-8')).substitute(values)
 
@@ -110,6 +154,7 @@ def build(root=ROOT):
     root = Path(root)
     site = json.loads((root / 'content/site.json').read_text(encoding='utf-8'))
     posts = load_posts(root, site)
+    entries = load_buildlog(root, site)
     output = root / 'dist'
     staging = root / '.build-staging'
     if staging.is_symlink() or output.is_symlink():
@@ -144,13 +189,15 @@ def build(root=ROOT):
                           publisher={'@type': 'Organization', 'name': site['name']})
         jsonld = json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c')
         nav = lambda href: ' aria-current="page"' if path == href else ''
+        build_current = ' aria-current="page"' if path.startswith('/build-log/') else ''
         text = template(root, 'base.html', title=escape(title), name=escape(site['name']),
                         description=escape(description), canonical=escape(canonical),
                         og_type='article' if post else 'website', jsonld=jsonld,
                         css=assets['site.css'], js=assets['site.js'], favicon=assets['favicon.svg'],
                         theme_init=(root / 'templates/theme-init.js').read_text(encoding='utf-8').strip(),
                         content=content, year=max((p['date'][:4] for p in posts), default='2026'),
-                        home_current=nav('/'), blog_current=nav('/blog/'), about_current=nav('/about/'))
+                        home_current=nav('/'), blog_current=nav('/blog/'),
+                        build_current=build_current, about_current=nav('/about/'))
         put('404.html' if path == '/404.html' else path.strip('/') + '/index.html' if path != '/' else 'index.html', text)
 
     def card(p, compact=False):
@@ -173,15 +220,30 @@ def build(root=ROOT):
                     more=''.join(card(p, compact=True) for p in remaining[2:5]), topics=topic_links)
     render('/', site['name'] + ' — AI, considered.', site['description'], home, 'WebSite')
 
-    def archive(path, title, selected):
-        body = template(root, 'archive.html', heading=escape(title), count=len(selected),
-                        topics=topic_links, cards=''.join(card(p, True) for p in selected))
-        render(path, title + ' — ' + site['name'], site['description'], body, 'CollectionPage')
-    archive('/blog/', 'The journal', posts)
-    for key, label in site['topics'].items():
-        archive('/topics/' + key + '/', label, [p for p in posts if p['topic'] == key])
+    JOURNAL_COPY = dict(eyebrow='Ideas, collected',
+                        lede='Essays, guides and observations. Find something worth sitting with.',
+                        archive_root='/blog/', count_noun='articles',
+                        search_label='Search the journal', search_placeholder='Try ‘models’ or ‘design’',
+                        empty_title='No articles found.',
+                        empty_text='Try a different word, or return to the full collection.')
+    BUILDLOG_COPY = dict(eyebrow='Built in the open',
+                         lede='What changed on this site, and why. Short entries from the agents that run it.',
+                         archive_root='/build-log/', count_noun='entries',
+                         search_label='Search the build log', search_placeholder="Try 'deploy' or 'fix'",
+                         empty_title='No entries found.',
+                         empty_text='Try a different word, or return to the full log.')
 
-    for p in posts:
+    def archive(path, title, selected, copy, topics=topic_links):
+        body = template(root, 'archive.html', heading=escape(title), count=len(selected),
+                        topics=topics, cards=''.join(card(p, True) for p in selected), **copy)
+        render(path, title + ' — ' + site['name'], site['description'], body, 'CollectionPage')
+    archive('/blog/', 'The journal', posts, JOURNAL_COPY)
+    for key, label in site['topics'].items():
+        archive('/topics/' + key + '/', label, [p for p in posts if p['topic'] == key], JOURNAL_COPY)
+    # Build-log index reuses the archive pattern with retargeted copy and no topic tabs.
+    archive('/build-log/', 'Build log', entries, BUILDLOG_COPY, topics='')
+
+    def detail(p, pool, index_url, index_label, back_label, related_label):
         body, headings = heading_anchors(p['body'])
         # Content refers to stable source names; publishing resolves hashed URLs.
         asset_urls = {'/assets/' + key: value for key, value in assets.items()}
@@ -194,13 +256,21 @@ def build(root=ROOT):
         body = body.replace('<pre>', '<pre tabindex="0" role="region" aria-label="Code example">')
         body = body.replace('<table>', '<table tabindex="0" aria-label="Article data">')
         toc = ''.join(f'<a href="#{key}">{escape(label)}</a>' for key, label in headings)
-        related = sorted((q for q in posts if q != p), key=lambda q: q['topic'] != p['topic'])[:2]
+        # Same-collection-first so build-log status voice never mixes into journal related grids.
+        related = sorted((q for q in pool if q != p), key=lambda q: q['topic'] != p['topic'])[:2]
         content = template(root, 'post.html', title=escape(p['title']), lead=escape(p['lead']),
                            topic=p['topic'], topic_name=escape(p['topic_name']), kind=escape(p['kind']),
                            date=p['date'], date_label=p['date_label'], reading=p['reading'],
                            body=body, toc=toc, toc_hidden='' if headings else ' hidden',
-                           related=''.join(card(q, True) for q in related))
+                           related=''.join(card(q, True) for q in related),
+                           index_url=index_url, index_label=index_label,
+                           back_label=back_label, related_label=related_label)
         render(p['url'], p['title'], p['description'], content, 'BlogPosting', post=p)
+
+    for p in posts:
+        detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗')
+    for p in entries:
+        detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗')
 
     render('/about/', 'About — ' + site['name'], site['description'],
            template(root, 'about.html'), 'AboutPage')
@@ -219,7 +289,7 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
-    urls = ['/', '/blog/', '/about/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts]
+    urls = ['/', '/blog/', '/build-log/', '/about/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
         ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = site['url'] + path
@@ -230,7 +300,7 @@ def build(root=ROOT):
     if output.exists():
         shutil.rmtree(output)
     staging.rename(output)
-    return {'posts': len(posts), 'pages': len(urls) + 1, 'files': len(list(output.rglob('*.*')))}
+    return {'posts': len(posts), 'buildlog': len(entries), 'pages': len(urls) + 1, 'files': len(list(output.rglob('*.*')))}
 
 
 if __name__ == '__main__':
