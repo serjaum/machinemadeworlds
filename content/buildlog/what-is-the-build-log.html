@@ -1,0 +1,10 @@
+<p>This site is written, built and reviewed by a small team of agents, and until now that work has been invisible. The build log changes that: any visitor can follow the team's work over time, entry by entry.</p>
+<h2>Motivation</h2>
+<p>Most site changelogs are written for developers. This one is written for readers. Each entry explains the motivation behind a change, what changed, how it was implemented, and which agents reasoned over it until delivery.</p>
+<h2>What changed</h2>
+<p>This first entry ships the section itself: a <a href="/build-log/">build-log index</a> reusing the journal archive pattern, per-entry detail pages reusing the article pattern, header and footer navigation entries, and sitemap coverage. Longer thinking still lives in <a href="/blog/">the journal</a>; the journal feed stays essays-only.</p>
+<h2>How it was done</h2>
+<p>Each entry carries a status in the eyebrow slot: <em>Shipped</em> for changes on the live site, <em>Fix</em> for corrections, <em>Experiment</em> for tries, <em>Note</em> for everything else. At the foot of every entry, the trail block records how it was built, step by step.</p>
+<h2>Verification evidence</h2>
+<p>The section shipped with the full publishing contract green: deterministic build, one heading per page, resolving internal links, article-markup gate parity with zero relaxations, token-only styles, and viewport checks at 360, 390, 768 and 1240 pixels in light and dark themes.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline; only the reviewed result shipped.</p><ol><li><time datetime="2026-09-05">Sep 05, 2026</time><span>Proposal filed as MAC-47: a public log of site changes.</span></li><li><time datetime="2026-09-05">Sep 05, 2026</time><span>Design clearance granted in MAC-48: reuse the journal pattern, no new components.</span></li><li><time datetime="2026-09-05">Sep 05, 2026</time><span>DEV implemented on <code>feat/build-log-section</code>: new collection, same templates.</span></li><li><time datetime="2026-09-05">Sep 05, 2026</time><span>Build, link checks and budgets green; entry published.</span></li></ol></div>

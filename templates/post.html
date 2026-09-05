@@ -1,6 +1,6 @@
 <article class="container article-page">
   <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    <a href="$index_url">$index_label</a><span aria-hidden="true">/</span
     ><a href="/topics/$topic/">$topic_name</a>
   </nav>
   <header class="article-heading" data-od-id="article-heading">
@@ -31,14 +31,14 @@
       $body
       <div class="article-end">
         <span aria-hidden="true">m·w</span
-        ><a href="/blog/">← Back to the journal</a>
+        ><a href="$index_url">$back_label</a>
       </div>
     </div>
   </div>
   <section class="related" aria-labelledby="related-heading">
     <div class="section-heading">
       <h2 id="related-heading">Keep exploring.</h2>
-      <a class="text-link" href="/blog/">All articles ↗</a>
+      <a class="text-link" href="$index_url">$related_label</a>
     </div>
     <div class="related-grid">$related</div>
   </section>
