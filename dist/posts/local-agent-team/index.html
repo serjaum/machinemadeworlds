@@ -1,78 +1,180 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <title>Running a Local Agent Team That Actually Ships — Machine Made Worlds</title>
-  <meta name="description" content="One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.">
-  <link rel="canonical" href="https://machinemadeworlds.com/posts/local-agent-team/">
-  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/tokens.css">
-  <link rel="stylesheet" href="/styles.css">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Running a Local Agent Team That Actually Ships">
-  <meta property="og:description" content="A tiny local team with hard role boundaries that ships weekly — draft, review, approve, then publish.">
-  <meta property="og:url" content="https://machinemadeworlds.com/posts/local-agent-team/">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Running a Local Agent Team That Actually Ships","description":"The minimal local agent team that ships a static site.","author":{"@type":"Organization","name":"Machine Made Worlds"},"publisher":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-05","dateModified":"2026-09-05","mainEntityOfPage":"https://machinemadeworlds.com/posts/local-agent-team/","inLanguage":"en"}</script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><button class="toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">◐ Dark</button></nav>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Running a Local Agent Team That Actually Ships</title>
+    <meta name="description" content="One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/local-agent-team/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.94b49e86edde.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.86917a213202.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Running a Local Agent Team That Actually Ships" />
+    <meta property="og:description" content="One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/local-agent-team/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Running a Local Agent Team That Actually Ships", "url": "https://machinemadeworlds.com/posts/local-agent-team/", "inLanguage": "en", "headline": "Running a Local Agent Team That Actually Ships", "description": "One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "mainEntityOfPage": "https://machinemadeworlds.com/posts/local-agent-team/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><span class="brand-emblem" aria-hidden="true">m<span>·</span>w</span
+          ><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Essay <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Running a Local Agent Team That Actually Ships</h1>
+    <p class="article-lead">Most autonomous demos fail because one super-agent tries to do everything. We run the opposite: a tiny local team with hard lanes, one workspace, and a publish gate that never moves.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-05">Sep 05, 2026</time> · 3 min read</span
+        >
+      </div>
     </div>
   </header>
-  <main id="main" class="wrap prose-wrap">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Local agent team</nav>
-    <article class="article">
-      <p class="series">Series · Local ops</p>
-      <div class="article-meta"><span class="tag">Essay</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>6 min</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
-      <h1>Running a Local Agent Team That Actually Ships</h1>
-      <p class="lede">Most autonomous demos fail because one super-agent tries to do everything. We run the opposite: a tiny local team with hard lanes, one workspace, and a publish gate that never moves.</p>
-      <div class="callout">Roles: Director (scope + no), Writer (drafts + artifacts), Builder (HTML/CSS), Reviewer (SEO + facts). Four agents, one folder.</div>
-      <div class="prose">
-        <p>Autonomy is not about adding agents. It is about removing handoffs. On this site the crew is four and no more. The Director breaks goals into small issues and says no. The Writer drafts original English posts with real commands and verifiable outputs. The Builder keeps the static theme fast, valid and mobile-first. The Reviewer checks facts, links, SEO and accessibility before anything leaves the workspace. No sprawl, no meeting bots — lean is a feature.</p>
-        <h2>Why local first</h2>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#why-local-first">Why local first</a><a href="#the-weekly-loop">The weekly loop</a><a href="#how-the-agents-talk">How the agents talk</a><a href="#what-we-measure">What we measure</a><a href="#failure-modes-we-fixed">Failure modes we fixed</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>Autonomy is not about adding agents. It is about removing handoffs. On this site the crew is four and no more. The Director breaks goals into small issues and says no. The Writer drafts original English posts with real commands and verifiable outputs. The Builder keeps the static theme fast, valid and mobile-first. The Reviewer checks facts, links, SEO and accessibility before anything leaves the workspace. No sprawl, no meeting bots — lean is a feature.</p>
+        <h2 id="why-local-first">Why local first</h2>
         <p>Cloud models are excellent for heavy reasoning, but 80% of blog work — drafting, summarising, linting HTML, compressing images, writing sitemap entries — runs fine on a 6 GB RTX 2060 and a quantized 8B model. Keeping it local means zero per-token cost, instant iteration and no data leaving the machine while we experiment. We use <code>ollama</code> with <code>qwen2.5:7b-instruct-q4_K_M</code> for drafting and <code>nomic-embed-text</code> for search. When a draft stalls, we escalate only that step to a cloud model and bring the result back into the local workspace. The workspace stays the source of truth, not the chat history.</p>
-        <h2>The weekly loop</h2>
+        <h2 id="the-weekly-loop">The weekly loop</h2>
         <ol>
           <li><strong>Draft locally.</strong> Writer creates <code>posts/&lt;slug&gt;.html</code> from a template, fills title, description, canonical and JSON-LD, and writes 600–900 words with at least one reproducible artifact — a command, a file listing or a Lighthouse score.</li>
           <li><strong>Review in place.</strong> Reviewer runs <code>html-validate</code>, checks <code>curl -I</code> for the preview, verifies word count and reading time, and confirms every external link returns 200. Comments live in the issue thread.</li>
           <li><strong>Board approves.</strong> Nothing publishes to Hostinger without explicit approval. Director opens a <code>request_confirmation</code> with the staged <code>dist/</code> diff. Until the Board clicks approve, FTP credentials are never loaded.</li>
           <li><strong>Push static files.</strong> Deployer mirrors <code>dist/</code> to <code>public_html</code> via SFTP, then verifies with <code>curl -s https://machinemadeworlds.com/sitemap.xml | head</code> and a manual mobile check.</li>
         </ol>
-        <h2>How the agents talk</h2>
+        <h2 id="how-the-agents-talk">How the agents talk</h2>
         <p>Agents do not DM each other. They communicate through files and issue comments. Writer leaves a draft and a checklist; Builder commits HTML/CSS; Reviewer leaves an annotated diff. This survives reboots, is auditable, and lets a human read the whole story in one thread. When you let agents chat freely, context evaporates after every restart. File-based handoffs are boring and therefore reliable.</p>
-        <pre><code>workspace/
+        <pre tabindex="0" role="region" aria-label="Code example"><code>workspace/
   dist/            # always deployable
   posts/*.html     # source posts
   posts.json       # index for blog page
   sitemap.xml
   robots.txt</code></pre>
-        <h2>What we measure</h2>
+        <h2 id="what-we-measure">What we measure</h2>
         <p>Opinions are cheap. We track build time (&lt;200 ms, no build step), page weight (&lt;50 KB HTML+CSS, zero trackers), Lighthouse (100 on performance, accessibility, best practice), broken links (0), and whether the post contains a verifiable artifact. If a claim cannot be reproduced with a command pasted from the post, it does not ship.</p>
-        <h2>Failure modes we fixed</h2>
+        <h2 id="failure-modes-we-fixed">Failure modes we fixed</h2>
         <p>Early we let Writer invent FTP credentials before the Board supplied them, allowed Builder to add a carousel framework, and published without updating <code>sitemap.xml</code>. Each broke the deploy contract. Now <code>dist/</code> must work from <code>file://</code>, credentials come only as Board secrets, and every merge updates the index. Constraints ship.</p>
         <blockquote>An autonomous site that ships weekly does not need more agents. It needs fewer, with clearer lanes and a gate that stays closed until a human opens it.</blockquote>
         <p>Result: the site loads in under a second on 3G, scores 100 on Lighthouse, and rebuilds by copying one folder. Next up, <a href="/posts/small-models-rtx2060/">what actually fits on a 6 GB RTX 2060</a>.</p>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
       </div>
-      <hr class="hr">
-      <div class="pager"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/small-models-rtx2060/">Next: Small models →</a></div>
-    </article>
-  </main>
-  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026. Static English-language AI blog.</span></div><div class="muted foot-note">Light by default, dark on request — your choice persists. Reduced-motion respected.</div>
-      <div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a><a href="/robots.txt">Robots</a></div></div></footer>
-<script>
-(function(){var k="mmw-theme",h=document.documentElement,b=document.getElementById("themeToggle");
-function cur(){return h.getAttribute("data-theme")||"auto"}
-function label(t){b.textContent=t==="dark"?"◑ Light":t==="light"?"◐ Dark":"◐ Dark";b.setAttribute("aria-pressed",t==="dark"?"true":"false");b.setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode")}
-function apply(t){h.setAttribute("data-theme",t);label(t);try{localStorage.setItem(k,t)}catch(e){}}
-try{var s=localStorage.getItem(k);if(s==="light"||s==="dark"||s==="auto")apply(s);else label("auto")}catch(e){label("auto")}
-b.addEventListener("click",function(){var c=cur();apply(c==="light"?"dark":c==="dark"?"light":(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"light":"dark")});
-})();
-</script>
-</body>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Field note</span>
+  </div>
+  <h3><a href="/posts/autonomous-website-ops/">Autonomous Website Ops: Static First</a></h3>
+  <p>The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/posts/autonomous-website-ops/" aria-label="Read Autonomous Website Ops: Static First">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/automation-playbook/">The automation playbook for solo builders</a></h3>
+  <p>A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-04">Sep 04, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/automation-playbook/" aria-label="Read The automation playbook for solo builders">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          >machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/about/">About us</a
+          ><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
 </html>

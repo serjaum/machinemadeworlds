@@ -1,0 +1,10 @@
+{
+  "title": "The automation playbook for solo builders",
+  "description": "A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.",
+  "date": "2026-09-04",
+  "topic": "automation",
+  "kind": "Guide",
+  "lead": "You don't need an AI platform. You need three habits and a folder named dist/ that always deploys.",
+  "featured": false,
+  "draft": false
+}

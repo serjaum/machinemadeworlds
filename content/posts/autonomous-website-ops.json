@@ -1,0 +1,10 @@
+{
+  "title": "Autonomous Website Ops: Static First",
+  "description": "The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.",
+  "date": "2026-09-05",
+  "topic": "automation",
+  "kind": "Field note",
+  "lead": "Static files are the cheat code for autonomous websites. No database, no runtime, no midnight patch. Just a folder that is either deployable or it is not.",
+  "featured": false,
+  "draft": false
+}

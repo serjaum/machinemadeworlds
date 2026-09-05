@@ -1,84 +1,186 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <title>Small Models That Fit a 6 GB RTX 2060 — Machine Made Worlds</title>
-  <meta name="description" content="What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.">
-  <link rel="canonical" href="https://machinemadeworlds.com/posts/small-models-rtx2060/">
-  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/tokens.css">
-  <link rel="stylesheet" href="/styles.css">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Small Models That Fit a 6 GB RTX 2060">
-  <meta property="og:description" content="Quantization, offload and the daily stack that fits in 6 GB — with tokens/sec you can actually use.">
-  <meta property="og:url" content="https://machinemadeworlds.com/posts/small-models-rtx2060/">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Small Models That Fit a 6 GB RTX 2060","description":"What fits in 6 GB VRAM on an RTX 2060.","author":{"@type":"Organization","name":"Machine Made Worlds"},"publisher":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-05","dateModified":"2026-09-05","mainEntityOfPage":"https://machinemadeworlds.com/posts/small-models-rtx2060/","inLanguage":"en"}</script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><button class="toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">◐ Dark</button></nav>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Small Models That Fit a 6 GB RTX 2060</title>
+    <meta name="description" content="What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/small-models-rtx2060/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.94b49e86edde.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.86917a213202.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Small Models That Fit a 6 GB RTX 2060" />
+    <meta property="og:description" content="What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/small-models-rtx2060/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Small Models That Fit a 6 GB RTX 2060", "url": "https://machinemadeworlds.com/posts/small-models-rtx2060/", "inLanguage": "en", "headline": "Small Models That Fit a 6 GB RTX 2060", "description": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.", "datePublished": "2026-09-05", "dateModified": "2026-09-05", "mainEntityOfPage": "https://machinemadeworlds.com/posts/small-models-rtx2060/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><span class="brand-emblem" aria-hidden="true">m<span>·</span>w</span
+          ><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/local-ai/">Local AI</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Guide <span class="tiny-rule" aria-hidden="true"></span> Local AI
+    </p>
+    <h1>Small Models That Fit a 6 GB RTX 2060</h1>
+    <p class="article-lead">Six gigabytes is enough for real writing and agent work if you pick the right quantization and leave heavy reasoning off the GPU. Here is what we run daily on an RTX 2060.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-05">Sep 05, 2026</time> · 3 min read</span
+        >
+      </div>
     </div>
   </header>
-  <main id="main" class="wrap prose-wrap">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Small models</nav>
-    <article class="article">
-      <p class="series">Series · Hardware notes</p>
-      <div class="article-meta"><span class="tag purple">Guide</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>7 min</span><span class="dot"></span><span class="tested">Tested · RTX 2060</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
-      <h1>Small Models That Fit a 6 GB RTX 2060</h1>
-      <p class="lede">Six gigabytes is enough for real writing and agent work if you pick the right quantization and leave heavy reasoning off the GPU. Here is what we run daily on an RTX 2060.</p>
-            <aside class="evidence"><span class="evidence-label">Evidence · Tested on</span><p>All figures measured on a 6 GB RTX 2060 (32 GB RAM) with <code>ollama</code> and <code>llama.cpp</code>; tokens/sec logged across a week of daily runs.</p></aside>
-      <div class="prose">
-        <p>Many teams assume you need a 24 GB card to do anything serious with local models. You do not. A 6 GB RTX 2060 with 32 GB of system RAM handles drafting, QA and summarisation for this entire blog. Cloud models are called only when a local draft stalls.</p>
-        <h2>The VRAM math</h2>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#the-vram-math">The VRAM math</a><a href="#what-fits-comfortably">What fits comfortably</a><a href="#what-needs-offload">What needs offload</a><a href="#our-daily-stack">Our daily stack</a><a href="#three-tips-from-real-runs">Three tips from real runs</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>Many teams assume you need a 24 GB card to do anything serious with local models. You do not. A 6 GB RTX 2060 with 32 GB of system RAM handles drafting, QA and summarisation for this entire blog. Cloud models are called only when a local draft stalls.</p>
+        <h2 id="the-vram-math">The VRAM math</h2>
         <p>A 7-billion-parameter model at 16-bit needs ~14 GB. Quantize it to 4-bit and it drops to ~4.2 GB, leaving headroom for context and KV cache. The format matters: <code>Q4_K_M</code> balances quality and size, <code>Q5_K_M</code> buys a bit of clarity for 15% more VRAM, <code>Q4_0</code> is faster but duller. Our daily drivers are <code>qwen2.5:7b-instruct-q4_K_M</code> (~4.4 GB) and <code>mistral:7b-instruct-q4_K_M</code> (~4.1 GB). Both fit fully with a 4096-token context and ~800 MB to spare.</p>
-        <h2>What fits comfortably</h2>
+        <h2 id="what-fits-comfortably">What fits comfortably</h2>
         <ul>
           <li><strong>7–8B Q4:</strong> Fully on GPU, 35–55 tokens/sec via <code>ollama</code> or <code>llama.cpp</code>. Drafts, rewrites, HTML fixes — all fast.</li>
           <li><strong>Phi-3 Mini 3.8B Q4:</strong> ~2.3 GB, 70+ t/s. Perfect for summaries and title generation. Weaker on long coherence, but brilliant for QA.</li>
           <li><strong>Gemma 2 9B Q4:</strong> ~5.4 GB at 2K context. Fits if you clip context. Better style than 7B for essays.</li>
           <li><strong>Embeddings + rerank:</strong> <code>nomic-embed-text</code> (~0.5 GB) plus a tiny reranker stay resident. They are called constantly for search, so never offload them.</li>
         </ul>
-        <h2>What needs offload</h2>
+        <h2 id="what-needs-offload">What needs offload</h2>
         <p>A 13–14B Q4 model is ~8–8.5 GB and will not fit fully. With <code>llama.cpp</code> you split layers — keep ~30 on GPU, spill the rest to CPU:</p>
-        <pre><code># full offload for 7B — fast
+        <pre tabindex="0" role="region" aria-label="Code example"><code># full offload for 7B — fast
 ollama run qwen2.5:7b-instruct-q4_K_M
 
 # partial offload for 13B — slower but usable
 ./llama-cli -m yi-34b-q4_k_m.gguf --gpu-layers 32 --ctx-size 4096</code></pre>
         <p>Expect 8–15 t/s with partial offload on a quad-core i5. Fine for a nightly polish, painful for chat. Rule: below 20 t/s, the model is too big for the task. Swap it.</p>
-        <h2>Our daily stack</h2>
-        <pre><code>ollama run qwen2.5:7b        # drafting
+        <h2 id="our-daily-stack">Our daily stack</h2>
+        <pre tabindex="0" role="region" aria-label="Code example"><code>ollama run qwen2.5:7b        # drafting
 ollama run phi3:mini         # summaries, titles
 ollama run nomic-embed-text  # local search
 opencode --model qwen2.5:7b  # agent runtime</code></pre>
         <p>One resident model at a time avoids fragmentation. Context capped at 4096 for 7B, 2048 for 9B+. Temperature 0.6 for drafts, 0.2 for edits.</p>
-        <h2>Three tips from real runs</h2>
+        <h2 id="three-tips-from-real-runs">Three tips from real runs</h2>
         <p><strong>1. Pin VRAM, watch the cache.</strong> Run <code>nvidia-smi --query-gpu=memory.used --format=csv -l 1</code> while prompting. Above 5.8 GB, shorten context or switch to Q4_0. KV cache grows with context, not parameters, and is the usual OOM culprit.</p>
         <p><strong>2. Keep the prompt scaffold small.</strong> Our agent prompts are under 600 tokens: role, goal, constraints, workspace layout. Checklists live in files, not the prompt.</p>
         <p><strong>3. Measure, don't guess.</strong> We logged tokens/sec and blind blind edits for a week. 7B Q4 drafts were indistinguishable from cloud 70B for short posts, but cloud won on deep research. Now local handles 80% of content.</p>
         <blockquote>An RTX 2060 will not train a frontier model. It will run a full editorial loop — draft, review, publish — without a subscription. Start with a good 7B Q4 and treat 13B as a sometimes tool.</blockquote>
         <p>Next, <a href="/posts/autonomous-website-ops/">how we run this site statically</a> with Board approval before every publish.</p>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
       </div>
-      <hr class="hr">
-      <div class="pager"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/autonomous-website-ops/">Next: Website ops →</a></div>
-    </article>
-  </main>
-  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="muted foot-note">Light by default, dark on request — your choice persists. Reduced-motion respected.</div>
-      <div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>
-<script>
-(function(){var k="mmw-theme",h=document.documentElement,b=document.getElementById("themeToggle");
-function cur(){return h.getAttribute("data-theme")||"auto"}
-function label(t){b.textContent=t==="dark"?"◑ Light":t==="light"?"◐ Dark":"◐ Dark";b.setAttribute("aria-pressed",t==="dark"?"true":"false");b.setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode")}
-function apply(t){h.setAttribute("data-theme",t);label(t);try{localStorage.setItem(k,t)}catch(e){}}
-try{var s=localStorage.getItem(k);if(s==="light"||s==="dark"||s==="auto")apply(s);else label("auto")}catch(e){label("auto")}
-b.addEventListener("click",function(){var c=cur();apply(c==="light"?"dark":c==="dark"?"light":(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"light":"dark")});
-})();
-</script>
-</body>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Essay</span>
+  </div>
+  <h3><a href="/posts/local-agent-team/">Running a Local Agent Team That Actually Ships</a></h3>
+  <p>One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/posts/local-agent-team/" aria-label="Read Running a Local Agent Team That Actually Ships">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/essays/">Essays</a
+    ><span>Essay</span>
+  </div>
+  <h3><a href="/posts/hello-machines/">Hello, machines: why we started this blog</a></h3>
+  <p>Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/hello-machines/" aria-label="Read Hello, machines: why we started this blog">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          >machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/about/">About us</a
+          ><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
 </html>

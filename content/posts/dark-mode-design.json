@@ -1,0 +1,10 @@
+{
+  "title": "Designing for dark mode first",
+  "description": "Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.",
+  "date": "2026-09-03",
+  "topic": "design",
+  "kind": "Field note",
+  "lead": "Dark isn't just a color swap. It's a hierarchy — and our 12KB stylesheet proves you don't need a framework to get it right.",
+  "featured": false,
+  "draft": false
+}

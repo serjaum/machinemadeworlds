@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>The automation playbook for solo builders</title>
-    <meta name="description" content="A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard." />
-    <link rel="canonical" href="https://machinemadeworlds.com/posts/automation-playbook/" />
+    <title>Automation — Machine Made Worlds</title>
+    <meta name="description" content="Essays, practical guides and field notes on artificial intelligence, automation and the things we build." />
+    <link rel="canonical" href="https://machinemadeworlds.com/topics/automation/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -20,14 +20,14 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       title="Machine Made Worlds"
       href="/feed.xml"
     />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="The automation playbook for solo builders" />
-    <meta property="og:description" content="A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard." />
-    <meta property="og:url" content="https://machinemadeworlds.com/posts/automation-playbook/" />
+    <meta property="og:title" content="Automation — Machine Made Worlds" />
+    <meta property="og:description" content="Essays, practical guides and field notes on artificial intelligence, automation and the things we build." />
+    <meta property="og:url" content="https://machinemadeworlds.com/topics/automation/" />
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "The automation playbook for solo builders", "url": "https://machinemadeworlds.com/posts/automation-playbook/", "inLanguage": "en", "headline": "The automation playbook for solo builders", "description": "A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.", "datePublished": "2026-09-04", "dateModified": "2026-09-04", "mainEntityOfPage": "https://machinemadeworlds.com/posts/automation-playbook/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+      {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Automation — Machine Made Worlds", "url": "https://machinemadeworlds.com/topics/automation/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.d910f5e99009.js" defer></script>
   </head>
@@ -61,55 +61,28 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><article class="container article-page">
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
-    ><a href="/topics/automation/">Automation</a>
-  </nav>
-  <header class="article-heading" data-od-id="article-heading">
-    <p class="eyebrow">
-      Guide <span class="tiny-rule" aria-hidden="true"></span> Automation
-    </p>
-    <h1>The automation playbook for solo builders</h1>
-    <p class="article-lead">You don&#x27;t need an AI platform. You need three habits and a folder named dist/ that always deploys.</p>
-    <div class="byline">
-      <span class="avatar" aria-hidden="true">m</span>
-      <div>
-        <span>Machine Made Worlds</span
-        ><span class="meta"
-          ><time datetime="2026-09-04">Sep 04, 2026</time> · 1 min read</span
-        >
-      </div>
-    </div>
+    <main id="main" tabindex="-1"><div class="container archive-page">
+  <header class="page-heading" data-od-id="archive-heading">
+    <p class="eyebrow">Ideas, collected</p>
+    <h1>Automation<span class="accent-dot">.</span></h1>
+    <p>Essays, guides and observations. Find something worth sitting with.</p>
   </header>
-  <div class="reading-layout">
-    <aside class="reading-sidebar" >
-      <nav class="toc" aria-label="In this article">
-        <p class="eyebrow">In this article</p>
-        <a href="#1-capture">1. Capture</a><a href="#2-synthesize">2. Synthesize</a><a href="#3-publish">3. Publish</a>
-      </nav>
-      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
-    </aside>
-    <div class="article-body" data-od-id="article-body">
-      <h2 id="1-capture">1. Capture</h2><p>One inbox. Everything goes there — voice notes, links, screenshots. Review weekly, archive ruthlessly.</p>
-        <h2 id="2-synthesize">2. Synthesize</h2><p>Turn captures into one-pagers. If you can't explain it in 180 words, you don't understand it yet.</p>
-        <h2 id="3-publish">3. Publish</h2><p>Static over dynamic. <code>dist/</code> mirrored to <code>public_html</code>. Board approves, FTP ships, no CMS to patch.</p>
-        <pre tabindex="0" role="region" aria-label="Code example"><code># deploy (after Board approval)
-lftp -e "mirror -R dist/ public_html/; quit" -u user,pass host</code></pre>
-        <p>More on the stack in our <a href="/about/">about</a> page and <a href="/posts/dark-mode-design/">design notes</a>.</p>
-
-      <div class="article-end">
-        <span aria-hidden="true">m·w</span
-        ><a href="/blog/">← Back to the journal</a>
-      </div>
-    </div>
+  <nav class="topic-tabs" aria-label="Browse topics">
+    <a href="/blog/">Everything</a><a href="/topics/local-ai/">Local AI <span aria-hidden="true">↗</span></a><a href="/topics/automation/">Automation <span aria-hidden="true">↗</span></a><a href="/topics/design/">Design <span aria-hidden="true">↗</span></a><a href="/topics/essays/">Essays <span aria-hidden="true">↗</span></a>
+  </nav>
+  <div class="archive-toolbar">
+    <p><span data-result-count>3</span> articles</p>
+    <label class="search-box" data-search-control hidden
+      ><span>Search the journal</span
+      ><input
+        type="search"
+        data-search
+        placeholder="Try ‘models’ or ‘design’"
+        autocomplete="off"
+        aria-controls="article-list"
+    /></label>
   </div>
-  <section class="related" aria-labelledby="related-heading">
-    <div class="section-heading">
-      <h2 id="related-heading">Keep exploring.</h2>
-      <a class="text-link" href="/blog/">All articles ↗</a>
-    </div>
-    <div class="related-grid"><article class="story compact" data-search-item>
+  <div id="article-list" class="archive-list"><article class="story compact" data-search-item>
   <div class="story-meta">
     <a class="topic-label" href="/topics/automation/">Automation</a
     ><span>Essay</span>
@@ -137,9 +110,28 @@ lftp -e "mirror -R dist/ public_html/; quit" -u user,pass host</code></pre>
     ><a class="story-arrow" href="/posts/autonomous-website-ops/" aria-label="Read Autonomous Website Ops: Static First">↗</a>
   </div>
 </article>
-</div>
-  </section>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/automation-playbook/">The automation playbook for solo builders</a></h3>
+  <p>A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-04">Sep 04, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/automation-playbook/" aria-label="Read The automation playbook for solo builders">↗</a>
+  </div>
 </article>
+</div>
+  <section class="empty-state" data-empty hidden>
+    <h2>No articles found.</h2>
+    <p>Try a different word, or return to the full collection.</p>
+    <button type="button" data-clear-search class="button">Clear search</button>
+  </section>
+  <p class="sr-only" role="status" data-search-status></p>
+</div>
 </main>
     <footer class="footer" data-od-id="footer">
       <div class="container footer-top">

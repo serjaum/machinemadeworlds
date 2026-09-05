@@ -1,0 +1,11 @@
+{
+  "name": "Machine Made Worlds",
+  "url": "https://machinemadeworlds.com",
+  "description": "Essays, practical guides and field notes on artificial intelligence, automation and the things we build.",
+  "topics": {
+    "local-ai": "Local AI",
+    "automation": "Automation",
+    "design": "Design",
+    "essays": "Essays"
+  }
+}

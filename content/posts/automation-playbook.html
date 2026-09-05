@@ -1,0 +1,6 @@
+<h2>1. Capture</h2><p>One inbox. Everything goes there — voice notes, links, screenshots. Review weekly, archive ruthlessly.</p>
+        <h2>2. Synthesize</h2><p>Turn captures into one-pagers. If you can't explain it in 180 words, you don't understand it yet.</p>
+        <h2>3. Publish</h2><p>Static over dynamic. <code>dist/</code> mirrored to <code>public_html</code>. Board approves, FTP ships, no CMS to patch.</p>
+        <pre><code># deploy (after Board approval)
+lftp -e "mirror -R dist/ public_html/; quit" -u user,pass host</code></pre>
+        <p>More on the stack in our <a href="/about/">about</a> page and <a href="/posts/dark-mode-design/">design notes</a>.</p>

@@ -1,0 +1,10 @@
+{
+  "title": "Small Models That Fit a 6 GB RTX 2060",
+  "description": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",
+  "date": "2026-09-05",
+  "topic": "local-ai",
+  "kind": "Guide",
+  "lead": "Six gigabytes is enough for real writing and agent work if you pick the right quantization and leave heavy reasoning off the GPU. Here is what we run daily on an RTX 2060.",
+  "featured": true,
+  "draft": false
+}

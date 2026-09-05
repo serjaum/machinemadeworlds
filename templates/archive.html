@@ -1,0 +1,29 @@
+<div class="container archive-page">
+  <header class="page-heading" data-od-id="archive-heading">
+    <p class="eyebrow">Ideas, collected</p>
+    <h1>$heading<span class="accent-dot">.</span></h1>
+    <p>Essays, guides and observations. Find something worth sitting with.</p>
+  </header>
+  <nav class="topic-tabs" aria-label="Browse topics">
+    <a href="/blog/">Everything</a>$topics
+  </nav>
+  <div class="archive-toolbar">
+    <p><span data-result-count>$count</span> articles</p>
+    <label class="search-box" data-search-control hidden
+      ><span>Search the journal</span
+      ><input
+        type="search"
+        data-search
+        placeholder="Try ‘models’ or ‘design’"
+        autocomplete="off"
+        aria-controls="article-list"
+    /></label>
+  </div>
+  <div id="article-list" class="archive-list">$cards</div>
+  <section class="empty-state" data-empty hidden>
+    <h2>No articles found.</h2>
+    <p>Try a different word, or return to the full collection.</p>
+    <button type="button" data-clear-search class="button">Clear search</button>
+  </section>
+  <p class="sr-only" role="status" data-search-status></p>
+</div>

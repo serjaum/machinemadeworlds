@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About — Machine Made Worlds</title>
+    <title>Local AI — Machine Made Worlds</title>
     <meta name="description" content="Essays, practical guides and field notes on artificial intelligence, automation and the things we build." />
-    <link rel="canonical" href="https://machinemadeworlds.com/about/" />
+    <link rel="canonical" href="https://machinemadeworlds.com/topics/local-ai/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -22,12 +22,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="About — Machine Made Worlds" />
+    <meta property="og:title" content="Local AI — Machine Made Worlds" />
     <meta property="og:description" content="Essays, practical guides and field notes on artificial intelligence, automation and the things we build." />
-    <meta property="og:url" content="https://machinemadeworlds.com/about/" />
+    <meta property="og:url" content="https://machinemadeworlds.com/topics/local-ai/" />
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "AboutPage", "name": "About — Machine Made Worlds", "url": "https://machinemadeworlds.com/about/", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Local AI — Machine Made Worlds", "url": "https://machinemadeworlds.com/topics/local-ai/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.d910f5e99009.js" defer></script>
   </head>
@@ -46,7 +46,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         <nav class="navigation" aria-label="Main navigation">
           <a href="/" >Home</a
           ><a href="/blog/" >Journal</a
-          ><a href="/about/"  aria-current="page">About</a>
+          ><a href="/about/" >About</a>
         </nav>
         <button
           type="button"
@@ -61,59 +61,48 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><div class="container about-page">
-  <header class="page-heading">
-    <p class="eyebrow">Behind the journal</p>
-    <h1>Curiosity is<br /><em>the starting point.</em></h1>
-    <p>
-      Machine Made Worlds is an English-language journal about artificial
-      intelligence, automation and the things we build.
-    </p>
+    <main id="main" tabindex="-1"><div class="container archive-page">
+  <header class="page-heading" data-od-id="archive-heading">
+    <p class="eyebrow">Ideas, collected</p>
+    <h1>Local AI<span class="accent-dot">.</span></h1>
+    <p>Essays, guides and observations. Find something worth sitting with.</p>
   </header>
-  <div class="about-layout">
-    <aside>
-      <p class="eyebrow">Our perspective</p>
-      <p class="about-motto">Understand first.<br />Build thoughtfully.</p>
-    </aside>
-    <div class="article-body">
-      <h2>A little distance from the noise.</h2>
-      <p>
-        The interesting question isn't just what a model can do. It's what
-        happens when we put it to work — on our own hardware, inside a workflow,
-        or out on the web.
-      </p>
-      <p>
-        This journal makes room for that question. Practical guides sit
-        alongside essays and field notes, with an emphasis on clear explanations
-        and ideas worth revisiting.
-      </p>
-      <h2>Three ways of looking.</h2>
-      <dl class="principles">
-        <dt>Essays</dt>
-        <dd>A longer view of how machines change work and creativity.</dd>
-        <dt>Guides</dt>
-        <dd>Practical steps for building and experimenting.</dd>
-        <dt>Field notes</dt>
-        <dd>Observations from working with models, systems and interfaces.</dd>
-      </dl>
-      <h2>A site that gets out of the way.</h2>
-      <p>
-        The journal is served as static HTML. No font downloads, third-party
-        trackers or application framework stand between you and an article.
-        Choose a light or dark reading environment; your preference stays in
-        your browser.
-      </p>
-      <p>
-        The journal is maintained with the assistance of AI agents. Treat
-        technical guides as starting points: verify details against source
-        documentation and your own environment.
-      </p>
-      <p>
-        <a href="/feed.xml">Subscribe with RSS</a> or
-        <a href="/blog/">browse the journal</a>.
-      </p>
-    </div>
+  <nav class="topic-tabs" aria-label="Browse topics">
+    <a href="/blog/">Everything</a><a href="/topics/local-ai/">Local AI <span aria-hidden="true">↗</span></a><a href="/topics/automation/">Automation <span aria-hidden="true">↗</span></a><a href="/topics/design/">Design <span aria-hidden="true">↗</span></a><a href="/topics/essays/">Essays <span aria-hidden="true">↗</span></a>
+  </nav>
+  <div class="archive-toolbar">
+    <p><span data-result-count>1</span> articles</p>
+    <label class="search-box" data-search-control hidden
+      ><span>Search the journal</span
+      ><input
+        type="search"
+        data-search
+        placeholder="Try ‘models’ or ‘design’"
+        autocomplete="off"
+        aria-controls="article-list"
+    /></label>
   </div>
+  <div id="article-list" class="archive-list"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/small-models-rtx2060/">Small Models That Fit a 6 GB RTX 2060</a></h3>
+  <p>What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/posts/small-models-rtx2060/" aria-label="Read Small Models That Fit a 6 GB RTX 2060">↗</a>
+  </div>
+</article>
+</div>
+  <section class="empty-state" data-empty hidden>
+    <h2>No articles found.</h2>
+    <p>Try a different word, or return to the full collection.</p>
+    <button type="button" data-clear-search class="button">Clear search</button>
+  </section>
+  <p class="sr-only" role="status" data-search-status></p>
 </div>
 </main>
     <footer class="footer" data-od-id="footer">
