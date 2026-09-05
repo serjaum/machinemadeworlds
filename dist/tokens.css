@@ -1,0 +1,104 @@
+/* MMW MAC-23 — light-first semantic tokens with dark variant.
+   OpenDesign package contract: DESIGN brief (DESIGN_BRIEF_MAC-23.md) + tokens.css + prototype.
+   Usage: components reference var(--*) only, never raw hex.
+   Light is default (:root). Dark via [data-theme="dark"] override + prefers-color-scheme. */
+:root {
+  color-scheme: light dark;
+  /* Light (default) — clean premium editorial */
+  --bg: #fbfbfa;
+  --bg-raised: #ffffff;
+  --bg-elevated: #f4f4f2;
+  --bg-tint: #f0efec;
+  --border: #e7e5e0;
+  --border-soft: #efede8;
+  --border-strong: #d9d7d1;
+  --text: #16181d;
+  --text-strong: #0b0c0f;
+  --muted: #5b6472;
+  --muted-2: #828b99;
+  --accent: #4338ca;
+  --accent-hover: #3730a3;
+  --accent-ink: #ffffff;
+  --accent-soft: #eef0fe;
+  --accent-line: #c7d0f8;
+  --tag-bg: #f4f4f2;
+  --tag-ink: #3f4754;
+  --tag-accent-bg: #eef0fe;
+  --tag-accent-ink: #3730a3;
+  --code-bg: #f4f4f2;
+  --code-border: #e7e5e0;
+  --callout-bg: #f4f7ff;
+  --callout-line: #4338ca;
+  --hero-rule: #16181d;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .08);
+  --font-sans: ui-sans-system, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text-hero: clamp(34px, 5.4vw, 56px);
+  --text-h1: clamp(30px, 4.6vw, 44px);
+  --text-h2: 22px;
+  --text-card: 19px;
+  --text-body: 16.5px;
+  --text-meta: 12.5px;
+  --leading-body: 1.7;
+  --leading-tight: 1.06;
+  --max: 1120px;
+  --content: 720px;
+  --header-h: 64px;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --pill: 999px;
+  --ease-standard: cubic-bezier(.23, 1, .32, 1);
+  --motion-enter: 200ms;
+  --motion-exit: 140ms;
+  --focus-ring: 2px solid var(--accent);
+  --focus-offset: 3px;
+}
+/* Explicit dark override (manual toggle): html[data-theme="dark"] */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e0f13;
+  --bg-raised: #16171d;
+  --bg-elevated: #1d1f26;
+  --bg-tint: #14151a;
+  --border: #26282f;
+  --border-soft: #2e313a;
+  --border-strong: #3a3e49;
+  --text: #ececf1;
+  --text-strong: #ffffff;
+  --muted: #a7aec0;
+  --muted-2: #868da1;
+  --accent: #a5b4fc;
+  --accent-hover: #c7d2fe;
+  --accent-ink: #101130;
+  --accent-soft: rgba(165, 180, 252, .12);
+  --accent-line: rgba(165, 180, 252, .35);
+  --tag-bg: #1d1f26;
+  --tag-ink: #c3c9d6;
+  --tag-accent-bg: rgba(165, 180, 252, .12);
+  --tag-accent-ink: #c7d2fe;
+  --code-bg: #101116;
+  --code-border: #26282f;
+  --callout-bg: rgba(165, 180, 252, .08);
+  --callout-line: #a5b4fc;
+  --hero-rule: #ececf1;
+  --shadow: 0 8px 30px rgba(0, 0, 0, .35);
+  --focus-ring: 2px solid var(--accent);
+}
+/* System preference: apply dark tokens when no manual choice stored (html[data-theme="auto"]) */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    color-scheme: dark;
+    --bg: #0e0f13; --bg-raised: #16171d; --bg-elevated: #1d1f26; --bg-tint: #14151a;
+    --border: #26282f; --border-soft: #2e313a; --border-strong: #3a3e49;
+    --text: #ececf1; --text-strong: #fff; --muted: #a7aec0; --muted-2: #868da1;
+    --accent: #a5b4fc; --accent-hover: #c7d2fe; --accent-ink: #101130;
+    --accent-soft: rgba(165, 180, 252, .12); --accent-line: rgba(165, 180, 252, .35);
+    --tag-bg: #1d1f26; --tag-ink: #c3c9d6;
+    --tag-accent-bg: rgba(165, 180, 252, .12); --tag-accent-ink: #c7d2fe;
+    --code-bg: #101116; --code-border: #26282f;
+    --callout-bg: rgba(165, 180, 252, .08); --callout-line: #a5b4fc;
+    --hero-rule: #ececf1;
+    --shadow: 0 8px 30px rgba(0, 0, 0, .35);
+  }
+}

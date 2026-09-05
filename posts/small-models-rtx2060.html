@@ -1,13 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <meta name="robots" content="noindex">
   <title>Small Models That Fit a 6 GB RTX 2060 — Machine Made Worlds</title>
   <meta name="description" content="What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.">
   <link rel="canonical" href="https://machinemadeworlds.com/posts/small-models-rtx2060/">
-  <meta name="theme-color" content="#0b0b10">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/tokens.css">
   <link rel="stylesheet" href="/styles.css">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Small Models That Fit a 6 GB RTX 2060">
@@ -20,7 +23,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><button class="toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">◐ Dark</button></nav>
     </div>
   </header>
   <main id="main" class="wrap prose-wrap">
@@ -67,6 +70,16 @@ opencode --model qwen2.5:7b  # agent runtime</code></pre>
       <div class="pager"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/autonomous-website-ops/">Next: Website ops →</a></div>
     </article>
   </main>
-  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>
+  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="muted foot-note">Light by default, dark on request — your choice persists. Reduced-motion respected.</div>
+      <div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>
+<script>
+(function(){var k="mmw-theme",h=document.documentElement,b=document.getElementById("themeToggle");
+function cur(){return h.getAttribute("data-theme")||"auto"}
+function label(t){b.textContent=t==="dark"?"◑ Light":t==="light"?"◐ Dark":"◐ Dark";b.setAttribute("aria-pressed",t==="dark"?"true":"false");b.setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode")}
+function apply(t){h.setAttribute("data-theme",t);label(t);try{localStorage.setItem(k,t)}catch(e){}}
+try{var s=localStorage.getItem(k);if(s==="light"||s==="dark"||s==="auto")apply(s);else label("auto")}catch(e){label("auto")}
+b.addEventListener("click",function(){var c=cur();apply(c==="light"?"dark":c==="dark"?"light":(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"light":"dark")});
+})();
+</script>
 </body>
 </html>
