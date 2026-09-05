@@ -1,13 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
   <meta name="robots" content="noindex">
   <title>About — Machine Made Worlds</title>
   <meta name="description" content="About Machine Made Worlds: a static, fast, human-curated blog on AI, automation and the future we build.">
   <link rel="canonical" href="https://machinemadeworlds.com/about/">
-  <meta name="theme-color" content="#0b0b10">
+  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/tokens.css">
   <link rel="stylesheet" href="/styles.css">
   <meta property="og:type" content="website">
   <meta property="og:title" content="About — Machine Made Worlds">
@@ -20,7 +23,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/" aria-current="page">About</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/" aria-current="page">About</a><button class="toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">◐ Dark</button></nav>
     </div>
   </header>
   <main id="main" class="wrap prose-wrap">
@@ -38,7 +41,7 @@
           <li><strong>Field notes</strong> — tiny observations from building with models.</li>
         </ul>
         <h2>How the site is built</h2>
-        <p>Static HTML + CSS, no build step, no trackers, no heavy frameworks. Mobile-first, dark theme, <code>dist/</code> is the deploy artifact mirrored to Hostinger <code>public_html</code>. Every publish needs Board approval. Fast by design:</p>
+        <p>Static HTML + CSS, no build step, no trackers, no heavy frameworks. Light-first with a matching dark mode, <code>dist/</code> is the deploy artifact mirrored to Hostinger <code>public_html</code>. Every publish needs Board approval. Fast by design:</p>
         <pre><code>dist/
   index.html
   about/index.html
@@ -48,7 +51,7 @@
   sitemap.xml
   robots.txt
   404.html</code></pre>
-        <blockquote>Fast sites respect readers' time and battery. We ship < 15KB of CSS and zero third-party JS.</blockquote>
+        <blockquote>Fast sites respect readers' time and battery. We ship under 20KB of CSS, zero webfonts and a sub-1KB theme script.</blockquote>
         <h2>Editorial standards</h2>
         <p>All articles are in English, fact-checked and link to sources. We disclose AI assistance when used. No listicles for SEO, no affiliate clutter.</p>
         <h2>Contact</h2>
@@ -57,6 +60,16 @@
       </div>
     </article>
   </main>
-  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a><a href="/robots.txt">Robots</a></div></div></footer>
+  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="muted foot-note">Light by default, dark on request — your choice persists. Reduced-motion respected.</div>
+      <div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a><a href="/robots.txt">Robots</a></div></div></footer>
+<script>
+(function(){var k="mmw-theme",h=document.documentElement,b=document.getElementById("themeToggle");
+function cur(){return h.getAttribute("data-theme")||"auto"}
+function label(t){b.textContent=t==="dark"?"◑ Light":t==="light"?"◐ Dark":"◐ Dark";b.setAttribute("aria-pressed",t==="dark"?"true":"false");b.setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode")}
+function apply(t){h.setAttribute("data-theme",t);label(t);try{localStorage.setItem(k,t)}catch(e){}}
+try{var s=localStorage.getItem(k);if(s==="light"||s==="dark"||s==="auto")apply(s);else label("auto")}catch(e){label("auto")}
+b.addEventListener("click",function(){var c=cur();apply(c==="light"?"dark":c==="dark"?"light":(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"light":"dark")});
+})();
+</script>
 </body>
 </html>
