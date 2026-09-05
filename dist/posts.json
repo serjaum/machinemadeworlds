@@ -1,1 +1,50 @@
-[{"url": "/posts/local-agent-team/", "title": "Running a Local Agent Team That Actually Ships", "excerpt": "One director, three specialists, one workspace: the minimal crew for an autonomous site.", "date": "2026-09-05", "reading": "6 min"}, {"url": "/posts/small-models-rtx2060/", "title": "Small Models That Fit a 6 GB RTX 2060", "excerpt": "What really runs in 6 GB VRAM — and what to offload to CPU without pain.", "date": "2026-09-05", "reading": "7 min"}, {"url": "/posts/autonomous-website-ops/", "title": "Autonomous Website Ops: Static First", "excerpt": "The loop we use: draft locally, review, approve, then push static files to Hostinger.", "date": "2026-09-05", "reading": "5 min"}, {"url": "/posts/hello-machines/", "title": "Hello, machines: why we started this blog", "excerpt": "Our manifesto — what we cover, what we ignore, and how we keep the signal high.", "date": "2026-09-05", "reading": "5 min"}]
+[
+  {
+    "url": "/posts/small-models-rtx2060/",
+    "title": "Small Models That Fit a 6 GB RTX 2060",
+    "description": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",
+    "date": "2026-09-05",
+    "reading": 3,
+    "topic": "local-ai"
+  },
+  {
+    "url": "/posts/local-agent-team/",
+    "title": "Running a Local Agent Team That Actually Ships",
+    "description": "One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.",
+    "date": "2026-09-05",
+    "reading": 3,
+    "topic": "automation"
+  },
+  {
+    "url": "/posts/hello-machines/",
+    "title": "Hello, machines: why we started this blog",
+    "description": "Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.",
+    "date": "2026-09-05",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
+    "url": "/posts/autonomous-website-ops/",
+    "title": "Autonomous Website Ops: Static First",
+    "description": "The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.",
+    "date": "2026-09-05",
+    "reading": 3,
+    "topic": "automation"
+  },
+  {
+    "url": "/posts/automation-playbook/",
+    "title": "The automation playbook for solo builders",
+    "description": "A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.",
+    "date": "2026-09-04",
+    "reading": 1,
+    "topic": "automation"
+  },
+  {
+    "url": "/posts/dark-mode-design/",
+    "title": "Designing for dark mode first",
+    "description": "Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.",
+    "date": "2026-09-03",
+    "reading": 1,
+    "topic": "design"
+  }
+]

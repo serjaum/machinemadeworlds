@@ -1,137 +1,261 @@
 <!doctype html>
-<html lang="en" data-theme="auto">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Machine Made Worlds — AI, automation &amp; the future we build</title>
-  <meta name="description" content="Machine Made Worlds explores AI, automation, creative machines and the future of work — sharp essays, practical guides and field notes.">
-  <link rel="canonical" href="https://machinemadeworlds.com/">
-  <meta name="theme-color" content="#fbfbfa" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e0f13" media="(prefers-color-scheme: dark)">
-  <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="/tokens.css">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c5cfb'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='16' fill='white'>M</text></svg>">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Machine Made Worlds">
-  <meta property="og:title" content="Machine Made Worlds — AI, automation &amp; the future we build">
-  <meta property="og:description" content="Sharp essays, practical guides and field notes on AI and automation.">
-  <meta property="og:url" content="https://machinemadeworlds.com/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Machine Made Worlds — AI, automation &amp; the future we build">
-  <meta name="twitter:description" content="Sharp essays, practical guides and field notes on AI and automation.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Machine Made Worlds","url":"https://machinemadeworlds.com/","description":"AI, automation & the future we build","inLanguage":"en"}</script>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="/" aria-label="Machine Made Worlds — home">
-        <span class="brand-mark" aria-hidden="true">M</span>
-        <span class="brand-text">Machine Made Worlds</span>
-        <span class="brand-sub">AI • Automation • Future</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="/blog/" >Blog</a>
-        <a href="/about/" >About</a>
-      <button class="toggle" id="themeToggle" aria-pressed="false" aria-label="Switch to dark mode">◐ Dark</button></nav>
-    </div>
-  </header>
-
-  <main id="main" class="wrap">
-    <section class="hero">
-      <span class="eyebrow"><i></i> Tested • Sourced • Static</span>
-      <h1>Field notes from people who run machines <em>in production.</em></h1>
-      <p>Essays, guides and field notes on AI that ships — measured on real hardware, reviewed by humans, published as fast static pages. No hype, no trackers.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/blog/">Explore the blog →</a>
-        <a class="btn btn-ghost" href="/about/">About the project</a>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Machine Made Worlds — AI, considered.</title>
+    <meta name="description" content="Essays, practical guides and field notes on artificial intelligence, automation and the things we build." />
+    <link rel="canonical" href="https://machinemadeworlds.com/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.94b49e86edde.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.86917a213202.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Machine Made Worlds — AI, considered." />
+    <meta property="og:description" content="Essays, practical guides and field notes on artificial intelligence, automation and the things we build." />
+    <meta property="og:url" content="https://machinemadeworlds.com/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "WebSite", "name": "Machine Made Worlds — AI, considered.", "url": "https://machinemadeworlds.com/", "inLanguage": "en"}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><span class="brand-emblem" aria-hidden="true">m<span>·</span>w</span
+          ><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/"  aria-current="page">Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
       </div>
-    </section>
-
-    <div class="section-head">
-      <h2>Featured guide</h2>
-      <a href="/blog/">View all →</a>
+    </header>
+    <main id="main" tabindex="-1"><div class="container">
+  <section class="intro" data-od-id="intro">
+    <div>
+      <p class="eyebrow">
+        <span class="status-dot" aria-hidden="true"></span> Ideas for a world in
+        motion
+      </p>
+      <h1>Artificial intelligence.<br /><em>Human perspective.</em></h1>
     </div>
-    <a class="featured" href="/posts/small-models-rtx2060/">
-      <div class="featured-visual" aria-hidden="true">GUIDE · RTX 2060 · 6 GB</div>
-      <div class="featured-body">
-        <div class="card-meta"><span class="tag accent">Guide</span> <time datetime="2026-09-05">Sep 05, 2026</time> <span class="dot"></span> <span>7 min read</span> <span class="dot"></span> <span class="tested">Tested · RTX 2060</span></div>
-        <h2>Small Models That Fit a 6 GB RTX 2060</h2>
-        <p>What really runs in 6 GB VRAM — and what to offload to CPU without killing speed. Measured on a real RTX 2060.</p>
-      </div>
-    </a>
-
-    <div class="section-head">
-      <h2>Latest</h2>
-      <a href="/blog/">Archive →</a>
+    <div class="intro-note">
+      <p>
+        A thoughtful look at AI, automation and the things we build with them.
+      </p>
+      <a class="text-link" href="/about/"
+        >Meet the journal <span aria-hidden="true">↗</span></a
+      >
     </div>
-    <ul class="grid cols-3 card-list" role="list" aria-label="Latest posts">
-      <li>
-        <a class="card" href="/posts/local-agent-team/">
-          <div class="card-top"><span class="card-num" aria-hidden="true">01</span><span class="series">Local ops</span></div>
-          <div class="card-meta"><span class="tag">Essay</span> <time datetime="2026-09-05">Sep 05, 2026</time> <span class="dot"></span> <span>6 min read</span></div>
-          <h3>Running a Local Agent Team That Actually Ships</h3>
-          <p>One director, three specialists, one workspace: the minimal crew for an autonomous site — draft, review, approve, then publish.</p>
-        </a>
-      </li>
-      <li>
-        <a class="card" href="/posts/autonomous-website-ops/">
-          <div class="card-top"><span class="card-num" aria-hidden="true">02</span><span class="series">Site ops</span></div>
-          <div class="card-meta"><span class="tag">Field note</span> <time datetime="2026-09-05">Sep 05, 2026</time> <span class="dot"></span> <span>6 min read</span> <span class="dot"></span> <span class="tested">In production</span></div>
-          <h3>Autonomous Website Ops: Static First</h3>
-          <p>The loop we use: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.</p>
-        </a>
-      </li>
-      <li>
-        <a class="card" href="/blog/">
-          <div class="card-top"><span class="card-num" aria-hidden="true">03</span><span class="series">Index</span></div>
-          <div class="card-meta"><span class="tag purple">Browse</span> <span>All topics</span></div>
-          <h3>More essays &amp; guides →</h3>
-          <p>Visit the blog index for the full archive, filters and RSS-ready list.</p>
-        </a>
-      </li>
-    </ul>
-
-    <hr class="hr">
-    <div class="grid cols-2">
-      <div class="box">
-        <h3>Built to load fast</h3>
-        <p>No trackers. No frameworks. Pure HTML/CSS with a sub-1KB inline theme script. Light by default with a matching dark mode, fast by design.</p>
-        <a class="btn btn-ghost" href="/about/">How this site is made</a>
-      </div>
-      <div class="box">
-        <h3>Newsletter — coming soon</h3>
-        <p>One email per week. No spam, unsubscribe anytime. Until then, bookmark the <a href="/blog/">blog</a> or grab the <a href="/sitemap.xml">sitemap</a>.</p>
-        <span class="muted rss-line">RSS: <code>/sitemap.xml</code> • <code>/robots.txt</code></span>
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap footer-grid">
+  </section>
+  <section
+    class="feature-section"
+    aria-label="Featured article"
+    data-od-id="featured"
+  >
+    <article class="featured">
+  <div class="feature-copy">
+    <p class="eyebrow">
+      The featured read
+      <span class="tiny-rule" aria-hidden="true"></span> Local AI
+    </p>
+    <h2><a href="/posts/small-models-rtx2060/">Small Models That Fit a 6 GB RTX 2060</a></h2>
+    <p class="feature-description">What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
       <div>
-        <strong>Machine Made Worlds</strong> <span class="muted">© 2026. Static English-language AI blog.</span>
-        <div class="muted foot-note">Hosted on Hostinger. Deploy artifact: <code>dist/</code> → <code>public_html</code>.</div>
-        <div class="muted foot-note">Light theme by default, dark on request — your choice persists. Focus ring visible in both themes; reduced-motion respected.</div>
-      </div>
-      <div class="footer-links">
-        <a href="/blog/">Blog</a>
-        <a href="/about/">About</a>
-        <a href="/sitemap.xml">Sitemap</a>
-        <a href="/robots.txt">Robots</a>
-        <a href="https://machinemadeworlds.com">machinemadeworlds.com</a>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-05">Sep 05, 2026</time> · 3 min read</span
+        >
       </div>
     </div>
-  </footer>
-<script>
-(function(){var k="mmw-theme",h=document.documentElement,b=document.getElementById("themeToggle");
-function cur(){return h.getAttribute("data-theme")||"auto"}
-function label(t){b.textContent=t==="dark"?"◑ Light":t==="light"?"◐ Dark":"◐ Dark";b.setAttribute("aria-pressed",t==="dark"?"true":"false");b.setAttribute("aria-label",t==="dark"?"Switch to light mode":"Switch to dark mode")}
-function apply(t){h.setAttribute("data-theme",t);label(t);try{localStorage.setItem(k,t)}catch(e){}}
-try{var s=localStorage.getItem(k);if(s==="light"||s==="dark"||s==="auto")apply(s);else label("auto")}catch(e){label("auto")}
-b.addEventListener("click",function(){var c=cur();apply(c==="light"?"dark":c==="dark"?"light":(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"light":"dark")});
-})();
-</script>
-</body>
+    <a class="text-link" href="/posts/small-models-rtx2060/"
+      >Read the Guide <span aria-hidden="true">↗</span></a
+    >
+  </div>
+  <div class="feature-art" aria-hidden="true">
+    <div class="art-top">
+      <span>Local AI</span><span>THE FEATURED READ</span>
+    </div>
+    <div class="orbital">
+      <div class="orbit orbit-a"></div>
+      <div class="orbit orbit-b"></div>
+      <div class="orbit orbit-c"></div>
+      <span class="core">ideas<br /><i>take shape.</i></span
+      ><span class="orbit-dot"></span>
+    </div>
+    <div class="art-bottom">
+      <span>MODELS × MACHINES</span><span class="art-monogram">mw.</span>
+    </div>
+  </div>
+</article>
+
+  </section>
+  <section
+    class="journal-section"
+    aria-labelledby="latest-heading"
+    data-od-id="latest"
+  >
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">From the journal</p>
+        <h2 id="latest-heading">Worth your attention.</h2>
+      </div>
+      <a class="text-link" href="/blog/"
+        >All articles <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    <div class="journal-layout">
+      <div class="story-pair"><article class="story" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Essay</span>
+  </div>
+  <h3><a href="/posts/local-agent-team/">Running a Local Agent Team That Actually Ships</a></h3>
+  <p>One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/posts/local-agent-team/" aria-label="Read Running a Local Agent Team That Actually Ships">↗</a>
+  </div>
+</article>
+<article class="story" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/essays/">Essays</a
+    ><span>Essay</span>
+  </div>
+  <h3><a href="/posts/hello-machines/">Hello, machines: why we started this blog</a></h3>
+  <p>Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/hello-machines/" aria-label="Read Hello, machines: why we started this blog">↗</a>
+  </div>
+</article>
+</div>
+      <aside class="editor-note">
+        <span class="note-mark" aria-hidden="true">✳</span>
+        <p class="eyebrow">The editorial note</p>
+        <h3>More signal.<br />Less spectacle.</h3>
+        <p>
+          Practical guides, considered essays and field notes. A space to
+          understand the machines, not just keep up with them.
+        </p>
+        <a class="text-link" href="/about/"
+          >Why we write <span aria-hidden="true">↗</span></a
+        >
+      </aside>
+    </div>
+    <div class="more-stories"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Field note</span>
+  </div>
+  <h3><a href="/posts/autonomous-website-ops/">Autonomous Website Ops: Static First</a></h3>
+  <p>The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/posts/autonomous-website-ops/" aria-label="Read Autonomous Website Ops: Static First">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/automation-playbook/">The automation playbook for solo builders</a></h3>
+  <p>A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-04">Sep 04, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/automation-playbook/" aria-label="Read The automation playbook for solo builders">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/design/">Design</a
+    ><span>Field note</span>
+  </div>
+  <h3><a href="/posts/dark-mode-design/">Designing for dark mode first</a></h3>
+  <p>Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-03">Sep 03, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/dark-mode-design/" aria-label="Read Designing for dark mode first">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+  <section class="topic-section" data-od-id="topics">
+    <p class="eyebrow">Follow your curiosity</p>
+    <div class="topic-links"><a href="/topics/local-ai/">Local AI <span aria-hidden="true">↗</span></a><a href="/topics/automation/">Automation <span aria-hidden="true">↗</span></a><a href="/topics/design/">Design <span aria-hidden="true">↗</span></a><a href="/topics/essays/">Essays <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="rss-band" data-od-id="follow">
+    <div>
+      <p class="eyebrow">An open invitation</p>
+      <h2>Good reading. On your terms.</h2>
+      <p>Follow the journal in your favorite feed reader. No inbox required.</p>
+    </div>
+    <a class="button" href="/feed.xml"
+      >Follow via RSS <span aria-hidden="true">↗</span></a
+    >
+  </section>
+</div>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          >machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/about/">About us</a
+          ><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
 </html>

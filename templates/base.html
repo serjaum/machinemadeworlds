@@ -3,33 +3,32 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page not found — Machine Made Worlds</title>
-    <meta name="description" content="Find your way back to the journal." />
-    <link rel="canonical" href="https://machinemadeworlds.com/404.html" />
+    <title>$title</title>
+    <meta name="description" content="$description" />
+    <link rel="canonical" href="$canonical" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
-      /* Resolve a saved choice before CSS/first paint. New readers get light. */
-try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+      $theme_init
     </script>
-    <link rel="stylesheet" href="/assets/site.94b49e86edde.css" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.86917a213202.svg" />
+    <link rel="stylesheet" href="$css" />
+    <link rel="icon" type="image/svg+xml" href="$favicon" />
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="Machine Made Worlds"
+      title="$name"
       href="/feed.xml"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Page not found — Machine Made Worlds" />
-    <meta property="og:description" content="Find your way back to the journal." />
-    <meta property="og:url" content="https://machinemadeworlds.com/404.html" />
+    <meta property="og:type" content="$og_type" />
+    <meta property="og:site_name" content="$name" />
+    <meta property="og:title" content="$title" />
+    <meta property="og:description" content="$description" />
+    <meta property="og:url" content="$canonical" />
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found — Machine Made Worlds", "url": "https://machinemadeworlds.com/404.html", "inLanguage": "en"}
+      $jsonld
     </script>
-    <script src="/assets/site.d910f5e99009.js" defer></script>
+    <script src="$js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -44,9 +43,9 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
           ></a
         >
         <nav class="navigation" aria-label="Main navigation">
-          <a href="/" >Home</a
-          ><a href="/blog/" >Journal</a
-          ><a href="/about/" >About</a>
+          <a href="/" $home_current>Home</a
+          ><a href="/blog/" $blog_current>Journal</a
+          ><a href="/about/" $about_current>About</a>
         </nav>
         <button
           type="button"
@@ -61,13 +60,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><section class="container not-found">
-  <p class="eyebrow">404 · A wrong turn</p>
-  <h1>Not every path<br />leads to an article.</h1>
-  <p>This page isn't here. There's plenty more to explore in the journal.</p>
-  <a class="button" href="/blog/">Back to the journal ↗</a>
-</section>
-</main>
+    <main id="main" tabindex="-1">$content</main>
     <footer class="footer" data-od-id="footer">
       <div class="container footer-top">
         <a class="footer-brand" href="/"
@@ -80,7 +73,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </nav>
       </div>
       <div class="container footer-bottom">
-        <span>© 2026 Machine Made Worlds</span
+        <span>© $year Machine Made Worlds</span
         ><span>Made for curious minds. Built for reading.</span
         ><a href="#main">Back to top ↑</a>
       </div>

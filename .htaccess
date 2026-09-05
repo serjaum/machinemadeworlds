@@ -1,7 +1,0 @@
-# Machine Made Worlds — canonical slash URLs; redirect legacy flat .html copies
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule ^about\.html$ /about/ [R=301,L]
-RewriteRule ^blog\.html$ /blog/ [R=301,L]
-RewriteRule ^posts/([a-z0-9-]+)\.html$ /posts/$1/ [R=301,L]
-</IfModule>

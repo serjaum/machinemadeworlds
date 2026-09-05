@@ -1,0 +1,10 @@
+{
+  "title": "Running a Local Agent Team That Actually Ships",
+  "description": "One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.",
+  "date": "2026-09-05",
+  "topic": "automation",
+  "kind": "Essay",
+  "lead": "Most autonomous demos fail because one super-agent tries to do everything. We run the opposite: a tiny local team with hard lanes, one workspace, and a publish gate that never moves.",
+  "featured": false,
+  "draft": false
+}

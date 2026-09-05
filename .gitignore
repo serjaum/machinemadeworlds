@@ -19,3 +19,10 @@ npm-debug.log*
 
 # Paperclip scratch
 .paperclip*
+
+# Local build/QA scratch (never deploy)
+__pycache__/
+*.pyc
+.build-staging/
+qa/
+node_modules/
