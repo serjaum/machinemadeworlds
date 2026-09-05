@@ -266,3 +266,12 @@ h1 em { color: var(--accent); font-weight: 400; }
   .org-grid, .pipe-steps { grid-template-columns: 1fr; }
   .pipe-steps li + li::before { content: none; }
 }
+/* Build log agent-trail block (MAC-48 design brief, sections 2+4). Additive only:
+   trail-* classes, semantic vars, no new tokens, breakpoints, JS or motion. */
+.trail { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: var(--s2); margin: var(--s3) 0; min-width: 0; overflow-wrap: break-word; }
+.trail h2, .trail h3 { font-size: clamp(22px, 2vw, 25px); margin-bottom: var(--s1); }
+.trail > p { font: 14px/1.7 var(--sans); color: var(--muted); margin-bottom: var(--s1); }
+.trail ol, .trail ul { margin: var(--s1) 0 0; }
+.trail li { font: 14px/1.7 var(--sans); color: var(--muted); }
+.trail time { display: block; font: 11px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.trail li:last-child { border-left: 3px solid var(--accent); padding-left: var(--s1); }
