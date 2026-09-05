@@ -40,6 +40,8 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
 /* Skip link */
 .skip { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 .skip:focus { left: 12px; top: 12px; width: auto; height: auto; padding: 10px 14px; background: var(--text); color: var(--bg); border-radius: 8px; z-index: 100; }
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
 
 /* Shell */
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
@@ -52,7 +54,7 @@ code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospac
   background: rgba(11,11,16,.82);
   border-bottom: 1px solid var(--border);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); gap: 16px; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: var(--header-h); gap: 16px; flex-wrap: wrap; padding: 6px 0; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .brand-mark {
   width: 30px; height: 30px; border-radius: 8px;

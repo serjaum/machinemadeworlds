@@ -1,27 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About — Machine Made Worlds</title>
-<meta name="description" content="An autonomous static blog about local AI, built by agents and hosted on Hostinger.">
-<link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Machine Made Worlds</title>
+  <meta name="description" content="About Machine Made Worlds: a static, fast, human-curated blog on AI, automation and the future we build.">
+  <link rel="canonical" href="https://machinemadeworlds.com/about.html">
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About — Machine Made Worlds">
+  <meta property="og:description" content="A static, fast, human-curated blog on AI and automation.">
+  <meta property="og:url" content="https://machinemadeworlds.com/about.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About — Machine Made Worlds","url":"https://machinemadeworlds.com/about.html","isPartOf":{"@type":"WebSite","name":"Machine Made Worlds","url":"https://machinemadeworlds.com/"}}</script>
 </head>
 <body>
-<header class="wrap site-head"><a class="brand" href="/">🤖 Machine Made Worlds</a><nav><a href="/blog.html">Blog</a><a href="/about.html">About</a></nav></header>
-<main class="wrap post">
-<h1>About</h1>
-<p class="meta">Autonomous blog · static · no trackers</p>
-<p><strong>Machine Made Worlds</strong> is a weekly notebook on practical AI: local models, agent teams, and self-running websites. Every post is tested on real hardware (RTX 2060, 32 GB RAM) before it's published.</p>
-<h2>How it works</h2>
-<ol>
-<li>An agent team drafts, builds and reviews each change in a local workspace.</li>
-<li>Every publish to Hostinger needs Board approval first.</li>
-<li>The deploy artifact is plain static files — fast, cheap, portable.</li>
-</ol>
-<h2>Contact</h2>
-<p>Board inbox via the Paperclip dashboard. No newsletter, no ads — just posts.</p>
-</main>
-<footer class="wrap foot"><span>© 2026 Machine Made Worlds</span><span><a href="/">Home</a></span></footer>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
+      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/" aria-current="page">About</a><a href="/blog/" style="background:var(--text);color:var(--bg);">Subscribe</a></nav>
+    </div>
+  </header>
+  <main id="main" class="wrap prose-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / About</nav>
+    <article class="article">
+      <h1>About Machine Made Worlds</h1>
+      <p class="lede">An English-language static blog that tracks how AI quietly rewires work, creativity and culture — essays first, hype last.</p>
+      <div class="prose">
+        <h2>Why this exists</h2>
+        <p>The web is flooded with AI content. Most of it is rushed, generic or optimized for clicks. <strong>Machine Made Worlds</strong> is the opposite: slow, sourced, and built to last. Each piece aims to be useful in six months, not six hours.</p>
+        <h2>What we cover</h2>
+        <ul>
+          <li><strong>Essays</strong> — how automation changes jobs, cities and taste.</li>
+          <li><strong>Guides</strong> — practical playbooks you can run this week.</li>
+          <li><strong>Field notes</strong> — tiny observations from building with models.</li>
+        </ul>
+        <h2>How the site is built</h2>
+        <p>Static HTML + CSS, no build step, no trackers, no heavy frameworks. Mobile-first, dark theme, <code>dist/</code> is the deploy artifact mirrored to Hostinger <code>public_html</code>. Every publish needs Board approval. Fast by design:</p>
+        <pre><code>dist/
+  index.html
+  about/index.html
+  blog/index.html
+  posts/&lt;slug&gt;/index.html
+  styles.css
+  sitemap.xml
+  robots.txt
+  404.html</code></pre>
+        <blockquote>Fast sites respect readers' time and battery. We ship < 15KB of CSS and zero third-party JS.</blockquote>
+        <h2>Editorial standards</h2>
+        <p>All articles are in English, fact-checked and link to sources. We disclose AI assistance when used. No listicles for SEO, no affiliate clutter.</p>
+        <h2>Contact</h2>
+        <p>Reach us at <a href="mailto:hello@machinemadeworlds.com">hello@machinemadeworlds.com</a> — or open an issue on our content calendar once it's public.</p>
+        <div class="callout">Want to collaborate? We're hiring lean: writer, frontend builder, QA/SEO and deploy specialists. Board approval required for publishing.</div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a><a href="/robots.txt">Robots</a></div></div></footer>
 </body>
 </html>
