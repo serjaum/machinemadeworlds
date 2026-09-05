@@ -82,7 +82,11 @@ class ArtifactTests(unittest.TestCase):
 
     def test_existing_article_bodies_preserved(self):
         for path in (ROOT / 'content/posts').glob('*.html'):
-            original = subprocess.check_output(['git', 'show', '9a962ce:posts/' + path.stem + '/index.html'], cwd=ROOT).decode('utf-8')
+            try:
+                original = subprocess.check_output(['git', 'show', '9a962ce:posts/' + path.stem + '/index.html'], cwd=ROOT).decode('utf-8')
+            except subprocess.CalledProcessError:
+                # New posts have no legacy body to preserve; nothing to compare.
+                continue
             body = re.search(r'<div class="prose">\s*(.*?)\s*</div>\s*(?:<hr|</article>)', original, re.S)[1]
             self.assertEqual(path.read_text(encoding='utf-8').strip(), body.strip())
 

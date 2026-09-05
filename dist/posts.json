@@ -32,6 +32,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/ai-news-2026-09-05/",
+    "title": "AI news digest — September 5, 2026: GPT-6 Astra, token cuts, and chip clusters",
+    "description": "Seven builder-relevant AI stories from the last 24 hours: GPT-6 Astra's launch, September's model wave and prices, a prompt-injection caveat, Spotify's 90% token cut, DeepSeek's chip plans, and AI infra funding.",
+    "date": "2026-09-05",
+    "reading": 3,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/automation-playbook/",
     "title": "The automation playbook for solo builders",
     "description": "A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.",
