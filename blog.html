@@ -19,46 +19,58 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a><a href="/blog/" style="background:var(--text);color:var(--bg);">Subscribe</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a><a href="/blog/" class="btn-subscribe">Subscribe</a></nav>
     </div>
   </header>
   <main id="main" class="wrap">
-    <div style="padding:18px 0 6px">
-      <h1 style="margin:0;font-size:30px;letter-spacing:-.04em">Blog</h1>
-      <p class="muted" style="margin:6px 0 0">Essays, guides and field notes. New posts weekly. Static, fast, no trackers.</p>
+    <div class="page-head">
+      <h1 class="page-title">Blog</h1>
+      <p class="muted page-lede">Essays, guides and field notes. New posts weekly. Static, fast, no trackers.</p>
     </div>
     <div class="filters" aria-label="Filter by topic">
       <a class="chip" href="/blog/" aria-current="true">All</a>
-      <a class="chip" href="/blog/#essay">Essay</a>
-      <a class="chip" href="/blog/#guide">Guide</a>
-      <a class="chip" href="/blog/#field-note">Field note</a>
+      <a class="chip" href="#post-local-agent-team">Essay</a>
+      <a class="chip" href="#post-small-models-rtx2060">Guide</a>
+      <a class="chip" href="#post-autonomous-website-ops">Field note</a>
     </div>
-    <div class="grid">
-      <a class="card" href="/posts/local-agent-team/">
-        <div class="card-meta"><span class="tag">Essay</span><span>Sep 05, 2026</span><span class="dot"></span><span>6 min</span></div>
-        <h3>Running a Local Agent Team That Actually Ships</h3>
-        <p>One director, three specialists, one workspace: the minimal crew for an autonomous site — and the weekly loop that makes it safe.</p>
-      </a>
-      <a class="card" href="/posts/small-models-rtx2060/">
-        <div class="card-meta"><span class="tag purple">Guide</span><span>Sep 05, 2026</span><span class="dot"></span><span>7 min</span></div>
-        <h3>Small Models That Fit a 6 GB RTX 2060</h3>
-        <p>What really runs in 6 GB VRAM — quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.</p>
-      </a>
-      <a class="card" href="/posts/autonomous-website-ops/">
-        <div class="card-meta"><span class="tag">Field note</span><span>Sep 05, 2026</span><span class="dot"></span><span>6 min</span></div>
-        <h3>Autonomous Website Ops: Static First, Approve Before Publish</h3>
-        <p>Static files plus an approval gate: draft locally, review, get Board approval, then push dist/ to Hostinger public_html.</p>
-      </a>
-      <a class="card" href="/posts/hello-machines/">
-        <div class="card-meta"><span class="tag">Essay</span><span>Sep 05, 2026</span><span class="dot"></span><span>5 min</span></div>
-        <h3>Hello, machines: why we started this blog</h3>
-        <p>Our manifesto — what we cover, what we ignore, and how we keep the signal high.</p>
-      </a>
-      <div class="box" style="text-align:center">
-        <p class="muted" style="margin:0 0 8px">Post template preview</p>
-        <p style="margin:0 0 10px">Use <a href="/posts/_template/">/posts/_template/</a> as a copy-paste starter for new articles.</p>
+    <ul class="grid card-list" role="list" aria-label="All posts">
+      <li>
+        <a class="card" id="post-local-agent-team" href="/posts/local-agent-team/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">01</span><span class="series">Local ops</span></div>
+          <div class="card-meta"><span class="tag">Essay</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>6 min read</span></div>
+          <h2>Running a Local Agent Team That Actually Ships</h2>
+          <p>One director, three specialists, one workspace: the minimal crew for an autonomous site — and the weekly loop that makes it safe.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card" id="post-small-models-rtx2060" href="/posts/small-models-rtx2060/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">02</span><span class="series">Hardware notes</span></div>
+          <div class="card-meta"><span class="tag purple">Guide</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>7 min read</span> <span class="dot"></span> <span class="tested">Tested · RTX 2060</span></div>
+          <h2>Small Models That Fit a 6 GB RTX 2060</h2>
+          <p>What really runs in 6 GB VRAM — quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card" id="post-autonomous-website-ops" href="/posts/autonomous-website-ops/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">03</span><span class="series">Site ops</span></div>
+          <div class="card-meta"><span class="tag">Field note</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>6 min read</span></div>
+          <h2>Autonomous Website Ops: Static First, Approve Before Publish</h2>
+          <p>Static files plus an approval gate: draft locally, review, get Board approval, then push dist/ to Hostinger public_html.</p>
+        </a>
+      </li>
+      <li>
+        <a class="card" id="post-hello-machines" href="/posts/hello-machines/">
+          <div class="card-top"><span class="card-num" aria-hidden="true">04</span><span class="series">Manifesto</span></div>
+          <div class="card-meta"><span class="tag">Essay</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>5 min read</span></div>
+          <h2>Hello, machines: why we started this blog</h2>
+          <p>Our manifesto — what we cover, what we ignore, and how we keep the signal high.</p>
+        </a>
+      </li>
+    </ul>
+    <div class="box box-center">
+        <p class="muted box-tight">Post template preview</p>
+        <p class="box-lede">Use <a href="/posts/_template/">/posts/_template/</a> as a copy-paste starter for new articles.</p>
         <a class="btn btn-ghost" href="/posts/_template/">Open template →</a>
-      </div>
     </div>
   </main>
   <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>

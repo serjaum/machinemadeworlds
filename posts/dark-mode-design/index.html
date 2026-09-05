@@ -16,11 +16,12 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span></a><nav class="nav"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a></nav></div></header>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span></a><nav class="nav" aria-label="Primary"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a></nav></div></header>
   <main id="main" class="wrap prose-wrap">
-    <nav class="breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Dark mode</nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Dark mode</nav>
     <article class="article">
-      <div class="article-meta"><span class="tag">Field note</span><span>Sep 03, 2026</span><span class="dot"></span><span>4 min</span></div>
+      <p class="series">Series · Design notes</p>
+      <div class="article-meta"><span class="tag">Field note</span><time datetime="2026-09-03">Sep 03, 2026</time><span class="dot"></span><span>4 min</span></div>
       <h1>Designing for dark mode first</h1>
       <p class="lede">Dark isn't just a color swap. It's a hierarchy — and our 12KB stylesheet proves you don't need a framework to get it right.</p>
       <div class="prose">
@@ -29,7 +30,7 @@
         <h2>One accent, one signal</h2><p><code>--accent: #7c5cfb</code> for brand, <code>--accent-2: #00d9ff</code> for links. Never both at once.</p>
         <p>See the source: <a href="/styles.css">/styles.css</a> is ~8KB, mobile-first, no JS required.</p>
       </div>
-      <hr class="hr"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><a class="btn btn-ghost" href="/posts/automation-playbook/">← Previous</a><a class="btn btn-primary" href="/blog/">Back to blog →</a></div>
+      <hr class="hr"><div class="pager"><a class="btn btn-ghost" href="/posts/automation-playbook/">← Previous</a><a class="btn btn-primary" href="/blog/">Back to blog →</a></div>
     </article>
   </main>
   <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a></div></div></footer>

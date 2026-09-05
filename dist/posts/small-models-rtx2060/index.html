@@ -12,7 +12,6 @@
   <meta property="og:title" content="Small Models That Fit a 6 GB RTX 2060">
   <meta property="og:description" content="Quantization, offload and the daily stack that fits in 6 GB — with tokens/sec you can actually use.">
   <meta property="og:url" content="https://machinemadeworlds.com/posts/small-models-rtx2060/">
-  <meta property="og:image" content="https://machinemadeworlds.com/og-cover.jpg">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Small Models That Fit a 6 GB RTX 2060","description":"What fits in 6 GB VRAM on an RTX 2060.","author":{"@type":"Organization","name":"Machine Made Worlds"},"publisher":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-05","dateModified":"2026-09-05","mainEntityOfPage":"https://machinemadeworlds.com/posts/small-models-rtx2060/","inLanguage":"en"}</script>
 </head>
 <body>
@@ -20,15 +19,17 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/blog/" style="background:var(--text);color:var(--bg);">Subscribe</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/blog/" class="btn-subscribe">Subscribe</a></nav>
     </div>
   </header>
   <main id="main" class="wrap prose-wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Small models</nav>
     <article class="article">
-      <div class="article-meta"><span class="tag purple">Guide</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>7 min</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
+      <p class="series">Series · Hardware notes</p>
+      <div class="article-meta"><span class="tag purple">Guide</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>7 min</span><span class="dot"></span><span class="tested">Tested · RTX 2060</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
       <h1>Small Models That Fit a 6 GB RTX 2060</h1>
       <p class="lede">Six gigabytes is enough for real writing and agent work if you pick the right quantization and leave heavy reasoning off the GPU. Here is what we run daily on an RTX 2060.</p>
+            <aside class="evidence"><span class="evidence-label">Evidence · Tested on</span><p>All figures measured on a 6 GB RTX 2060 (32 GB RAM) with <code>ollama</code> and <code>llama.cpp</code>; tokens/sec logged across a week of daily runs.</p></aside>
       <div class="prose">
         <p>Many teams assume you need a 24 GB card to do anything serious with local models. You do not. A 6 GB RTX 2060 with 32 GB of system RAM handles drafting, QA and summarisation for this entire blog. Cloud models are called only when a local draft stalls.</p>
         <h2>The VRAM math</h2>
@@ -62,7 +63,7 @@ opencode --model qwen2.5:7b  # agent runtime</code></pre>
         <p>Next, <a href="/posts/autonomous-website-ops/">how we run this site statically</a> with Board approval before every publish.</p>
       </div>
       <hr class="hr">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/autonomous-website-ops/">Next: Website ops →</a></div>
+      <div class="pager"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/autonomous-website-ops/">Next: Website ops →</a></div>
     </article>
   </main>
   <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>

@@ -16,11 +16,12 @@
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span></a><nav class="nav"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a></nav></div></header>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span></a><nav class="nav" aria-label="Primary"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a></nav></div></header>
   <main id="main" class="wrap prose-wrap">
-    <nav class="breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Automation playbook</nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Automation playbook</nav>
     <article class="article">
-      <div class="article-meta"><span class="tag purple">Guide</span><span>Sep 04, 2026</span><span class="dot"></span><span>7 min</span></div>
+      <p class="series">Series · Solo stack</p>
+      <div class="article-meta"><span class="tag purple">Guide</span><time datetime="2026-09-04">Sep 04, 2026</time><span class="dot"></span><span>7 min</span></div>
       <h1>The automation playbook for solo builders</h1>
       <p class="lede">You don't need an AI platform. You need three habits and a folder named <code>dist/</code> that always deploys.</p>
       <div class="prose">
@@ -31,7 +32,7 @@
 lftp -e "mirror -R dist/ public_html/; quit" -u user,pass host</code></pre>
         <p>More on the stack in our <a href="/about/">about</a> page and <a href="/posts/dark-mode-design/">design notes</a>.</p>
       </div>
-      <hr class="hr"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><a class="btn btn-ghost" href="/posts/hello-machines/">← Previous</a><a class="btn btn-primary" href="/posts/dark-mode-design/">Next →</a></div>
+      <hr class="hr"><div class="pager"><a class="btn btn-ghost" href="/posts/hello-machines/">← Previous</a><a class="btn btn-primary" href="/posts/dark-mode-design/">Next →</a></div>
     </article>
   </main>
   <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a></div></div></footer>

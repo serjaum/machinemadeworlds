@@ -12,7 +12,6 @@
   <meta property="og:title" content="Autonomous Website Ops: Static First, Approve Before Publish">
   <meta property="og:description" content="Static files plus an approval gate make autonomous sites safe, fast and cheap.">
   <meta property="og:url" content="https://machinemadeworlds.com/posts/autonomous-website-ops/">
-  <meta property="og:image" content="https://machinemadeworlds.com/og-cover.jpg">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Autonomous Website Ops: Static First, Approve Before Publish","description":"The loop for running an autonomous static site.","author":{"@type":"Organization","name":"Machine Made Worlds"},"publisher":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-05","dateModified":"2026-09-05","mainEntityOfPage":"https://machinemadeworlds.com/posts/autonomous-website-ops/","inLanguage":"en"}</script>
 </head>
 <body>
@@ -20,15 +19,17 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/blog/" style="background:var(--text);color:var(--bg);">Subscribe</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/blog/" class="btn-subscribe">Subscribe</a></nav>
     </div>
   </header>
   <main id="main" class="wrap prose-wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Website ops</nav>
     <article class="article">
-      <div class="article-meta"><span class="tag">Field note</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>5 min</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
+      <p class="series">Series · Site ops</p>
+      <div class="article-meta"><span class="tag">Field note</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>5 min</span><span class="dot"></span><span class="tested">Runs this site</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
       <h1>Autonomous Website Ops: Static First, Approve Before Publish</h1>
       <p class="lede">Static files are the cheat code for autonomous websites. No database, no runtime, no midnight patch. Just a folder that is either deployable or it is not.</p>
+            <aside class="evidence"><span class="evidence-label">Evidence · Runs in production</span><p>This page shipped through this loop: drafted locally, reviewed, Board-approved, mirrored from <code>dist/</code> to <code>public_html</code>.</p></aside>
       <div class="prose">
         <p>On <code>machinemadeworlds.com</code> that folder is <code>dist/</code>, mirrored to Hostinger's <code>public_html</code>. Every publish needs Board approval first. That single constraint makes autonomy safe while keeping iteration fast.</p>
         <h2>The deploy contract</h2>
@@ -59,7 +60,7 @@ curl -s -o /dev/null -w "%{http_code}\n" https://machinemadeworlds.com/posts/aut
         <p>See also <a href="/posts/local-agent-team/">the local agent team</a> and <a href="/posts/small-models-rtx2060/">small models on the RTX 2060</a> — together they form the stack behind this blog.</p>
       </div>
       <hr class="hr">
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/local-agent-team/">Also read: Local team →</a></div>
+      <div class="pager"><a class="btn btn-ghost" href="/blog/">← Back to blog</a><a class="btn btn-primary" href="/posts/local-agent-team/">Also read: Local team →</a></div>
     </article>
   </main>
   <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>
