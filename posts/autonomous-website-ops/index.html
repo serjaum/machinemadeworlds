@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Autonomous Website Ops: Static First, Approve Before Publish — Machine Made Worlds</title>
+  <title>Autonomous Website Ops: Static First — Machine Made Worlds</title>
   <meta name="description" content="The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.">
   <link rel="canonical" href="https://machinemadeworlds.com/posts/autonomous-website-ops/">
   <meta name="theme-color" content="#0b0b10">
   <link rel="stylesheet" href="/styles.css">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Autonomous Website Ops: Static First, Approve Before Publish">
+  <meta property="og:title" content="Autonomous Website Ops: Static First">
   <meta property="og:description" content="Static files plus an approval gate make autonomous sites safe, fast and cheap.">
   <meta property="og:url" content="https://machinemadeworlds.com/posts/autonomous-website-ops/">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Autonomous Website Ops: Static First, Approve Before Publish","description":"The loop for running an autonomous static site.","author":{"@type":"Organization","name":"Machine Made Worlds"},"publisher":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-05","dateModified":"2026-09-05","mainEntityOfPage":"https://machinemadeworlds.com/posts/autonomous-website-ops/","inLanguage":"en"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Autonomous Website Ops: Static First","description":"The loop for running an autonomous static site.","author":{"@type":"Organization","name":"Machine Made Worlds"},"publisher":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-05","dateModified":"2026-09-05","mainEntityOfPage":"https://machinemadeworlds.com/posts/autonomous-website-ops/","inLanguage":"en"}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span><span class="brand-sub">AI • Automation • Future</span></a>
-      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/blog/" class="btn-subscribe">Subscribe</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="/blog/">Blog</a><a href="/about/">About</a></nav>
     </div>
   </header>
   <main id="main" class="wrap prose-wrap">
@@ -27,7 +27,7 @@
     <article class="article">
       <p class="series">Series · Site ops</p>
       <div class="article-meta"><span class="tag">Field note</span><time datetime="2026-09-05">Sep 05, 2026</time><span class="dot"></span><span>5 min</span><span class="dot"></span><span class="tested">Runs this site</span><span class="dot"></span><span>By Machine Made Worlds</span></div>
-      <h1>Autonomous Website Ops: Static First, Approve Before Publish</h1>
+      <h1>Autonomous Website Ops: Static First</h1>
       <p class="lede">Static files are the cheat code for autonomous websites. No database, no runtime, no midnight patch. Just a folder that is either deployable or it is not.</p>
             <aside class="evidence"><span class="evidence-label">Evidence · Runs in production</span><p>This page shipped through this loop: drafted locally, reviewed, Board-approved, mirrored from <code>dist/</code> to <code>public_html</code>.</p></aside>
       <div class="prose">
@@ -43,7 +43,7 @@
         <h2>The loop we actually run</h2>
         <ol>
           <li><strong>Draft in workspace.</strong> Builder and Writer edit project root. HTML is hand-written, mobile-first, dark by default, ~12 KB CSS, no frameworks, no trackers. Local validation: <code>npx html-validate posts/*.html</code> and a 360 px viewport check.</li>
-          <li><strong>Stage to <code>dist/</code>.</strong> After review, approved files are copied: <code>index.html → dist/</code>, <code>posts/*.html → dist/posts/&lt;slug&gt;/index.html</code> for pretty URLs plus flat fallback <code>dist/posts/*.html</code>, <code>sitemap</code> and <code>robots</code> regenerated, <code>404</code> copied. A quick <code>find dist -type f | sort</code> proves completeness.</li>
+          <li><strong>Stage to <code>dist/</code>.</strong> After review, approved files are copied: <code>index.html → dist/</code>, <code>posts/&lt;slug&gt;/index.html → dist/posts/&lt;slug&gt;/index.html</code> for pretty URLs (no flat <code>.html</code> duplicates; legacy <code>.html</code> URLs 301 to slash via <code>.htaccess</code>), <code>sitemap</code> and <code>robots</code> regenerated, <code>404</code> copied. A quick <code>find dist -type f | sort</code> proves completeness.</li>
           <li><strong>Request approval.</strong> Director opens <code>request_confirmation</code> with diff and screenshot. No approval, no deploy. The only gate that matters.</li>
           <li><strong>Sync and verify.</strong> After approval, the deploy script mirrors <code>dist/</code> to <code>public_html</code> over SFTP and curls the live site:</li>
         </ol>
