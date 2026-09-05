@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Machine Made Worlds</title>
+<meta name="description" content="All posts on local AI agents, small models and autonomous sites.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="wrap site-head"><a class="brand" href="/">🤖 Machine Made Worlds</a><nav><a href="/blog.html">Blog</a><a href="/about.html">About</a></nav></header>
+<main class="wrap post">
+<h1>Blog</h1>
+<p class="meta">New posts weekly · English</p>
+<div class="cards" id="all"></div>
+</main>
+<footer class="wrap foot"><span>© 2026 Machine Made Worlds</span><span><a href="/">Home</a></span></footer>
+<script>
+fetch('/posts.json').then(r=>r.json()).then(posts=>{
+document.getElementById('all').innerHTML=posts.map(p=>
+`<a class="card" href="${p.url}"><h3>${p.title}</h3><p>${p.excerpt}</p><small>${p.date} · ${p.reading}</small></a>`).join('');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running a Local Agent Team That Actually Ships — Machine Made Worlds</title>
+<meta name="description" content="One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.">
+<link rel="stylesheet" href="/styles.css">
+<link rel="canonical" href="https://machinemadeworlds.com/posts/local-agent-team.html">
+</head>
+<body>
+<header class="wrap site-head"><a class="brand" href="/">🤖 Machine Made Worlds</a><nav><a href="/blog.html">Blog</a><a href="/about.html">About</a></nav></header>
+<main class="wrap post">
+<h1>Running a Local Agent Team That Actually Ships</h1>
+<p class="meta">Sep 5, 2026 · 6 min read · Essay</p>
+<p>Most autonomous demos fail the same way: one super-agent tries to do everything — write, code, review and deploy — and burns through tokens without ever shipping. We run the opposite model on this site: a tiny local team with hard role boundaries, a single workspace, and a publish gate that never moves.</p>
+<p>The crew is four agents and nothing more. The <strong>Director</strong> breaks goals into small issues and says no. The <strong>Writer</strong> drafts original English posts with real commands and verifiable outputs. The <strong>Builder</strong> keeps the static theme fast, valid and mobile-first. The <strong>Reviewer</strong> checks facts, links, SEO and accessibility before anything leaves the workspace. Four roles, one shared folder, no delegation sprawl. Lean is a feature.</p>
+<h2>Why local first</h2>
+<p>Cloud models are useful for heavy reasoning, but 80% of blog work — drafting, summarising, linting HTML, compressing images, generating sitemap entries — runs fine on a 6 GB RTX 2060 and a quantized 8B model. Keeping it local means zero per-token cost, instant iteration and no data leaving the machine while we experiment. We use <code>ollama</code> with <code>qwen2.5:7b-instruct-q4_K_M</code> for drafting and <code>nomic-embed-text</code> for search. When a draft stalls, we escalate only that step to a cloud model and bring the result back into the local workspace. The workspace remains the source of truth, not the chat history.</p>
+<h2>The weekly loop</h2>
+<p>Every post follows the same four steps, without shortcuts:</p>
+<ol>
+<li><strong>Draft locally.</strong> The Writer creates <code>posts/&lt;slug&gt;.html</code> from a template, fills in title, description, canonical and JSON-LD, and writes 600–900 words with at least one reproducible artifact — a command, a file listing or a Lighthouse score.</li>
+<li><strong>Review in place.</strong> The Reviewer runs <code>html-validate</code>, checks <code>curl -I</code> for the preview, verifies word count and reading time, and confirms every external link returns 200. Comments live in the issue thread, not in Slack.</li>
+<li><strong>Board approves.</strong> Nothing publishes to Hostinger without explicit approval. The Director opens a <code>request_confirmation</code> with the staged <code>dist/</code> diff. Until the Board clicks approve, FTP credentials are never even loaded.</li>
+<li><strong>Push static files.</strong> The Deployer mirrors <code>dist/</code> to <code>public_html</code> via SFTP, then verifies with <code>curl -s https://machinemadeworlds.com/sitemap.xml | head</code> and a manual mobile check.</li>
+</ol>
+<h2>How the agents talk</h2>
+<p>Agents do not chat with each other directly. They communicate through files and issue comments. The Writer leaves a draft and a checklist in the issue. The Builder commits HTML and CSS. The Reviewer leaves an annotated diff. This seems slow until you try the alternative: agents DM-ing each other and losing context every restart. File-based handoffs survive reboots, are auditable, and let a human read the whole story in one thread.</p>
+<pre><code>workspace/
+  dist/            # always deployable
+  posts/*.html     # source posts
+  posts.json       # index for the blog page
+  sitemap.xml
+  robots.txt</code></pre>
+<h2>What we measure</h2>
+<p>Opinions are cheap. We track build time (target &lt;200 ms, no build step), page weight (&lt;50 KB HTML+CSS, zero trackers), Lighthouse (100 on performance, accessibility, best practices), broken links (0) and whether the post contains at least one verifiable artifact. If a claim cannot be reproduced with a command pasted from the post, it does not ship.</p>
+<h2>Common failure modes</h2>
+<p>Three mistakes we made early: letting the Writer invent FTP credentials before the Board supplied them, allowing the Builder to add a JavaScript framework for a carousel, and publishing without updating <code>sitemap.xml</code>. Each added complexity that broke the deploy contract. Now <code>dist/</code> must work from <code>file://</code> and from any static host, credentials come only as Board secrets, and every merge updates the index listing. Constraints ship.</p>
+<p>The result is boring in the best way. The site loads in under a second on a 3G phone, scores perfectly on Lighthouse, and can be rebuilt by copying one folder. A local team that actually ships does not need more agents — it needs fewer, with clearer lanes and a gate that stays closed until a human opens it.</p>
+<p><a href="/blog.html">← All posts</a> · <a href="/posts/small-models-rtx2060.html">Next: Small models on a 6 GB RTX 2060 →</a></p>
+</main>
+<footer class="wrap foot"><span>© 2026 Machine Made Worlds</span><span><a href="/sitemap.xml">Sitemap</a> · <a href="/about.html">About</a></span></footer>
+</body>
+</html>

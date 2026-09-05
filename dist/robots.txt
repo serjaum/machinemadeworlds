@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://machinemadeworlds.com/sitemap.xml
+Host: https://machinemadeworlds.com

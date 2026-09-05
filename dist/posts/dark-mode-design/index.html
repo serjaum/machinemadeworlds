@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designing for dark mode first — Machine Made Worlds</title>
+  <meta name="description" content="Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.">
+  <link rel="canonical" href="https://machinemadeworlds.com/posts/dark-mode-design/">
+  <meta name="theme-color" content="#0b0b10">
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Designing for dark mode first">
+  <meta property="og:description" content="Contrast, elevation and the 12KB CSS behind this site.">
+  <meta property="og:url" content="https://machinemadeworlds.com/posts/dark-mode-design/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Designing for dark mode first","author":{"@type":"Organization","name":"Machine Made Worlds"},"datePublished":"2026-09-03","dateModified":"2026-09-03","mainEntityOfPage":"https://machinemadeworlds.com/posts/dark-mode-design/","inLanguage":"en"}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark">M</span><span class="brand-text">Machine Made Worlds</span></a><nav class="nav"><a href="/blog/" aria-current="page">Blog</a><a href="/about/">About</a></nav></div></header>
+  <main id="main" class="wrap prose-wrap">
+    <nav class="breadcrumb"><a href="/">Home</a> / <a href="/blog/">Blog</a> / Dark mode</nav>
+    <article class="article">
+      <div class="article-meta"><span class="tag">Field note</span><span>Sep 03, 2026</span><span class="dot"></span><span>4 min</span></div>
+      <h1>Designing for dark mode first</h1>
+      <p class="lede">Dark isn't just a color swap. It's a hierarchy — and our 12KB stylesheet proves you don't need a framework to get it right.</p>
+      <div class="prose">
+        <h2>Contrast, not brightness</h2><p>We use <code>--text: #ececf1</code> on <code>--bg: #0b0b10</code> — off-white on deep navy-black. Pure white on pure black fatigues eyes.</p>
+        <h2>Elevation with borders</h2><p>Cards sit on <code>--bg-raised</code> with a subtle <code>--border</code>. In dark mode, shadows disappear; borders do the work.</p>
+        <h2>One accent, one signal</h2><p><code>--accent: #7c5cfb</code> for brand, <code>--accent-2: #00d9ff</code> for links. Never both at once.</p>
+        <p>See the source: <a href="/styles.css">/styles.css</a> is ~8KB, mobile-first, no JS required.</p>
+      </div>
+      <hr class="hr"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><a class="btn btn-ghost" href="/posts/automation-playbook/">← Previous</a><a class="btn btn-primary" href="/blog/">Back to blog →</a></div>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Machine Made Worlds</strong> <span class="muted">© 2026.</span></div><div class="footer-links"><a href="/blog/">Blog</a></div></div></footer>
+</body>
+</html>

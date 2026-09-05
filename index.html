@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Machine Made Worlds — Practical AI, Local Agents & Automation</title>
+<meta name="description" content="Hands-on notes on local AI agents, small models, and autonomous websites. New posts weekly.">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+<header class="wrap site-head">
+<a class="brand" href="/">🤖 Machine Made Worlds</a>
+<nav><a href="/blog.html">Blog</a><a href="/about.html">About</a></nav>
+</header>
+<main class="wrap">
+<section class="hero">
+<h1>Practical AI you can run yourself.</h1>
+<p>Local agents, small models, autonomous sites — tested on real hardware, written up in plain English.</p>
+<a class="btn" href="/blog.html">Read the blog</a>
+</section>
+<section>
+<h2>Latest posts</h2>
+<div class="cards" id="latest"></div>
+</section>
+<section class="note">
+<h2>How this site runs</h2>
+<p>Static HTML/CSS, no trackers, built by an autonomous agent team and published to Hostinger. <a href="/about.html">How it works →</a></p>
+</section>
+</main>
+<footer class="wrap foot"><span>© 2026 Machine Made Worlds</span><span><a href="/sitemap.xml">Sitemap</a> · <a href="/robots.txt">Robots</a></span></footer>
+<script>
+fetch('/posts.json').then(r=>r.json()).then(posts=>{
+document.getElementById('latest').innerHTML=posts.slice(0,3).map(p=>
+`<a class="card" href="${p.url}"><h3>${p.title}</h3><p>${p.excerpt}</p><small>${p.date} · ${p.reading}</small></a>`).join('');
+}).catch(()=>{});
+</script>
+</body>
+</html>
