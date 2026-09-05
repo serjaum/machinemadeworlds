@@ -1,0 +1,5 @@
+# Deterministic builds: LF everywhere so content hashes are stable across OSes.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.svg text eol=lf
