@@ -194,6 +194,7 @@ def build(root=ROOT):
                         description=escape(description), canonical=escape(canonical),
                         og_type='article' if post else 'website', jsonld=jsonld,
                         css=assets['site.css'], js=assets['site.js'], favicon=assets['favicon.svg'],
+                        logo=assets['logo.svg'], og_image=site['url'] + assets['logo.svg'],
                         theme_init=(root / 'templates/theme-init.js').read_text(encoding='utf-8').strip(),
                         content=content, year=max((p['date'][:4] for p in posts), default='2026'),
                         home_current=nav('/'), blog_current=nav('/blog/'),
