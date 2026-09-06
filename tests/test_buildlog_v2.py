@@ -4,6 +4,7 @@ Run: python -m unittest discover -s tests -v.
 """
 import importlib.util
 import json
+import re
 import tempfile
 from pathlib import Path
 import unittest
@@ -144,13 +145,21 @@ class BuildLogV2Tests(unittest.TestCase):
         data = meta(stages=stages)
         html = builder.render_pipeline(data)
         for needle in ('Pipeline.', 'Verdict trail.', 'Why each step ran.',
-                       'flow-status', 'flow-loop', 'flow-flag', 'flow-why',
+                       'Receipts.', 'flow-status', 'flow-loop', 'flow-flag',
+                       'flow-why', 'flow-dots',
                        'PASS — review', '◆ BLOCK — implement', '◆ FAIL — re-review',
                        'done — draft', 'skipped — deploy', '↩ BLOCK → fix',
-                       '<code>1111111</code>', 'pull/11', 'commit/5e54ca2',
+                       'the pull request', 'the merge commit', 'the branch',
+                       'the fix', 'the re-review', '>commit</a>',
+                       'title="5e54ca2572844bca81cdf38d673d05355596e133"',
+                       'pull/11', 'commit/5e54ca2572844bca81cdf38d673d05355596e133',
                        '<th scope="col">Stage</th>', '<th scope="col">Why</th>'):
             self.assertIn(needle, html)
         self.assertEqual(html.count('class="flow-loop"'), 2)
+        # Voice rule: no visible siglas, SHAs, branch or PR numbers.
+        visible = re.sub(r'<[^>]+>', ' ', html)
+        for token in ('1111111', '2222222', '#11', 'feat/example'):
+            self.assertNotIn(token, visible)
         # ArticleMarkup parity: zero gate relaxations for generated markup.
         parser = builder.ArticleMarkup()
         parser.feed(html)
@@ -161,7 +170,7 @@ class BuildLogV2Tests(unittest.TestCase):
     def test_diagram_pending_merge_row(self):
         html = builder.render_pipeline(meta(merge_sha=None, merge_note='Pre-merge.'))
         self.assertIn('merge pending', html)
-        self.assertNotIn('/commit/', html)
+        self.assertNotIn('the merge commit</a>', html)
         parser = builder.ArticleMarkup()
         parser.feed(html)
         parser.close()
@@ -169,13 +178,33 @@ class BuildLogV2Tests(unittest.TestCase):
     def test_branch_link_never_points_at_deleted_tree(self):
         # Merged PR head branches are deleted, so /tree/<branch> 404s (QA
         # FAIL on PR #11). The branch link must target the PR commits page,
-        # which survives deletion.
+        # which survives deletion, with human visible text.
         for data in (meta(),
                      meta(merge_sha=None, merge_note='Pre-merge.')):
             html = builder.render_pipeline(data)
             self.assertNotIn('/tree/', html)
             self.assertIn('pull/11/commits', html)
-            self.assertIn('<code>feat/example</code>', html)
+            self.assertIn('>the branch</a>', html)
+            self.assertNotIn('feat/example</code>', html)
+
+    def test_voice_rule_rejects_siglas_and_hashes_in_prose(self):
+        for field, bad in [('title', 'Fix for MAC-72'),
+                           ('lead', 'See PR #11.'),
+                           ('description', 'At 5e54ca2.'),
+                           ('reasoning', {'DEV': 'Fixed MAC-72. It works now.'})]:
+            with self.assertRaisesRegex(ValueError, 'voice', msg=(field, bad)):
+                load_one(meta(**{field: bad}))
+        with self.assertRaisesRegex(ValueError, 'voice'):
+            load_one(meta(stages=[stage(rationale='Pinned to 5e54ca2. Fix MAC-1.')] +
+                                   [stage(agent='SEC', stage='re-review',
+                                          verdict='PASS', sha='bbbbbbb'),
+                                    stage(agent='QA', stage='recheck',
+                                          verdict='PASS', sha='ccccccc')]))
+        with self.assertRaisesRegex(ValueError, 'voice'):
+            load_one(meta(stages=[stage(stage='fix MAC-2')]))
+        # Product names are prose, not pipeline jargon.
+        entries = load_one(meta(title='Shipping the GPT-6 Astra launch article'))
+        self.assertEqual(len(entries), 1)
 
     def test_insert_pipeline_nests_inside_trail(self):
         body = ('<p>Hi</p><div class="trail"><h3>Trail.</h3><ol><li>x</li></ol></div>')
@@ -202,7 +231,8 @@ class BuildLogV2Tests(unittest.TestCase):
             self.assertNotIn(needle, flow)
         for token in ('var(--raised)', 'var(--surface)', 'var(--line)',
                       'var(--muted)', 'var(--accent)', 'var(--mono)',
-                      'var(--sans)', 'var(--s1)', 'var(--s2)'):
+                      'var(--sans)', 'var(--s1)', 'var(--s2)',
+                      '.flow-dots'):
             self.assertIn(token, flow)
 
     def test_new_buildlog_scaffold_covers_v2_fields(self):

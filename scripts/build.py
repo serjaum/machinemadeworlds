@@ -106,6 +106,30 @@ def _sentence_count(text):
     return len([part for part in re.split(r'[.!?]+', text) if part.strip()])
 
 
+VOICE_SIGLA = re.compile(r'[A-Z]+-[0-9]+')
+VOICE_HEX = re.compile(r'[0-9a-f]{7,}')
+VOICE_PR = re.compile(r'#\d+\b')
+VOICE_BRANCH = re.compile(
+    r'(?:feat|fix|chore|docs|content|scripts|assets|templates)/[A-Za-z0-9_.\-]+')
+# Product names are human prose, not pipeline jargon (e.g. the GPT-6
+# article subject); the voice gate carves them out.
+VOICE_ALLOW = ('GPT-6',)
+
+
+def validate_buildlog_voice(text, message):
+    """Board voice rule (spec rev 4): article prose carries no task
+    siglas, SHAs, branch or PR numbers. Traceability lives in JSON
+    metadata plus link hrefs/titles only."""
+    if not isinstance(text, str):
+        raise ValueError(message)
+    cleaned = text
+    for token in VOICE_ALLOW:
+        cleaned = cleaned.replace(token, '')
+    if (VOICE_SIGLA.search(cleaned) or VOICE_HEX.search(cleaned)
+            or VOICE_PR.search(cleaned) or VOICE_BRANCH.search(cleaned)):
+        raise ValueError(message)
+
+
 def validate_buildlog_stage(entry):
     """One ordered pipeline stage. Every stage traces to a real issue
     comment or PR event; the builder cannot check provenance, but it
@@ -119,6 +143,7 @@ def validate_buildlog_stage(entry):
     name = entry.get('stage')
     if not isinstance(name, str) or not name.strip() or len(name) > 80:
         raise ValueError('Invalid buildlog stage name')
+    validate_buildlog_voice(name, 'Invalid buildlog stage voice')
     if entry.get('verdict') not in BUILDLOG_VERDICTS:
         raise ValueError('Invalid buildlog stage verdict')
     sha = entry.get('sha')
@@ -133,6 +158,7 @@ def validate_buildlog_stage(entry):
         raise ValueError('Invalid buildlog stage rationale')
     if entry['verdict'] in ('BLOCK', 'FAIL') and not rationale.strip():
         raise ValueError('Invalid buildlog stage rationale')
+    validate_buildlog_voice(rationale, 'Invalid buildlog stage voice')
     _require_iso_date(entry.get('at'), 'Invalid buildlog stage date')
 
 
@@ -152,6 +178,7 @@ def validate_buildlog_reasoning(reasoning):
                 raise ValueError('Invalid buildlog reasoning')
         elif not 2 <= sentences <= 4:
             raise ValueError('Invalid buildlog reasoning')
+        validate_buildlog_voice(text, 'Invalid buildlog reasoning voice')
 
 
 def validate_buildlog(p, site):
@@ -159,6 +186,8 @@ def validate_buildlog(p, site):
     validate_post(p, site)
     if p.get('kind') not in BUILDLOG_KINDS:
         raise ValueError('Invalid buildlog kind')
+    for key in ('title', 'lead', 'description'):
+        validate_buildlog_voice(p.get(key, ''), 'Invalid buildlog voice')
     # Spec MAC-47 item 1: provenance metadata, required on published entries.
     if not isinstance(p.get('mac_id'), str) or not re.fullmatch(r'MAC-\d{1,6}', p['mac_id']):
         raise ValueError('Invalid buildlog mac_id')
@@ -224,6 +253,7 @@ def load_buildlog(root, site):
         p['slug'] = path.stem
         p['body'] = path.with_suffix('.html').read_text(encoding='utf-8')
         validate_buildlog(p, site)
+        validate_buildlog_voice(plain(p['body']), 'Invalid buildlog body voice')
         p['url'] = '/build-log/' + p['slug'] + '/'
         p['topic_name'] = site['topics'][p['topic']]
         p['reading'] = max(1, math.ceil(len(plain(p['body']).split()) / 220))
@@ -232,34 +262,40 @@ def load_buildlog(root, site):
     return sorted(entries, key=lambda p: (p['date'], p['slug']), reverse=True)
 
 
-def _short_sha(sha):
-    return sha[:7] if isinstance(sha, str) else 'n/a'
+def _commit_link(sha, text):
+    """Full SHA lives in the href + title only; visible text stays human
+    (Board voice rule, spec rev 4)."""
+    return '<a href="%s/commit/%s" title="%s">%s</a>' % (
+        BUILDLOG_REPO, sha, sha, text)
 
 
-def _sha_code(sha):
+def _stage_link(entry, text):
+    sha = entry.get('sha')
     if isinstance(sha, str):
-        return '<code>%s</code>' % _short_sha(sha)
-    return 'n/a'
+        return _commit_link(sha, text)
+    return escape(text)
 
 
 def render_pipeline(p):
-    """Pipeline diagram block (MAC-78 clearance): pure HTML+CSS rendered
-    from the entry stages. ArticleMarkup-allowed tags only (div/span/table
-    subset, h3), zero JS, zero external assets. Deterministic."""
+    """Pipeline diagram block (MAC-78 clearance + Board voice rule): pure
+    HTML+CSS rendered from the entry stages. ArticleMarkup-allowed tags
+    only (div/span/table subset, h3, a), zero JS, zero external assets.
+    Visible text is human prose — no siglas, SHAs, branch or PR numbers;
+    identifiers live in link hrefs/titles and JSON metadata only.
+    Deterministic."""
     links = []
     if p.get('pr_url') is not None:
-        links.append('PR <a href="%s">#%d</a>'
-                     % (escape(p['pr_url'], quote=True), p['pr']))
+        links.append('<a href="%s">the pull request</a>'
+                     % escape(p['pr_url'], quote=True))
     if p.get('merge_sha') is not None:
-        links.append('merge <a href="%s/commit/%s">%s</a>'
-                     % (BUILDLOG_REPO, p['merge_sha'], _sha_code(p['merge_sha'])))
+        links.append(_commit_link(p['merge_sha'], 'the merge commit'))
     else:
         links.append('merge pending')
     if p.get('branch') is not None:
         # Branch heads are deleted after merge, so /tree/<branch> 404s on
         # merged entries. Point at the PR commits page instead: same branch
         # context, public-repo target, stays HTTP 200 after deletion.
-        links.append('branch <a href="%s/commits"><code>%s</code></a>'
+        links.append('<a href="%s/commits" title="%s">the branch</a>'
                      % (escape(p['pr_url'], quote=True),
                         escape(p['branch'])))
     stages = p['stages']
@@ -270,9 +306,8 @@ def render_pipeline(p):
         flagged = ' class="flow-flag"' if verdict in ('BLOCK', 'FAIL') else ''
         if verdict in ('BLOCK', 'FAIL'):
             label = '◆ ' + label
-        duty = '%s · %s · <time datetime="%s">%s</time>' % (
-            escape(agent), _sha_code(entry['sha']),
-            entry['at'], entry['at'])
+        duty = '%s · <time datetime="%s">%s</time>' % (
+            escape(agent), entry['at'], entry['at'])
         if entry['rationale'].strip():
             duty += ' — %s' % escape(entry['rationale'].strip())
         items.append('<li%s><span class="flow-status">%s</span><span>%s</span></li>'
@@ -281,18 +316,21 @@ def render_pipeline(p):
         if verdict in ('BLOCK', 'FAIL'):
             fix, review = stages[index + 1], stages[index + 2]
             items.append('<li class="flow-loop"><span>↩ %s → fix (%s) → re-review (%s)</span></li>'
-                         % (escape(verdict), _sha_code(fix['sha']),
-                            _sha_code(review['sha'])))
+                         % (escape(verdict), _stage_link(fix, 'the fix'),
+                            _stage_link(review, 'the re-review')))
     rows = []
     for entry in stages:
         why = escape(entry['rationale'].strip()) if entry['rationale'].strip() else '—'
         rows.append('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
                     % (escape(entry['stage']), escape(entry['agent']),
-                       escape(entry['verdict']), _sha_code(entry['sha']), why))
+                       escape(entry['verdict']), _stage_link(entry, 'commit'), why))
     order = ('Editor', 'DEV', 'SEC', 'QA', 'SRE', 'Director')
     reasoning = p.get('reasoning') or {}
     whys = ''.join('<dt>%s</dt><dd>%s</dd>' % (agent, escape(reasoning[agent].strip()))
                    for agent in order if agent in reasoning)
+    dots = ''.join('<span title="%s">●</span>'
+                   % escape('%s — %s' % (entry['verdict'], entry['stage']))
+                   for entry in stages)
     return ('<h3>Pipeline.</h3>'
             '<p>Each stage ran in order; blocked stages looped back through fix and re-review.</p>'
             '<p>%s</p>'
@@ -302,7 +340,8 @@ def render_pipeline(p):
             '<th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead>'
             '<tbody>%s</tbody></table>'
             '<h3>Why each step ran.</h3><dl class="flow-why">%s</dl>'
-            % (' · '.join(links), ''.join(items), ''.join(rows), whys))
+            '<h3>Receipts.</h3><p class="flow-dots">%s</p>'
+            % (' · '.join(links), ''.join(items), ''.join(rows), whys, dots))
 
 
 def insert_pipeline(body, pipeline_inner):

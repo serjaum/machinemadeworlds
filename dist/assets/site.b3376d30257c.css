@@ -288,3 +288,4 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail .flow-loop{background:var(--surface)}
 .trail .flow-why{margin:var(--s2) 0 0}
 .trail .flow-why dd{font:14px/1.7 var(--sans);color:var(--muted);margin:var(--s1) 0 0}
+.trail .flow-dots{margin:var(--s1) 0 0;font:13px/1.7 var(--sans);color:var(--muted);letter-spacing:.35em}

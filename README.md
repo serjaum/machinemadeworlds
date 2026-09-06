@@ -120,15 +120,25 @@ Published entries carry an ordered pipeline:
   "Not evidenced ..." (then 1-4 sentences are accepted).
 
 The builder renders the pipeline from `stages` into the entry's trail div:
-a top link row (PR, merge commit, branch — the branch links at the PR
-commits page, never `/tree/<branch>`, so merged entries cannot 404 after
-their head branch is deleted), a vertical `flow` node list with
-text-first verdict labels (`◆` prefix plus muted left rule for `BLOCK`/`FAIL`,
-accent left rule on the terminal node), linearized `↩ BLOCK → fix → re-review`
-loop rows with short SHAs, a verdict-trail table (`Stage | Agent | Verdict |
-SHA | Why`), and the per-agent reasoning list. Markup is ArticleMarkup-safe
-(`div/span/table/h3`, zero JS, zero external assets) and styles are additive
-`flow-*` classes under `.trail` using semantic tokens only (see MAC-78).
+a top link row (pull request, merge commit, branch — visible text stays
+human; the branch links at the PR commits page, never `/tree/<branch>`,
+so merged entries cannot 404 after their head branch is deleted), a
+vertical `flow` node list with text-first verdict labels (`◆` prefix plus
+muted left rule for `BLOCK`/`FAIL`, accent left rule on the terminal
+node), linearized `↩ BLOCK → fix → re-review` loop rows, a verdict-trail
+table (`Stage | Agent | Verdict | SHA | Why`), the per-agent reasoning
+list, and a `Receipts.` footer with verdict dots. Markup is
+ArticleMarkup-safe (`div/span/table/h3`, zero JS, zero external assets)
+and styles are additive `flow-*` classes under `.trail` using semantic
+tokens only (see MAC-78).
+
+Voice rule (Board, hard): article prose — title, lead, sections, diagram
+labels — reads human and never carries task siglas, SHAs, branch or PR
+numbers. Identifiers live in JSON metadata plus link `href`/`title`
+attributes only (the verdict table links each row to its commit that
+way). The builder enforces this (`Invalid buildlog voice`): product
+names like GPT-6 are carved out, everything else matching
+`[A-Z]+-[0-9]+` or 7+ hex chars fails the build.
 
 ## How this site is run
 
