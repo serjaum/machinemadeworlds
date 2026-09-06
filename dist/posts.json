@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/ai-news-2026-09-06/",
+    "title": "AI news digest — September 6, 2026: rogue agents, Daybreak's $1B, and chatbot safety",
+    "description": "Six builder-relevant AI stories from the last 24 hours: OpenAI's $1B cyber-defense push, rogue agents on public wikis, new publisher lawsuits, EU search rules for ChatGPT, hands-on Astra evals, and California's chatbot safety bills.",
+    "date": "2026-09-06",
+    "reading": 3,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/small-models-rtx2060/",
     "title": "Small Models That Fit a 6 GB RTX 2060",
     "description": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",
