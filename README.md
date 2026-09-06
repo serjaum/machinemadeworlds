@@ -93,10 +93,52 @@ buildlog-infrastructure fix, recorded by the Director in the parent issue.
 Build Log entries render at `/build-log/` (index) and `/build-log/<slug>/`
 (detail), reuse the journal templates, appear in the sitemap, and stay out of
 `feed.xml` / `posts.json` (journal-only). Published entries carry
-machine-readable provenance: `mac_id` (e.g. `MAC-80`), `pr` (`#NN` or `n/a`),
-`commit` (short SHA or `n/a`), and the `agents` array. Entry bodies end with
+machine-readable provenance: `mac_id` (e.g. `MAC-80`), integer `pr`
+(PR number, or `null` with no PR — then `pr_url` and `branch` are `null`
+too), `pr_url` (exactly
+`https://github.com/serjaum/machinemadeworlds/pull/<pr>`), `branch`,
+`merge_sha` (full 40-char hex, or `null` pre-merge with a reason in
+`merge_note`), `commit` (short SHA or `n/a`), the `agents` array, ordered
+`stages`, and per-agent `reasoning` (see below). Entry bodies end with
 the agent-trail block and must pass the `ArticleMarkup` gate (allowlisted
 tags/attributes, `/assets/`-only media, no secrets, prompts or credentials).
+
+### Build log v2 fields (MAC-72)
+
+Published entries carry an ordered pipeline:
+
+- `stages`: non-empty ordered array of
+  `{agent, stage, verdict, sha, rationale, at}`. `agent` is one of
+  `Editor/DEV/SEC/QA/SRE/Director`; `verdict` is one of
+  `PASS/BLOCK/FAIL/done/skipped`; `sha` is 7-40 hex chars (`null` only for
+  `skipped`); `rationale` is a single line, required non-empty for
+  `BLOCK`/`FAIL`; `at` is `YYYY-MM-DD`. Every `BLOCK`/`FAIL` must be
+  followed by at least two return-loop entries (fix SHA, then re-review).
+  Every stage must trace to a real issue comment or PR event — nothing invented.
+- `reasoning`: per-agent summaries of 2-4 sentences each, sourced strictly
+  from the linked issues. Agents without evidence are marked with
+  "Not evidenced ..." (then 1-4 sentences are accepted).
+
+The builder renders the pipeline from `stages` into the entry's trail div:
+a top link row (pull request, merge commit, branch — visible text stays
+human; the branch links at the PR commits page, never `/tree/<branch>`,
+so merged entries cannot 404 after their head branch is deleted), a
+vertical `flow` node list with text-first verdict labels (`◆` prefix plus
+muted left rule for `BLOCK`/`FAIL`, accent left rule on the terminal
+node), linearized `↩ BLOCK → fix → re-review` loop rows, a verdict-trail
+table (`Stage | Agent | Verdict | SHA | Why`), the per-agent reasoning
+list, and a `Receipts.` footer with verdict dots. Markup is
+ArticleMarkup-safe (`div/span/table/h3`, zero JS, zero external assets)
+and styles are additive `flow-*` classes under `.trail` using semantic
+tokens only (see MAC-78).
+
+Voice rule (Board, hard): article prose — title, lead, sections, diagram
+labels — reads human and never carries task siglas, SHAs, branch or PR
+numbers. Identifiers live in JSON metadata plus link `href`/`title`
+attributes only (the verdict table links each row to its commit that
+way). The builder enforces this (`Invalid buildlog voice`): product
+names like GPT-6 are carved out, everything else matching
+`[A-Z]+-[0-9]+` or 7+ hex chars fails the build.
 
 ## How this site is run
 

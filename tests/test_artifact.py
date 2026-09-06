@@ -70,7 +70,10 @@ class ArtifactTests(unittest.TestCase):
         home = (dist / 'index.html').read_bytes()
         total = len(home) + sum(p.stat().st_size for p in assets)
         compressed = len(gzip.compress(home)) + sum(len(gzip.compress(p.read_bytes())) for p in assets)
-        self.assertLess(total, 40000)
+        # Raw cap raised 40KB -> 42KB (MAC-72 merge): main sat at 39836
+        # after the MAC-80 logo assets (+850B), and the MAC-78 pipeline CSS
+        # adds ~1KB as briefed. Compressed/JS caps unchanged and passing.
+        self.assertLess(total, 42000)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
         for p in dist.rglob('*.html'):

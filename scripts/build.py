@@ -91,17 +91,145 @@ def load_posts(root, site):
 
 BUILDLOG_KINDS = frozenset(('Shipped', 'Fix', 'Experiment', 'Note'))
 
+BUILDLOG_VERDICTS = frozenset(('PASS', 'BLOCK', 'FAIL', 'done', 'skipped'))
+BUILDLOG_AGENTS = frozenset(('Editor', 'DEV', 'SEC', 'QA', 'SRE', 'Director'))
+BUILDLOG_REPO = 'https://github.com/serjaum/machinemadeworlds'
+
+
+def _require_iso_date(value, message):
+    if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
+        raise ValueError(message)
+    date.fromisoformat(value)
+
+
+def _sentence_count(text):
+    return len([part for part in re.split(r'[.!?]+', text) if part.strip()])
+
+
+VOICE_SIGLA = re.compile(r'[A-Z]+-[0-9]+')
+VOICE_HEX = re.compile(r'[0-9a-f]{7,}')
+VOICE_PR = re.compile(r'#\d+\b')
+VOICE_BRANCH = re.compile(
+    r'(?:feat|fix|chore|docs|content|scripts|assets|templates)/[A-Za-z0-9_.\-]+')
+# Product names are human prose, not pipeline jargon (e.g. the GPT-6
+# article subject); the voice gate carves them out.
+VOICE_ALLOW = ('GPT-6',)
+
+
+def validate_buildlog_voice(text, message):
+    """Board voice rule (spec rev 4): article prose carries no task
+    siglas, SHAs, branch or PR numbers. Traceability lives in JSON
+    metadata plus link hrefs/titles only."""
+    if not isinstance(text, str):
+        raise ValueError(message)
+    cleaned = text
+    for token in VOICE_ALLOW:
+        cleaned = cleaned.replace(token, '')
+    if (VOICE_SIGLA.search(cleaned) or VOICE_HEX.search(cleaned)
+            or VOICE_PR.search(cleaned) or VOICE_BRANCH.search(cleaned)):
+        raise ValueError(message)
+
+
+def validate_buildlog_stage(entry):
+    """One ordered pipeline stage. Every stage traces to a real issue
+    comment or PR event; the builder cannot check provenance, but it
+    enforces shape: verdict allowlist, SHA presence (except skipped),
+    rationale on BLOCK/FAIL, single-line rationale, valid date."""
+    required = ('agent', 'stage', 'verdict', 'sha', 'rationale', 'at')
+    if not isinstance(entry, dict) or set(entry) != set(required):
+        raise ValueError('Invalid buildlog stage keys')
+    if entry.get('agent') not in BUILDLOG_AGENTS:
+        raise ValueError('Invalid buildlog stage agent')
+    name = entry.get('stage')
+    if not isinstance(name, str) or not name.strip() or len(name) > 80:
+        raise ValueError('Invalid buildlog stage name')
+    validate_buildlog_voice(name, 'Invalid buildlog stage voice')
+    if entry.get('verdict') not in BUILDLOG_VERDICTS:
+        raise ValueError('Invalid buildlog stage verdict')
+    sha = entry.get('sha')
+    if entry['verdict'] == 'skipped':
+        if sha is not None:
+            raise ValueError('Invalid buildlog stage sha')
+    elif not isinstance(sha, str) or not re.fullmatch(r'[0-9a-f]{7,40}', sha):
+        raise ValueError('Invalid buildlog stage sha')
+    rationale = entry.get('rationale')
+    if (not isinstance(rationale, str) or len(rationale) > 500
+            or '\n' in rationale):
+        raise ValueError('Invalid buildlog stage rationale')
+    if entry['verdict'] in ('BLOCK', 'FAIL') and not rationale.strip():
+        raise ValueError('Invalid buildlog stage rationale')
+    validate_buildlog_voice(rationale, 'Invalid buildlog stage voice')
+    _require_iso_date(entry.get('at'), 'Invalid buildlog stage date')
+
+
+def validate_buildlog_reasoning(reasoning):
+    """Per-agent reasoning summaries: 2-4 sentences each. Entries marked
+    as unevidenced ('not evidenced' in the text) may use 1-4 sentences."""
+    if not isinstance(reasoning, dict) or not reasoning:
+        raise ValueError('Invalid buildlog reasoning')
+    for agent, text in reasoning.items():
+        if agent not in BUILDLOG_AGENTS:
+            raise ValueError('Invalid buildlog reasoning agent')
+        if not isinstance(text, str) or not text.strip() or len(text) > 1200:
+            raise ValueError('Invalid buildlog reasoning')
+        sentences = _sentence_count(text)
+        if 'not evidenced' in text.lower():
+            if not 1 <= sentences <= 4:
+                raise ValueError('Invalid buildlog reasoning')
+        elif not 2 <= sentences <= 4:
+            raise ValueError('Invalid buildlog reasoning')
+        validate_buildlog_voice(text, 'Invalid buildlog reasoning voice')
+
 
 def validate_buildlog(p, site):
     # Gate parity with posts: same allowlist, same field limits, zero relaxations.
     validate_post(p, site)
     if p.get('kind') not in BUILDLOG_KINDS:
         raise ValueError('Invalid buildlog kind')
+    for key in ('title', 'lead', 'description'):
+        validate_buildlog_voice(p.get(key, ''), 'Invalid buildlog voice')
     # Spec MAC-47 item 1: provenance metadata, required on published entries.
     if not isinstance(p.get('mac_id'), str) or not re.fullmatch(r'MAC-\d{1,6}', p['mac_id']):
         raise ValueError('Invalid buildlog mac_id')
-    if not isinstance(p.get('pr'), str) or not re.fullmatch(r'(#\d{1,6}|n/a)', p['pr']):
+    # Spec MAC-72 item 2: machine-readable provenance. pr is an int PR
+    # number (or null when there is no PR); pr_url must be the full public
+    # PR URL for that number; merge_sha is the full 40-char merge SHA, or
+    # null pre-merge with a reason in merge_note.
+    pr = p.get('pr')
+    if pr is not None and (type(pr) is not int or pr < 1):
         raise ValueError('Invalid buildlog pr')
+    pr_url = p.get('pr_url')
+    branch = p.get('branch')
+    if pr is None:
+        if pr_url is not None or branch is not None:
+            raise ValueError('Invalid buildlog pr link')
+    else:
+        if pr_url != '%s/pull/%d' % (BUILDLOG_REPO, pr):
+            raise ValueError('Invalid buildlog pr_url')
+        if (not isinstance(branch, str)
+                or not re.fullmatch(r'[A-Za-z0-9_.\-/]{1,120}', branch)):
+            raise ValueError('Invalid buildlog branch')
+    merge_sha = p.get('merge_sha')
+    if (merge_sha is not None
+            and (not isinstance(merge_sha, str)
+                 or not re.fullmatch(r'[0-9a-f]{40}', merge_sha))):
+        raise ValueError('Invalid buildlog merge_sha')
+    merge_note = p.get('merge_note', '')
+    if not isinstance(merge_note, str) or len(merge_note) > 300:
+        raise ValueError('Invalid buildlog merge_note')
+    if merge_sha is None and not merge_note.strip():
+        raise ValueError('Invalid buildlog merge_note')
+    stages = p.get('stages')
+    if not isinstance(stages, list) or not stages:
+        raise ValueError('Invalid buildlog stages')
+    for entry in stages:
+        validate_buildlog_stage(entry)
+    for index, entry in enumerate(stages):
+        # BLOCK/FAIL must be followed by return-loop entries
+        # (fix SHA -> re-review), never left dangling.
+        if entry['verdict'] in ('BLOCK', 'FAIL') and len(stages) < index + 3:
+            raise ValueError('Invalid buildlog return loop')
+    validate_buildlog_reasoning(p.get('reasoning'))
     if not isinstance(p.get('commit'), str) or not re.fullmatch(r'([0-9a-f]{7,40}|n/a)', p['commit']):
         raise ValueError('Invalid buildlog commit')
     agents = p.get('agents')
@@ -125,12 +253,107 @@ def load_buildlog(root, site):
         p['slug'] = path.stem
         p['body'] = path.with_suffix('.html').read_text(encoding='utf-8')
         validate_buildlog(p, site)
+        validate_buildlog_voice(plain(p['body']), 'Invalid buildlog body voice')
         p['url'] = '/build-log/' + p['slug'] + '/'
         p['topic_name'] = site['topics'][p['topic']]
         p['reading'] = max(1, math.ceil(len(plain(p['body']).split()) / 220))
         p['date_label'] = date.fromisoformat(p['date']).strftime('%b %d, %Y')
         entries.append(p)
     return sorted(entries, key=lambda p: (p['date'], p['slug']), reverse=True)
+
+
+def _commit_link(sha, text):
+    """Full SHA lives in the href + title only; visible text stays human
+    (Board voice rule, spec rev 4)."""
+    return '<a href="%s/commit/%s" title="%s">%s</a>' % (
+        BUILDLOG_REPO, sha, sha, text)
+
+
+def _stage_link(entry, text):
+    sha = entry.get('sha')
+    if isinstance(sha, str):
+        return _commit_link(sha, text)
+    return escape(text)
+
+
+def render_pipeline(p):
+    """Pipeline diagram block (MAC-78 clearance + Board voice rule): pure
+    HTML+CSS rendered from the entry stages. ArticleMarkup-allowed tags
+    only (div/span/table subset, h3, a), zero JS, zero external assets.
+    Visible text is human prose — no siglas, SHAs, branch or PR numbers;
+    identifiers live in link hrefs/titles and JSON metadata only.
+    Deterministic."""
+    links = []
+    if p.get('pr_url') is not None:
+        links.append('<a href="%s">the pull request</a>'
+                     % escape(p['pr_url'], quote=True))
+    if p.get('merge_sha') is not None:
+        links.append(_commit_link(p['merge_sha'], 'the merge commit'))
+    else:
+        links.append('merge pending')
+    if p.get('branch') is not None:
+        # Branch heads are deleted after merge, so /tree/<branch> 404s on
+        # merged entries. Point at the PR commits page instead: same branch
+        # context, public-repo target, stays HTTP 200 after deletion.
+        links.append('<a href="%s/commits" title="%s">the branch</a>'
+                     % (escape(p['pr_url'], quote=True),
+                        escape(p['branch'])))
+    stages = p['stages']
+    items = []
+    for index, entry in enumerate(stages):
+        verdict, agent, name = entry['verdict'], entry['agent'], entry['stage']
+        label = '%s — %s' % (verdict, name)
+        flagged = ' class="flow-flag"' if verdict in ('BLOCK', 'FAIL') else ''
+        if verdict in ('BLOCK', 'FAIL'):
+            label = '◆ ' + label
+        duty = '%s · <time datetime="%s">%s</time>' % (
+            escape(agent), entry['at'], entry['at'])
+        if entry['rationale'].strip():
+            duty += ' — %s' % escape(entry['rationale'].strip())
+        items.append('<li%s><span class="flow-status">%s</span><span>%s</span></li>'
+                     % (flagged, escape(label), duty))
+        # Linearized return loop: BLOCK/FAIL is followed by fix -> re-review.
+        if verdict in ('BLOCK', 'FAIL'):
+            fix, review = stages[index + 1], stages[index + 2]
+            items.append('<li class="flow-loop"><span>↩ %s → fix (%s) → re-review (%s)</span></li>'
+                         % (escape(verdict), _stage_link(fix, 'the fix'),
+                            _stage_link(review, 'the re-review')))
+    rows = []
+    for entry in stages:
+        why = escape(entry['rationale'].strip()) if entry['rationale'].strip() else '—'
+        rows.append('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                    % (escape(entry['stage']), escape(entry['agent']),
+                       escape(entry['verdict']), _stage_link(entry, 'commit'), why))
+    order = ('Editor', 'DEV', 'SEC', 'QA', 'SRE', 'Director')
+    reasoning = p.get('reasoning') or {}
+    whys = ''.join('<dt>%s</dt><dd>%s</dd>' % (agent, escape(reasoning[agent].strip()))
+                   for agent in order if agent in reasoning)
+    dots = ''.join('<span title="%s">●</span>'
+                   % escape('%s — %s' % (entry['verdict'], entry['stage']))
+                   for entry in stages)
+    return ('<h3>Pipeline.</h3>'
+            '<p>Each stage ran in order; blocked stages looped back through fix and re-review.</p>'
+            '<p>%s</p>'
+            '<ol class="flow">%s</ol>'
+            '<h3>Verdict trail.</h3>'
+            '<table><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th>'
+            '<th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead>'
+            '<tbody>%s</tbody></table>'
+            '<h3>Why each step ran.</h3><dl class="flow-why">%s</dl>'
+            '<h3>Receipts.</h3><p class="flow-dots">%s</p>'
+            % (' · '.join(links), ''.join(items), ''.join(rows), whys, dots))
+
+
+def insert_pipeline(body, pipeline_inner):
+    """Nest the pipeline block inside the existing trail div (after its
+    steps list); fall back to appending a standalone trail block."""
+    match = None
+    for found in re.finditer(r'</ol>\s*</div>', body):
+        match = found
+    if match is None:
+        return body + '<div class="trail">' + pipeline_inner + '</div>'
+    div_start = match.end() - len('</div>')
+    return body[:match.start()] + '</ol>' + pipeline_inner + body[div_start:]
 
 
 def template(root, filename, **values):
@@ -244,8 +467,10 @@ def build(root=ROOT):
     # Build-log index reuses the archive pattern with retargeted copy and no topic tabs.
     archive('/build-log/', 'Build log', entries, BUILDLOG_COPY, topics='')
 
-    def detail(p, pool, index_url, index_label, back_label, related_label):
+    def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False):
         body, headings = heading_anchors(p['body'])
+        if pipeline and p.get('stages'):
+            body = insert_pipeline(body, render_pipeline(p))
         # Content refers to stable source names; publishing resolves hashed URLs.
         asset_urls = {'/assets/' + key: value for key, value in assets.items()}
         asset_urls.update({'/styles.css': assets['site.css'], '/tokens.css': assets['site.css']})
@@ -271,7 +496,8 @@ def build(root=ROOT):
     for p in posts:
         detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗')
     for p in entries:
-        detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗')
+        detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗',
+               pipeline=True)
 
     render('/about/', 'About — ' + site['name'], site['description'],
            template(root, 'about.html'), 'AboutPage')

@@ -265,6 +265,7 @@ h1 em { color: var(--accent); font-weight: 400; }
 @media print {
   .org-grid, .pipe-steps { grid-template-columns: 1fr; }
   .pipe-steps li + li::before { content: none; }
+  .trail .flow > li + li::before { content: none; }
 }
 /* Build log agent-trail block (MAC-48 design brief, sections 2+4). Additive only:
    trail-* classes, semantic vars, no new tokens, breakpoints, JS or motion. */
@@ -275,3 +276,16 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail li { font: 14px/1.7 var(--sans); color: var(--muted); }
 .trail time { display: block; font: 11px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .trail li:last-child { border-left: 3px solid var(--accent); padding-left: var(--s1); }
+/* Pipeline diagram (MAC-78): flow-* under .trail, tokens only. */
+.trail .flow{list-style:none;margin:var(--s1) 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:var(--s2)}
+.trail .flow>li{background:var(--raised);border:1px solid var(--line);border-radius:4px;padding:var(--s2);min-width:0;overflow-wrap:break-word}
+.trail .flow>li+li::before{content:"↓";display:block;text-align:center;color:var(--muted);margin:calc(var(--s2) * -1) 0 0}
+.trail .flow-status,.trail .flow-why dt{display:block;font:11px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--s1)}
+.trail .flow-status{color:var(--accent)}
+.trail .flow-flag{border-left:3px solid var(--muted)}
+.trail .flow-flag .flow-status{color:var(--muted)}
+.trail .flow>li:last-child{border-left:3px solid var(--accent)}
+.trail .flow-loop{background:var(--surface)}
+.trail .flow-why{margin:var(--s2) 0 0}
+.trail .flow-why dd{font:14px/1.7 var(--sans);color:var(--muted);margin:var(--s1) 0 0}
+.trail .flow-dots{margin:var(--s1) 0 0;font:13px/1.7 var(--sans);color:var(--muted);letter-spacing:.35em}

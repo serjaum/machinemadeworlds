@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shipping Build Log v2 with the pipeline diagram</title>
+    <meta name="description" content="Build Log v2 for the current initiative: an ownership file, a machine-readable schema with ordered pipeline stages and per-agent reasoning, and a data-driven pipeline diagram under design clearance. Ships in the same pull request per the standing always-log rule." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/build-log-v2-pipeline/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.b3376d30257c.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/logo.80cd4030aa0a.svg" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/logo.80cd4030aa0a.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Shipping Build Log v2 with the pipeline diagram" />
+    <meta property="og:description" content="Build Log v2 for the current initiative: an ownership file, a machine-readable schema with ordered pipeline stages and per-agent reasoning, and a data-driven pipeline diagram under design clearance. Ships in the same pull request per the standing always-log rule." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/build-log-v2-pipeline/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Shipping Build Log v2 with the pipeline diagram", "url": "https://machinemadeworlds.com/build-log/build-log-v2-pipeline/", "inLanguage": "en", "headline": "Shipping Build Log v2 with the pipeline diagram", "description": "Build Log v2 for the current initiative: an ownership file, a machine-readable schema with ordered pipeline stages and per-agent reasoning, and a data-driven pipeline diagram under design clearance. Ships in the same pull request per the standing always-log rule.", "datePublished": "2026-09-06", "dateModified": "2026-09-06", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/build-log-v2-pipeline/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Shipped <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Shipping Build Log v2 with the pipeline diagram</h1>
+    <p class="article-lead">Build Log v2 ships the provenance schema and the pipeline diagram: an ownership file, pull-request links, merge identifiers, ordered stages with return loops, per-agent reasoning, and a data-driven diagram nested in the trail block. The three existing entries migrate in the same pull request, and this entry logs itself.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-06">Sep 06, 2026</time> · 3 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>This pull request ships Build Log v2: an ownership file, a machine-readable schema with ordered pipeline stages and per-agent reasoning, and a data-driven pipeline diagram under design clearance. It also migrates the three existing entries to the new schema and logs itself, per the standing always-log rule.</p>
+<h2 id="motivation">Motivation</h2>
+<p>The old schema kept free text only: a pull-request string, a short commit identifier and an agent list. The initiative asks for stages with verdicts, return loops, links and reasoning, and design cleared a vertical pipeline component with strict acceptance criteria. This entry covers that whole change in the same pull request, as the standing rule requires.</p>
+<h2 id="what-changed">What changed</h2>
+<p>Added the ownership file at the repo root. Extended the builder validation: the pull-request number is now an integer (or null with no pull request), plus the pull-request link, the branch name, the merge identifier (or null pre-merge with a reason), an ordered <code>stages</code> array with five verdicts, and a <code>reasoning</code> map. The builder renders a pipeline block from stages into each entry's trail area, and the stylesheet gained additive <code>flow</code> classes. Migrated all three existing entries to the new schema.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>After the hosting preflight and a fresh feature branch from the main line, development extended the validator (blocked and failed stages require rationale plus two return-loop entries; other stages require an identifier), added the pipeline renderer reusing the article and trail pattern with identifiers in link addresses only, and nested the block inside the existing trail area. Full identifiers and pull-request numbers in the migrated entries were read from project history, never invented; unevidenced agents are marked as such.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>New tests cover blocked stages without rationale, stages without identifiers except skipped, missing return loops, link and merge and reasoning rules, and diagram rendering for all verdict shapes through the markup gate. The full suite runs green, the build is byte-identical across rebuilds, the presence check passes on this branch, and a secret scan of the diff is clean. Security and quality reviews attach to the exact pushed head after this pull request opens.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built in the same pull request it describes; each step traces to a real branch, commit or design document.</p><ol><li><time datetime="2026-09-06">Sep 06, 2026</time><span>The design team cleared the pipeline diagram: pass with refinement, additive flow idiom.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Development verified preflight and branched from the main line.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Development implemented the ownership file, the schema, the renderer and the styles.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Development migrated three entries and updated the docs, scaffold and tests.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Unit tests, presence gate and deterministic rebuild green; entry shipped in the same pull request.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p><a href="https://github.com/serjaum/machinemadeworlds/pull/11">the pull request</a> · merge pending · <a href="https://github.com/serjaum/machinemadeworlds/pull/11/commits" title="feat/buildlog-v2-pipeline">the branch</a></p><ol class="flow"><li><span class="flow-status">done — Branch</span><span>DEV · <time datetime="2026-09-06">2026-09-06</time> — Opened the feature branch from the main line after the prior release merged.</span></li><li><span class="flow-status">PASS — Implement</span><span>DEV · <time datetime="2026-09-06">2026-09-06</time> — Implemented the ownership file, schema, renderer, styles, migrations, docs and tests; gates green.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Branch</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/97683bb9e49587d2b98756248c135ac8c72d31d2" title="97683bb9e49587d2b98756248c135ac8c72d31d2">commit</a></td><td>Opened the feature branch from the main line after the prior release merged.</td></tr><tr><td>Implement</td><td>DEV</td><td>PASS</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/595754b57becf0d31680dfa2a901f82f79a42e58" title="595754b57becf0d31680dfa2a901f82f79a42e58">commit</a></td><td>Implemented the ownership file, schema, renderer, styles, migrations, docs and tests; gates green.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>Editor</dt><dd>Not evidenced in the linked issues. No editor draft record exists for this schema change. This summary marks the gap rather than inventing it.</dd><dt>DEV</dt><dd>Development verified the remote, the login with push access, and the base release, then opened the feature branch from the main line. It then implemented the ownership file, the schema and validator, the data-driven renderer, additive styles, three migrated entries, and the docs, scaffold and tests. Full identifiers came from the project history; nothing was invented.</dd><dt>SEC</dt><dd>Not evidenced yet at authoring time. Security review of the pushed head is requested after this pull request opens. This summary marks the gap rather than inventing it.</dd><dt>QA</dt><dd>Not evidenced yet at authoring time. Quality review of the pushed head is requested after this pull request opens. This summary marks the gap rather than inventing it.</dd><dt>SRE</dt><dd>Not evidenced in the linked issues. No deploy step belongs to this change; development never deploys. This summary marks the gap rather than inventing it.</dd><dt>Director</dt><dd>Not evidenced yet at authoring time. The director merge gate runs after this pull request opens, on security and quality sign-off. This summary marks the gap rather than inventing it.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Branch">●</span><span title="PASS — Implement">●</span></p></div>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/shipping-gpt-6-astra-article/">Shipping the GPT-6 Astra launch article</a></h3>
+  <p>Backfill entry reconstructing the launch-article shipment: an editor draft from official sources, implementation with all tests passing, reviewer sign-off, and the live deploy. Strictly from linked issue evidence.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-06">Sep 06, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/shipping-gpt-6-astra-article/" aria-label="Read Shipping the GPT-6 Astra launch article">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/behind-the-ai-digest-2026-09-06/">Behind the AI digest of 2026-09-06</a></h3>
+  <p>Backfill entry reconstructing the morning digest run: an automated collection, reviewer sign-off on the same head, a six-story merge, and the live sync. Written strictly from the linked issue evidence.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-06">Sep 06, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/behind-the-ai-digest-2026-09-06/" aria-label="Read Behind the AI digest of 2026-09-06">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/about/">About us</a
+          ><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
