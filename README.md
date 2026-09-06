@@ -68,7 +68,9 @@ Published entries carry machine-readable provenance plus an ordered pipeline:
   "Not evidenced ..." (then 1-4 sentences are accepted).
 
 The builder renders the pipeline from `stages` into the entry's trail div:
-a top link row (PR, merge commit, branch), a vertical `flow` node list with
+a top link row (PR, merge commit, branch — the branch links at the PR
+commits page, never `/tree/<branch>`, so merged entries cannot 404 after
+their head branch is deleted), a vertical `flow` node list with
 text-first verdict labels (`◆` prefix plus muted left rule for `BLOCK`/`FAIL`,
 accent left rule on the terminal node), linearized `↩ BLOCK → fix → re-review`
 loop rows with short SHAs, a verdict-trail table (`Stage | Agent | Verdict |

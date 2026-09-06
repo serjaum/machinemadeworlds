@@ -256,8 +256,11 @@ def render_pipeline(p):
     else:
         links.append('merge pending')
     if p.get('branch') is not None:
-        links.append('branch <a href="%s/tree/%s"><code>%s</code></a>'
-                     % (BUILDLOG_REPO, escape(p['branch'], quote=True),
+        # Branch heads are deleted after merge, so /tree/<branch> 404s on
+        # merged entries. Point at the PR commits page instead: same branch
+        # context, public-repo target, stays HTTP 200 after deletion.
+        links.append('branch <a href="%s/commits"><code>%s</code></a>'
+                     % (escape(p['pr_url'], quote=True),
                         escape(p['branch'])))
     stages = p['stages']
     items = []

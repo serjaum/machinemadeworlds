@@ -166,6 +166,17 @@ class BuildLogV2Tests(unittest.TestCase):
         parser.feed(html)
         parser.close()
 
+    def test_branch_link_never_points_at_deleted_tree(self):
+        # Merged PR head branches are deleted, so /tree/<branch> 404s (QA
+        # FAIL on PR #11). The branch link must target the PR commits page,
+        # which survives deletion.
+        for data in (meta(),
+                     meta(merge_sha=None, merge_note='Pre-merge.')):
+            html = builder.render_pipeline(data)
+            self.assertNotIn('/tree/', html)
+            self.assertIn('pull/11/commits', html)
+            self.assertIn('<code>feat/example</code>', html)
+
     def test_insert_pipeline_nests_inside_trail(self):
         body = ('<p>Hi</p><div class="trail"><h3>Trail.</h3><ol><li>x</li></ol></div>')
         merged = builder.insert_pipeline(body, '<h3>Pipeline.</h3>')
