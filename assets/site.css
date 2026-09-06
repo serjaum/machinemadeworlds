@@ -223,7 +223,7 @@ h1 em { color: var(--accent); font-weight: 400; }
   .article-body { font-size: 18px; }.article-body h2 { font-size: 28px; }.article-body pre { padding: 16px; }.related { margin-block: 44px; }.related-grid { grid-template-columns: 1fr; gap: 30px; }
   .about-layout { grid-template-columns: 1fr; gap: 34px; }.about-layout aside { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 @media print {
   :root, [data-theme="dark"] { --bg: white; --ink: black; --muted: #333; --line: #ccc; --surface: #eee; --accent: black; }
   .masthead, .footer, .reading-sidebar, .related, .theme-toggle, .article-end { display: none; }
@@ -289,3 +289,28 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail .flow-why{margin:var(--s2) 0 0}
 .trail .flow-why dd{font:14px/1.7 var(--sans);color:var(--muted);margin:var(--s1) 0 0}
 .trail .flow-dots{margin:var(--s1) 0 0;font:13px/1.7 var(--sans);color:var(--muted);letter-spacing:.35em}
+/* Pipeline animation (MAC-102): CSS-only sequencing, decorative only.
+   Stages light up in execution order via nth-child delays plus renderer
+   data-step hooks, return loops pulse, verdict dots draw attention.
+   Opacity/transform only, final positions reserved, no layout shift.
+   The global reduced-motion guard above disables all of it. */
+.trail .flow-anim>li{animation:flow-stage .6s ease both}
+.trail .flow-anim>li:nth-child(1){animation-delay:0s}
+.trail .flow-anim>li:nth-child(2){animation-delay:.15s}
+.trail .flow-anim>li:nth-child(3){animation-delay:.3s}
+.trail .flow-anim>li:nth-child(4){animation-delay:.45s}
+.trail .flow-anim>li:nth-child(5){animation-delay:.6s}
+.trail .flow-anim>li:nth-child(6){animation-delay:.75s}
+.trail .flow-anim>li:nth-child(7){animation-delay:.9s}
+.trail .flow-anim>li:nth-child(8){animation-delay:1.05s}
+.trail .flow-anim>li:nth-child(9){animation-delay:1.2s}
+.trail .flow-anim>li:nth-child(10){animation-delay:1.35s}
+.trail .flow-anim>li:nth-child(11){animation-delay:1.5s}
+.trail .flow-anim>li:nth-child(12){animation-delay:1.65s}
+@keyframes flow-stage{from{opacity:.45;transform:translateY(6px)}to{opacity:1;transform:none}}
+.trail .flow-anim .flow-loop{animation:flow-loop 2.4s ease-in-out 1.8s infinite}
+@keyframes flow-loop{0%,100%{opacity:.7}50%{opacity:1}}
+.trail .flow-anim .flow-dots span{display:inline-block;animation:flow-dot 2.4s ease-in-out infinite}
+.trail .flow-anim .flow-dots span:nth-child(2n){animation-delay:.3s}
+.trail .flow-anim .flow-dots span:nth-child(3n){animation-delay:.6s}
+@keyframes flow-dot{0%,100%{opacity:.45;transform:none}50%{opacity:1;transform:translateY(-2px)}}

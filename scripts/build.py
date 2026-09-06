@@ -28,7 +28,7 @@ def plain(value):
 class ArticleMarkup(HTMLParser):
     """Reject executable content; this is a publish gate, not an HTML sanitizer."""
     tags = set('p h2 h3 h4 ul ol li a blockquote pre code em strong b i table thead tbody tr th td caption figure figcaption img br hr div span dl dt dd small sup sub time abbr'.split())
-    attributes = set('href title class id src alt width height loading decoding scope colspan rowspan datetime aria-label'.split())
+    attributes = set('href title class id data-step src alt width height loading decoding scope colspan rowspan datetime aria-label'.split())
 
     def handle_starttag(self, tag, attrs):
         if tag not in self.tags:
@@ -44,6 +44,8 @@ class ArticleMarkup(HTMLParser):
                     raise ValueError('Unsafe URL scheme')
                 if key == 'src' and not value.startswith('/assets/'):
                     raise ValueError('Unsafe media: store images under /assets/')
+            if key == 'data-step' and not re.fullmatch(r'[0-9]{1,3}', value):
+                raise ValueError('Unsafe data-step: sequencing integers only')
         if tag == 'img' and not {'alt', 'width', 'height'}.issubset(dict(attrs)):
             raise ValueError('Images require alt, width and height')
 
@@ -277,12 +279,15 @@ def _stage_link(entry, text):
 
 
 def render_pipeline(p):
-    """Pipeline diagram block (MAC-78 clearance + Board voice rule): pure
-    HTML+CSS rendered from the entry stages. ArticleMarkup-allowed tags
-    only (div/span/table subset, h3, a), zero JS, zero external assets.
-    Visible text is human prose — no siglas, SHAs, branch or PR numbers;
-    identifiers live in link hrefs/titles and JSON metadata only.
-    Deterministic."""
+    """Pipeline diagram block (MAC-78 clearance + Board voice rule, MAC-102
+    animation): pure HTML+CSS rendered from the entry stages.
+    ArticleMarkup-allowed tags only (div/span/table subset, h3, a), zero JS,
+    zero external assets. Animation is decorative CSS sequencing: every
+    list row carries a deterministic data-step hook (no schema change) and
+    nth-child delays light stages up in execution order; all stage data
+    stays in text/table for screen readers. Visible text is human prose —
+    no siglas, SHAs, branch or PR numbers; identifiers live in link
+    hrefs/titles and JSON metadata only. Deterministic."""
     links = []
     if p.get('pr_url') is not None:
         links.append('<a href="%s">the pull request</a>'
@@ -300,6 +305,7 @@ def render_pipeline(p):
                         escape(p['branch'])))
     stages = p['stages']
     items = []
+    step = 0
     for index, entry in enumerate(stages):
         verdict, agent, name = entry['verdict'], entry['agent'], entry['stage']
         label = '%s — %s' % (verdict, name)
@@ -310,13 +316,15 @@ def render_pipeline(p):
             escape(agent), entry['at'], entry['at'])
         if entry['rationale'].strip():
             duty += ' — %s' % escape(entry['rationale'].strip())
-        items.append('<li%s><span class="flow-status">%s</span><span>%s</span></li>'
-                     % (flagged, escape(label), duty))
+        step += 1
+        items.append('<li data-step="%d"%s><span class="flow-status">%s</span><span>%s</span></li>'
+                     % (step, flagged, escape(label), duty))
         # Linearized return loop: BLOCK/FAIL is followed by fix -> re-review.
         if verdict in ('BLOCK', 'FAIL'):
             fix, review = stages[index + 1], stages[index + 2]
-            items.append('<li class="flow-loop"><span>↩ %s → fix (%s) → re-review (%s)</span></li>'
-                         % (escape(verdict), _stage_link(fix, 'the fix'),
+            step += 1
+            items.append('<li data-step="%d" class="flow-loop"><span>↩ %s → fix (%s) → re-review (%s)</span></li>'
+                         % (step, escape(verdict), _stage_link(fix, 'the fix'),
                             _stage_link(review, 'the re-review')))
     rows = []
     for entry in stages:
@@ -334,7 +342,7 @@ def render_pipeline(p):
     return ('<h3>Pipeline.</h3>'
             '<p>Each stage ran in order; blocked stages looped back through fix and re-review.</p>'
             '<p>%s</p>'
-            '<ol class="flow">%s</ol>'
+            '<ol class="flow flow-anim">%s</ol>'
             '<h3>Verdict trail.</h3>'
             '<table><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th>'
             '<th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead>'
