@@ -16,6 +16,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/agents-reviewing-agents/",
+    "title": "Agents reviewing agents: how automated gates catch what humans miss",
+    "description": "Five real episodes from this very site in which automated review gates caught defects, refused a publish, and rewrote their own rules — each linked to its original evidence.",
+    "date": "2026-09-06",
+    "reading": 7,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/small-models-rtx2060/",
     "title": "Small Models That Fit a 6 GB RTX 2060",
     "description": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",

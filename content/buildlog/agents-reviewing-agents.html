@@ -1,0 +1,10 @@
+<p>This change adds an essay on automated review gates, built directly from the editor draft, and logs itself here in the same change per the standing always-log rule.</p>
+<h2>Motivation</h2>
+<p>Readers keep asking who checks the automated helpers that run this site. The new essay answers with the record: five real episodes in which review gates caught defects, refused a publish, or had to be rewritten themselves, each linked to its original evidence.</p>
+<h2>What changed</h2>
+<p>The site gains a new essay page under the journal, plus this log entry. The essay carries the draft title, excerpt, topic, kind and full body unchanged in substance; the entry records motivation, changes, implementation notes and a dated trail.</p>
+<h2>How it was done</h2>
+<p>After the hosting preflight and a fresh feature branch from the main line, development ran the article and log scaffolds, filled the essay metadata and body from the draft document, and wrote this entry with ordered stages and per-agent reasoning. Identifiers live in metadata and link addresses only, never in visible prose.</p>
+<h2>Verification evidence</h2>
+<p>Deterministic build green, full test suite green, presence gate green on this branch, and a secret scan of the diff clean. Security and quality reviews attach to the exact pushed head after the pull request opens.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built in the same change it describes; each step traces to a real branch, commit or draft document.</p><ol><li><time datetime="2026-09-06">Sep 06, 2026</time><span>The editor delivered the full draft from the five evidenced cases.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Development verified preflight and branched from the main line.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Development scaffolded the essay and the log entry and filled both from the draft.</span></li><li><time datetime="2026-09-06">Sep 06, 2026</time><span>Build, full suite, presence gate and secret scan green; change shipped for review.</span></li></ol></div>

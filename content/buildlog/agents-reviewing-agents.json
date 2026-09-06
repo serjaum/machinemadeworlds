@@ -1,0 +1,51 @@
+{
+  "title": "Shipping the agents-reviewing-agents essay",
+  "description": "New essay on automated review gates, built from the editor draft with five evidenced cases, plus this log entry in the same change per the standing always-log rule.",
+  "date": "2026-09-06",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "The site gains an essay on agents reviewing agents: five real review episodes, each linked to its evidence, with a companion log entry shipped in the same change.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-93",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the pull request number and merge identifier are recorded after the gate passes on the exact head.",
+  "agents": [
+    "Editor",
+    "DEV"
+  ],
+  "stages": [
+    {
+      "agent": "Editor",
+      "stage": "Draft",
+      "verdict": "done",
+      "sha": "ac5aa0b",
+      "rationale": "Editor delivered the full draft from the five evidenced cases with word count and markup checks.",
+      "at": "2026-09-06"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Branch",
+      "verdict": "done",
+      "sha": "ac5aa0b",
+      "rationale": "Development verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-06"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Implement",
+      "verdict": "PASS",
+      "sha": "ac5aa0b",
+      "rationale": "Development scaffolded the essay and the log entry; build and full suite green.",
+      "at": "2026-09-06"
+    }
+  ],
+  "reasoning": {
+    "Editor": "The editor researched only the five evidenced cases and produced the full draft with title, excerpt, topic, kind and body. The draft passed word-count, markup and voice checks before handoff. This summary follows the handoff document.",
+    "DEV": "Development ran the hosting preflight, branched from the fresh main line, scaffolded the essay and the log entry, and filled both from the draft without inventing identifiers. The build and the full test suite run green before review. This entry ships in the same change per the standing rule."
+  }
+}
