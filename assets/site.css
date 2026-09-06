@@ -308,9 +308,10 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail .flow-anim>li:nth-child(11){animation-delay:1.5s}
 .trail .flow-anim>li:nth-child(12){animation-delay:1.65s}
 @keyframes flow-stage{from{opacity:.45;transform:translateY(6px)}to{opacity:1;transform:none}}
-.trail .flow-anim .flow-loop{animation:flow-loop 2.4s ease-in-out 1.8s infinite}
+.trail .flow-anim .flow-loop{animation:flow-loop 2.6s ease-in-out infinite}
 @keyframes flow-loop{0%,100%{opacity:.7}50%{opacity:1}}
-.trail .flow-anim .flow-dots span{display:inline-block;animation:flow-dot 2.4s ease-in-out infinite}
-.trail .flow-anim .flow-dots span:nth-child(2n){animation-delay:.3s}
-.trail .flow-anim .flow-dots span:nth-child(3n){animation-delay:.6s}
+.trail .flow-dots span{display:inline-block;animation:flow-dot 2.6s ease-in-out infinite}
+.trail .flow-dots span:nth-child(2n){animation-delay:.3s}
+.trail .flow-dots span:nth-child(3n){animation-delay:.6s}
+.trail .flow-anim>li:last-child .flow-status{display:inline-block;animation:flow-dot 2.6s ease-in-out infinite}
 @keyframes flow-dot{0%,100%{opacity:.45;transform:none}50%{opacity:1;transform:translateY(-2px)}}
