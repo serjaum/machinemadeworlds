@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="./gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #f7f8f4; }
+      body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; color: #222d27; }
+      .clip { position: absolute; }
+      #root { position: relative; width: 1920px; height: 1080px; background: #f7f8f4; overflow: hidden; }
+      .mast { position: absolute; top: 64px; left: 120px; right: 120px; display: flex; align-items: center; gap: 28px; }
+      .mark { width: 96px; height: 96px; border-radius: 22px; background: #204c3d; color: #f7f8f4;
+        display: flex; align-items: center; justify-content: center;
+        font-family: Georgia, serif; font-size: 44px; letter-spacing: -0.04em; }
+      .mark i { font-style: normal; color: #b7d2a4; }
+      .mast-title { font-family: Georgia, serif; font-size: 54px; letter-spacing: -0.03em; }
+      .mast-sub { font-size: 24px; letter-spacing: 0.14em; text-transform: uppercase; color: #5c685e; margin-top: 6px; }
+      .hero { position: absolute; top: 260px; left: 120px; width: 1680px; }
+      .hero h1 { font-family: Georgia, serif; font-weight: 400; font-size: 120px; line-height: 1.02; letter-spacing: -0.035em; }
+      .hero h1 em { font-style: normal; color: #285640; }
+      .hero p { margin-top: 24px; font-size: 40px; color: #5c685e; max-width: 1400px; }
+      .pipe { position: absolute; top: 640px; left: 120px; width: 1680px; display: flex; gap: 20px; }
+      .node { flex: 1; background: #eef1e9; border: 2px solid #d6ddd1; border-radius: 20px; padding: 28px 24px; opacity: 0.25; }
+      .node .k { font-family: Consolas, monospace; font-size: 22px; letter-spacing: 0.12em; text-transform: uppercase; color: #285640; }
+      .node .v { font-family: Georgia, serif; font-size: 44px; margin-top: 8px; }
+      .node .d { font-size: 26px; color: #5c685e; margin-top: 6px; }
+      .node.active { opacity: 1; border-color: #285640; background: #ffffff; }
+      .bar { position: absolute; left: 120px; bottom: 120px; width: 1680px; height: 14px; background: #d6ddd1; border-radius: 7px; overflow: hidden; }
+      #barfill { width: 100%; height: 100%; background: #285640; transform-origin: left center; }
+      .loop { position: absolute; right: 120px; bottom: 160px; font-family: Consolas, monospace;
+        font-size: 26px; letter-spacing: 0.1em; color: #285640; border: 2px solid #285640;
+        border-radius: 999px; padding: 12px 28px; background: #f7f8f4; }
+      .foot { position: absolute; left: 120px; bottom: 160px; font-size: 28px; color: #5c685e; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20"
+      data-width="1920" data-height="1080" data-fps="30">
+      <div class="mast clip" data-start="0" data-duration="20" data-track-index="0">
+        <div class="mark">m<i>·</i>w</div>
+        <div><div class="mast-title">machine made worlds</div><div class="mast-sub">How this site is run — muted loop</div></div>
+      </div>
+      <div class="hero clip" data-start="0" data-duration="20" data-track-index="1">
+        <h1 id="h1">From words to web, <em>by agents.</em></h1>
+        <p id="lede">Design only new powers. Build. Two cross-checks on one exact cut. Merge. Deploy. Repeat.</p>
+      </div>
+      <div class="pipe clip" data-start="0" data-duration="20" data-track-index="2">
+        <div class="node" id="n1"><div class="k">1 · Design</div><div class="v">Clear</div><div class="d">new powers only</div></div>
+        <div class="node" id="n2"><div class="k">2 · Build</div><div class="v">DEV</div><div class="d">one branch</div></div>
+        <div class="node" id="n3"><div class="k">3 · Check</div><div class="v">SEC + QA</div><div class="d">same exact cut</div></div>
+        <div class="node" id="n4"><div class="k">4 · Merge</div><div class="v">DEV</div><div class="d">green pair only</div></div>
+        <div class="node" id="n5"><div class="k">5 · Ship</div><div class="v">SRE</div><div class="d">merged cut</div></div>
+      </div>
+      <div class="clip" data-start="0" data-duration="20" data-track-index="3" style="inset: auto;">
+        <div class="bar"><div id="barfill"></div></div>
+        <div class="foot">No sound · 20 seconds · plays again from the start</div>
+        <div class="loop" id="loopbadge">SEAMLESS LOOP ↻</div>
+      </div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      tl.from("#h1", { opacity: 0, y: 60, duration: 1.2, ease: "power2.out" }, 0.2);
+      tl.from("#lede", { opacity: 0, y: 30, duration: 1.0, ease: "power2.out" }, 0.8);
+      tl.to("#n1", { opacity: 1, duration: 0.4,
+        onStart: function(){ document.getElementById("n1").classList.add("active"); } }, 2.5);
+      tl.to("#n2", { opacity: 1, duration: 0.4,
+        onStart: function(){ document.getElementById("n2").classList.add("active"); } }, 5.5);
+      tl.to("#n3", { opacity: 1, duration: 0.4,
+        onStart: function(){ document.getElementById("n3").classList.add("active"); } }, 8.5);
+      tl.to("#n4", { opacity: 1, duration: 0.4,
+        onStart: function(){ document.getElementById("n4").classList.add("active"); } }, 11.5);
+      tl.to("#n5", { opacity: 1, duration: 0.4,
+        onStart: function(){ document.getElementById("n5").classList.add("active"); } }, 14.0);
+      tl.from("#loopbadge", { opacity: 0, scale: 0.9, duration: 0.8, ease: "power2.out" }, 16.0);
+      tl.fromTo("#barfill", { scaleX: 0 }, { scaleX: 1, duration: 18, ease: "none" }, 0.5);
+      // Loopable tail: settle to the opening framing so the last frame cuts cleanly to the first.
+      tl.to("#loopbadge", { opacity: 1, duration: 0.5 }, 18.5);
+      tl.to({}, { duration: 0.5 });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
