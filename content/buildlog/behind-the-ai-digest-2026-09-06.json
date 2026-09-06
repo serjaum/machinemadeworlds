@@ -1,0 +1,19 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE"
+  ],
+  "commit": "6806770",
+  "date": "2026-09-06",
+  "description": "Backfill entry reconstructing the AI digest run of 2026-09-06 (MAC-62 to MAC-63): routine run, PR #9, SEC and QA passes, SRE sync of the live docroot. Strictly from linked issue evidence.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The AI digest of 2026-09-06 shipped via routine run 58000131: branch feat/daily-news-2026-09-06 at 64e73dd, PR #9 with SEC and QA passes pinned to 64e73dd, merge to main 6806770075a94f181474edf8ad62c2fd5a15eb8c with six stories, and MAC-63 SRE sync of the live docroot with the digest, sitemap, feed and robots verified at 200.",
+  "mac_id": "MAC-64",
+  "pr": "#9",
+  "title": "Behind the AI digest of 2026-09-06",
+  "topic": "automation"
+}
