@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/gpt-6-astra-launch/",
+    "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
+    "description": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
+    "date": "2026-09-06",
+    "reading": 7,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/small-models-rtx2060/",
     "title": "Small Models That Fit a 6 GB RTX 2060",
     "description": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",

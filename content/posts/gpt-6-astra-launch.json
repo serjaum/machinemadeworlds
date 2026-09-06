@@ -1,0 +1,10 @@
+{
+  "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
+  "description": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
+  "date": "2026-09-06",
+  "topic": "automation",
+  "kind": "Analysis",
+  "lead": "OpenAI released GPT-6 Astra on September 3, 2026 as a computer-use-first model with 1.05M context, leading scores on ARC-AGI-3, FrontierMath, OSWorld and ExploitBench, Standard API pricing of $10 input / $50 output, and first-ever Critical cyber safeguards with gated Daybreak access. This analysis summarizes only official OpenAI sources, with every number linked, plus practical routing and cost guidance for solo builders and local-AI users.",
+  "featured": false,
+  "draft": false
+}
