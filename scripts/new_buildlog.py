@@ -30,7 +30,10 @@ def create_buildlog(root, slug, title, topic, kind, published_date):
     if meta.exists() or body.exists():
         raise FileExistsError(f'Build-log entry already exists: {slug}')
     data = dict(title=title, description='', date=published_date, topic=topic,
-                kind=kind, lead='', featured=False, draft=True)
+                kind=kind, lead='', featured=False, draft=True,
+                mac_id='MAC-0', pr=None, pr_url=None, branch=None,
+                commit='n/a', merge_sha=None, merge_note='',
+                agents=['DEV'], stages=[], reasoning={})
     with meta.open('x', encoding='utf-8', newline='\n') as stream:
         stream.write(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
     try:

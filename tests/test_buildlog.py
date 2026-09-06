@@ -56,13 +56,22 @@ class BuildLogTests(unittest.TestCase):
             folder.mkdir(parents=True)
             meta = dict(title='A valid title', description='A description.', date='2026-09-05',
                         topic='design', kind='Essay', lead='Introduction.', draft=False,
-                        mac_id='MAC-47', pr='#5', commit='0e03e75', agents=['DEV'])
+                        mac_id='MAC-47', pr=5, pr_url='https://github.com/serjaum/machinemadeworlds/pull/5',
+                        branch='feat/example', commit='0e03e75', merge_sha='a' * 40, merge_note='',
+                        agents=['DEV'],
+                        stages=[dict(agent='DEV', stage='implement', verdict='done',
+                                     sha='0e03e75', rationale='Did the work.', at='2026-09-05')],
+                        reasoning={'DEV': 'First sentence here. Second sentence here.'})
             (folder / 'wrong-kind.json').write_text(json.dumps(meta), encoding='utf-8')
             (folder / 'wrong-kind.html').write_text('<p>Hello</p>', encoding='utf-8')
             with self.assertRaisesRegex(ValueError, 'Invalid buildlog kind'):
                 builder.load_buildlog(Path(tmp), site)
-            for field, bad in [('mac_id', 'nope'), ('pr', '5'), ('commit', 'ZZZ'),
-                               ('agents', []), ('agents', ['x' * 41])]:
+            for field, bad in [('mac_id', 'nope'), ('pr', '#5'), ('pr', 'n/a'),
+                               ('pr_url', 'https://example.com/serjaum/machinemadeworlds/pull/5'),
+                               ('branch', 'has space'), ('commit', 'ZZZ'),
+                               ('merge_sha', 'abc'), ('merge_note', 'x' * 301),
+                               ('agents', []), ('agents', ['x' * 41]),
+                               ('stages', []), ('reasoning', {})]:
                 broken = dict(meta, kind='Shipped')
                 broken[field] = bad
                 (folder / 'wrong-kind.json').write_text(json.dumps(broken), encoding='utf-8')

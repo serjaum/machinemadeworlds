@@ -35,14 +35,46 @@ reusing the journal templates. Scaffold a draft with
 where `--kind` is one of `Shipped`, `Fix`, `Experiment`, `Note`. The entry schema,
 field limits and `ArticleMarkup` gate are identical to journal posts; `topic` must
 exist in `content/site.json` and `draft` must stay a JSON boolean. Before publishing,
-fill the provenance metadata (`mac_id` like `MAC-47`, `pr` like `#5` or `n/a`,
-`commit` short SHA or `n/a`, `agents` array) and set `draft` to `false`. End every entry
-body with the agent-trail block (allowlisted markup only, no secrets, prompts or
-credentials):
+fill the provenance metadata (`mac_id` like `MAC-47`, `commit` short SHA or `n/a`,
+`agents` array) and the v2 pipeline fields below, then set `draft` to `false`.
+End every entry body with the agent-trail block (allowlisted markup only, no secrets,
+prompts or credentials):
 
 ```html
 <div class="trail"><h2>How this entry was built.</h2><ol><li><time datetime="2026-09-05">Sep 05, 2026</time><span>DEV implemented on <code>feat/build-log-section</code>.</span></li></ol></div>
 ```
+
+### Build log v2 fields (MAC-72)
+
+Published entries carry machine-readable provenance plus an ordered pipeline:
+
+- `pr`: integer PR number, or `null` when there is no PR (then `pr_url`
+  and `branch` must also be `null`).
+- `pr_url`: full public PR URL, exactly
+  `https://github.com/serjaum/machinemadeworlds/pull/<pr>`.
+- `branch`: source branch name (e.g. `feat/my-change`), or `null` with no PR.
+- `merge_sha`: full 40-char hex merge SHA, or `null` pre-merge. When `null`,
+  `merge_note` must explain why (e.g. "Pre-merge: ships in the same PR").
+- `stages`: non-empty ordered array of
+  `{agent, stage, verdict, sha, rationale, at}`. `agent` is one of
+  `Editor/DEV/SEC/QA/SRE/Director`; `verdict` is one of
+  `PASS/BLOCK/FAIL/done/skipped`; `sha` is 7-40 hex chars (`null` only for
+  `skipped`); `rationale` is a single line, required non-empty for
+  `BLOCK`/`FAIL`; `at` is `YYYY-MM-DD`. Every `BLOCK`/`FAIL` must be
+  followed by at least two return-loop entries (fix SHA, then re-review).
+  Every stage must trace to a real issue comment or PR event — nothing invented.
+- `reasoning`: per-agent summaries of 2-4 sentences each, sourced strictly
+  from the linked issues. Agents without evidence are marked with
+  "Not evidenced ..." (then 1-4 sentences are accepted).
+
+The builder renders the pipeline from `stages` into the entry's trail div:
+a top link row (PR, merge commit, branch), a vertical `flow` node list with
+text-first verdict labels (`◆` prefix plus muted left rule for `BLOCK`/`FAIL`,
+accent left rule on the terminal node), linearized `↩ BLOCK → fix → re-review`
+loop rows with short SHAs, a verdict-trail table (`Stage | Agent | Verdict |
+SHA | Why`), and the per-agent reasoning list. Markup is ArticleMarkup-safe
+(`div/span/table/h3`, zero JS, zero external assets) and styles are additive
+`flow-*` classes under `.trail` using semantic tokens only (see MAC-78).
 
 Use `h3` instead of `h2` for the trail title when the entry body already contains
 `h2` sections. Build-log entries appear in the sitemap but are excluded from

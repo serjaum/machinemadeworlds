@@ -91,6 +91,68 @@ def load_posts(root, site):
 
 BUILDLOG_KINDS = frozenset(('Shipped', 'Fix', 'Experiment', 'Note'))
 
+BUILDLOG_VERDICTS = frozenset(('PASS', 'BLOCK', 'FAIL', 'done', 'skipped'))
+BUILDLOG_AGENTS = frozenset(('Editor', 'DEV', 'SEC', 'QA', 'SRE', 'Director'))
+BUILDLOG_REPO = 'https://github.com/serjaum/machinemadeworlds'
+
+
+def _require_iso_date(value, message):
+    if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
+        raise ValueError(message)
+    date.fromisoformat(value)
+
+
+def _sentence_count(text):
+    return len([part for part in re.split(r'[.!?]+', text) if part.strip()])
+
+
+def validate_buildlog_stage(entry):
+    """One ordered pipeline stage. Every stage traces to a real issue
+    comment or PR event; the builder cannot check provenance, but it
+    enforces shape: verdict allowlist, SHA presence (except skipped),
+    rationale on BLOCK/FAIL, single-line rationale, valid date."""
+    required = ('agent', 'stage', 'verdict', 'sha', 'rationale', 'at')
+    if not isinstance(entry, dict) or set(entry) != set(required):
+        raise ValueError('Invalid buildlog stage keys')
+    if entry.get('agent') not in BUILDLOG_AGENTS:
+        raise ValueError('Invalid buildlog stage agent')
+    name = entry.get('stage')
+    if not isinstance(name, str) or not name.strip() or len(name) > 80:
+        raise ValueError('Invalid buildlog stage name')
+    if entry.get('verdict') not in BUILDLOG_VERDICTS:
+        raise ValueError('Invalid buildlog stage verdict')
+    sha = entry.get('sha')
+    if entry['verdict'] == 'skipped':
+        if sha is not None:
+            raise ValueError('Invalid buildlog stage sha')
+    elif not isinstance(sha, str) or not re.fullmatch(r'[0-9a-f]{7,40}', sha):
+        raise ValueError('Invalid buildlog stage sha')
+    rationale = entry.get('rationale')
+    if (not isinstance(rationale, str) or len(rationale) > 500
+            or '\n' in rationale):
+        raise ValueError('Invalid buildlog stage rationale')
+    if entry['verdict'] in ('BLOCK', 'FAIL') and not rationale.strip():
+        raise ValueError('Invalid buildlog stage rationale')
+    _require_iso_date(entry.get('at'), 'Invalid buildlog stage date')
+
+
+def validate_buildlog_reasoning(reasoning):
+    """Per-agent reasoning summaries: 2-4 sentences each. Entries marked
+    as unevidenced ('not evidenced' in the text) may use 1-4 sentences."""
+    if not isinstance(reasoning, dict) or not reasoning:
+        raise ValueError('Invalid buildlog reasoning')
+    for agent, text in reasoning.items():
+        if agent not in BUILDLOG_AGENTS:
+            raise ValueError('Invalid buildlog reasoning agent')
+        if not isinstance(text, str) or not text.strip() or len(text) > 1200:
+            raise ValueError('Invalid buildlog reasoning')
+        sentences = _sentence_count(text)
+        if 'not evidenced' in text.lower():
+            if not 1 <= sentences <= 4:
+                raise ValueError('Invalid buildlog reasoning')
+        elif not 2 <= sentences <= 4:
+            raise ValueError('Invalid buildlog reasoning')
+
 
 def validate_buildlog(p, site):
     # Gate parity with posts: same allowlist, same field limits, zero relaxations.
@@ -100,8 +162,45 @@ def validate_buildlog(p, site):
     # Spec MAC-47 item 1: provenance metadata, required on published entries.
     if not isinstance(p.get('mac_id'), str) or not re.fullmatch(r'MAC-\d{1,6}', p['mac_id']):
         raise ValueError('Invalid buildlog mac_id')
-    if not isinstance(p.get('pr'), str) or not re.fullmatch(r'(#\d{1,6}|n/a)', p['pr']):
+    # Spec MAC-72 item 2: machine-readable provenance. pr is an int PR
+    # number (or null when there is no PR); pr_url must be the full public
+    # PR URL for that number; merge_sha is the full 40-char merge SHA, or
+    # null pre-merge with a reason in merge_note.
+    pr = p.get('pr')
+    if pr is not None and (type(pr) is not int or pr < 1):
         raise ValueError('Invalid buildlog pr')
+    pr_url = p.get('pr_url')
+    branch = p.get('branch')
+    if pr is None:
+        if pr_url is not None or branch is not None:
+            raise ValueError('Invalid buildlog pr link')
+    else:
+        if pr_url != '%s/pull/%d' % (BUILDLOG_REPO, pr):
+            raise ValueError('Invalid buildlog pr_url')
+        if (not isinstance(branch, str)
+                or not re.fullmatch(r'[A-Za-z0-9_.\-/]{1,120}', branch)):
+            raise ValueError('Invalid buildlog branch')
+    merge_sha = p.get('merge_sha')
+    if (merge_sha is not None
+            and (not isinstance(merge_sha, str)
+                 or not re.fullmatch(r'[0-9a-f]{40}', merge_sha))):
+        raise ValueError('Invalid buildlog merge_sha')
+    merge_note = p.get('merge_note', '')
+    if not isinstance(merge_note, str) or len(merge_note) > 300:
+        raise ValueError('Invalid buildlog merge_note')
+    if merge_sha is None and not merge_note.strip():
+        raise ValueError('Invalid buildlog merge_note')
+    stages = p.get('stages')
+    if not isinstance(stages, list) or not stages:
+        raise ValueError('Invalid buildlog stages')
+    for entry in stages:
+        validate_buildlog_stage(entry)
+    for index, entry in enumerate(stages):
+        # BLOCK/FAIL must be followed by return-loop entries
+        # (fix SHA -> re-review), never left dangling.
+        if entry['verdict'] in ('BLOCK', 'FAIL') and len(stages) < index + 3:
+            raise ValueError('Invalid buildlog return loop')
+    validate_buildlog_reasoning(p.get('reasoning'))
     if not isinstance(p.get('commit'), str) or not re.fullmatch(r'([0-9a-f]{7,40}|n/a)', p['commit']):
         raise ValueError('Invalid buildlog commit')
     agents = p.get('agents')
@@ -131,6 +230,88 @@ def load_buildlog(root, site):
         p['date_label'] = date.fromisoformat(p['date']).strftime('%b %d, %Y')
         entries.append(p)
     return sorted(entries, key=lambda p: (p['date'], p['slug']), reverse=True)
+
+
+def _short_sha(sha):
+    return sha[:7] if isinstance(sha, str) else 'n/a'
+
+
+def _sha_code(sha):
+    if isinstance(sha, str):
+        return '<code>%s</code>' % _short_sha(sha)
+    return 'n/a'
+
+
+def render_pipeline(p):
+    """Pipeline diagram block (MAC-78 clearance): pure HTML+CSS rendered
+    from the entry stages. ArticleMarkup-allowed tags only (div/span/table
+    subset, h3), zero JS, zero external assets. Deterministic."""
+    links = []
+    if p.get('pr_url') is not None:
+        links.append('PR <a href="%s">#%d</a>'
+                     % (escape(p['pr_url'], quote=True), p['pr']))
+    if p.get('merge_sha') is not None:
+        links.append('merge <a href="%s/commit/%s">%s</a>'
+                     % (BUILDLOG_REPO, p['merge_sha'], _sha_code(p['merge_sha'])))
+    else:
+        links.append('merge pending')
+    if p.get('branch') is not None:
+        links.append('branch <a href="%s/tree/%s"><code>%s</code></a>'
+                     % (BUILDLOG_REPO, escape(p['branch'], quote=True),
+                        escape(p['branch'])))
+    stages = p['stages']
+    items = []
+    for index, entry in enumerate(stages):
+        verdict, agent, name = entry['verdict'], entry['agent'], entry['stage']
+        label = '%s — %s' % (verdict, name)
+        flagged = ' class="flow-flag"' if verdict in ('BLOCK', 'FAIL') else ''
+        if verdict in ('BLOCK', 'FAIL'):
+            label = '◆ ' + label
+        duty = '%s · %s · <time datetime="%s">%s</time>' % (
+            escape(agent), _sha_code(entry['sha']),
+            entry['at'], entry['at'])
+        if entry['rationale'].strip():
+            duty += ' — %s' % escape(entry['rationale'].strip())
+        items.append('<li%s><span class="flow-status">%s</span><span>%s</span></li>'
+                     % (flagged, escape(label), duty))
+        # Linearized return loop: BLOCK/FAIL is followed by fix -> re-review.
+        if verdict in ('BLOCK', 'FAIL'):
+            fix, review = stages[index + 1], stages[index + 2]
+            items.append('<li class="flow-loop"><span>↩ %s → fix (%s) → re-review (%s)</span></li>'
+                         % (escape(verdict), _sha_code(fix['sha']),
+                            _sha_code(review['sha'])))
+    rows = []
+    for entry in stages:
+        why = escape(entry['rationale'].strip()) if entry['rationale'].strip() else '—'
+        rows.append('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+                    % (escape(entry['stage']), escape(entry['agent']),
+                       escape(entry['verdict']), _sha_code(entry['sha']), why))
+    order = ('Editor', 'DEV', 'SEC', 'QA', 'SRE', 'Director')
+    reasoning = p.get('reasoning') or {}
+    whys = ''.join('<dt>%s</dt><dd>%s</dd>' % (agent, escape(reasoning[agent].strip()))
+                   for agent in order if agent in reasoning)
+    return ('<h3>Pipeline.</h3>'
+            '<p>Each stage ran in order; blocked stages looped back through fix and re-review.</p>'
+            '<p>%s</p>'
+            '<ol class="flow">%s</ol>'
+            '<h3>Verdict trail.</h3>'
+            '<table><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th>'
+            '<th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead>'
+            '<tbody>%s</tbody></table>'
+            '<h3>Why each step ran.</h3><dl class="flow-why">%s</dl>'
+            % (' · '.join(links), ''.join(items), ''.join(rows), whys))
+
+
+def insert_pipeline(body, pipeline_inner):
+    """Nest the pipeline block inside the existing trail div (after its
+    steps list); fall back to appending a standalone trail block."""
+    match = None
+    for found in re.finditer(r'</ol>\s*</div>', body):
+        match = found
+    if match is None:
+        return body + '<div class="trail">' + pipeline_inner + '</div>'
+    div_start = match.end() - len('</div>')
+    return body[:match.start()] + '</ol>' + pipeline_inner + body[div_start:]
 
 
 def template(root, filename, **values):
@@ -243,8 +424,10 @@ def build(root=ROOT):
     # Build-log index reuses the archive pattern with retargeted copy and no topic tabs.
     archive('/build-log/', 'Build log', entries, BUILDLOG_COPY, topics='')
 
-    def detail(p, pool, index_url, index_label, back_label, related_label):
+    def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False):
         body, headings = heading_anchors(p['body'])
+        if pipeline and p.get('stages'):
+            body = insert_pipeline(body, render_pipeline(p))
         # Content refers to stable source names; publishing resolves hashed URLs.
         asset_urls = {'/assets/' + key: value for key, value in assets.items()}
         asset_urls.update({'/styles.css': assets['site.css'], '/tokens.css': assets['site.css']})
@@ -270,7 +453,8 @@ def build(root=ROOT):
     for p in posts:
         detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗')
     for p in entries:
-        detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗')
+        detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗',
+               pipeline=True)
 
     render('/about/', 'About — ' + site['name'], site['description'],
            template(root, 'about.html'), 'AboutPage')
