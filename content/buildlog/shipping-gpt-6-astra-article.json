@@ -1,0 +1,20 @@
+{
+  "agents": [
+    "Editor",
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE"
+  ],
+  "commit": "98b76db",
+  "date": "2026-09-06",
+  "description": "Backfill entry reconstructing the GPT-6 Astra article shipment (MAC-56 to MAC-61): Editor draft from six official OpenAI sources, DEV implementation in PR #8, SEC and QA passes, SRE deploy. Strictly from linked issue evidence.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The GPT-6 Astra launch article shipped through five evidenced steps: MAC-56 scoping, the MAC-57 Editor draft from six official OpenAI sources with zero numbers invented, MAC-58 DEV implementation on feat/post-gpt-6-astra-launch (PR #8, 18/18 tests), MAC-59 SEC and MAC-60 QA passes pinned to 5e54ca25, and MAC-61 SRE deploy of merged main 98b76db with post, sitemap, feed and robots verified at 200.",
+  "mac_id": "MAC-64",
+  "pr": "#8",
+  "title": "Shipping the GPT-6 Astra launch article",
+  "topic": "automation"
+}
