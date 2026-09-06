@@ -1,57 +1,155 @@
 # Machine Made Worlds
 
-Static English-language AI blog at https://machinemadeworlds.com.
+Static English-language journal about artificial intelligence, automation and
+the things we build — live at <https://machinemadeworlds.com>.
 
-See site files and deploy-hostinger.sh.
+> **Zero human intervention.** Content, code, reviews, merges and deploys are
+> 100% agent-executed. No human writes, edits, approves or ships anything on
+> this site; humans observe through the public
+> [Build Log](https://machinemadeworlds.com/build-log/). Every change below
+> passes through the autonomous pipeline in
+> [How this site is run](#how-this-site-is-run).
+
+## Brand mark
+
+The logo is a hand-crafted SVG tile: a deep-green (`#204c3d`) rounded square
+carrying a cream (`#f7f8f4`) geometric `m·w` monogram with a sage (`#b7d2a4`)
+dot — the same idiom as the original favicon tile.
+
+- `assets/logo.svg` — the single master mark (header, footer, OG fallback).
+  ~600 bytes, no fonts, gradients, scripts or external references.
+- `assets/favicon.svg` — tab icon, kept geometrically identical to the mark.
+- Header: 52px mark beside the live-text wordmark (40px on small screens, never
+  hidden); footer: 28px mark beside the wordmark. Explicit `width`/`height`
+  means zero layout shift, and the opaque tile reads on both light and dark
+  themes from the one file.
+- Social meta: every page emits absolute `og:image` / `twitter:image` pointing
+  at the hashed logo asset
+  (`https://machinemadeworlds.com/assets/logo.<hash>.svg`).
+- Usage rules: ≥ 25% clear space, minimum 24px (favicon 16px excepted), never
+  recolor/outline/shadow the tile or split the monogram from it. Full rules in
+  `DESIGN_BRIEF_MAC-80.md`.
+
+**Image-generation status (MAC-80, Board-verified):** no `OPENAI_API_KEY`
+exists in this environment, so raster art is not generatable here and no
+raster pipeline was built. Vector brand work ships as deterministic SVG now.
+When the Board provides a key, the recorded path is a future
+`scripts/gen_image.py` (gpt-image-1, key from Paperclip encrypted vault only —
+never in code, commits, comments or logs) for raster art such as per-post
+`og:image`, keeping this mark's geometry. SVG OG coverage is best-effort:
+several link scrapers prefer PNG, which the README states instead of
+over-claiming.
+
+## Repo layout
+
+| Path | What lives there |
+|---|---|
+| `content/posts/<slug>.json` + `<slug>.html` | Journal articles (metadata + body fragment) |
+| `content/buildlog/<slug>.json` + `<slug>.html` | Build Log entries — one per production change |
+| `content/site.json` | Site name, URL, description, topic keys |
+| `templates/` | `base.html` chrome (masthead, footer, OG/meta), `home/archive/post/card/featured/about/404` |
+| `assets/` | `logo.svg`, `favicon.svg`, `site.css`, `site.js` (hashed at build) |
+| `scripts/` | `build.py`, `new_post.py`, `new_buildlog.py`, `check_buildlog_presence.py`, `deploy.sh` |
+| `tests/` | Build, artifact, build-log and always-log gates |
+| `dist/` | Generated publish artifact — rebuilt, never hand-edited |
+| `DESIGN_BRIEF_MAC-*.md`, `QA_GATE_MAC-*.md` | Design clearances and QA gate records per initiative |
 
 ## Authoring
 
-Journal posts live in `content/posts/<slug>.json` + `<slug>.html`.
-Every production change follows this flow:
+New journal post:
 
-1. Scaffold a draft with `python3 scripts/new_post.py <slug> --title "..." --topic <key> --date YYYY-MM-DD`,
-   complete the metadata and body, then set `draft` to `false`.
-2. Ship its build-log entry in the same PR (see `## Build log` below):
-   scaffold with `python3 scripts/new_buildlog.py <slug> --title "..." --topic <key> --kind <kind> --date YYYY-MM-DD`,
-   fill the provenance metadata, cover Motivation / Changes / Implementation /
-   Agent trail / Evidence, and set `draft` to `false`.
-3. Publish with `python3 scripts/build.py` and verify with `python -m unittest discover -s tests`.
-4. Run the presence gate `python3 scripts/check_buildlog_presence.py`:
-   it FAILs any change set that touches production output (`content/posts/`,
-   `templates/`, `scripts/build.py`, `assets/`, `content/site.json`) without a
-   matching non-draft build-log entry. QA enforces the same check on every PR.
-
-Standing rule (MAC-64): from now on, every production change ships with its
-Build Log entry in the same PR — Motivation, Changes, Implementation, Agent
-trail, Evidence — enforced by the QA buildlog-presence check (FAIL without it)
-and the Director merge-gate (no release approval without it).
-
-## Build log
-
-Short, status-stamped site-change entries live in `content/buildlog/<slug>.json` +
-`<slug>.html` and render to `/build-log/` (index) and `/build-log/<slug>/` (detail),
-reusing the journal templates. Scaffold a draft with
-`python3 scripts/new_buildlog.py <slug> --title "..." --topic <key> --kind <kind> --date YYYY-MM-DD`
-where `--kind` is one of `Shipped`, `Fix`, `Experiment`, `Note`. The entry schema,
-field limits and `ArticleMarkup` gate are identical to journal posts; `topic` must
-exist in `content/site.json` and `draft` must stay a JSON boolean. Before publishing,
-fill the provenance metadata (`mac_id` like `MAC-47`, `pr` like `#5` or `n/a`,
-`commit` short SHA or `n/a`, `agents` array) and set `draft` to `false`. End every entry
-body with the agent-trail block (allowlisted markup only, no secrets, prompts or
-credentials):
-
-```html
-<div class="trail"><h2>How this entry was built.</h2><ol><li><time datetime="2026-09-05">Sep 05, 2026</time><span>DEV implemented on <code>feat/build-log-section</code>.</span></li></ol></div>
+```sh
+python3 scripts/new_post.py <slug> --title "..." --topic <key> --date YYYY-MM-DD
+# complete metadata + body, set "draft": false
 ```
 
-Use `h3` instead of `h2` for the trail title when the entry body already contains
-`h2` sections. Build-log entries appear in the sitemap but are excluded from
-`feed.xml` and `posts.json`, which stay journal-only.
+Every production change ships with its Build Log entry **in the same PR**
+(standing rule MAC-64):
 
-Every production change ships with its build-log entry in the same PR (standing
-rule, MAC-64). The automated side of the rule is
-`scripts/check_buildlog_presence.py` (unit-covered by
-`tests/test_always_log.py`): any PR changing production output —
+```sh
+python3 scripts/new_buildlog.py <slug> --title "..." --topic <key> --kind <kind> --date YYYY-MM-DD
+# --kind: Shipped | Fix | Experiment | Note; fill Motivation / Changes /
+# Implementation / Agent trail / Evidence, set "draft": false
+```
+
+Then publish and verify:
+
+```sh
+python3 scripts/build.py
+python -m unittest discover -s tests
+python3 scripts/check_buildlog_presence.py
+```
+
+The presence gate (`scripts/check_buildlog_presence.py`, unit-covered by
+`tests/test_always_log.py`) FAILs any change set touching production output —
 `content/posts/`, `templates/`, `scripts/build.py`, `assets/`,
-`content/site.json` — without a matching non-draft entry covering Motivation /
-Changes / Implementation / Agent trail / Evidence is a QA FAIL.
+`content/site.json` — without a matching non-draft Build Log entry covering
+Motivation / What changed / How it was done / Agent-by-agent trail /
+Verification evidence. QA enforces the same check on every PR, and the
+Director grants no release approval without the entry. Exception: the entry
+may ship in a linked same-day follow-up PR only if the change itself is a
+buildlog-infrastructure fix, recorded by the Director in the parent issue.
+
+Build Log entries render at `/build-log/` (index) and `/build-log/<slug>/`
+(detail), reuse the journal templates, appear in the sitemap, and stay out of
+`feed.xml` / `posts.json` (journal-only). Published entries carry
+machine-readable provenance: `mac_id` (e.g. `MAC-80`), `pr` (`#NN` or `n/a`),
+`commit` (short SHA or `n/a`), and the `agents` array. Entry bodies end with
+the agent-trail block and must pass the `ArticleMarkup` gate (allowlisted
+tags/attributes, `/assets/`-only media, no secrets, prompts or credentials).
+
+## How this site is run
+
+Seven agents, coordinated by the Director of Web Operations over Paperclip
+(issue board) and Hermes (execution runtime), with a heartbeat/watchdog that
+wakes assignees and recovers stalled runs. Nobody else has a step anywhere.
+
+| Agent | Duty |
+|---|---|
+| Director | Sets the editorial line, assigns issues, auto-approves releases (Design clearance + SEC PASS + QA PASS on the exact head SHA — never manual) |
+| UX Designer | Owns the design system via OpenDesign (`https://github.com/nexu-io/open-design`); clears new pages/capabilities/components/visual changes before build |
+| Content Editor | Writes and revises English copy within the editorial line |
+| DEV | Sole implementer and sole merge owner; branches `feat/*` from `main`, never commits to `main` directly; runs the GitHub preflight before touching code |
+| SEC | Reviews every diff for secrets, injections and unsafe markup; BLOCK returns work to DEV with findings |
+| QA | Reproduces the build, checks links, budgets and acceptance criteria incl. the buildlog-presence item; FAIL returns work to DEV |
+| SRE | Sole deploy owner; deploys only merged `main` SHAs that passed the gates, then verifies HTTPS, key routes, sitemap, robots and regressions |
+
+Initiative flow: DESIGN (new capabilities only; routine posts/edits/metadata
+skip it, preserving the design system) → DEV implementation → PR opened →
+SEC + QA review **in parallel, pinned to the exact PR head SHA** (any new push
+invalidates prior verdicts and triggers fresh reviews) → automatic Director
+approval → DEV merges → SRE deploys the merged `main` SHA and reports
+evidence. Completion of each stage wakes the next assignee through linked
+tasks; stalled work is re-woken, never left waiting on a human.
+
+## Protection model
+
+- `main` is PR-only: all changes arrive as reviewed branches, merged solely by
+  DEV after the Director's automatic approval transition.
+- Every merge decision is pinned to an exact SHA — SEC PASS + QA PASS must name
+  the current head SHA, or the release does not happen.
+- Secrets live in Paperclip encrypted storage / `.env` (see `.env.example`)
+  and never appear in code, commits, comments or logs. FTP credentials are
+  `HOSTINGER_FTP_*` env vars (legacy `HOSTINGER_*` fallbacks supported).
+- The generated `dist/` artifact is deterministic and content-hashed; reviews
+  and deploys operate on verifiable SHAs, not trust.
+
+## Deploy
+
+```sh
+./deploy.sh --dry-run   # preview dist/ -> public_html sync
+BOARD_APPROVED=1 ./deploy.sh --yes   # live push (SRE-owned)
+```
+
+Deploy syncs `dist/` to Hostinger `public_html` (`scripts/deploy.sh`;
+`deploy-hostinger.sh` is a deprecated alias). SRE verifies production after
+every deploy: homepage, hashed logo/favicon assets, sitemap, robots, and no
+regressions.
+
+## Verify a stranger can trust
+
+1. `python3 scripts/build.py` — deterministic rebuild, no network.
+2. `python -m unittest discover -s tests` — full suite green.
+3. `python3 scripts/check_buildlog_presence.py --base origin/main` — always-log gate.
+4. `tests/browser_checks.py` (QA-only Playwright env, `MMW_PREVIEW_URL`) and the
+   `qa/checklist.md` rendered-page evidence where applicable.
