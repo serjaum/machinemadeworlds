@@ -10,6 +10,12 @@
 #   HOSTINGER_FTP_PORT         default 21 (FTP) / 22 (SFTP) / 21 (FTPS)
 #   HOSTINGER_FTP_PROTOCOL     ftp | sftp | ftps  (default ftp)
 #   HOSTINGER_FTP_REMOTE_DIR   default public_html
+#     NOTE (MAC-86, 2026-09-06, Hostinger account finding): on this account the
+#     FTP login dir /public_html is NOT the live docroot (it contains a
+#     DO_NOT_UPLOAD_HERE marker). The live docroot is
+#     domains/machinemadeworlds.com/public_html (proven by probe-file test).
+#     Set HOSTINGER_FTP_REMOTE_DIR=domains/machinemadeworlds.com/public_html
+#     for this account. Default stays public_html for other accounts.
 #   BOARD_APPROVED=1           bypass interactive approval check (required for CI/autonomous runs)
 # Flags:
 #   --dry-run  print what would be synced, do not push
@@ -32,6 +38,11 @@ for arg in "$@"; do
     --help|-h)
       echo "Usage: $0 [--dry-run] [--yes]"
       echo "Env: HOSTINGER_FTP_HOST, HOSTINGER_FTP_USER, HOSTINGER_FTP_PASS [+ PORT/PROTOCOL/REMOTE_DIR]"
+      echo "REMOTE_DIR default: public_html"
+      echo "NOTE (MAC-86): on this Hostinger account the live docroot is"
+      echo "  domains/machinemadeworlds.com/public_html, not the FTP login dir"
+      echo "  /public_html (DO_NOT_UPLOAD_HERE marker). Set:"
+      echo "  HOSTINGER_FTP_REMOTE_DIR=domains/machinemadeworlds.com/public_html"
       exit 0
       ;;
     *) echo "Unknown arg: $arg (try --help)"; exit 1 ;;
