@@ -8,10 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-93",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 14,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/14",
+  "branch": "feat/agents-reviewing-agents",
+  "commit": "a71e010",
   "merge_sha": null,
   "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the pull request number and merge identifier are recorded after the gate passes on the exact head.",
   "agents": [
@@ -39,8 +39,8 @@
       "agent": "DEV",
       "stage": "Implement",
       "verdict": "PASS",
-      "sha": "ac5aa0b",
-      "rationale": "Development scaffolded the essay and the log entry; build and full suite green.",
+      "sha": "a71e0109e1a01d1e1e48a1630e2b48a516981dc9",
+      "rationale": "Development scaffolded the essay and the log entry on the feature branch; build and full suite green.",
       "at": "2026-09-06"
     }
   ],
