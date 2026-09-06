@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Site tokens reused from assets/site.css (light theme). */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0; width: 1920px; height: 1080px; overflow: hidden;
+        background: #f7f8f4; color: #222d27;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      }
+      .clip { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+      .stage {
+        width: 1920px; height: 1080px; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 28px; text-align: center;
+      }
+      .eyebrow {
+        font-size: 28px; letter-spacing: 0.12em; text-transform: uppercase;
+        color: #5c685e; font-weight: 600;
+      }
+      h1 { font-family: Georgia, "Palatino Linotype", serif; font-weight: 400;
+        font-size: 110px; letter-spacing: -0.03em; line-height: 1.05; max-width: 1500px; }
+      h1 em { color: #285640; font-style: italic; }
+      .sub { font-size: 36px; color: #5c685e; max-width: 1400px; line-height: 1.5; }
+      .nodes { display: flex; gap: 24px; align-items: stretch; margin-top: 12px; }
+      .node {
+        min-width: 220px; padding: 28px 30px; border-radius: 14px;
+        background: #ffffff; border: 2px solid #d6ddd1; font-size: 40px; font-weight: 700;
+      }
+      .node small { display: block; font-size: 24px; font-weight: 400; color: #5c685e; margin-top: 8px; }
+      .node.active { border-color: #285640; background: #e1e9d9; color: #294635; }
+      .node.loop { border-style: dashed; }
+      .arrow { font-size: 56px; color: #285640; align-self: center; }
+      .looprow {
+        margin-top: 6px; font-size: 38px; background: #eef1e9; border: 2px solid #9daa8e;
+        border-radius: 12px; padding: 20px 40px; color: #294635;
+      }
+      .looprow code { font-family: Consolas, monospace; background: #ffffff;
+        border: 1px solid #d6ddd1; border-radius: 8px; padding: 2px 14px; }
+      .badge {
+        font-size: 26px; letter-spacing: 0.1em; text-transform: uppercase;
+        background: #285640; color: #f7f8f4; border-radius: 999px; padding: 12px 34px;
+      }
+      .foot { position: absolute; bottom: 56px; font-size: 26px; color: #5c685e; letter-spacing: 0.06em; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="pipeline"
+      data-start="0"
+      data-duration="20"
+      data-width="1920"
+      data-height="1080"
+      data-fps="30"
+    >
+      <!-- 0-2s: title card (also reused as loop tail at 18-20s) -->
+      <div id="s-title" class="clip" data-start="0" data-duration="3" data-track-index="1">
+        <div class="stage">
+          <div class="eyebrow">Machine Made Worlds &#183; publishing pipeline</div>
+          <h1>From draft to <em>published</em></h1>
+          <div class="sub">How every entry moves through the static pipeline &#8212; muted, loopable, 20 seconds.</div>
+        </div>
+      </div>
+
+      <!-- 3-6s: stages -->
+      <div id="s-stages" class="clip" data-start="3" data-duration="5" data-track-index="2">
+        <div class="stage">
+          <div class="badge">Stages</div>
+          <div class="nodes">
+            <div class="node active" id="n-draft">Draft<small>content/*.json</small></div>
+            <div class="arrow">&#8594;</div>
+            <div class="node" id="n-dev">DEV<small>build.py</small></div>
+            <div class="arrow">&#8594;</div>
+            <div class="node" id="n-sec">SEC<small>gate</small></div>
+            <div class="arrow">&#8594;</div>
+            <div class="node" id="n-qa">QA<small>gate</small></div>
+            <div class="arrow">&#8594;</div>
+            <div class="node" id="n-pub">Publish<small>dist/</small></div>
+          </div>
+          <div class="sub">ArticleMarkup gate keeps every body allowlisted. Static output only.</div>
+        </div>
+      </div>
+
+      <!-- 8-13s: gates in sequence -->
+      <div id="s-gates" class="clip" data-start="8" data-duration="6" data-track-index="3">
+        <div class="stage">
+          <div class="badge">Reviews on the exact SHA</div>
+          <h1 id="gate-word">SEC PASS</h1>
+          <div class="sub" id="gate-sub">No merge on an old SHA. Every review pins the pushed commit.</div>
+        </div>
+      </div>
+
+      <!-- 14-17s: return loop -->
+      <div id="s-loop" class="clip" data-start="14" data-duration="4" data-track-index="4">
+        <div class="stage">
+          <div class="badge">One return loop</div>
+          <div class="looprow">&#8617; BLOCK &#8594; fix (<code>abc1234</code>) &#8594; re-review (<code>def5678</code>)</div>
+          <div class="sub">BLOCK returns to correction as a new commit with fresh reviews &#8212; never a forced merge.</div>
+        </div>
+      </div>
+
+      <!-- 18-20s: loop tail mirrors title card for seamless loop -->
+      <div id="s-tail" class="clip" data-start="18" data-duration="2" data-track-index="5">
+        <div class="stage">
+          <div class="eyebrow">Machine Made Worlds &#183; publishing pipeline</div>
+          <h1>From draft to <em>published</em></h1>
+          <div class="sub">How every entry moves through the static pipeline &#8212; muted, loopable, 20 seconds.</div>
+        </div>
+      </div>
+
+      <div id="foot" class="foot clip" data-start="0" data-duration="20" data-track-index="0" style="display:flex;justify-content:center;">
+        <span>machinemadeworlds.com &#183; spike/hyperframes-pilot &#183; muted loop</span>
+      </div>
+    </div>
+
+    <script>
+      // Deterministic seekable timeline: absolute positions only, no random/Date.
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      tl.from("#s-title .stage", { opacity: 0, y: 40, duration: 0.6 }, 0);
+      tl.to("#s-title .stage", { opacity: 0, y: -30, duration: 0.4 }, 2.5);
+      tl.from("#s-stages .stage", { opacity: 0, y: 40, duration: 0.6 }, 3);
+      tl.to("#n-dev", { scale: 1.06, duration: 0.5 }, 4.5);
+      tl.to("#n-dev", { scale: 1.0, duration: 0.5 }, 5.0);
+      tl.to("#n-sec", { scale: 1.06, duration: 0.5 }, 5.5);
+      tl.to("#n-sec", { scale: 1.0, duration: 0.5 }, 6.0);
+      tl.to("#n-qa", { scale: 1.06, duration: 0.5 }, 6.5);
+      tl.to("#n-qa", { scale: 1.0, duration: 0.5 }, 7.0);
+      tl.to("#s-stages .stage", { opacity: 0, duration: 0.4 }, 7.5);
+      tl.from("#s-gates .stage", { opacity: 0, y: 40, duration: 0.6 }, 8);
+      tl.to("#gate-word", { scale: 1.05, duration: 0.4 }, 10);
+      tl.to("#gate-word", { scale: 1.0, duration: 0.4 }, 10.4);
+      tl.to("#s-gates .stage", { opacity: 0, duration: 0.4 }, 13.5);
+      tl.from("#s-loop .stage", { opacity: 0, y: 40, duration: 0.6 }, 14);
+      tl.to("#s-loop .looprow", { scale: 1.04, duration: 0.5 }, 15);
+      tl.to("#s-loop .looprow", { scale: 1.0, duration: 0.5 }, 15.5);
+      tl.to("#s-loop .stage", { opacity: 0, duration: 0.4 }, 17.5);
+      tl.from("#s-tail .stage", { opacity: 0, duration: 0.5 }, 18);
+      window.__timelines["pipeline"] = tl;
+      // Gate-word swap is seek-safe: discrete steps keyed to timeline time.
+      tl.call(function () { document.getElementById("gate-word").textContent = "SEC PASS"; }, null, 8.1);
+      tl.call(function () { document.getElementById("gate-word").textContent = "QA PASS"; }, null, 10.5);
+      tl.call(function () { document.getElementById("gate-word").textContent = "MERGE SHA"; }, null, 12.5);
+    </script>
+  </body>
+</html>
