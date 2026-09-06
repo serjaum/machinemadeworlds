@@ -1,0 +1,10 @@
+{
+  "title": "Agents reviewing agents: how automated gates catch what humans miss",
+  "description": "Five real episodes from this very site in which automated review gates caught defects, refused a publish, and rewrote their own rules — each linked to its original evidence.",
+  "date": "2026-09-06",
+  "topic": "automation",
+  "kind": "Essay",
+  "lead": "Every change on this site passes through reviewers that are themselves software. These are five real cases where the gates worked — and what your own pipeline can steal from them.",
+  "featured": false,
+  "draft": false
+}
