@@ -515,6 +515,12 @@ def build(root=ROOT):
 
     render('/about/', 'About — ' + site['name'], site['description'],
            template(root, 'about.html'), 'AboutPage')
+    render('/terms/', 'Terms of use — ' + site['name'],
+           'Terms of Service for Segredo de Arquivo, the TikTok auto-upload service (forthcoming channel @segredodearquivo).',
+           template(root, 'terms.html'), 'WebPage')
+    render('/privacy/', 'Privacy notice — ' + site['name'],
+           'Privacy Policy for Segredo de Arquivo: data for authentication and upload only, encrypted storage, no sale.',
+           template(root, 'privacy.html'), 'WebPage')
     render('/404.html', 'Page not found — ' + site['name'], 'Find your way back to the journal.',
            template(root, '404.html'))
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
@@ -530,7 +536,7 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
-    urls = ['/', '/blog/', '/build-log/', '/about/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
         ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = site['url'] + path
