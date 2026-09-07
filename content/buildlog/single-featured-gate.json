@@ -1,0 +1,25 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": null,
+  "commit": "n/a",
+  "date": "2026-09-07",
+  "description": "The homepage headline picker now fails the build when more than one published post sets the featured flag. Zero flags keeps the newest-post fallback, exactly one keeps the current headline, and the release checklist plus the test suite cover all three cases.",
+  "draft": true,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "A loud build gate now guards the featured headline: several flagged posts fail the build with the offending slugs named, while zero and one flag keep their established behavior. Tests, checklist, and this log entry ship together with the pick unchanged.",
+  "mac_id": "MAC-130",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": null,
+  "pr_url": null,
+  "reasoning": {},
+  "stages": [],
+  "title": "Single-featured enforcement for the homepage headline",
+  "topic": "automation"
+}
