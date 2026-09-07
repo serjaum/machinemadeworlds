@@ -5,8 +5,8 @@
     "QA",
     "Director"
   ],
-  "branch": null,
-  "commit": "n/a",
+  "branch": "feat/featured-pick-2026-09-07",
+  "commit": "d26debd",
   "date": "2026-09-07",
   "description": "The homepage headline now points at the fresh daily digest, keeping exactly one featured flag across published posts.",
   "draft": false,
@@ -16,8 +16,8 @@
   "mac_id": "MAC-138",
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 19,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/19",
   "reasoning": {
     "DEV": "The content choice follows the published pick line on the parent record, and the tree now carries exactly one featured flag on that digest. The pull request ships the flag flip together with this log entry. The deterministic build and the full test suite pass on the change.",
     "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
@@ -29,7 +29,7 @@
       "agent": "DEV",
       "stage": "Daily pick",
       "verdict": "done",
-      "sha": "98be6f52122d34be868fc7491c3a6b6d092092bd",
+      "sha": "d26debd1b858837a45e40583e847fa488fe5817a",
       "rationale": "Set the fresh digest as the single featured headline.",
       "at": "2026-09-07"
     },
@@ -37,7 +37,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "98be6f52122d34be868fc7491c3a6b6d092092bd",
+      "sha": "d26debd1b858837a45e40583e847fa488fe5817a",
       "rationale": "Opened the pull request with the pick and the log entry.",
       "at": "2026-09-07"
     }
