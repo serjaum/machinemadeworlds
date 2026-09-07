@@ -1,0 +1,55 @@
+{
+  "title": "Terms of Service and Privacy Policy for Segredo de Arquivo",
+  "description": "Two new static pages cover the Segredo de Arquivo Terms of Service and Privacy Policy from the Editor drafts, linked from the footer and listed in the sitemap. The contact line ships as a Board-replacement placeholder.",
+  "date": "2026-09-07",
+  "topic": "essays",
+  "kind": "Shipped",
+  "lead": "The site now publishes the Segredo de Arquivo Terms of Service and Privacy Policy from the Editor drafts, reusing the existing page pattern, with footer links and sitemap coverage. The contact line is a clearly-marked placeholder the Board must replace before publish.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-152",
+  "pr": 20,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/20",
+  "branch": "feat/legal-pages",
+  "commit": "25a133f",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done",
+      "sha": "25a133f8ba74080e8a9f7e0adc24dd10c4b04df2",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-07"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Legal pages",
+      "verdict": "done",
+      "sha": "25a133f8ba74080e8a9f7e0adc24dd10c4b04df2",
+      "rationale": "Added the two static pages with footer links and sitemap coverage.",
+      "at": "2026-09-07"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "25a133f8ba74080e8a9f7e0adc24dd10c4b04df2",
+      "rationale": "Opened the pull request with the pages and the log entry.",
+      "at": "2026-09-07"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The two pages reuse the established static page pattern with no new components, scripts, or styles, using a linear article body with no sidebar per the design clearance. The body copy tracks the Editor drafts from Board facts only, with the forthcoming channel kept as unlinked plain text and the contact line held as a Board-replacement placeholder that must be replaced before publish. The footer carries the new links while the header stays unchanged, and the sitemap plus per-page canonical and social tags come from the shared renderer. The deterministic build and the full test suite pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change adds the two required legal pages through the existing page system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}
