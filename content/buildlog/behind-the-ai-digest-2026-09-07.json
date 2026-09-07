@@ -1,1 +1,50 @@
-{"agents": ["DEV", "SEC", "QA", "SRE", "Director"], "branch": null, "commit": "n/a", "date": "2026-09-07", "description": "How the September 7 digest shipped: an automated morning run gathered seven fresh stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.", "draft": true, "featured": false, "kind": "Shipped", "lead": "The morning digest shipped the usual way: an automated run gathered seven stories, reviewers approved the result, the merge carried all seven to the front page, and this entry logged the trail the same day.", "mac_id": "MAC-124", "merge_note": "Pull request pending; provenance fields are filled once the pull request opens.", "merge_sha": null, "pr": null, "pr_url": null, "reasoning": {}, "stages": [], "title": "Behind the AI digest of September 7, 2026", "topic": "automation"}
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE",
+    "Director"
+  ],
+  "branch": "feat/daily-news-2026-09-07",
+  "commit": "61f14bb",
+  "date": "2026-09-07",
+  "description": "How the September 7 digest shipped: an automated morning run gathered seven fresh stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The morning digest shipped the usual way: an automated run gathered seven stories, reviewers approved the result, the merge carried all seven to the front page, and this entry logged the trail the same day.",
+  "mac_id": "MAC-124",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 17,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/17",
+  "reasoning": {
+    "DEV": "The scheduled run collected seven fresh stories and verified every source link before drafting. The pull request opened from the digest branch with the post and the build-log entry together. The deterministic build and the full test suite passed, including the homepage budget check after a title trim.",
+    "Editor": "Not evidenced in the linked record. The drafting agent and scaffold commands are not stated there.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "SRE": "Not evidenced in the linked record. Deployment and live verification are recorded in the deploy child issue after merge.",
+    "Director": "The morning run gathered seven stories with no overlap against the prior two digests. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Scheduled run",
+      "verdict": "done",
+      "sha": "61f14bb2772a540d5d5705d0233cc001de9d30a6",
+      "rationale": "Ran the scheduled collection and gathered seven stories.",
+      "at": "2026-09-07"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "61f14bb2772a540d5d5705d0233cc001de9d30a6",
+      "rationale": "Opened the pull request from the digest branch with the post and the log entry.",
+      "at": "2026-09-07"
+    }
+  ],
+  "title": "Behind the AI digest of September 7, 2026",
+  "topic": "automation"
+}
