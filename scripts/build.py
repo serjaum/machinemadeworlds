@@ -88,7 +88,13 @@ def load_posts(root, site):
         p['reading'] = max(1, math.ceil(len(plain(p['body']).split()) / 220))
         p['date_label'] = date.fromisoformat(p['date']).strftime('%b %d, %Y')
         posts.append(p)
-    return sorted(posts, key=lambda p: (p['date'], p['slug']), reverse=True)
+    posts = sorted(posts, key=lambda p: (p['date'], p['slug']), reverse=True)
+    featured = [p['slug'] for p in posts if p.get('featured')]
+    if len(featured) > 1:
+        raise ValueError(
+            'Multiple featured posts (%s): only one non-draft post may set featured:true'
+            % ', '.join(sorted(featured)))
+    return posts
 
 
 BUILDLOG_KINDS = frozenset(('Shipped', 'Fix', 'Experiment', 'Note'))

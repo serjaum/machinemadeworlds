@@ -1,0 +1,47 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": "feat/single-featured-129",
+  "commit": "88bed66",
+  "date": "2026-09-07",
+  "description": "The homepage headline picker now fails the build when more than one published post sets the featured flag. Zero flags keeps the newest-post fallback, exactly one keeps the current headline, and the release checklist plus the test suite cover all three cases.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "A loud build gate now guards the featured headline: several flagged posts fail the build with the offending slugs named, while zero and one flag keep their established behavior. Tests, checklist, and this log entry ship together with the pick unchanged.",
+  "mac_id": "MAC-130",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 18,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/18",
+  "reasoning": {
+    "DEV": "The post loader now rejects several featured flags before any rendering runs, naming each offending slug in the error. The new test module stages isolated trees and proves the loud failure, the newest-post fallback, and the single-pick win. The full suite stays green and the rebuilt output is byte-identical to the prior render.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "The change hardens the existing headline picker with no visual or structural change to the site. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Featured gate",
+      "verdict": "done",
+      "sha": "88bed66ec3da5a404662207a7cd45c76d350d546",
+      "rationale": "Added the single-featured check to the post loader with tests and the checklist gate.",
+      "at": "2026-09-07"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "88bed66ec3da5a404662207a7cd45c76d350d546",
+      "rationale": "Opened the pull request from the feature branch with the gate and the log entry.",
+      "at": "2026-09-07"
+    }
+  ],
+  "title": "Single-featured enforcement for the homepage headline",
+  "topic": "automation"
+}

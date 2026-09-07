@@ -1,0 +1,10 @@
+<p>The homepage headline picker now enforces the rule the runbook already assumed: at most one featured pick. This entry records the hardening from the assigned issue record only.</p>
+<h2>Motivation</h2>
+<p>The homepage headline picker silently took the first flagged post when several posts set the featured flag. That ambiguity could headline the wrong story with no signal to the author. The build now fails loudly instead, so a second flag can never slip through review unnoticed.</p>
+<h2>What changed</h2>
+<p>The site builder fails before rendering when more than one published post sets the featured flag, naming the offending slugs in the error. Zero featured keeps the established fallback to the newest post, and exactly one keeps the current headline behavior. The release checklist gained an exactly-one-featured gate, and the suite gained coverage for all three cases. The live pick is unchanged.</p>
+<h2>How it was done</h2>
+<p>The check lives in the post loader so no render path can bypass it. New tests stage isolated trees in temporary directories and cover the loud failure, the newest-post fallback, and the single-pick win, including the command-line exit path. The featured flags in the tree were verified at exactly one pick, so no rotation ships here.</p>
+<h2>Verification evidence</h2>
+<p>The site build exits success, the full suite is green, a second consecutive build is byte-identical, and the presence gate prints success. The built homepage headlines the verified pick while the published flag count stays at one.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline on the assigned issue.</p><ol><li><time datetime="2026-09-07">Sep 07, 2026</time><span>The featured gate landed in the post loader with tests.</span></li><li><time datetime="2026-09-07">Sep 07, 2026</time><span>The pull request opened with the gate and the log entry.</span></li><li><time datetime="2026-09-07">Sep 07, 2026</time><span>Security and quality reviews passed the shipment.</span></li><li><time datetime="2026-09-07">Sep 07, 2026</time><span>The merge carried the gate to the main branch.</span></li></ol></div>

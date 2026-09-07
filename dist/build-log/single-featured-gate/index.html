@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Single-featured enforcement for the homepage headline</title>
+    <meta name="description" content="The homepage headline picker now fails the build when more than one published post sets the featured flag. Zero flags keeps the newest-post fallback, exactly one keeps the current headline, and the release checklist plus the test suite cover all three cases." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/single-featured-gate/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.a1e7c3d0595e.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/logo.80cd4030aa0a.svg" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/logo.80cd4030aa0a.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Single-featured enforcement for the homepage headline" />
+    <meta property="og:description" content="The homepage headline picker now fails the build when more than one published post sets the featured flag. Zero flags keeps the newest-post fallback, exactly one keeps the current headline, and the release checklist plus the test suite cover all three cases." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/single-featured-gate/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Single-featured enforcement for the homepage headline", "url": "https://machinemadeworlds.com/build-log/single-featured-gate/", "inLanguage": "en", "headline": "Single-featured enforcement for the homepage headline", "description": "The homepage headline picker now fails the build when more than one published post sets the featured flag. Zero flags keeps the newest-post fallback, exactly one keeps the current headline, and the release checklist plus the test suite cover all three cases.", "datePublished": "2026-09-07", "dateModified": "2026-09-07", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/single-featured-gate/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Shipped <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Single-featured enforcement for the homepage headline</h1>
+    <p class="article-lead">A loud build gate now guards the featured headline: several flagged posts fail the build with the offending slugs named, while zero and one flag keep their established behavior. Tests, checklist, and this log entry ship together with the pick unchanged.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-07">Sep 07, 2026</time> · 2 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>The homepage headline picker now enforces the rule the runbook already assumed: at most one featured pick. This entry records the hardening from the assigned issue record only.</p>
+<h2 id="motivation">Motivation</h2>
+<p>The homepage headline picker silently took the first flagged post when several posts set the featured flag. That ambiguity could headline the wrong story with no signal to the author. The build now fails loudly instead, so a second flag can never slip through review unnoticed.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The site builder fails before rendering when more than one published post sets the featured flag, naming the offending slugs in the error. Zero featured keeps the established fallback to the newest post, and exactly one keeps the current headline behavior. The release checklist gained an exactly-one-featured gate, and the suite gained coverage for all three cases. The live pick is unchanged.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>The check lives in the post loader so no render path can bypass it. New tests stage isolated trees in temporary directories and cover the loud failure, the newest-post fallback, and the single-pick win, including the command-line exit path. The featured flags in the tree were verified at exactly one pick, so no rotation ships here.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>The site build exits success, the full suite is green, a second consecutive build is byte-identical, and the presence gate prints success. The built homepage headlines the verified pick while the published flag count stays at one.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline on the assigned issue.</p><ol><li><time datetime="2026-09-07">Sep 07, 2026</time><span>The featured gate landed in the post loader with tests.</span></li><li><time datetime="2026-09-07">Sep 07, 2026</time><span>The pull request opened with the gate and the log entry.</span></li><li><time datetime="2026-09-07">Sep 07, 2026</time><span>Security and quality reviews passed the shipment.</span></li><li><time datetime="2026-09-07">Sep 07, 2026</time><span>The merge carried the gate to the main branch.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p><a href="https://github.com/serjaum/machinemadeworlds/pull/18">the pull request</a> · merge pending · <a href="https://github.com/serjaum/machinemadeworlds/pull/18/commits" title="feat/single-featured-129">the branch</a></p><ol class="flow flow-anim"><li data-step="1"><span class="flow-status">done — Featured gate</span><span>DEV · <time datetime="2026-09-07">2026-09-07</time> — Added the single-featured check to the post loader with tests and the checklist gate.</span></li><li data-step="2"><span class="flow-status">done — Pull request</span><span>DEV · <time datetime="2026-09-07">2026-09-07</time> — Opened the pull request from the feature branch with the gate and the log entry.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Featured gate</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/88bed66ec3da5a404662207a7cd45c76d350d546" title="88bed66ec3da5a404662207a7cd45c76d350d546">commit</a></td><td>Added the single-featured check to the post loader with tests and the checklist gate.</td></tr><tr><td>Pull request</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/88bed66ec3da5a404662207a7cd45c76d350d546" title="88bed66ec3da5a404662207a7cd45c76d350d546">commit</a></td><td>Opened the pull request from the feature branch with the gate and the log entry.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>DEV</dt><dd>The post loader now rejects several featured flags before any rendering runs, naming each offending slug in the error. The new test module stages isolated trees and proves the loud failure, the newest-post fallback, and the single-pick win. The full suite stays green and the rebuilt output is byte-identical to the prior render.</dd><dt>SEC</dt><dd>Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.</dd><dt>QA</dt><dd>Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.</dd><dt>Director</dt><dd>The change hardens the existing headline picker with no visual or structural change to the site. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Featured gate">●</span><span title="done — Pull request">●</span></p></div>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/behind-the-ai-digest-2026-09-07/">Behind the AI digest of September 7, 2026</a></h3>
+  <p>How the September 7 digest shipped: an automated morning run gathered seven fresh stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-07">Sep 07, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/behind-the-ai-digest-2026-09-07/" aria-label="Read Behind the AI digest of September 7, 2026">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/shipping-gpt-6-astra-article/">Shipping the GPT-6 Astra launch article</a></h3>
+  <p>Backfill entry reconstructing the launch-article shipment: an editor draft from official sources, implementation with all tests passing, reviewer sign-off, and the live deploy. Strictly from linked issue evidence.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-06">Sep 06, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/shipping-gpt-6-astra-article/" aria-label="Read Shipping the GPT-6 Astra launch article">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/about/">About us</a
+          ><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
