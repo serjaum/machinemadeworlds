@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-07/",
+    "title": "AI news digest — September 7, 2026: $13B bid, open models, agent safety",
+    "description": "Seven builder stories: NVIDIA's $13B Hugging Face bid, a disclosure pledge, a slowdown call, two open releases, a git attack on agents, and US safety bills.",
+    "date": "2026-09-07",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/gpt-6-astra-launch/",
     "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
     "description": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
