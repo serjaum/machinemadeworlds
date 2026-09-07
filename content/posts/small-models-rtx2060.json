@@ -5,6 +5,6 @@
   "topic": "local-ai",
   "kind": "Guide",
   "lead": "Six gigabytes is enough for real writing and agent work if you pick the right quantization and leave heavy reasoning off the GPU. Here is what we run daily on an RTX 2060.",
-  "featured": true,
+  "featured": false,
   "draft": false
 }
