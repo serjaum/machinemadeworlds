@@ -1,0 +1,42 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": null,
+  "commit": "n/a",
+  "date": "2026-09-08",
+  "description": "Three missing beside-each-article distribution packs added verbatim from the editing pass: design-reading essay, prompt-injection glossary, September 8 link radar.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "Three published essays that landed without distribution copy now ship their packs: short post, professional-network post, and one-line note beside each article.",
+  "mac_id": "MAC-322",
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "merge_sha": null,
+  "pr": null,
+  "pr_url": null,
+  "reasoning": {
+    "DEV": "No builder or template code changed; three pack files were added verbatim from the editing pass plus this log entry. Routine content addition inside the cleared distribution-pack pattern, so no new design assessment was needed.",
+    "Director": "Routine content addition inside the cleared pattern with no new pages or components. Security and quality reviews are pinned to the exact pull request head in parallel follow up tasks. Release approval fires only when both verdicts pass that exact head."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-08",
+      "rationale": "Validated the remote and the login, then cut a fresh branch from the main line.",
+      "sha": "c89bf80",
+      "stage": "Preflight and branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-08",
+      "rationale": "Added the three missing packs verbatim with this log entry and rebuilt green.",
+      "sha": "c89bf80",
+      "stage": "Packs and log entry",
+      "verdict": "done"
+    }
+  ],
+  "title": "Missing distribution packs for three new posts",
+  "topic": "automation"
+}
