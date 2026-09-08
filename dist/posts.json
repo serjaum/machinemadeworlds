@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-08/",
+    "title": "Link radar, September 8, 2026",
+    "description": "Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.",
+    "date": "2026-09-08",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/glossary-prompt-injection/",
     "title": "What is prompt injection?",
     "description": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
