@@ -1,0 +1,47 @@
+{
+  "title": "Daily headline pick for September 8, 2026",
+  "description": "The homepage headline now points at the fresh daily digest, keeping exactly one featured flag across published posts.",
+  "date": "2026-09-08",
+  "topic": "local-ai",
+  "kind": "Shipped",
+  "lead": "The headline rotates to the fresh digest of the day, with every other published post leaving the featured flag off and the build green.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-334",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "c52d0ac",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Daily pick",
+      "verdict": "done",
+      "sha": "c52d0ac",
+      "rationale": "Set the fresh digest as the single featured headline.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "c52d0ac",
+      "rationale": "Opened the pull request with the pick and the log entry.",
+      "at": "2026-09-08"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The content choice follows the published pick line on the parent record, and the tree now carries exactly one featured flag on that digest. The pull request ships the flag flip together with this log entry. The deterministic build and the full test suite pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change rotates the existing headline picker with no visual or structural change to the site. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}

@@ -1,0 +1,10 @@
+<p>The homepage headline rotates to the fresh digest of the day. This entry records the rotation from the assigned issue record only.</p>
+<h2>Motivation</h2>
+<p>The homepage headline should always point at the story the newsroom chose for the day. The content choice follows the Editor pick line on the parent record, which names the fresh digest ai-news-2026-09-08 as the lead. Rotating the single featured flag keeps the headline honest without touching layout or style.</p>
+<h2>What changed</h2>
+<p>The fresh daily digest is now the single featured post, and every other published post leaves the featured flag off. The flag count across published posts is exactly one, so the homepage headline renders the chosen digest. No template, style, or script file changed. The live digest is <a href="/posts/ai-news-2026-09-08/">the daily digest of that day</a>.</p>
+<h2>How it was done</h2>
+<p>The change flips boolean flags in the post metadata only, then ships this log entry in the same pull request. The builder guard rejects more than one featured flag before any rendering runs, so the flip was verified against that gate. The work ran on a short branch cut from the main line and opened for review with the pick and the entry together.</p>
+<h2>Verification evidence</h2>
+<p>The site build exits success, the full suite is green, a second consecutive build is byte-identical, and the presence gate prints success. The built homepage headlines the chosen digest while the published flag count stays at one.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline on the assigned issue.</p><ol><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The content choice named the fresh digest as the lead.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The flags flipped to exactly one featured pick.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The pull request opened with the pick and the log entry.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>Security and quality reviews passed the shipment.</span></li></ol></div>
