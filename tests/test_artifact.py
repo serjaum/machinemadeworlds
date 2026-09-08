@@ -67,16 +67,24 @@ class ArtifactTests(unittest.TestCase):
     def test_budgets_and_no_third_party_resources(self):
         dist = ROOT / 'dist'
         assets = list((dist / 'assets').iterdir())
+        # MAC-167: the brand social card is scraper-only (og/twitter meta,
+        # never an in-page <img>/preload), so it sits outside the
+        # render-blocking weight budget; its own <300KB cap is pinned in
+        # test_share_meta. Page HTML delta here is the ~+300B of new meta.
+        inpage = [p for p in assets if not p.name.startswith('social-card.')]
+        self.assertTrue(any(p.name.startswith('social-card.') for p in assets),
+                        'Brand social card must ship')
         home = (dist / 'index.html').read_bytes()
-        total = len(home) + sum(p.stat().st_size for p in assets)
-        compressed = len(gzip.compress(home)) + sum(len(gzip.compress(p.read_bytes())) for p in assets)
+        total = len(home) + sum(p.stat().st_size for p in inpage)
+        compressed = len(gzip.compress(home)) + sum(len(gzip.compress(p.read_bytes())) for p in inpage)
         # Raw cap raised 40KB -> 42KB (MAC-72 merge): main sat at 39836
         # after the MAC-80 logo assets (+850B), and the MAC-78 pipeline CSS
         # adds ~1KB as briefed. MAC-102 animation adds ~1.7KB keyframes
-        # (spec budget <=3KB): cap 42KB -> 43KB. MAC-177 glossary adds a
-        # homepage card for the opening term: cap 43KB -> 43.2KB.
+        # (spec budget <=3KB): cap 42KB -> 43KB. MAC-167 share-meta tags add
+        # ~+300B of head meta and MAC-177 glossary adds a homepage card
+        # for the opening term: cap 43KB -> 43.8KB.
         # Compressed/JS caps unchanged and passing.
-        self.assertLess(total, 43200)
+        self.assertLess(total, 43800)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
         for p in dist.rglob('*.html'):

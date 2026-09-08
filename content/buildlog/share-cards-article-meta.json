@@ -1,0 +1,55 @@
+{
+  "title": "Large share cards, article metadata and per-topic descriptions",
+  "description": "Every page now advertises a brand 1200 by 630 raster card with full dimensions and large-card markup, journal posts carry article timestamps plus image metadata, and each topic page has its own Editor-drafted description.",
+  "date": "2026-09-08",
+  "topic": "essays",
+  "kind": "Shipped",
+  "lead": "Link shares from the journal used to unfurl as a small logo thumbnail with no article metadata, and every topic page repeated the same generic description. This change ships one brand raster card for all pages with large-card markup, adds timestamps and image metadata to journal posts only, and gives each of the four topic pages its own unique description from the Editor drafts. The deterministic build, the full test suite and the presence gate all pass on the change.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-167",
+  "pr": 21,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/21",
+  "branch": "feat/share-meta-167",
+  "commit": "5b64f40",
+  "merge_sha": null,
+  "merge_note": "Merge pending; merged only after SEC and QA pass the exact head.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done",
+      "sha": "5b64f405196deffbf564ffe1bdc9e7d75bfe6742",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Brand card and metadata wiring",
+      "verdict": "done",
+      "sha": "5b64f405196deffbf564ffe1bdc9e7d75bfe6742",
+      "rationale": "Generated the raster card and wired the share markup, article fields and topic descriptions.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Tests and log entry",
+      "verdict": "done",
+      "sha": "5b64f405196deffbf564ffe1bdc9e7d75bfe6742",
+      "rationale": "Added the share-metadata contract tests and shipped this entry in the same change.",
+      "at": "2026-09-08"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The card follows the clearance spec exactly with flat theme colors and safe margins, and the markup change is wiring-only with no visual restyle. Posts carry the new article fields while all other page types keep the shared brand defaults. The topic descriptions are the Editor drafts verbatim, enforced unique and complete by the builder. The full suite plus the presence gate pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change upgrades every share card through the existing page system with no visual or structural change on site. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}
