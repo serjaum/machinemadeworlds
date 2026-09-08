@@ -81,10 +81,13 @@ class ArtifactTests(unittest.TestCase):
         # after the MAC-80 logo assets (+850B), and the MAC-78 pipeline CSS
         # adds ~1KB as briefed. MAC-102 animation adds ~1.7KB keyframes
         # (spec budget <=3KB): cap 42KB -> 43KB. MAC-167 share-meta tags add
-        # ~+300B of head meta and MAC-177 glossary adds a homepage card
-        # for the opening term: cap 43KB -> 43.8KB.
+        # ~+300B of head meta (main sat at 42992, 8B under the cap): cap
+        # 43KB -> 43.5KB. MAC-175/190 data pages add two footer links
+        # (Prices, Benchmarks: ~60B on the homepage, zero new assets):
+        # cap 43.5KB -> 43.6KB. MAC-177 glossary adds a homepage card
+        # for the opening term (~+200B): cap 43.6KB -> 43.9KB.
         # Compressed/JS caps unchanged and passing.
-        self.assertLess(total, 43800)
+        self.assertLess(total, 43900)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
         for p in dist.rglob('*.html'):
