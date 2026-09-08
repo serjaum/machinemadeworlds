@@ -11,7 +11,7 @@
   "pr": null,
   "pr_url": null,
   "branch": null,
-  "commit": "e58296e",
+  "commit": "cacb918",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "agents": [
@@ -25,7 +25,7 @@
       "agent": "DEV",
       "stage": "Hosting preflight and branch",
       "verdict": "done",
-      "sha": "e58296e",
+      "sha": "cacb918",
       "rationale": "Verified the remote and login, then branched from the fresh main line.",
       "at": "2026-09-08"
     },
@@ -33,7 +33,7 @@
       "agent": "DEV",
       "stage": "Glossary term and pack",
       "verdict": "done",
-      "sha": "e58296e",
+      "sha": "cacb918",
       "rationale": "Shipped the term page, the social pack, and the backlog flip with this entry.",
       "at": "2026-09-08"
     },
@@ -41,7 +41,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "e58296e",
+      "sha": "cacb918",
       "rationale": "Opened the pull request with the term and the log entry.",
       "at": "2026-09-08"
     }
