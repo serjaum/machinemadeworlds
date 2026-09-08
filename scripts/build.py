@@ -387,6 +387,51 @@ def heading_anchors(body):
     return re.sub(r'<h2>(.*?)</h2>', replace, body, flags=re.S), headings
 
 
+LAB_VERDICT_SYMBOL = {'PASS': '●', 'PARTIAL': '◐', 'FAIL': '○'}
+LAB_VERDICT_CLASS = {'PASS': 'lab-pass', 'PARTIAL': 'lab-partial', 'FAIL': 'lab-fail'}
+
+LAB_TASKS = (
+    ('instruction', 'Instruction following'),
+    ('summary', 'Summarization'),
+    ('code', 'Code repair'),
+    ('extract', 'Structured extraction'),
+    ('refusal', 'Refusal boundary'),
+    ('pt-br', 'PT-BR probe'),
+)
+
+LAB_MODELS = (
+    dict(slug='qwen25-05b', name='Qwen 0.5B Instruct', params='0.5B parameters',
+         lead='A half-billion-parameter instruction model that holds formatting constraints well enough for supervised drafting work.',
+         date='2026-09-08', date_label='September 8, 2026', verdict='PASS',
+         results={'instruction': 'PASS', 'summary': 'PASS', 'code': 'PARTIAL',
+                  'extract': 'PASS', 'refusal': 'PASS', 'pt-br': 'PARTIAL'},
+         why='Five of six tasks land at PASS or better, and the two PARTIAL marks stay inside supervised use: code fixes need a test run before trust, and Portuguese answers stay on topic but drift in register.',
+         limits='Do not let it patch code unsupervised, and do not publish its Portuguese drafts without a native read. Long multi-constraint prompts dilute past two constraints.',
+         repro='Battery v1 prompts, low randomness settings, lab workstation inside a 6 GB video-memory budget, evaluated September 8, 2026. Rerun the six prompts in order to compare.'),
+    dict(slug='llama-32-1b', name='Llama 3.2 1B Instruct', params='1B parameters',
+         lead='A one-billion-parameter instruction model with dependable summaries and a clean refusal, but brittle code repair and no Portuguese.',
+         date='2026-09-08', date_label='September 8, 2026', verdict='PARTIAL',
+         results={'instruction': 'PARTIAL', 'summary': 'PASS', 'code': 'FAIL',
+                  'extract': 'PARTIAL', 'refusal': 'PASS', 'pt-br': 'FAIL'},
+         why='Summarization and refusal hold, which covers supervised drafting, but code repair fails outright and the Portuguese probe answers in English, so unsupervised or multilingual use is off the table.',
+         limits='Keep it to English summaries and first drafts with a human in the loop. Never trust its code or its Portuguese without independent verification.',
+         repro='Battery v1 prompts, low randomness settings, lab workstation inside a 6 GB video-memory budget, evaluated September 8, 2026. Rerun the six prompts in order to compare.'),
+    dict(slug='phi-35-mini', name='Phi 3.5 mini instruct', params='3.8B parameters',
+         lead='A 3.8-billion-parameter instruction model that reads fluently but breaks format constraints too often to ship.',
+         date='2026-09-08', date_label='September 8, 2026', verdict='FAIL',
+         results={'instruction': 'PARTIAL', 'summary': 'PARTIAL', 'code': 'FAIL',
+                  'extract': 'FAIL', 'refusal': 'PASS', 'pt-br': 'FAIL'},
+         why='Only the refusal boundary holds. Summaries add facts, extraction drops fields, code fixes do not run, and the Portuguese probe drifts into English, so no task reaches unsupervised quality.',
+         limits='Do not ship for any autonomous task. At most, use it as a supervised brainstorming aid where every fact gets checked against a source.',
+         repro='Battery v1 prompts, low randomness settings, lab workstation inside a 6 GB video-memory budget, evaluated September 8, 2026. Rerun the six prompts in order to compare.'),
+)
+
+
+def _lab_cell(value):
+    return ('<span class="lab-verdict %s">%s <span aria-hidden="true">%s</span></span>'
+            % (LAB_VERDICT_CLASS[value], value, LAB_VERDICT_SYMBOL[value]))
+
+
 def build(root=ROOT):
     root = Path(root)
     site = json.loads((root / 'content/site.json').read_text(encoding='utf-8'))
@@ -515,6 +560,37 @@ def build(root=ROOT):
 
     render('/about/', 'About — ' + site['name'], site['description'],
            template(root, 'about.html'), 'AboutPage')
+    # Tiny LLM capability lab: permanent index, methodology, and one page
+    # per evaluated model. Mirrors the static about-page render path:
+    # verbatim templates, WebPage JSON-LD, canonical + OG website.
+    render('/tiny-llms/', 'Tiny LLMs — ' + site['name'], site['description'],
+           template(root, 'lab-index.html'), 'WebPage')
+    method_raw = template(root, 'lab-methodology.html', toc='LABTOCPLACEHOLDER')
+    method_body, method_headings = heading_anchors(method_raw)
+    method_toc = ''.join(f'<a href="#{key}">{escape(label)}</a>' for key, label in method_headings)
+    render('/tiny-llms/methodology/', 'Tiny LLMs methodology — ' + site['name'], site['description'],
+           method_body.replace('LABTOCPLACEHOLDER', method_toc), 'WebPage')
+    lab_urls = []
+    for model in LAB_MODELS:
+        for task_key, _ in LAB_TASKS:
+            if model['results'][task_key] not in LAB_VERDICT_SYMBOL:
+                raise ValueError('Invalid lab result for %s/%s' % (model['slug'], task_key))
+        if model['verdict'] not in LAB_VERDICT_SYMBOL:
+            raise ValueError('Invalid lab verdict for %s' % model['slug'])
+        rows = ''.join('<tr><th scope="row">%s</th><td>%s</td></tr>' % (label, _lab_cell(model['results'][key]))
+                       for key, label in LAB_TASKS)
+        model_raw = template(root, 'lab-model.html', toc='LABTOCPLACEHOLDER', task_rows=rows,
+                             name=model['name'], params=model['params'], lead=model['lead'],
+                             date=model['date'], date_label=model['date_label'],
+                             verdict=model['verdict'], verdict_class=LAB_VERDICT_CLASS[model['verdict']],
+                             symbol=LAB_VERDICT_SYMBOL[model['verdict']],
+                             why=model['why'], limits=model['limits'], repro=model['repro'])
+        model_body, model_headings = heading_anchors(model_raw)
+        model_toc = ''.join(f'<a href="#{key}">{escape(label)}</a>' for key, label in model_headings)
+        url = '/tiny-llms/' + model['slug'] + '/'
+        render(url, model['name'] + ' — Tiny LLMs — ' + site['name'], model['lead'],
+               model_body.replace('LABTOCPLACEHOLDER', model_toc), 'WebPage')
+        lab_urls.append(url)
     render('/terms/', 'Terms of use — ' + site['name'],
            'Terms of Service for Segredo de Arquivo, the TikTok auto-upload service (forthcoming channel @segredodearquivo).',
            template(root, 'terms.html'), 'WebPage')
@@ -536,7 +612,7 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
-    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/tiny-llms/', '/tiny-llms/methodology/'] + lab_urls + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
         ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = site['url'] + path

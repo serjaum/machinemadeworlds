@@ -1,0 +1,42 @@
+<div class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/tiny-llms/">Tiny LLMs</a><span aria-hidden="true">/</span><span>$name</span>
+  </nav>
+  <header class="article-heading">
+    <p class="eyebrow">Capability lab <span class="tiny-rule" aria-hidden="true"></span> $params</p>
+    <h1>$name</h1>
+    <p class="article-lead">$lead</p>
+    <p><small>Evaluated <time datetime="$date">$date_label</time> · battery v1.</small></p>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar">
+      <div class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        $toc
+      </div>
+    </aside>
+    <div class="article-body">
+      <h2>Verdict.</h2>
+      <p><span class="lab-verdict $verdict_class">$verdict <span aria-hidden="true">$symbol</span></span></p>
+      <p>$why</p>
+      <h2>Limits.</h2>
+      <p>$limits</p>
+      <h2>Results.</h2>
+      <div class="lab-matrix-wrap" tabindex="0" role="region" aria-label="Battery v1 results for $name">
+        <table class="lab-matrix">
+          <caption>Battery v1 results for $name</caption>
+          <thead>
+            <tr><th scope="col">Task</th><th scope="col">Result</th></tr>
+          </thead>
+          <tbody>$task_rows</tbody>
+        </table>
+      </div>
+      <h2>Reproduction note.</h2>
+      <p>$repro</p>
+      <p>
+        <a href="/tiny-llms/">Back to the lab index</a> ·
+        <a href="/tiny-llms/methodology/">Read the methodology</a>.
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Capability lab</p>
+    <h1>Tiny LLMs.</h1>
+    <p>
+      Small models, tested the same way every week. Six fixed tasks, one
+      shared rubric, and a plain verdict per model: what it can do, where it
+      breaks, and how to reproduce the result.
+    </p>
+    <p><small>Evaluated <time datetime="2026-09-08">September 8, 2026</time> · battery v1 · <a href="/tiny-llms/methodology/">read the methodology</a>.</small></p>
+  </header>
+  <div class="about-section">
+    <p class="eyebrow">Fixed battery</p>
+    <h2>Capability matrix.</h2>
+    <p class="about-lede">
+      Every model below faces the same six tasks, including a Portuguese
+      probe. Each cell reads PASS, PARTIAL, or FAIL as text plus symbol, so
+      nothing depends on color alone.
+    </p>
+    <div class="lab-matrix-wrap" tabindex="0" role="region" aria-label="Tiny LLM capability matrix: models by task">
+      <table class="lab-matrix">
+        <caption>Battery v1 results by model and task</caption>
+        <thead>
+          <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Instructions</th>
+            <th scope="col">Summary</th>
+            <th scope="col">Code fix</th>
+            <th scope="col">Extraction</th>
+            <th scope="col">Refusal</th>
+            <th scope="col">PT-BR probe</th>
+            <th scope="col">Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="/tiny-llms/qwen25-05b/">Qwen 0.5B</a></th>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="/tiny-llms/llama-32-1b/">Llama 3.2 1B</a></th>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="/tiny-llms/phi-35-mini/">Phi 3.5 mini</a></th>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+            <td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td>
+            <td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td>
+            <td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td>
+            <td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td>
+            <td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td>
+            <td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p><small>Symbols repeat the words: PASS pairs with a filled dot, PARTIAL with a half dot, FAIL with an empty dot. <a href="/tiny-llms/methodology/">How scoring works</a>.</small></p>
+  </div>
+  <div class="about-section">
+    <p class="eyebrow">Evaluated models</p>
+    <h2>Model pages.</h2>
+    <p class="about-lede">
+      Each evaluated model gets its own page with a ship-it verdict: the
+      verdict, why it holds, its limits, and a note that reproduces the run.
+    </p>
+    <ul>
+      <li><a href="/tiny-llms/qwen25-05b/">Qwen 0.5B Instruct</a> — verdict PASS, supervised drafts and extraction work hold up.</li>
+      <li><a href="/tiny-llms/llama-32-1b/">Llama 3.2 1B Instruct</a> — verdict PARTIAL, summaries pass but code and Portuguese fail.</li>
+      <li><a href="/tiny-llms/phi-35-mini/">Phi 3.5 mini instruct</a> — verdict FAIL, too brittle for unsupervised tasks.</li>
+    </ul>
+  </div>
+  <div class="about-section">
+    <p class="eyebrow">Up next</p>
+    <h2>Backlog.</h2>
+    <p class="about-lede">
+      Models queued for the weekly battery. Linked names are evaluated;
+      plain names are still waiting for their run.
+    </p>
+    <ul>
+      <li><a href="/tiny-llms/qwen25-05b/">Qwen 0.5B Instruct</a> — evaluated, verdict PASS.</li>
+      <li><a href="/tiny-llms/llama-32-1b/">Llama 3.2 1B Instruct</a> — evaluated, verdict PARTIAL.</li>
+      <li><a href="/tiny-llms/phi-35-mini/">Phi 3.5 mini instruct</a> — evaluated, verdict FAIL.</li>
+      <li>Llama 3.2 3B Instruct — queued.</li>
+      <li>Qwen 3 0.6B — queued.</li>
+      <li>Qwen 3 1.7B — queued.</li>
+      <li>Gemma 2 2B instruct — queued.</li>
+      <li>Gemma 3 1B instruct — queued.</li>
+      <li>H2O Danube 1.8B chat — queued.</li>
+      <li>TinyLlama 1.1B chat — queued.</li>
+      <li>SmoLLM2 360M instruct — queued.</li>
+      <li>SmoLLM2 1.7B instruct — queued.</li>
+      <li>Granite 3.2 2B instruct — queued.</li>
+    </ul>
+  </div>
+  <div class="about-section">
+    <p class="eyebrow">Cadence</p>
+    <h2>Weekly routine.</h2>
+    <p class="about-lede">
+      One model a week moves from the backlog to a verdict. The full
+      procedure lives on the <a href="/tiny-llms/methodology/">methodology page</a>.
+    </p>
+    <ol>
+      <li>Pick the next queued model from the backlog, oldest entry first.</li>
+      <li>Run the six battery tasks on the lab device with battery v1 prompts.</li>
+      <li>Score each task PASS, PARTIAL, or FAIL against the shared rubric.</li>
+      <li>Publish the per-model page with verdict, limits, and reproduction note.</li>
+      <li>Link the model from the matrix and flip its backlog row to evaluated.</li>
+    </ol>
+  </div>
+</div>

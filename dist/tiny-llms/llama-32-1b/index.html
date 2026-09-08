@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Llama 3.2 1B Instruct — Tiny LLMs — Machine Made Worlds</title>
+    <meta name="description" content="A one-billion-parameter instruction model with dependable summaries and a clean refusal, but brittle code repair and no Portuguese." />
+    <link rel="canonical" href="https://machinemadeworlds.com/tiny-llms/llama-32-1b/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.88ccdd4c8a80.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/logo.80cd4030aa0a.svg" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/logo.80cd4030aa0a.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Llama 3.2 1B Instruct — Tiny LLMs — Machine Made Worlds" />
+    <meta property="og:description" content="A one-billion-parameter instruction model with dependable summaries and a clean refusal, but brittle code repair and no Portuguese." />
+    <meta property="og:url" content="https://machinemadeworlds.com/tiny-llms/llama-32-1b/" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "WebPage", "name": "Llama 3.2 1B Instruct — Tiny LLMs — Machine Made Worlds", "url": "https://machinemadeworlds.com/tiny-llms/llama-32-1b/", "inLanguage": "en"}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><div class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/tiny-llms/">Tiny LLMs</a><span aria-hidden="true">/</span><span>Llama 3.2 1B Instruct</span>
+  </nav>
+  <header class="article-heading">
+    <p class="eyebrow">Capability lab <span class="tiny-rule" aria-hidden="true"></span> 1B parameters</p>
+    <h1>Llama 3.2 1B Instruct</h1>
+    <p class="article-lead">A one-billion-parameter instruction model with dependable summaries and a clean refusal, but brittle code repair and no Portuguese.</p>
+    <p><small>Evaluated <time datetime="2026-09-08">September 8, 2026</time> · battery v1.</small></p>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar">
+      <div class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#verdict">Verdict.</a><a href="#limits">Limits.</a><a href="#results">Results.</a><a href="#reproduction-note">Reproduction note.</a>
+      </div>
+    </aside>
+    <div class="article-body">
+      <h2 id="verdict">Verdict.</h2>
+      <p><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></p>
+      <p>Summarization and refusal hold, which covers supervised drafting, but code repair fails outright and the Portuguese probe answers in English, so unsupervised or multilingual use is off the table.</p>
+      <h2 id="limits">Limits.</h2>
+      <p>Keep it to English summaries and first drafts with a human in the loop. Never trust its code or its Portuguese without independent verification.</p>
+      <h2 id="results">Results.</h2>
+      <div class="lab-matrix-wrap" tabindex="0" role="region" aria-label="Battery v1 results for Llama 3.2 1B Instruct">
+        <table class="lab-matrix">
+          <caption>Battery v1 results for Llama 3.2 1B Instruct</caption>
+          <thead>
+            <tr><th scope="col">Task</th><th scope="col">Result</th></tr>
+          </thead>
+          <tbody><tr><th scope="row">Instruction following</th><td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td></tr><tr><th scope="row">Summarization</th><td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td></tr><tr><th scope="row">Code repair</th><td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td></tr><tr><th scope="row">Structured extraction</th><td><span class="lab-verdict lab-partial">PARTIAL <span aria-hidden="true">◐</span></span></td></tr><tr><th scope="row">Refusal boundary</th><td><span class="lab-verdict lab-pass">PASS <span aria-hidden="true">●</span></span></td></tr><tr><th scope="row">PT-BR probe</th><td><span class="lab-verdict lab-fail">FAIL <span aria-hidden="true">○</span></span></td></tr></tbody>
+        </table>
+      </div>
+      <h2 id="reproduction-note">Reproduction note.</h2>
+      <p>Battery v1 prompts, low randomness settings, lab workstation inside a 6 GB video-memory budget, evaluated September 8, 2026. Rerun the six prompts in order to compare.</p>
+      <p>
+        <a href="/tiny-llms/">Back to the lab index</a> ·
+        <a href="/tiny-llms/methodology/">Read the methodology</a>.
+      </p>
+    </div>
+  </div>
+</div>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/tiny-llms/">Tiny LLMs</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

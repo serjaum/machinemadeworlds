@@ -315,3 +315,16 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail .flow-dots span:nth-child(3n){animation-delay:.6s}
 .trail .flow-anim>li:last-child .flow-status{display:inline-block;animation:flow-dot 2.6s ease-in-out infinite}
 @keyframes flow-dot{0%,100%{opacity:.45;transform:none}50%{opacity:1;transform:translateY(-2px)}}
+/* Tiny LLM capability lab (lab index, methodology and model pages). Additive only:
+   lab-* classes clone the article table idiom, semantic vars, no new tokens,
+   breakpoints, motion, scripts or color-only meaning. Text plus symbol first. */
+.lab-matrix-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--raised);margin:var(--s2) 0 var(--s3)}
+.lab-matrix{border-collapse:collapse;width:100%;min-width:40rem;font:13px/1.6 var(--sans)}
+.lab-matrix caption{text-align:left;font:500 11px/1.6 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:var(--s2) var(--s2) 0}
+.lab-matrix th,.lab-matrix td{padding:var(--s1) var(--s2);border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.lab-matrix thead th{position:sticky;top:0;background:var(--surface)}
+.lab-matrix tbody th{position:sticky;left:0;background:var(--raised)}
+.lab-verdict{display:inline-flex;align-items:center;gap:var(--s1);font-weight:600;white-space:nowrap}
+.lab-pass{color:var(--accent)}
+.lab-partial{color:var(--muted);border-left:3px solid var(--muted);padding-left:var(--s1)}
+.lab-fail{color:var(--muted)}
