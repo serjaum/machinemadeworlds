@@ -11,7 +11,7 @@
   "pr": null,
   "pr_url": null,
   "branch": null,
-  "commit": "c52d0ac",
+  "commit": "478deb7",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "agents": [
@@ -25,7 +25,7 @@
       "agent": "DEV",
       "stage": "Daily pick",
       "verdict": "done",
-      "sha": "c52d0ac",
+      "sha": "478deb7",
       "rationale": "Set the fresh digest as the single featured headline.",
       "at": "2026-09-08"
     },
@@ -33,7 +33,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "c52d0ac",
+      "sha": "478deb7",
       "rationale": "Opened the pull request with the pick and the log entry.",
       "at": "2026-09-08"
     }
