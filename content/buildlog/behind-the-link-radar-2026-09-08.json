@@ -6,8 +6,8 @@
     "SRE",
     "Director"
   ],
-  "branch": null,
-  "commit": "n/a",
+  "branch": "feat/link-radar-2026-09-08",
+  "commit": "e5857aa",
   "date": "2026-09-08",
   "description": "How the first link-radar validation post shipped: five verified reads with two-line editor notes, an exact-head pull request, and this log entry in the same branch.",
   "draft": false,
@@ -17,8 +17,8 @@
   "mac_id": "MAC-181",
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 22,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/22",
   "reasoning": {
     "DEV": "The radar post follows the fixed curation pattern with one intro line and five titled links, each carrying a two-line editor note on builder relevance. All five source addresses were checked for success status before publication, with no overlap against recent digests. The deterministic build and the full test suite pass on the change, including the always-log presence check for the accompanying entry.",
     "Director": "This change validates the new curation format with a dated radar post built from verified primary-source picks. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.",
@@ -33,6 +33,22 @@
       "verdict": "done",
       "sha": "a6792732c4e302dd387526fe563d7f6ac7df139e",
       "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Radar post",
+      "verdict": "done",
+      "sha": "e5857aaab044dd3397db483ab7d792f68a2813c0",
+      "rationale": "Drafted the radar post from the verified picks with the log entry in the same branch.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "e5857aaab044dd3397db483ab7d792f68a2813c0",
+      "rationale": "Opened the pull request with the radar post and the log entry.",
       "at": "2026-09-08"
     }
   ],
