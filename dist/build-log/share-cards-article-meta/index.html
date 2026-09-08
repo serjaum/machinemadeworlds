@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Large share cards, article metadata and per-topic descriptions</title>
+    <meta name="description" content="Every page now advertises a brand 1200 by 630 raster card with full dimensions and large-card markup, journal posts carry article timestamps plus image metadata, and each topic page has its own Editor-drafted description." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/share-cards-article-meta/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.a1e7c3d0595e.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Large share cards, article metadata and per-topic descriptions" />
+    <meta property="og:description" content="Every page now advertises a brand 1200 by 630 raster card with full dimensions and large-card markup, journal posts carry article timestamps plus image metadata, and each topic page has its own Editor-drafted description." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/share-cards-article-meta/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Large share cards, article metadata and per-topic descriptions", "url": "https://machinemadeworlds.com/build-log/share-cards-article-meta/", "inLanguage": "en", "headline": "Large share cards, article metadata and per-topic descriptions", "description": "Every page now advertises a brand 1200 by 630 raster card with full dimensions and large-card markup, journal posts carry article timestamps plus image metadata, and each topic page has its own Editor-drafted description.", "datePublished": "2026-09-08", "dateModified": "2026-09-08", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/share-cards-article-meta/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/essays/">Essays</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Shipped <span class="tiny-rule" aria-hidden="true"></span> Essays
+    </p>
+    <h1>Large share cards, article metadata and per-topic descriptions</h1>
+    <p class="article-lead">Link shares from the journal used to unfurl as a small logo thumbnail with no article metadata, and every topic page repeated the same generic description. This change ships one brand raster card for all pages with large-card markup, adds timestamps and image metadata to journal posts only, and gives each of the four topic pages its own unique description from the Editor drafts. The deterministic build, the full test suite and the presence gate all pass on the change.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-08">Sep 08, 2026</time> · 4 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>Links shared from the journal used to unfurl as a small logo thumbnail with no article metadata, and every topic page repeated the same generic description. This change gives every page a brand raster card with large-card markup, gives journal posts timestamps and image metadata, and gives each topic page its own Editor-drafted description. This log entry ships in the same change per the standing rule.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Every page advertised the same small vector logo as its share image with the small-summary card type, so shares on large-card timelines rendered weakly with no image dimensions and no article timestamps. The proposal record documents the weak unfurls with live markup evidence and points at the raster-image guidance from the platform publishers: large cards want a 1200 by 630 raster image with explicit dimensions. Topic pages compounded the problem by repeating one generic description across all four archives. One static brand card plus wiring-only markup closes the gap with zero content risk.</p>
+<h2 id="what-changed">What changed</h2>
+<p>A new brand card file now ships in the asset pipeline with content hashing like every other asset: 1200 by 630 pixels, opaque, flat theme colors, the logo tile geometry beside the wordmark with the tagline and address lines, inside the specified safe margins. Every rendered page now carries an absolute card image address with width, height, type and alt plus the matching image tag, and the card type is the large-image variant. Journal post pages only add published time, modified time, section and author tags, and the structured data for posts gains the absolute card image. The four topic pages each render their own Editor-drafted description in the page meta and share tags, enforced unique and complete by the builder. The logo and favicon files, header, footer, feeds and sitemap are untouched.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>After the remote preflight and a fresh feature branch from the main line, development generated the card with a local deterministic recipe: the tile is drawn from the logo geometry at four-times supersample and downscaled, the wordmark uses the serif system face with the tagline and address in the sans and mono system faces, and the file is saved optimized with no metadata at well under the weight budget. The shared page renderer passes the card address and dimensions into the base template as parameters, the archive helper accepts a per-page description, and the site data file carries the four Editor descriptions. A new contract test pins the card asset, the per-page markup, the post-only article fields and the distinct topic descriptions, and the standing weight budget now scopes the scraper-only card outside the render-blocking total with its own size pin. This log entry ships in the same change per the standing rule.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>The site build exits success, the full suite of fifty-two tests is green, a second consecutive build is byte-identical, and the presence gate prints success with this entry covering the change. The built card decodes at exactly 1200 by 630 and weighs about thirty-five kilobytes against the three-hundred-kilobyte budget. Every built page was scanned for the absolute card address, the dimension tags and the large-image card type, and every post page for the four article fields plus the structured-data image. The feed parses with the journal count intact, the sitemap parses with all addresses absolute, and a scan of the diff finds no secrets. The interactive sharing debugger needs a logged-in platform session, which the unattended build environment has no credentialed access to, so a direct debugger run returned a session error; the markup instead matches the published platform requirements line for line, and the debugger check is left for a credentialed reviewer on one post address after deploy. Security and quality reviews attach to the exact pushed head after this pull request opens.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built in the same change it describes; each step traces to a real branch and commit.</p><ol><li><time datetime="2026-09-08">Sep 08, 2026</time><span>Development verified the remote and login, then branched from the fresh main line.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>Development generated the raster card and wired the share markup with article fields and topic descriptions.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>Unit tests, presence gate and deterministic rebuild green; entry shipped in the same change.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p>merge pending</p><ol class="flow flow-anim"><li data-step="1"><span class="flow-status">done — Hosting preflight and branch</span><span>DEV · <time datetime="2026-09-08">2026-09-08</time> — Verified the remote and login, then branched from the fresh main line.</span></li><li data-step="2"><span class="flow-status">done — Brand card and metadata wiring</span><span>DEV · <time datetime="2026-09-08">2026-09-08</time> — Generated the raster card and wired the share markup, article fields and topic descriptions.</span></li><li data-step="3"><span class="flow-status">done — Tests and log entry</span><span>DEV · <time datetime="2026-09-08">2026-09-08</time> — Added the share-metadata contract tests and shipped this entry in the same change.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Hosting preflight and branch</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81" title="6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81">commit</a></td><td>Verified the remote and login, then branched from the fresh main line.</td></tr><tr><td>Brand card and metadata wiring</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81" title="6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81">commit</a></td><td>Generated the raster card and wired the share markup, article fields and topic descriptions.</td></tr><tr><td>Tests and log entry</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81" title="6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81">commit</a></td><td>Added the share-metadata contract tests and shipped this entry in the same change.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>DEV</dt><dd>The card follows the clearance spec exactly with flat theme colors and safe margins, and the markup change is wiring-only with no visual restyle. Posts carry the new article fields while all other page types keep the shared brand defaults. The topic descriptions are the Editor drafts verbatim, enforced unique and complete by the builder. The full suite plus the presence gate pass on the change.</dd><dt>SEC</dt><dd>Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.</dd><dt>QA</dt><dd>Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.</dd><dt>Director</dt><dd>This change upgrades every share card through the existing page system with no visual or structural change on site. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Hosting preflight and branch">●</span><span title="done — Brand card and metadata wiring">●</span><span title="done — Tests and log entry">●</span></p></div>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/essays/">Essays</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/legal-pages-terms-privacy/">Terms of Service and Privacy Policy for Segredo de Arquivo</a></h3>
+  <p>Two new static pages cover the Segredo de Arquivo Terms of Service and Privacy Policy from the Editor drafts, linked from the footer and listed in the sitemap. The contact line ships as a Board-replacement placeholder.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-07">Sep 07, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/build-log/legal-pages-terms-privacy/" aria-label="Read Terms of Service and Privacy Policy for Segredo de Arquivo">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/single-featured-gate/">Single-featured enforcement for the homepage headline</a></h3>
+  <p>The homepage headline picker now fails the build when more than one published post sets the featured flag. Zero flags keeps the newest-post fallback, exactly one keeps the current headline, and the release checklist plus the test suite cover all three cases.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-07">Sep 07, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/single-featured-gate/" aria-label="Read Single-featured enforcement for the homepage headline">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
