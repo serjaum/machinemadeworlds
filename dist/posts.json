@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-rag/",
+    "title": "What is RAG?",
+    "description": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
+    "date": "2026-09-08",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/glossary-prompt-injection/",
     "title": "What is prompt injection?",
     "description": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",

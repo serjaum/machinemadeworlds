@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-rag/",
+      "url": "https://machinemadeworlds.com/posts/glossary-rag/",
+      "title": "What is RAG?",
+      "summary": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
+      "content_text": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
+      "date_published": "2026-09-08T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/glossary-prompt-injection/",
       "url": "https://machinemadeworlds.com/posts/glossary-prompt-injection/",
       "title": "What is prompt injection?",

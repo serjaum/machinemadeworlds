@@ -111,7 +111,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <h2 id="how-it-works">How it works</h2>
 <p>Language models treat everything they read as potential guidance, so they cannot reliably separate orders from content. An attacker plants a command in a web page, document, or tool result the model is asked to summarize or act on. When the model processes that input, it may follow the planted command instead: leaking data, calling tools, or producing skewed output. Hidden text, translated instructions, and poisoned tool outputs all serve the same trick, and the model never raises its hand.</p>
 <p>Builders counter it by treating third-party content as untrusted input, confirming sensitive actions out of band, and constraining what tools may do unsupervised.</p>
-<h2 id="related-terms">Related terms</h2><p>This is the first entry in the glossary series. New terms land here every weekday; browse <a href="/blog/">the journal</a> meanwhile.</p>
+<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-rag/">RAG</a></li></ul>
       <div class="article-end">
         <span aria-hidden="true">m·w</span
         ><a href="/blog/">← Back to the journal</a>
@@ -126,6 +126,20 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <div class="related-grid"><article class="story compact" data-search-item>
   <div class="story-meta">
     <a class="topic-label" href="/topics/essays/">Essays</a
+    ><span>Glossary</span>
+  </div>
+  <h3><a href="/posts/glossary-rag/">What is RAG?</a></h3>
+  <p>RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/glossary-rag/" aria-label="Read What is RAG?">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Essay</span>
   </div>
   <h3><a href="/posts/hello-machines/">Hello, machines: why we started this blog</a></h3>
@@ -135,20 +149,6 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       ><time datetime="2026-09-05">Sep 05, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
     ><a class="story-arrow" href="/posts/hello-machines/" aria-label="Read Hello, machines: why we started this blog">↗</a>
-  </div>
-</article>
-<article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/automation/">Automation</a
-    ><span>Radar</span>
-  </div>
-  <h3><a href="/posts/link-radar-2026-09-08/">Link radar, September 8, 2026</a></h3>
-  <p>Five reads: OpenAI&#x27;s research push, the alien-mind essay, DeepMind&#x27;s APAC drive, GitHub&#x27;s routing preview, and an agent checklist.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-08">Sep 08, 2026</time>
-      <span aria-hidden="true">·</span> 2 min read</span
-    ><a class="story-arrow" href="/posts/link-radar-2026-09-08/" aria-label="Read Link radar, September 8, 2026">↗</a>
   </div>
 </article>
 </div>
