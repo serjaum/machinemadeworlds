@@ -179,11 +179,11 @@ tasks; stalled work is re-woken, never left waiting on a human.
 ## Deploy
 
 ```sh
-./deploy.sh --dry-run   # preview dist/ -> public_html sync
+./deploy.sh --dry-run   # preview dist/ -> domains/machinemadeworlds.com/public_html sync
 BOARD_APPROVED=1 ./deploy.sh --yes   # live push (SRE-owned)
 ```
 
-Deploy syncs `dist/` to Hostinger `public_html` (`scripts/deploy.sh`;
+Deploy syncs `dist/` to Hostinger `domains/machinemadeworlds.com/public_html` (`scripts/deploy.sh`;
 `deploy-hostinger.sh` is a deprecated alias). SRE verifies production after
 every deploy: homepage, hashed logo/favicon assets, sitemap, robots, and no
 regressions.

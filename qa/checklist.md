@@ -34,3 +34,11 @@ build is byte-identical (deterministic rebuild).
 `/build-log/` index lists the new entry; each new detail page renders with a
 single `h1`, the trail block, and a sitemap entry; `feed.xml` and
 `posts.json` stay journal-only.
+
+## 5. Distribution-pack presence (FAIL without it)
+
+Every non-draft post under `content/posts/` must ship its beside-each-article
+`content/posts/<slug>.dist-pack.md` (X post, LinkedIn post, RSS/social note).
+The build warns loudly on stderr naming each missing slug
+(`WARNING: post <slug> has no dist-pack`); QA FAILs the PR when any
+non-draft post lacks its pack.
