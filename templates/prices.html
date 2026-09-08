@@ -1,0 +1,28 @@
+<div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Data</p>
+    <h1>Model API<br /><em>prices.</em></h1>
+    <p>
+      Indicative per-token list prices for a few widely used models,
+      refreshed weekly. Verify against the linked vendor page before budgeting.
+    </p>
+    <p><small>Last updated <time datetime="$updated">$updated_label</time>. Prices in USD per 1M tokens.</small></p>
+  </header>
+  <div class="article-body">
+    <table tabindex="0" aria-label="Model API prices">
+      <thead>
+        <tr><th scope="col">Model</th><th scope="col">Input / 1M</th><th scope="col">Output / 1M</th><th scope="col">Source</th><th scope="col">Checked</th></tr>
+      </thead>
+      <tbody>
+$rows
+      </tbody>
+    </table>
+    <h2>Methodology</h2>
+    <p>
+      Figures are list prices in USD per one million tokens, copied from the
+      vendor page linked per row. Self-hosted weights carry no per-token fee;
+      hardware and energy costs are out of scope. Rows are re-checked weekly;
+      any row older than ten days is flagged for refresh.
+    </p>
+  </div>
+</div>

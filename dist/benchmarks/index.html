@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page not found — Machine Made Worlds</title>
-    <meta name="description" content="Find your way back to the journal." />
-    <link rel="canonical" href="https://machinemadeworlds.com/404.html" />
+    <title>Model benchmarks — Machine Made Worlds</title>
+    <meta name="description" content="Public eval scores for reference, refreshed weekly." />
+    <link rel="canonical" href="https://machinemadeworlds.com/benchmarks/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -24,12 +24,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Page not found — Machine Made Worlds" />
-    <meta property="og:description" content="Find your way back to the journal." />
-    <meta property="og:url" content="https://machinemadeworlds.com/404.html" />
+    <meta property="og:title" content="Model benchmarks — Machine Made Worlds" />
+    <meta property="og:description" content="Public eval scores for reference, refreshed weekly." />
+    <meta property="og:url" content="https://machinemadeworlds.com/benchmarks/" />
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found — Machine Made Worlds", "url": "https://machinemadeworlds.com/404.html", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "WebPage", "name": "Model benchmarks — Machine Made Worlds", "url": "https://machinemadeworlds.com/benchmarks/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.d910f5e99009.js" defer></script>
   </head>
@@ -63,12 +63,37 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><section class="container not-found">
-  <p class="eyebrow">404 · A wrong turn</p>
-  <h1>Not every path<br />leads to an article.</h1>
-  <p>This page isn't here. There's plenty more to explore in the journal.</p>
-  <a class="button" href="/blog/">Back to the journal ↗</a>
-</section>
+    <main id="main" tabindex="-1"><div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Data</p>
+    <h1>Model<br /><em>benchmarks.</em></h1>
+    <p>
+      A small set of public eval scores for reference, refreshed weekly.
+      Scores measure the harness, not just the model — read the linked notes.
+    </p>
+    <p><small>Last updated <time datetime="2026-09-08">September 08, 2026</time>.</small></p>
+  </header>
+  <div class="article-body">
+    <table tabindex="0" aria-label="Model benchmark scores">
+      <thead>
+        <tr><th scope="col">Model</th><th scope="col">Benchmark</th><th scope="col">Score</th><th scope="col">Source</th><th scope="col">Checked</th></tr>
+      </thead>
+      <tbody>
+<tr><td>GPT-6 Astra</td><td>OSWorld</td><td>72.6%</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>GPT-6 Astra</td><td>SWE-bench Verified</td><td>80.4%</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>GPT-6 Astra</td><td>AutomationBench</td><td>41.4%</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Claude Sonnet 4.6</td><td>SWE-bench Verified</td><td>77.2%</td><td><a href="https://www.anthropic.com/news/claude-sonnet-4-6">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+      </tbody>
+    </table>
+    <h2>Methodology</h2>
+    <p>
+      Scores are copied from the vendor or harness page linked per row.
+      They are point-in-time snapshots for comparing local models against
+      hosted references, not targets to match on-device. Rows are re-checked
+      weekly; any row older than ten days is flagged for refresh.
+    </p>
+  </div>
+</div>
 </main>
     <footer class="footer" data-od-id="footer">
       <div class="container footer-top">

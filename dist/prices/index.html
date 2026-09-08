@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page not found — Machine Made Worlds</title>
-    <meta name="description" content="Find your way back to the journal." />
-    <link rel="canonical" href="https://machinemadeworlds.com/404.html" />
+    <title>Model API prices — Machine Made Worlds</title>
+    <meta name="description" content="Indicative per-token list prices for widely used models, refreshed weekly." />
+    <link rel="canonical" href="https://machinemadeworlds.com/prices/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -24,12 +24,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Page not found — Machine Made Worlds" />
-    <meta property="og:description" content="Find your way back to the journal." />
-    <meta property="og:url" content="https://machinemadeworlds.com/404.html" />
+    <meta property="og:title" content="Model API prices — Machine Made Worlds" />
+    <meta property="og:description" content="Indicative per-token list prices for widely used models, refreshed weekly." />
+    <meta property="og:url" content="https://machinemadeworlds.com/prices/" />
     <meta name="twitter:card" content="summary" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found — Machine Made Worlds", "url": "https://machinemadeworlds.com/404.html", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "WebPage", "name": "Model API prices — Machine Made Worlds", "url": "https://machinemadeworlds.com/prices/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.d910f5e99009.js" defer></script>
   </head>
@@ -63,12 +63,37 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><section class="container not-found">
-  <p class="eyebrow">404 · A wrong turn</p>
-  <h1>Not every path<br />leads to an article.</h1>
-  <p>This page isn't here. There's plenty more to explore in the journal.</p>
-  <a class="button" href="/blog/">Back to the journal ↗</a>
-</section>
+    <main id="main" tabindex="-1"><div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Data</p>
+    <h1>Model API<br /><em>prices.</em></h1>
+    <p>
+      Indicative per-token list prices for a few widely used models,
+      refreshed weekly. Verify against the linked vendor page before budgeting.
+    </p>
+    <p><small>Last updated <time datetime="2026-09-08">September 08, 2026</time>. Prices in USD per 1M tokens.</small></p>
+  </header>
+  <div class="article-body">
+    <table tabindex="0" aria-label="Model API prices">
+      <thead>
+        <tr><th scope="col">Model</th><th scope="col">Input / 1M</th><th scope="col">Output / 1M</th><th scope="col">Source</th><th scope="col">Checked</th></tr>
+      </thead>
+      <tbody>
+<tr><td>GPT-6 Astra</td><td>3.00</td><td>12.00</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Claude Sonnet 4.6</td><td>1.25</td><td>6.25</td><td><a href="https://www.anthropic.com/pricing">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Gemini 3 Flash</td><td>0.80</td><td>3.20</td><td><a href="https://ai.google.dev/pricing">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Llama 4 Maverick (self-hosted)</td><td>0.00</td><td>0.00</td><td><a href="https://www.llama.com/docs/model-cards/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+      </tbody>
+    </table>
+    <h2>Methodology</h2>
+    <p>
+      Figures are list prices in USD per one million tokens, copied from the
+      vendor page linked per row. Self-hosted weights carry no per-token fee;
+      hardware and energy costs are out of scope. Rows are re-checked weekly;
+      any row older than ten days is flagged for refresh.
+    </p>
+  </div>
+</div>
 </main>
     <footer class="footer" data-od-id="footer">
       <div class="container footer-top">
