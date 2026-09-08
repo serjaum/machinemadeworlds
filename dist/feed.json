@@ -1,0 +1,164 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Machine Made Worlds",
+  "home_page_url": "https://machinemadeworlds.com/",
+  "feed_url": "https://machinemadeworlds.com/feed.json",
+  "description": "Essays, practical guides and field notes on artificial intelligence, automation and the things we build.",
+  "language": "en",
+  "items": [
+    {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-08/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-08/",
+      "title": "Link radar, September 8, 2026",
+      "summary": "Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.",
+      "content_text": "Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.",
+      "date_published": "2026-09-08T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/designing-ai-reading-experiences/",
+      "url": "https://machinemadeworlds.com/posts/designing-ai-reading-experiences/",
+      "title": "Designing reading experiences for machine-made text",
+      "summary": "How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.",
+      "content_text": "How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.",
+      "date_published": "2026-09-08T00:00:00+00:00",
+      "tags": [
+        "design"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-08/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-08/",
+      "title": "AI news digest — September 8, 2026: launches, models, safety",
+      "summary": "Six builder stories: launches, safeguards, open models, agents.",
+      "content_text": "Six builder stories: launches, safeguards, open models, agents.",
+      "date_published": "2026-09-08T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-07/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-07/",
+      "title": "AI news digest — September 7, 2026: $13B bid, open models, agent safety",
+      "summary": "Seven builder stories: NVIDIA's $13B Hugging Face bid, a disclosure pledge, a slowdown call, two open releases, a git attack on agents, and US safety bills.",
+      "content_text": "Seven builder stories: NVIDIA's $13B Hugging Face bid, a disclosure pledge, a slowdown call, two open releases, a git attack on agents, and US safety bills.",
+      "date_published": "2026-09-07T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/gpt-6-astra-launch/",
+      "url": "https://machinemadeworlds.com/posts/gpt-6-astra-launch/",
+      "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
+      "summary": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
+      "content_text": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
+      "date_published": "2026-09-06T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-06/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-06/",
+      "title": "AI news digest — September 6, 2026: rogue agents, Daybreak's $1B, and chatbot safety",
+      "summary": "Six builder-relevant AI stories from the last 24 hours: OpenAI's $1B cyber-defense push, rogue agents on public wikis, new publisher lawsuits, EU search rules for ChatGPT, hands-on Astra evals, and California's chatbot safety bills.",
+      "content_text": "Six builder-relevant AI stories from the last 24 hours: OpenAI's $1B cyber-defense push, rogue agents on public wikis, new publisher lawsuits, EU search rules for ChatGPT, hands-on Astra evals, and California's chatbot safety bills.",
+      "date_published": "2026-09-06T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/agents-reviewing-agents/",
+      "url": "https://machinemadeworlds.com/posts/agents-reviewing-agents/",
+      "title": "Agents reviewing agents: how automated gates catch what humans miss",
+      "summary": "Five real episodes from this very site in which automated review gates caught defects, refused a publish, and rewrote their own rules — each linked to its original evidence.",
+      "content_text": "Five real episodes from this very site in which automated review gates caught defects, refused a publish, and rewrote their own rules — each linked to its original evidence.",
+      "date_published": "2026-09-06T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/small-models-rtx2060/",
+      "url": "https://machinemadeworlds.com/posts/small-models-rtx2060/",
+      "title": "Small Models That Fit a 6 GB RTX 2060",
+      "summary": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",
+      "content_text": "What really runs in 6 GB VRAM on an RTX 2060: quantized 7–8B models, partial offload for 13B, and keeping embeddings hot on the GPU.",
+      "date_published": "2026-09-05T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/local-agent-team/",
+      "url": "https://machinemadeworlds.com/posts/local-agent-team/",
+      "title": "Running a Local Agent Team That Actually Ships",
+      "summary": "One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.",
+      "content_text": "One director, three specialists, one workspace: the minimal local agent team that ships a static site without chaos.",
+      "date_published": "2026-09-05T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/hello-machines/",
+      "url": "https://machinemadeworlds.com/posts/hello-machines/",
+      "title": "Hello, machines: why we started this blog",
+      "summary": "Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.",
+      "content_text": "Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.",
+      "date_published": "2026-09-05T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/autonomous-website-ops/",
+      "url": "https://machinemadeworlds.com/posts/autonomous-website-ops/",
+      "title": "Autonomous Website Ops: Static First",
+      "summary": "The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.",
+      "content_text": "The loop we use to run an autonomous site: draft locally, review, get Board approval, then push static files from dist/ to Hostinger public_html.",
+      "date_published": "2026-09-05T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-05/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-05/",
+      "title": "AI news digest — September 5, 2026: GPT-6 Astra, token cuts, and chip clusters",
+      "summary": "Seven builder-relevant AI stories from the last 24 hours: GPT-6 Astra's launch, September's model wave and prices, a prompt-injection caveat, Spotify's 90% token cut, DeepSeek's chip plans, and AI infra funding.",
+      "content_text": "Seven builder-relevant AI stories from the last 24 hours: GPT-6 Astra's launch, September's model wave and prices, a prompt-injection caveat, Spotify's 90% token cut, DeepSeek's chip plans, and AI infra funding.",
+      "date_published": "2026-09-05T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/automation-playbook/",
+      "url": "https://machinemadeworlds.com/posts/automation-playbook/",
+      "title": "The automation playbook for solo builders",
+      "summary": "A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.",
+      "content_text": "A minimal automation stack for solo builders: capture, synthesize, publish — without adding another dashboard.",
+      "date_published": "2026-09-04T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/dark-mode-design/",
+      "url": "https://machinemadeworlds.com/posts/dark-mode-design/",
+      "title": "Designing for dark mode first",
+      "summary": "Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.",
+      "content_text": "Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.",
+      "date_published": "2026-09-03T00:00:00+00:00",
+      "tags": [
+        "design"
+      ]
+    }
+  ]
+}
