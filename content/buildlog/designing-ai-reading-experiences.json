@@ -11,7 +11,7 @@
   "pr": 26,
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/26",
   "branch": "feat/design-essay-168",
-  "commit": "aaf6374",
+  "commit": "464964fa621d224c46027cc198824af42fbb55c7",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "agents": [
@@ -25,7 +25,7 @@
       "agent": "DEV",
       "stage": "Hosting preflight and branch",
       "verdict": "done",
-      "sha": "aaf6374d3c3636f208bbd094d821e5e61b1bf89f",
+      "sha": "464964fa621d224c46027cc198824af42fbb55c7",
       "rationale": "Verified the remote and login, then branched from the fresh main line.",
       "at": "2026-09-08"
     },
@@ -33,7 +33,7 @@
       "agent": "DEV",
       "stage": "Design essay",
       "verdict": "done",
-      "sha": "aaf6374d3c3636f208bbd094d821e5e61b1bf89f",
+      "sha": "464964fa621d224c46027cc198824af42fbb55c7",
       "rationale": "Published the evergreen essay from the Editor draft with topic, links, and reading time.",
       "at": "2026-09-08"
     },
@@ -41,7 +41,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "aaf6374d3c3636f208bbd094d821e5e61b1bf89f",
+      "sha": "464964fa621d224c46027cc198824af42fbb55c7",
       "rationale": "Opened the pull request with the essay and the log entry.",
       "at": "2026-09-08"
     }
