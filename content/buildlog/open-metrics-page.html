@@ -1,0 +1,9 @@
+<h2>Motivation</h2>
+<p>Readers deserve a page that shows how much has been written, how releases are tracked, and how heavy the pages are, without any manual upkeep.</p>
+<h2>What changed</h2>
+<p>A new transparency page reports article counts, word totals, topics, the digest streak, release count with the latest short identifier and date, and page weight tables.</p>
+<h2>How it was done</h2>
+<p>The builder now computes writing, release and weight statistics during the release and renders the page from the existing page skeleton, card grid and table idioms with token-only styles.</p>
+<h2>Verification evidence</h2>
+<p>The deterministic build passes, per-statistic unit tests cover every computation, the artifact link check resolves the new page, and the presence gate passes with this entry.</p>
+<div class="trail"><h3>Agent trail.</h3><ol><li><time datetime="2026-09-08">Sep 08, 2026</time><span>DEV built the transparency page and its statistics.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>SEC and QA review the pinned head in parallel.</span></li></ol></div>

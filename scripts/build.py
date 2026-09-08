@@ -386,6 +386,165 @@ def heading_anchors(body):
         return f'<h2 id="{key}">{match[1]}</h2>'
     return re.sub(r'<h2>(.*?)</h2>', replace, body, flags=re.S), headings
 
+DIGEST_SLUG = re.compile(r"^(?:ai-news|behind-the-ai-digest)-(\d{4}-\d{2}-\d{2})$")
+
+
+def format_int(value):
+    """Deterministic thousands formatting: 1234 -> '1,234'."""
+    return "%s" % f"{int(value):,}"
+
+
+def format_bytes(value):
+    """Deterministic weight display: bytes plus kB for larger files."""
+    total = int(value)
+    if total < 1024:
+        return "%s bytes" % format_int(total)
+    return "%.1f kB (%s bytes)" % (total / 1024, format_int(total))
+
+
+def format_days(value):
+    """Deterministic streak display: 1 -> '1 day', N -> 'N days'."""
+    total = int(value)
+    return "1 day" if total == 1 else "%d days" % total
+
+
+def count_words(posts):
+    """Total body words across posts. Plain-text split, deterministic."""
+    return sum(len(plain(p.get("body", "")).split()) for p in posts)
+
+
+def writing_stats(posts, site):
+    """Build-time writing stats: counts, words, per-topic tallies."""
+    topics = site.get("topics", {})
+    per_topic = {key: 0 for key in topics}
+    for post in posts:
+        if post.get("topic") in per_topic:
+            per_topic[post["topic"]] += 1
+    total_words = count_words(posts)
+    count = len(posts)
+    return {
+        "post_count": count,
+        "total_words": total_words,
+        "avg_words": round(total_words / count) if count else 0,
+        "topic_count": len(topics),
+        "per_topic": [{"key": key, "label": topics[key], "count": per_topic[key]}
+                      for key in sorted(topics)],
+    }
+
+
+def digest_streak(posts):
+    """Consecutive-day digest streak ending at the latest digest date.
+
+    Digests are posts with slug ai-news-YYYY-MM-DD or
+    behind-the-ai-digest-YYYY-MM-DD. Sorted desc, counts day-over-day
+    continuity. Deterministic; zero when no digest exists."""
+    days = set()
+    for post in posts:
+        match = DIGEST_SLUG.match(post.get("slug", ""))
+        if match:
+            try:
+                days.add(date.fromisoformat(match.group(1)))
+            except ValueError:
+                continue
+        elif isinstance(post.get("date"), str):
+            # Fallback: daily-digest kind dated posts also count.
+            if str(post.get("kind", "")).lower() == "digest":
+                try:
+                    days.add(date.fromisoformat(post["date"]))
+                except ValueError:
+                    continue
+    if not days:
+        return {"streak_days": 0, "latest": None}
+    ordered = sorted(days, reverse=True)
+    streak = 1
+    for today, yesterday in zip(ordered, ordered[1:]):
+        if (today - yesterday).days == 1:
+            streak += 1
+        else:
+            break
+    return {"streak_days": streak, "latest": ordered[0].isoformat()}
+
+
+def git_stats(root, _run=None):
+    """Deploy stats from git HEAD only: commit count, short SHA, ISO date.
+
+    PII boundary: only counts, the HEAD SHA, and the commit date are
+    read. Identity fields and file paths are never queried. Visible
+    templates must render the short SHA (7ch) plus <time> date only;
+    the full SHA stays in href/title attributes or not at all."""
+    import subprocess as _subprocess
+    run = _run or _subprocess.run
+    try:
+        counted = run(["git", "rev-list", "--count", "HEAD"], cwd=root,
+                      capture_output=True, text=True, check=False)
+        logged = run(["git", "log", "-1", "--format=%H|%ad", "--date=short"],
+                     cwd=root, capture_output=True, text=True, check=False)
+        if counted.returncode != 0 or logged.returncode != 0:
+            raise OSError("git unavailable")
+        total = int(counted.stdout.strip())
+        full, day = logged.stdout.strip().split("|", 1)
+        if not re.fullmatch(r"[0-9a-f]{40}", full):
+            raise ValueError("bad sha")
+        _require_iso_date(day.strip(), "bad git date")
+        return {"deploys": total, "full_sha": full,
+                "short_sha": full[:7], "date": day.strip()}
+    except (OSError, ValueError, IndexError):
+        return {"deploys": 0, "full_sha": None,
+                "short_sha": "0000000", "date": "1970-01-01"}
+
+
+def build_stats(staging):
+    """Weight stats from the staged artifact. Deterministic sort."""
+    staging = Path(staging)
+    html_files = sorted(staging.rglob("*.html"))
+    weighed = []
+    for path in html_files:
+        try:
+            size = path.stat().st_size
+        except OSError:
+            continue
+        rel = path.relative_to(staging).as_posix()
+        if rel.endswith("/index.html"):
+            url = "/" + rel[: -len("/index.html")]
+            url = "/" if url == "" else url + "/"
+        elif rel == "index.html":
+            url = "/"
+        else:
+            url = "/" + rel
+        weighed.append({"url": url, "size": size})
+    weighed = sorted(weighed, key=lambda item: (item["size"], item["url"]))
+    files = [p for p in staging.rglob("*") if p.is_file()]
+    total_bytes = 0
+    for path in files:
+        try:
+            total_bytes += path.stat().st_size
+        except OSError:
+            continue
+    css_bytes, js_bytes = 0, 0
+    assets = staging / "assets"
+    if assets.is_dir():
+        for path in sorted(assets.iterdir()):
+            if not path.is_file():
+                continue
+            try:
+                size = path.stat().st_size
+            except OSError:
+                continue
+            if path.suffix == ".css":
+                css_bytes += size
+            elif path.suffix == ".js":
+                js_bytes += size
+    return {
+        "pages": len(weighed),
+        "files": len(files),
+        "total_bytes": total_bytes,
+        "css_bytes": css_bytes,
+        "js_bytes": js_bytes,
+        "lightest": weighed[:5],
+        "heaviest": list(reversed(sorted(weighed, key=lambda item: (item["size"], item["url"]))))[:5],
+    }
+
+
 
 def build(root=ROOT):
     root = Path(root)
@@ -521,6 +680,52 @@ def build(root=ROOT):
     render('/privacy/', 'Privacy notice — ' + site['name'],
            'Privacy Policy for Segredo de Arquivo: data for authentication and upload only, encrypted storage, no sale.',
            template(root, 'privacy.html'), 'WebPage')
+    # Open metrics page (MAC-178): build-time transparency. Stats derive
+    # from content + git HEAD + staged artifact; deterministic for the
+    # same inputs. Weight tables cover the staged site excluding this
+    # page itself (avoiding a circular self-weigh); page/file/byte
+    # totals reported on the page add +1 page for /metrics/ itself.
+    writing = writing_stats(posts, site)
+    streak = digest_streak(posts)
+    git = git_stats(root)
+    weights = build_stats(staging)
+    deploy_label = date.fromisoformat(git['date']).strftime('%b %d, %Y')
+    topic_rows = ''.join(
+        '<tr><td>%s</td><td>%s</td></tr>'
+        % (escape(item['label']), format_int(item['count']))
+        for item in writing['per_topic'])
+    light_rows = ''.join(
+        '<tr><td><a href="%s">%s</a></td><td>%s</td></tr>'
+        % (escape(item['url']), escape(item['url']),
+           escape(format_bytes(item['size'])))
+        for item in weights['lightest'])
+    heavy_rows = ''.join(
+        '<tr><td><a href="%s">%s</a></td><td>%s</td></tr>'
+        % (escape(item['url']), escape(item['url']),
+           escape(format_bytes(item['size'])))
+        for item in weights['heaviest'])
+    metrics_body = template(
+        root, 'metrics.html',
+        post_count=format_int(writing['post_count']),
+        total_words=format_int(writing['total_words']),
+        avg_words=format_int(writing['avg_words']),
+        topic_count=format_int(writing['topic_count']),
+        topic_rows=topic_rows,
+        streak_days=escape(format_days(streak['streak_days'])),
+        streak_latest=escape(streak['latest'] or '—'),
+        deploys=format_int(git['deploys']),
+        short_sha=escape(git['short_sha']),
+        deploy_date=escape(git['date']),
+        deploy_label=escape(deploy_label),
+        page_count=format_int(weights['pages'] + 1),
+        file_count=format_int(weights['files'] + 1),
+        total_bytes=escape(format_bytes(weights['total_bytes'])),
+        css_bytes=escape(format_bytes(weights['css_bytes'])),
+        js_bytes=escape(format_bytes(weights['js_bytes'])),
+        light_rows=light_rows, heavy_rows=heavy_rows)
+    render('/metrics/', 'Metrics — ' + site['name'],
+           'Build-time transparency: writing, deploy and weight stats for this site.',
+           metrics_body, 'WebPage')
     render('/404.html', 'Page not found — ' + site['name'], 'Find your way back to the journal.',
            template(root, '404.html'))
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
@@ -536,7 +741,7 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
-    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/build-log/', '/metrics/', '/about/', '/terms/', '/privacy/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
         ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = site['url'] + path

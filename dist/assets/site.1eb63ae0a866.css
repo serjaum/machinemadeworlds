@@ -289,6 +289,21 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail .flow-why{margin:var(--s2) 0 0}
 .trail .flow-why dd{font:14px/1.7 var(--sans);color:var(--muted);margin:var(--s1) 0 0}
 .trail .flow-dots{margin:var(--s1) 0 0;font:13px/1.7 var(--sans);color:var(--muted);letter-spacing:.35em}
+/* Open metrics page (MAC-178, per MAC-182 design brief). Additive only:
+   metrics-* classes copy .org-grid geometry and the article-table idiom,
+   semantic vars only, no new tokens, breakpoints, scripts or motion.
+   Responsive without breakpoints: auto-fit columns collapse to one per
+   row on narrow screens, tables scroll inside their region. */
+.metrics-grid{list-style:none;margin:var(--s3) 0 0;padding:0;display:grid;gap:var(--s2);grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.metrics-grid li{background:var(--raised);border:1px solid var(--line);border-radius:4px;padding:var(--s2);min-width:0;overflow-wrap:break-word}
+.metrics-grid strong{display:block;font:400 clamp(28px,3vw,38px)/1.15 var(--serif);letter-spacing:-.025em;margin:var(--s1) 0}
+.metrics-grid code{font:13px/1.7 var(--mono);background:var(--surface);padding:2px 5px;border-radius:3px}
+.metrics-who,.metrics-table caption{display:block;font:11px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.metrics-table caption{text-align:left;padding-bottom:var(--s1)}
+.metrics-note{display:block;font:13px/1.7 var(--sans);color:var(--muted)}
+.metrics-table-wrap{max-width:100%;overflow-x:auto;margin-top:var(--s2)}
+.metrics-table{border-collapse:collapse;width:100%;font:13px/1.6 var(--sans);margin:var(--s2) 0}
+.metrics-table th,.metrics-table td{padding:12px 16px;border-bottom:1px solid var(--line);text-align:left;overflow-wrap:break-word}
 /* Pipeline animation (MAC-102): CSS-only sequencing, decorative only.
    Stages light up in execution order via nth-child delays plus renderer
    data-step hooks, return loops pulse, verdict dots draw attention.

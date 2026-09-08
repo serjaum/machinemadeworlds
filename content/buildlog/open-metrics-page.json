@@ -1,0 +1,47 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": null,
+  "commit": "n/a",
+  "date": "2026-09-08",
+  "description": "A permanent transparency page now reports writing, release and weight numbers computed at build time.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The site gains a permanent transparency page whose numbers are computed during the build from articles, history and output.",
+  "mac_id": "MAC-178",
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "merge_sha": null,
+  "pr": null,
+  "pr_url": null,
+  "reasoning": {
+    "DEV": "The transparency page reuses the established page skeleton, card grid and table idioms with token-only styles. The build computes every number from articles, history and staged output in a deterministic pass. The full test suite and the presence gate pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change adds a build-time transparency surface with no manual upkeep and no new visual system. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-08",
+      "rationale": "Computed writing, release and weight stats and rendered the transparency page.",
+      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "stage": "Transparency page",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-08",
+      "rationale": "Opened the pull request with the page and the log entry.",
+      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "title": "Open metrics page built at release time",
+  "topic": "automation"
+}

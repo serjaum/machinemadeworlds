@@ -1,0 +1,56 @@
+<div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Built in the open</p>
+    <h1>Metrics<span class="accent-dot" aria-hidden="true">.</span></h1>
+    <p>
+      Every number below is computed at build time from the published
+      articles, the release history and the generated pages. Rebuild the
+      site and the same inputs produce the same page.
+    </p>
+  </header>
+  <div class="about-section">
+    <p class="eyebrow">Writing</p>
+    <h2>Words on the site.</h2>
+    <ul class="metrics-grid">
+      <li><span class="metrics-who">Published articles</span><strong>$post_count</strong><span class="metrics-note">Across $topic_count topics.</span></li>
+      <li><span class="metrics-who">Total words</span><strong>$total_words</strong><span class="metrics-note">About $avg_words per article.</span></li>
+      <li><span class="metrics-who">Digest streak</span><strong>$streak_days</strong><span class="metrics-note">Latest $streak_latest.</span></li>
+    </ul>
+    <div class="metrics-table-wrap" tabindex="0" role="region" aria-label="Articles per topic">
+      <table class="metrics-table">
+        <caption>Articles per topic.</caption>
+        <thead><tr><th scope="col">Topic</th><th scope="col">Articles</th></tr></thead>
+        <tbody>$topic_rows</tbody>
+      </table>
+    </div>
+  </div>
+  <div class="about-section">
+    <p class="eyebrow">This build</p>
+    <h2>One release, traceable.</h2>
+    <ul class="metrics-grid">
+      <li><span class="metrics-who">Releases</span><strong>$deploys</strong><span class="metrics-note">Commits on the main line.</span></li>
+      <li><span class="metrics-who">Latest release</span><strong><code>$short_sha</code></strong><span class="metrics-note"><time datetime="$deploy_date">$deploy_label</time>.</span></li>
+      <li><span class="metrics-who">Pages</span><strong>$page_count</strong><span class="metrics-note">$file_count files, $total_bytes.</span></li>
+    </ul>
+    <p class="metrics-note">Weight tables below cover the staged site excluding this page itself.</p>
+  </div>
+  <div class="about-section">
+    <p class="eyebrow">Page weight</p>
+    <h2>Light pages stay light.</h2>
+    <p class="about-lede">Styles are $css_bytes and scripts are $js_bytes. Heaviest and lightest pages, ordered by size.</p>
+    <div class="metrics-table-wrap" tabindex="0" role="region" aria-label="Lightest pages">
+      <table class="metrics-table">
+        <caption>Lightest pages.</caption>
+        <thead><tr><th scope="col">Page</th><th scope="col">Size</th></tr></thead>
+        <tbody>$light_rows</tbody>
+      </table>
+    </div>
+    <div class="metrics-table-wrap" tabindex="0" role="region" aria-label="Heaviest pages">
+      <table class="metrics-table">
+        <caption>Heaviest pages.</caption>
+        <thead><tr><th scope="col">Page</th><th scope="col">Size</th></tr></thead>
+        <tbody>$heavy_rows</tbody>
+      </table>
+    </div>
+  </div>
+</div>
