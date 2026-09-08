@@ -1,0 +1,28 @@
+<div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Data</p>
+    <h1>Model<br /><em>benchmarks.</em></h1>
+    <p>
+      A small set of public eval scores for reference, refreshed weekly.
+      Scores measure the harness, not just the model — read the linked notes.
+    </p>
+    <p><small>Last updated <time datetime="$updated">$updated_label</time>.</small></p>
+  </header>
+  <div class="article-body">
+    <table tabindex="0" aria-label="Model benchmark scores">
+      <thead>
+        <tr><th scope="col">Model</th><th scope="col">Benchmark</th><th scope="col">Score</th><th scope="col">Source</th><th scope="col">Checked</th></tr>
+      </thead>
+      <tbody>
+$rows
+      </tbody>
+    </table>
+    <h2>Methodology</h2>
+    <p>
+      Scores are copied from the vendor or harness page linked per row.
+      They are point-in-time snapshots for comparing local models against
+      hosted references, not targets to match on-device. Rows are re-checked
+      weekly; any row older than ten days is flagged for refresh.
+    </p>
+  </div>
+</div>

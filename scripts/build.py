@@ -270,6 +270,63 @@ def load_buildlog(root, site):
     return sorted(entries, key=lambda p: (p['date'], p['slug']), reverse=True)
 
 
+DATA_FILES = {
+    'prices': ('content/data/prices.json', ('model', 'input_per_1m_usd', 'output_per_1m_usd')),
+    'benchmarks': ('content/data/benchmarks.json', ('model', 'benchmark', 'score')),
+}
+
+
+def _require_data_source(value):
+    if (not isinstance(value, str) or not value.strip() or len(value) > 500
+            or value != value.strip() or '\\' in value
+            or any(ord(c) < 32 for c in value)
+            or not value.startswith('https://') or value.startswith('//')):
+        raise ValueError('Data rows require an https source URL')
+
+
+def validate_data_doc(data, required):
+    _require_iso_date(data.get('updated'), 'Data file requires updated YYYY-MM-DD')
+    rows = data.get('rows')
+    if not isinstance(rows, list) or not rows:
+        raise ValueError('Data file requires a non-empty rows list')
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ValueError('Data rows must be objects')
+        for key in required:
+            value = row.get(key)
+            if not isinstance(value, str) or not value.strip() or len(value) > 120:
+                raise ValueError('Data row requires %s' % key)
+        _require_data_source(row.get('source'))
+        _require_iso_date(row.get('updated'), 'Data rows require updated YYYY-MM-DD')
+    return data
+
+
+def load_data_file(root, relpath, required):
+    path = root / relpath
+    data = json.loads(path.read_text(encoding='utf-8'))
+    validate_data_doc(data, required)
+    data['updated_label'] = date.fromisoformat(data['updated']).strftime('%B %d, %Y')
+    return data
+
+
+def load_data(root=ROOT):
+    root = Path(root)
+    return {name: load_data_file(root, relpath, required)
+            for name, (relpath, required) in DATA_FILES.items()}
+
+
+def data_rows_html(data, cells):
+    lines = []
+    for row in data['rows']:
+        tds = ''.join('<td>%s</td>' % escape(row[key]) for key in cells)
+        lines.append(
+            '<tr>%s<td><a href="%s">Source ↗</a></td>'
+            '<td><time datetime="%s">%s</time></td></tr>'
+            % (tds, escape(row['source'], quote=True),
+               row['updated'], row['updated']))
+    return '\n'.join(lines)
+
+
 def _commit_link(sha, text):
     """Full SHA lives in the href + title only; visible text stays human
     (Board voice rule, spec rev 4)."""
@@ -626,6 +683,19 @@ def build(root=ROOT):
     render('/privacy/', 'Privacy notice — ' + site['name'],
            'Privacy Policy for Segredo de Arquivo: data for authentication and upload only, encrypted storage, no sale.',
            template(root, 'privacy.html'), 'WebPage')
+    data = load_data(root)
+    render('/prices/', 'Model API prices — ' + site['name'],
+           'Indicative per-token list prices for widely used models, refreshed weekly.',
+           template(root, 'prices.html', updated=data['prices']['updated'],
+                    updated_label=data['prices']['updated_label'],
+                    rows=data_rows_html(data['prices'], ('model', 'input_per_1m_usd', 'output_per_1m_usd'))),
+           'WebPage')
+    render('/benchmarks/', 'Model benchmarks — ' + site['name'],
+           'Public eval scores for reference, refreshed weekly.',
+           template(root, 'benchmarks.html', updated=data['benchmarks']['updated'],
+                    updated_label=data['benchmarks']['updated_label'],
+                    rows=data_rows_html(data['benchmarks'], ('model', 'benchmark', 'score'))),
+           'WebPage')
     render('/404.html', 'Page not found — ' + site['name'], 'Find your way back to the journal.',
            template(root, '404.html'))
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
@@ -641,7 +711,7 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
-    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/tiny-llms/', '/tiny-llms/methodology/'] + lab_urls + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/tiny-llms/', '/tiny-llms/methodology/', '/prices/', '/benchmarks/'] + lab_urls + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
         ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = site['url'] + path

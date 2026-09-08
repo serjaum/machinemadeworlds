@@ -44,6 +44,14 @@
       "sha": "97630779e0dccb523bb2c59a458d4894cd624ce3",
       "rationale": "Opened the pull request with the lab pages and the log entry.",
       "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Main sync into lab branch",
+      "verdict": "done",
+      "sha": "fb6a2aa",
+      "rationale": "Merged the main-line data routes into the lab branch, combined the sitemap entries, footer navigation and artifact cap, and regenerated the output from source.",
+      "at": "2026-09-08"
     }
   ],
   "reasoning": {
