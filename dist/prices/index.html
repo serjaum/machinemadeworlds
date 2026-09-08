@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Essays — Machine Made Worlds</title>
-    <meta name="description" content="Longer reflections on building with AI: what worked, what failed, and what slow useful writing still owes readers in a noisy feed." />
-    <link rel="canonical" href="https://machinemadeworlds.com/topics/essays/" />
+    <title>Model API prices — Machine Made Worlds</title>
+    <meta name="description" content="Indicative per-token list prices for widely used models, refreshed weekly." />
+    <link rel="canonical" href="https://machinemadeworlds.com/prices/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -28,12 +28,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Essays — Machine Made Worlds" />
-    <meta property="og:description" content="Longer reflections on building with AI: what worked, what failed, and what slow useful writing still owes readers in a noisy feed." />
-    <meta property="og:url" content="https://machinemadeworlds.com/topics/essays/" />
+    <meta property="og:title" content="Model API prices — Machine Made Worlds" />
+    <meta property="og:description" content="Indicative per-token list prices for widely used models, refreshed weekly." />
+    <meta property="og:url" content="https://machinemadeworlds.com/prices/" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Essays — Machine Made Worlds", "url": "https://machinemadeworlds.com/topics/essays/", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "WebPage", "name": "Model API prices — Machine Made Worlds", "url": "https://machinemadeworlds.com/prices/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.d910f5e99009.js" defer></script>
   </head>
@@ -67,48 +67,36 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><div class="container archive-page">
-  <header class="page-heading" data-od-id="archive-heading">
-    <p class="eyebrow">Ideas, collected</p>
-    <h1>Essays<span class="accent-dot">.</span></h1>
-    <p>Essays, guides and observations. Find something worth sitting with.</p>
+    <main id="main" tabindex="-1"><div class="container about-page">
+  <header class="page-heading">
+    <p class="eyebrow">Data</p>
+    <h1>Model API<br /><em>prices.</em></h1>
+    <p>
+      Indicative per-token list prices for a few widely used models,
+      refreshed weekly. Verify against the linked vendor page before budgeting.
+    </p>
+    <p><small>Last updated <time datetime="2026-09-08">September 08, 2026</time>. Prices in USD per 1M tokens.</small></p>
   </header>
-  <nav class="topic-tabs" aria-label="Browse topics">
-    <a href="/blog/">Everything</a><a href="/topics/local-ai/">Local AI <span aria-hidden="true">↗</span></a><a href="/topics/automation/">Automation <span aria-hidden="true">↗</span></a><a href="/topics/design/">Design <span aria-hidden="true">↗</span></a><a href="/topics/essays/">Essays <span aria-hidden="true">↗</span></a>
-  </nav>
-  <div class="archive-toolbar">
-    <p><span data-result-count>1</span> articles</p>
-    <label class="search-box" data-search-control hidden
-      ><span>Search the journal</span
-      ><input
-        type="search"
-        data-search
-        placeholder="Try ‘models’ or ‘design’"
-        autocomplete="off"
-        aria-controls="article-list"
-    /></label>
+  <div class="article-body">
+    <table tabindex="0" aria-label="Model API prices">
+      <thead>
+        <tr><th scope="col">Model</th><th scope="col">Input / 1M</th><th scope="col">Output / 1M</th><th scope="col">Source</th><th scope="col">Checked</th></tr>
+      </thead>
+      <tbody>
+<tr><td>GPT-6 Astra</td><td>3.00</td><td>12.00</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Claude Sonnet 4.6</td><td>1.25</td><td>6.25</td><td><a href="https://www.anthropic.com/pricing">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Gemini 3 Flash</td><td>0.80</td><td>3.20</td><td><a href="https://ai.google.dev/pricing">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+<tr><td>Llama 4 Maverick (self-hosted)</td><td>0.00</td><td>0.00</td><td><a href="https://www.llama.com/docs/model-cards/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
+      </tbody>
+    </table>
+    <h2>Methodology</h2>
+    <p>
+      Figures are list prices in USD per one million tokens, copied from the
+      vendor page linked per row. Self-hosted weights carry no per-token fee;
+      hardware and energy costs are out of scope. Rows are re-checked weekly;
+      any row older than ten days is flagged for refresh.
+    </p>
   </div>
-  <div id="article-list" class="archive-list"><article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/essays/">Essays</a
-    ><span>Essay</span>
-  </div>
-  <h3><a href="/posts/hello-machines/">Hello, machines: why we started this blog</a></h3>
-  <p>Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-05">Sep 05, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/hello-machines/" aria-label="Read Hello, machines: why we started this blog">↗</a>
-  </div>
-</article>
-</div>
-  <section class="empty-state" data-empty hidden>
-    <h2>No articles found.</h2>
-    <p>Try a different word, or return to the full collection.</p>
-    <button type="button" data-clear-search class="button">Clear search</button>
-  </section>
-  <p class="sr-only" role="status" data-search-status></p>
 </div>
 </main>
     <footer class="footer" data-od-id="footer">
