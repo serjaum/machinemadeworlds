@@ -111,5 +111,29 @@ class ShareMetaTests(unittest.TestCase):
         self.assertEqual(len(items), len(self.published))
 
 
+    def test_sitemap_lastmod_covers_every_url(self):
+        sitemap = (self.dist / 'sitemap.xml').read_text(encoding='utf-8')
+        root = ET.fromstring(sitemap)
+        seen = {}
+        for url in root.iter():
+            if not url.tag.endswith('url'):
+                continue
+            loc = lastmod = None
+            for child in url:
+                if child.tag.endswith('loc'):
+                    loc = child.text
+                elif child.tag.endswith('lastmod'):
+                    lastmod = child.text
+            self.assertTrue(loc, 'Every sitemap entry must carry a loc')
+            self.assertRegex(lastmod or '', r'^\d{4}-\d{2}-\d{2}$', loc)
+            seen[loc] = lastmod
+        self.assertGreater(len(seen), 10)
+        self.assertEqual(seen[self.site['url'] + '/posts/ai-news-2026-09-08/'],
+                         '2026-09-08')
+        prices = json.loads((ROOT / 'content/data/prices.json').read_text(encoding='utf-8'))
+        self.assertEqual(seen[self.site['url'] + '/prices/'], prices['updated'])
+        ET.parse(self.dist / 'sitemap.xml')
+
+
 if __name__ == '__main__':
     unittest.main()
