@@ -8,12 +8,12 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-167",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 21,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/21",
+  "branch": "feat/share-meta-167",
+  "commit": "5b64f40",
   "merge_sha": null,
-  "merge_note": "Merge pending; the pull request is opened after this entry ships, then the request number and head are recorded here.",
+  "merge_note": "Merge pending; merged only after SEC and QA pass the exact head.",
   "agents": [
     "DEV",
     "SEC",
@@ -25,7 +25,7 @@
       "agent": "DEV",
       "stage": "Hosting preflight and branch",
       "verdict": "done",
-      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "sha": "5b64f405196deffbf564ffe1bdc9e7d75bfe6742",
       "rationale": "Verified the remote and login, then branched from the fresh main line.",
       "at": "2026-09-08"
     },
@@ -33,7 +33,7 @@
       "agent": "DEV",
       "stage": "Brand card and metadata wiring",
       "verdict": "done",
-      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "sha": "5b64f405196deffbf564ffe1bdc9e7d75bfe6742",
       "rationale": "Generated the raster card and wired the share markup, article fields and topic descriptions.",
       "at": "2026-09-08"
     },
@@ -41,7 +41,7 @@
       "agent": "DEV",
       "stage": "Tests and log entry",
       "verdict": "done",
-      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "sha": "5b64f405196deffbf564ffe1bdc9e7d75bfe6742",
       "rationale": "Added the share-metadata contract tests and shipped this entry in the same change.",
       "at": "2026-09-08"
     }
