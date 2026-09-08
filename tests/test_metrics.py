@@ -141,15 +141,13 @@ class MetricsPageTests(unittest.TestCase):
         self.assertIn('Ordered heaviest first.', self.page)
 
     def test_every_date_is_time_element(self):
-        # Link locators are not displayed dates: URL slugs such as
-        # /posts/ai-news-2026-09-07/ appear in hrefs and anchor text.
-        # Gate the remaining ISO strings only.
-        scrubbed = re.sub(r'<a\b[^>]*>.*?</a>', '', self.page, flags=re.S)
-        scrubbed = re.sub(r'(href|src)="[^"]*"', '', scrubbed)
-        dates = re.findall(r'\b\d{4}-\d{2}-\d{2}\b', scrubbed)
-        self.assertTrue(dates)
-        for raw in set(dates):
-            self.assertIn('datetime="%s"' % raw, self.page)
+        # Link labels are page URLs (slugs may embed digits); dates shown
+        # as content must be real <time> elements with ISO datetime.
+        without_links = re.sub(r'<a\b[^>]*>.*?</a>', ' ', self.page, flags=re.S)
+        text = re.sub(r'<[^>]+>', ' ', without_links)
+        self.assertNotRegex(text, r'\d{4}-\d{2}-\d{2}')
+        times = re.findall(r'<time datetime="(\d{4}-\d{2}-\d{2})">', self.page)
+        self.assertGreaterEqual(len(times), 3)
 
     def test_sitemap_and_footer_surface_metrics(self):
         sitemap = (ROOT / 'dist/sitemap.xml').read_text(encoding='utf-8')

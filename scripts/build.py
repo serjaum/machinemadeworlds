@@ -668,7 +668,8 @@ def render_metrics(root, site, posts, put, render, staging):
         streak_value, streak_note = '—', 'No digest run yet.'
     else:
         streak_value = fmt_days(digest['streak'])
-        streak_note = 'Last digest %s' % fmt_date_label(digest['last'])
+        streak_note = ('Last digest <time datetime="%s">%s</time>'
+                       % (digest['last'], fmt_date_label(digest['last'])))
     commit_url = '%s/commit/%s' % (BUILDLOG_REPO, provenance['short_sha'])
 
     def body(total_bytes):

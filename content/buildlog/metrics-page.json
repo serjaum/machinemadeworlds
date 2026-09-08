@@ -1,0 +1,47 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": "feat/mac-178-metrics",
+  "commit": "13d64ab",
+  "date": "2026-09-08",
+  "description": "How the build-time Metrics page shipped: deterministic counts, deploy provenance and weight tables behind a footer link, reviewed at the exact pushed head before merge.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "A permanent Metrics page now counts the journal at build time: articles, words and the digest run, plus deploy provenance and page weight, with no trackers and no new scripts.",
+  "mac_id": "MAC-192",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 25,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/25",
+  "reasoning": {
+    "DEV": "Counted writing, provenance and artifact stats during the build and rendered them through a new template behind a footer link. The full suite stays green, including per-stat gates and a byte-identical rebuild check.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "Design clearance arrived before implementation with verbatim copy and a metadata boundary. Security and quality reviews are pinned to the exact head in parallel child issues."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Implementation",
+      "verdict": "done",
+      "sha": "13d64ab647e73cbbe2e594c3d9305351400978c3",
+      "rationale": "Counted build-time stats and rendered the metrics page with tests.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "13d64ab647e73cbbe2e594c3d9305351400978c3",
+      "rationale": "Opened the pull request from the branch with the metrics page.",
+      "at": "2026-09-08"
+    }
+  ],
+  "title": "Metrics page ships build-time counts",
+  "topic": "automation"
+}
