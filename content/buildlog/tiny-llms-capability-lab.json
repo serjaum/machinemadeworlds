@@ -8,8 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-206",
-  "pr": null,
-  "commit": "n/a",
+  "pr": 30,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/30",
+  "branch": "feat/mac-194-tiny-llms-lab",
+  "commit": "9763077",
   "merge_sha": null,
   "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the pull request number and merge identifier are recorded after the gate passes on the exact head.",
   "agents": [
@@ -23,7 +25,7 @@
       "agent": "DEV",
       "stage": "Hosting preflight and branch",
       "verdict": "done",
-      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "sha": "97630779e0dccb523bb2c59a458d4894cd624ce3",
       "rationale": "Verified the remote and login, then branched from the fresh main line.",
       "at": "2026-09-08"
     },
@@ -31,7 +33,7 @@
       "agent": "DEV",
       "stage": "Capability lab",
       "verdict": "done",
-      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "sha": "97630779e0dccb523bb2c59a458d4894cd624ce3",
       "rationale": "Added the three lab templates with builder routes, footer link, sitemap coverage, and styles.",
       "at": "2026-09-08"
     },
@@ -39,7 +41,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "6780aa2f36992b182a9c8a8d4f5a09bd30c3fd81",
+      "sha": "97630779e0dccb523bb2c59a458d4894cd624ce3",
       "rationale": "Opened the pull request with the lab pages and the log entry.",
       "at": "2026-09-08"
     }
