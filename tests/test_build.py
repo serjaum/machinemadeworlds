@@ -32,18 +32,25 @@ class PublishingTests(unittest.TestCase):
                 module.create_post(target, '../escape', 'Title', 'local-ai', '2026-09-05')
 
     def test_draft_to_publication_updates_every_index_without_editing_templates(self):
+        import datetime as dt
         import importlib.util
         import tempfile
         import shutil
         spec = importlib.util.spec_from_file_location('mmw_build_cycle', ROOT / 'scripts/build.py')
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
+        # Homepage surfaces only the 6 latest posts, so date the fixture one
+        # day after the newest real post; otherwise every new article pushes
+        # it off index.html and this contract fails for unrelated content.
+        latest = max(json.loads(p.read_text(encoding='utf-8')).get('date', '0000')
+                     for p in (ROOT / 'content/posts').glob('*.json'))
+        pub_date = (dt.date.fromisoformat(latest) + dt.timedelta(days=1)).isoformat()
         with tempfile.TemporaryDirectory() as tmp:
             target = Path(tmp)
             for name in ('content', 'templates', 'assets'):
                 shutil.copytree(ROOT / name, target / name)
             path = target / 'content/posts/future-test.json'
-            data = dict(title='A test-only new article', description='', date='2026-09-06',
+            data = dict(title='A test-only new article', description='', date=pub_date,
                         topic='design', kind='Essay', lead='', draft=True)
             path.write_text(json.dumps(data), encoding='utf-8')
             path.with_suffix('.html').write_text('<p>Test article content.</p>', encoding='utf-8')
