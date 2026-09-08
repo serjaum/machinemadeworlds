@@ -74,6 +74,10 @@ def validate_post(p, site):
 def load_posts(root, site):
     posts = []
     for path in sorted((root / 'content/posts').glob('*.json')):
+        # Belt-and-braces: distribution packs (*.dist-pack.md) are never
+        # article sources and must never enter the publish artifact.
+        if path.name.endswith('.dist-pack.json'):
+            continue
         p = json.loads(path.read_text(encoding='utf-8'))
         if type(p.get('draft', False)) is not bool:
             raise ValueError('draft must be a JSON boolean')
@@ -94,7 +98,26 @@ def load_posts(root, site):
         raise ValueError(
             'Multiple featured posts (%s): only one non-draft post may set featured:true'
             % ', '.join(sorted(featured)))
+    for missing in missing_dist_packs(root, posts):
+        print('WARNING: post %s has no dist-pack (expected content/posts/%s.dist-pack.md)'
+              % (missing, missing), file=sys.stderr)
     return posts
+
+
+def missing_dist_packs(root, posts):
+    """Slugs of non-draft posts without a beside-each-article pack file.
+
+    Packs live at content/posts/<slug>.dist-pack.md and are never published;
+    this is a warn-only presence gate (exit 0) so existing CI stays green."""
+    missing = []
+    folder = Path(root) / 'content/posts'
+    for p in posts:
+        # Drafts never enter the publish artifact, so they need no pack.
+        if p.get('draft', False):
+            continue
+        if not (folder / (p['slug'] + '.dist-pack.md')).is_file():
+            missing.append(p['slug'])
+    return sorted(missing)
 
 
 BUILDLOG_KINDS = frozenset(('Shipped', 'Fix', 'Experiment', 'Note'))

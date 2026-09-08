@@ -1,0 +1,47 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": null,
+  "commit": "n/a",
+  "date": "2026-09-08",
+  "description": "Every published essay now ships with a beside-each-article file holding a short social post, a longer professional-network post, and a one-line feed note, while the builder warns loudly when a pack is missing.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "Distribution copy is now prepared automatically with every article: a short post, a professional-network post, and a one-line note live beside each essay. The builder ignores pack files at publish time and warns loudly when one is missing, so nothing leaks into public pages.",
+  "mac_id": "MAC-186",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": null,
+  "pr_url": null,
+  "reasoning": {
+    "DEV": "The post loader now skips pack files explicitly and warns on stderr naming each published essay without one, keeping the exit code green. Eleven pack files were added beside their essays from the editing pass, the draft scaffold writes an empty template, and the release checklist covers the new gate. The full suite stays green and the rebuild is byte-identical.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "The change prepares distribution copy with every article while leaving all public pages byte-identical. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Distribution packs",
+      "verdict": "done",
+      "sha": "a6792732c4e302dd387526fe563d7f6ac7df139e",
+      "rationale": "Added the pack convention, the builder warning, tests, backfill, scaffold, and checklist.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "a6792732c4e302dd387526fe563d7f6ac7df139e",
+      "rationale": "Opened the pull request from the feature branch with the packs and the log entry.",
+      "at": "2026-09-08"
+    }
+  ],
+  "title": "Ready-to-paste social copy beside every article",
+  "topic": "automation"
+}
