@@ -447,6 +447,14 @@ def heading_anchors(body):
 def build(root=ROOT):
     root = Path(root)
     site = json.loads((root / 'content/site.json').read_text(encoding='utf-8'))
+    # MAC-167: every topic carries its own Editor-drafted description, unique
+    # sitewide, used for that topic page's meta/og description.
+    topic_descriptions = site.get('topic_descriptions', {})
+    if (set(topic_descriptions) != set(site['topics'])
+            or any(not isinstance(v, str) or not v.strip() or len(v) > 320
+                   for v in topic_descriptions.values())
+            or len(set(topic_descriptions.values())) != len(topic_descriptions)):
+        raise ValueError('Per-topic descriptions must be unique and cover every topic')
     posts = load_posts(root, site)
     entries = load_buildlog(root, site)
     output = root / 'dist'
@@ -471,8 +479,11 @@ def build(root=ROOT):
         target.parent.mkdir(exist_ok=True)
         target.write_bytes(data)
 
-    def render(path, title, description, content, kind='WebPage', post=None):
+    def render(path, title, description, content, kind='WebPage', post=None, article=False):
         canonical = site['url'] + path
+        # MAC-167 share card: one brand raster card (1200x630 PNG) for every
+        # page. Site-wide defaults live here; the template only interpolates.
+        og_image = site['url'] + assets['social-card.png']
         schema = {'@context': 'https://schema.org', '@type': kind, 'name': title,
                   'url': canonical, 'inLanguage': 'en'}
         if post:
@@ -481,6 +492,19 @@ def build(root=ROOT):
                           mainEntityOfPage=canonical,
                           author={'@type': 'Organization', 'name': site['name']},
                           publisher={'@type': 'Organization', 'name': site['name']})
+            if article:
+                schema['image'] = og_image
+        if article and post:
+            stamp = lambda day: day + 'T00:00:00+00:00'
+            article_meta = (
+                '<meta property="article:published_time" content="%s" />\n    '
+                '<meta property="article:modified_time" content="%s" />\n    '
+                '<meta property="article:section" content="%s" />\n    '
+                '<meta property="article:author" content="%s" />\n    '
+                % (stamp(post['date']), stamp(post.get('updated', post['date'])),
+                   escape(post['topic_name']), escape(site['name'])))
+        else:
+            article_meta = ''
         jsonld = json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c')
         nav = lambda href: ' aria-current="page"' if path == href else ''
         build_current = ' aria-current="page"' if path.startswith('/build-log/') else ''
@@ -488,7 +512,11 @@ def build(root=ROOT):
                         description=escape(description), canonical=escape(canonical),
                         og_type='article' if post else 'website', jsonld=jsonld,
                         css=assets['site.css'], js=assets['site.js'], favicon=assets['favicon.svg'],
-                        logo=assets['logo.svg'], og_image=site['url'] + assets['logo.svg'],
+                        logo=assets['logo.svg'], og_image=og_image,
+                        og_image_width='1200', og_image_height='630',
+                        og_image_type='image/png',
+                        og_image_alt='Machine Made Worlds — a journal of artificial intelligence',
+                        twitter_card='summary_large_image', article_meta=article_meta,
                         theme_init=(root / 'templates/theme-init.js').read_text(encoding='utf-8').strip(),
                         content=content, year=max((p['date'][:4] for p in posts), default='2026'),
                         home_current=nav('/'), blog_current=nav('/blog/'),
@@ -528,17 +556,18 @@ def build(root=ROOT):
                          empty_title='No entries found.',
                          empty_text='Try a different word, or return to the full log.')
 
-    def archive(path, title, selected, copy, topics=topic_links):
+    def archive(path, title, selected, copy, topics=topic_links, description=None):
         body = template(root, 'archive.html', heading=escape(title), count=len(selected),
                         topics=topics, cards=''.join(card(p, True) for p in selected), **copy)
-        render(path, title + ' — ' + site['name'], site['description'], body, 'CollectionPage')
+        render(path, title + ' — ' + site['name'], description or site['description'], body, 'CollectionPage')
     archive('/blog/', 'The journal', posts, JOURNAL_COPY)
     for key, label in site['topics'].items():
-        archive('/topics/' + key + '/', label, [p for p in posts if p['topic'] == key], JOURNAL_COPY)
+        archive('/topics/' + key + '/', label, [p for p in posts if p['topic'] == key],
+                JOURNAL_COPY, description=topic_descriptions[key])
     # Build-log index reuses the archive pattern with retargeted copy and no topic tabs.
     archive('/build-log/', 'Build log', entries, BUILDLOG_COPY, topics='')
 
-    def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False):
+    def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False, article=False):
         body, headings = heading_anchors(p['body'])
         if pipeline and p.get('stages'):
             body = insert_pipeline(body, render_pipeline(p))
@@ -562,10 +591,10 @@ def build(root=ROOT):
                            related=''.join(card(q, True) for q in related),
                            index_url=index_url, index_label=index_label,
                            back_label=back_label, related_label=related_label)
-        render(p['url'], p['title'], p['description'], content, 'BlogPosting', post=p)
+        render(p['url'], p['title'], p['description'], content, 'BlogPosting', post=p, article=article)
 
     for p in posts:
-        detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗')
+        detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗', article=True)
     for p in entries:
         detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗',
                pipeline=True)

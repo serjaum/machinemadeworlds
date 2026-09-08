@@ -67,17 +67,25 @@ class ArtifactTests(unittest.TestCase):
     def test_budgets_and_no_third_party_resources(self):
         dist = ROOT / 'dist'
         assets = list((dist / 'assets').iterdir())
+        # MAC-167: the brand social card is scraper-only (og/twitter meta,
+        # never an in-page <img>/preload), so it sits outside the
+        # render-blocking weight budget; its own <300KB cap is pinned in
+        # test_share_meta. Page HTML delta here is the ~+300B of new meta.
+        inpage = [p for p in assets if not p.name.startswith('social-card.')]
+        self.assertTrue(any(p.name.startswith('social-card.') for p in assets),
+                        'Brand social card must ship')
         home = (dist / 'index.html').read_bytes()
-        total = len(home) + sum(p.stat().st_size for p in assets)
-        compressed = len(gzip.compress(home)) + sum(len(gzip.compress(p.read_bytes())) for p in assets)
+        total = len(home) + sum(p.stat().st_size for p in inpage)
+        compressed = len(gzip.compress(home)) + sum(len(gzip.compress(p.read_bytes())) for p in inpage)
         # Raw cap raised 40KB -> 42KB (MAC-72 merge): main sat at 39836
         # after the MAC-80 logo assets (+850B), and the MAC-78 pipeline CSS
         # adds ~1KB as briefed. MAC-102 animation adds ~1.7KB keyframes
-        # (spec budget <=3KB): cap 42KB -> 43KB. Compressed/JS caps
-        # unchanged and passing. MAC-175/190 data pages add two footer
-        # links (Prices, Benchmarks: ~60B on the homepage, zero new
-        # assets): cap 43KB -> 43.1KB. Compressed/JS caps unchanged.
-        self.assertLess(total, 43100)
+        # (spec budget <=3KB): cap 42KB -> 43KB. MAC-167 share-meta tags add
+        # ~+300B of head meta (main sat at 42992, 8B under the cap): cap
+        # 43KB -> 43.5KB. MAC-175/190 data pages add two footer links
+        # (Prices, Benchmarks: ~60B on the homepage, zero new assets):
+        # cap 43.5KB -> 43.6KB. Compressed/JS caps unchanged and passing.
+        self.assertLess(total, 43600)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
         for p in dist.rglob('*.html'):

@@ -7,5 +7,11 @@
     "automation": "Automation",
     "design": "Design",
     "essays": "Essays"
+  },
+  "topic_descriptions": {
+    "local-ai": "Run capable models on your own hardware: quantized setups, VRAM budgets, and private workflows that keep data local and costs predictable.",
+    "automation": "Small dependable pipelines for solo builders: capture ideas, synthesize drafts, and ship static pages without another dashboard to babysit.",
+    "design": "Design notes on readable, fast static pages: dark-first contrast, elevation cues, and lightweight CSS that stays quiet while you read.",
+    "essays": "Longer reflections on building with AI: what worked, what failed, and what slow useful writing still owes readers in a noisy feed."
   }
 }
