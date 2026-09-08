@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-prompt-injection/",
+      "url": "https://machinemadeworlds.com/posts/glossary-prompt-injection/",
+      "title": "What is prompt injection?",
+      "summary": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
+      "content_text": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
+      "date_published": "2026-09-08T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/designing-ai-reading-experiences/",
       "url": "https://machinemadeworlds.com/posts/designing-ai-reading-experiences/",
       "title": "Designing reading experiences for machine-made text",

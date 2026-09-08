@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-prompt-injection/",
+    "title": "What is prompt injection?",
+    "description": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
+    "date": "2026-09-08",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/designing-ai-reading-experiences/",
     "title": "Designing reading experiences for machine-made text",
     "description": "How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.",
