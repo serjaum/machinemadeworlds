@@ -731,6 +731,17 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
+    feed_items = []
+    for p in posts:
+        canonical = site['url'] + p['url']
+        published = datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc).isoformat()
+        feed_items.append({'id': canonical, 'url': canonical, 'title': p['title'],
+                           'summary': p['description'], 'content_text': p['description'],
+                           'date_published': published, 'tags': [p['topic']]})
+    feed = {'version': 'https://jsonfeed.org/version/1.1', 'title': site['name'],
+            'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
+            'description': site['description'], 'language': 'en', 'items': feed_items}
+    put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
     urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
