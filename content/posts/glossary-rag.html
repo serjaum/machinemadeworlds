@@ -1,0 +1,4 @@
+<p>RAG, short for retrieval-augmented generation, is a pattern where a language model answers from documents it retrieves at query time instead of relying on memory alone.</p>
+<h2>How it works</h2>
+<p>When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector embeddings. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is.</p>
+<p>Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw.</p>

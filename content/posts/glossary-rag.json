@@ -1,0 +1,10 @@
+{
+  "title": "What is RAG?",
+  "description": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
+  "date": "2026-09-08",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "Retrieval-augmented generation, shortened to RAG, pairs a search step with a writing step: the model first pulls passages from your documents, then drafts its answer from what it found. The result cites real sources instead of inventing them, which makes this the default pattern whenever answers must stay current or traceable.",
+  "featured": false,
+  "draft": false
+}
