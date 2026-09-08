@@ -1,0 +1,55 @@
+{
+  "title": "Design essay on reading experiences for machine-made text",
+  "description": "The journal gains an evergreen design essay from the Editor draft: typography, pacing, navigable structure and honest contrast as the staging that makes machine-made text worth trusting, with the design topic page gaining a second substantial entry. This log entry ships in the same change.",
+  "date": "2026-09-08",
+  "topic": "design",
+  "kind": "Shipped",
+  "lead": "A new evergreen design essay joins the journal from the Editor draft, using this site’s own article template as the worked example, with the design topic page gaining a second substantial entry and the related grid linking the in-cluster companion.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-173",
+  "pr": 26,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/26",
+  "branch": "feat/design-essay-168",
+  "commit": "464964fa621d224c46027cc198824af42fbb55c7",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done",
+      "sha": "464964fa621d224c46027cc198824af42fbb55c7",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Design essay",
+      "verdict": "done",
+      "sha": "464964fa621d224c46027cc198824af42fbb55c7",
+      "rationale": "Published the evergreen essay from the Editor draft with topic, links, and reading time.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "464964fa621d224c46027cc198824af42fbb55c7",
+      "rationale": "Opened the pull request with the essay and the log entry.",
+      "at": "2026-09-08"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The essay reuses the established article template with no new components, scripts, or styles, carrying the Editor draft body with typographic dash corrections only. It ships as topic design and kind Essay with the featured flag untouched, and links the in-cluster companion so the related grid strengthens the design shelf. The deterministic build, the full test suite, and the presence gate pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change adds one evergreen design essay through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}

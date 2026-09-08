@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Behind the link radar of September 8, 2026</title>
+    <meta name="description" content="How the first link-radar validation post shipped: five verified reads with two-line editor notes, an exact-head pull request, and this log entry in the same branch." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/behind-the-link-radar-2026-09-08/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.88ccdd4c8a80.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Behind the link radar of September 8, 2026" />
+    <meta property="og:description" content="How the first link-radar validation post shipped: five verified reads with two-line editor notes, an exact-head pull request, and this log entry in the same branch." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/behind-the-link-radar-2026-09-08/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Behind the link radar of September 8, 2026", "url": "https://machinemadeworlds.com/build-log/behind-the-link-radar-2026-09-08/", "inLanguage": "en", "headline": "Behind the link radar of September 8, 2026", "description": "How the first link-radar validation post shipped: five verified reads with two-line editor notes, an exact-head pull request, and this log entry in the same branch.", "datePublished": "2026-09-08", "dateModified": "2026-09-08", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/behind-the-link-radar-2026-09-08/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Shipped <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Behind the link radar of September 8, 2026</h1>
+    <p class="article-lead">The validation run for the new curation format produced a dated radar post with five primary-source links, each checked for success before publication, plus this entry logging the trail the same day. Reviewers approved the exact pull-request head before merge, and the merge carried the radar post and this entry to the front page.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-08">Sep 08, 2026</time> · 2 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Entry body only. No header, footer, h1, script or inline styles.
+     End the file with the agent-trail block: a div.trail with an h2/h3,
+     an ol of steps, and a time datetime="YYYY-MM-DD" per step. -->
+<p>The curation routine needed one manual validation run before going live on schedule. This entry logs the validation run that shipped the first radar post in the fixed curation pattern.</p>
+<h2 id="motivation">Motivation</h2>
+<p>The build log shows how each visible change shipped. This entry covers the validation run for the daily curation format: one dated radar post with the most significant builder-relevant reads of the window, each linked to a source that returned success when checked. The live radar is <a href="/posts/link-radar-2026-09-08/">the link radar of that day</a>.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The run produced five reads: an inside view of research acceleration with internal coding-agent numbers; the chief scientist essay on alien minds and fading oversight; a sixteen-organization climate accelerator across Asia-Pacific; a multi-model orchestration preview for code assistants; and a checklist for reviewing the combined output of parallel coding agents. All five addresses returned success when checked, with no overlap against recent digests.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>The radar shipped through the pull request at the reviewed head, with security and quality sign-off on the same head, then merged to the main branch. The pick list came from the editor record with each address verified before drafting. The live site synced and the radar page, sitemap, feed and robots verified at success status.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>Security and quality sign-off on the reviewed head; merged main with five verified reads. Every source link returned success when checked before publication, and the deterministic site build plus the full test suite passed. HTTP logs and full review text are not evidenced in the linked record.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built strictly from the linked review record; each step ran through the company pipeline.</p><ol><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The editor picks gathered five verified reads.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The radar post drafted each pick with a two-line note.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>Security and quality reviews passed the shipment.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The merge carried the radar post to the main branch.</span></li><li><time datetime="2026-09-08">Sep 08, 2026</time><span>The live site synced and the pages verified at success status.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p><a href="https://github.com/serjaum/machinemadeworlds/pull/22">the pull request</a> · merge pending · <a href="https://github.com/serjaum/machinemadeworlds/pull/22/commits" title="feat/link-radar-2026-09-08">the branch</a></p><ol class="flow flow-anim"><li data-step="1"><span class="flow-status">done — Hosting preflight and branch</span><span>DEV · <time datetime="2026-09-08">2026-09-08</time> — Verified the remote and login, then branched from the fresh main line.</span></li><li data-step="2"><span class="flow-status">done — Radar post</span><span>DEV · <time datetime="2026-09-08">2026-09-08</time> — Drafted the radar post from the verified picks with the log entry in the same branch.</span></li><li data-step="3"><span class="flow-status">done — Pull request</span><span>DEV · <time datetime="2026-09-08">2026-09-08</time> — Opened the pull request with the radar post and the log entry.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Hosting preflight and branch</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/a6792732c4e302dd387526fe563d7f6ac7df139e" title="a6792732c4e302dd387526fe563d7f6ac7df139e">commit</a></td><td>Verified the remote and login, then branched from the fresh main line.</td></tr><tr><td>Radar post</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/e5857aaab044dd3397db483ab7d792f68a2813c0" title="e5857aaab044dd3397db483ab7d792f68a2813c0">commit</a></td><td>Drafted the radar post from the verified picks with the log entry in the same branch.</td></tr><tr><td>Pull request</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/e5857aaab044dd3397db483ab7d792f68a2813c0" title="e5857aaab044dd3397db483ab7d792f68a2813c0">commit</a></td><td>Opened the pull request with the radar post and the log entry.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>DEV</dt><dd>The radar post follows the fixed curation pattern with one intro line and five titled links, each carrying a two-line editor note on builder relevance. All five source addresses were checked for success status before publication, with no overlap against recent digests. The deterministic build and the full test suite pass on the change, including the always-log presence check for the accompanying entry.</dd><dt>SEC</dt><dd>Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.</dd><dt>QA</dt><dd>Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.</dd><dt>SRE</dt><dd>Not evidenced in the linked record. Deployment and live verification are recorded in the deploy child issue after merge.</dd><dt>Director</dt><dd>This change validates the new curation format with a dated radar post built from verified primary-source picks. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Hosting preflight and branch">●</span><span title="done — Radar post">●</span><span title="done — Pull request">●</span></p></div>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/data-pages-prices-benchmarks/">Weekly model price and benchmark pages</a></h3>
+  <p>The site now publishes weekly model price and benchmark tables from versioned data files with per-row sources.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/data-pages-prices-benchmarks/" aria-label="Read Weekly model price and benchmark pages">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/behind-the-ai-digest-2026-09-08/">Behind the AI digest of September 8, 2026</a></h3>
+  <p>How the September 8 digest shipped: an automated morning run gathered six fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/behind-the-ai-digest-2026-09-08/" aria-label="Read Behind the AI digest of September 8, 2026">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/tiny-llms/">Tiny LLMs</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

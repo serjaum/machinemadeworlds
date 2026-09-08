@@ -1,5 +1,21 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-08/",
+    "title": "Link radar, September 8, 2026",
+    "description": "Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.",
+    "date": "2026-09-08",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
+    "url": "/posts/designing-ai-reading-experiences/",
+    "title": "Designing reading experiences for machine-made text",
+    "description": "How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.",
+    "date": "2026-09-08",
+    "reading": 7,
+    "topic": "design"
+  },
+  {
     "url": "/posts/ai-news-2026-09-08/",
     "title": "AI news digest — September 8, 2026: launches, models, safety",
     "description": "Six builder stories: launches, safeguards, open models, agents.",
