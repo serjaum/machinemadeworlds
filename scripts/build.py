@@ -124,6 +124,94 @@ VOICE_BRANCH = re.compile(
 VOICE_ALLOW = ('GPT-6',)
 
 
+GLOSSARY_BACKLOG = 'content/data/glossary-backlog.json'
+
+
+def load_glossary_links(root):
+    """Shipped glossary terms as (term, url, aliases) triples.
+
+    Only backlog entries marked shipped whose non-draft post exists are
+    returned; unshipped aliases never fire. This allowlist keeps short
+    acronyms from matching inside ordinary words while long unambiguous
+    phrases still link. Deterministic order: by backlog order.
+    """
+    try:
+        backlog = json.loads((root / GLOSSARY_BACKLOG).read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return []
+    entries = backlog.get('terms', backlog) if isinstance(backlog, dict) else backlog
+    if not isinstance(entries, list):
+        return []
+    shipped = []
+    for item in entries:
+        if not isinstance(item, dict) or item.get('status') != 'shipped':
+            continue
+        slug = item.get('slug', '')
+        if not isinstance(slug, str) or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
+            continue
+        try:
+            meta = json.loads((root / 'content/posts' / ('glossary-' + slug + '.json')).read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            continue
+        if meta.get('draft', False):
+            continue
+        aliases = [a.strip() for a in item.get('aliases', []) if isinstance(a, str) and a.strip()]
+        if not aliases:
+            continue
+        term = item.get('term', slug).strip() or slug
+        shipped.append((term, '/posts/glossary-' + slug + '/', sorted(aliases, key=len, reverse=True)))
+    return shipped
+
+
+def autolink_glossary(body, links, skip_url=None):
+    """Link the first occurrence of each allowlisted alias.
+
+    Matching is case-insensitive with strict boundaries (no adjacent
+    letters, digits or hyphens), so a term never fires inside a longer
+    word or a hyphenated compound, and text inside existing anchors
+    (link labels and destinations alike) is left untouched. Only text
+    nodes are scanned: markup itself is split into tags vs text first,
+    so an alias inside a title/alt attribute (or any tag) can never be
+    linkified and corrupt the tag.
+    """
+    if not links:
+        return body
+    ordered = sorted(links, key=lambda pair: (-len(pair[0]), pair[0].lower()))
+    parts = re.split(r'(<a\b[^>]*>.*?</a>)', body, flags=re.S | re.I)
+    subs = {}
+    for index in range(0, len(parts), 2):
+        subs[index] = re.split(r'(<[^>]*>)', parts[index])
+    for alias, url in ordered:
+        if skip_url is not None and url == skip_url:
+            continue
+        pattern = re.compile(r'(?<![A-Za-z0-9-])' + re.escape(alias) + r'(?![A-Za-z0-9-])', re.I)
+        for index in range(0, len(parts), 2):
+            sub = subs[index]
+            for j in range(0, len(sub), 2):
+                match = pattern.search(sub[j])
+                if match:
+                    sub[j] = (sub[j][:match.start()] + '<a href="%s">%s</a>' % (url, match.group(0))
+                              + sub[j][match.end():])
+                    break
+            else:
+                continue
+            break
+    for index, sub in subs.items():
+        parts[index] = ''.join(sub)
+    return ''.join(parts)
+
+
+def glossary_related_block(slug, shipped):
+    """Auto-inserted related-terms block for glossary detail pages."""
+    others = sorted(((term, url) for term, url, _ in shipped if url != '/posts/' + slug + '/'),
+                    key=lambda pair: pair[0].lower())
+    if not others:
+        return ('<h2>Related terms</h2><p>This is the first entry in the glossary series. '
+                'New terms land here every weekday; browse <a href="/blog/">the journal</a> meanwhile.</p>')
+    items = ''.join('<li><a href="%s">%s</a></li>' % (url, escape(term)) for term, url in others[:4])
+    return '<h2>Related terms</h2><ul>' + items + '</ul>'
+
+
 def validate_buildlog_voice(text, message):
     """Board voice rule (spec rev 4): article prose carries no task
     siglas, SHAs, branch or PR numbers. Traceability lives in JSON
@@ -568,7 +656,15 @@ def build(root=ROOT):
     archive('/build-log/', 'Build log', entries, BUILDLOG_COPY, topics='')
 
     def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False, article=False):
-        body, headings = heading_anchors(p['body'])
+        body = p['body']
+        if p['url'].startswith('/posts/'):
+            shipped = load_glossary_links(root)
+            flat = [(alias, url) for _, url, aliases in shipped for alias in aliases]
+            skip = p['url'] if p['slug'].startswith('glossary-') else None
+            body = autolink_glossary(body, flat, skip_url=skip)
+            if p['slug'].startswith('glossary-'):
+                body = body + glossary_related_block(p['slug'], shipped)
+        body, headings = heading_anchors(body)
         if pipeline and p.get('stages'):
             body = insert_pipeline(body, render_pipeline(p))
         # Content refers to stable source names; publishing resolves hashed URLs.
@@ -635,6 +731,17 @@ def build(root=ROOT):
                            ('pubDate', format_datetime(datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc)))]:
             ET.SubElement(item, key).text = value
     put('feed.xml', ET.tostring(rss, encoding='unicode', xml_declaration=True))
+    feed_items = []
+    for p in posts:
+        canonical = site['url'] + p['url']
+        published = datetime.fromisoformat(p['date']).replace(tzinfo=timezone.utc).isoformat()
+        feed_items.append({'id': canonical, 'url': canonical, 'title': p['title'],
+                           'summary': p['description'], 'content_text': p['description'],
+                           'date_published': published, 'tags': [p['topic']]})
+    feed = {'version': 'https://jsonfeed.org/version/1.1', 'title': site['name'],
+            'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
+            'description': site['description'], 'language': 'en', 'items': feed_items}
+    put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
     urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a

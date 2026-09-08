@@ -26,6 +26,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       title="Machine Made Worlds"
       href="/feed.xml"
     />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
     <meta property="og:title" content="The journal — Machine Made Worlds" />
@@ -77,7 +83,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a href="/blog/">Everything</a><a href="/topics/local-ai/">Local AI <span aria-hidden="true">↗</span></a><a href="/topics/automation/">Automation <span aria-hidden="true">↗</span></a><a href="/topics/design/">Design <span aria-hidden="true">↗</span></a><a href="/topics/essays/">Essays <span aria-hidden="true">↗</span></a>
   </nav>
   <div class="archive-toolbar">
-    <p><span data-result-count>14</span> articles</p>
+    <p><span data-result-count>15</span> articles</p>
     <label class="search-box" data-search-control hidden
       ><span>Search the journal</span
       ><input
@@ -100,6 +106,20 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       ><time datetime="2026-09-08">Sep 08, 2026</time>
       <span aria-hidden="true">·</span> 2 min read</span
     ><a class="story-arrow" href="/posts/link-radar-2026-09-08/" aria-label="Read Link radar, September 8, 2026">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/essays/">Essays</a
+    ><span>Glossary</span>
+  </div>
+  <h3><a href="/posts/glossary-prompt-injection/">What is prompt injection?</a></h3>
+  <p>Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/glossary-prompt-injection/" aria-label="Read What is prompt injection?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
@@ -301,7 +321,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         <p>A little less noise.<br />A little more understanding.</p>
         <nav aria-label="Footer">
           <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
-          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a>
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
         </nav>
       </div>
       <div class="container footer-bottom">

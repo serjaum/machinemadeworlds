@@ -1,0 +1,4 @@
+<p>Prompt injection is an attack that hides hostile instructions inside data a language model reads, steering it to disobey its real task.</p>
+<h2>How it works</h2>
+<p>Language models treat everything they read as potential guidance, so they cannot reliably separate orders from content. An attacker plants a command in a web page, document, or tool result the model is asked to summarize or act on. When the model processes that input, it may follow the planted command instead: leaking data, calling tools, or producing skewed output. Hidden text, translated instructions, and poisoned tool outputs all serve the same trick, and the model never raises its hand.</p>
+<p>Builders counter it by treating third-party content as untrusted input, confirming sensitive actions out of band, and constraining what tools may do unsupervised.</p>
