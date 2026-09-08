@@ -23,7 +23,8 @@ def create_post(root, slug, title, topic, published_date):
     directory = root / 'content/posts'
     directory.mkdir(parents=True, exist_ok=True)
     meta, body = directory / (slug + '.json'), directory / (slug + '.html')
-    if meta.exists() or body.exists():
+    pack = directory / (slug + '.dist-pack.md')
+    if meta.exists() or body.exists() or pack.exists():
         raise FileExistsError(f'Post already exists: {slug}')
     data = dict(title=title, description='', date=published_date, topic=topic,
                 kind='Essay', lead='', featured=False, draft=True)
@@ -32,10 +33,15 @@ def create_post(root, slug, title, topic, published_date):
     try:
         with body.open('x', encoding='utf-8', newline='\n') as stream:
             stream.write('<!-- Article body only. No header, footer, h1, script or inline styles. -->\n<p></p>\n')
+        with pack.open('x', encoding='utf-8', newline='\n') as stream:
+            stream.write('X (0 chars):\n\n\nLinkedIn (0 words):\n\n\n'
+                         'https://machinemadeworlds.com/posts/%s/\n\nRSS (0 chars):\n\n' % slug)
     except OSError:
-        meta.unlink()
+        meta.unlink(missing_ok=True)
+        body.unlink(missing_ok=True)
+        pack.unlink(missing_ok=True)
         raise
-    return meta, body
+    return meta, body, pack
 
 
 if __name__ == '__main__':
