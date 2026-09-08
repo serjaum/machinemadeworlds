@@ -1,8 +1,8 @@
 # Machine Made Worlds - Hostinger deploy via WinSCP / FTP (PowerShell)
-# Syncs dist/ -> public_html. Board approval required before first live push.
+# Syncs dist/ -> domains/machinemadeworlds.com/public_html. Board approval required before first live push.
 # Env vars (same as deploy.sh):
 #   HOSTINGER_FTP_HOST, HOSTINGER_FTP_USER, HOSTINGER_FTP_PASS
-#   HOSTINGER_FTP_PORT (default 21), HOSTINGER_FTP_PROTOCOL (ftp|sftp|ftps), HOSTINGER_FTP_REMOTE_DIR (default public_html)
+#   HOSTINGER_FTP_REMOTE_DIR (default domains/machinemadeworlds.com/public_html, live docroot per MAC-220 SRE evidence)
 #   BOARD_APPROVED=1 to bypass approval gate (or pass -Yes)
 # Usage:
 #   $env:HOSTINGER_FTP_HOST="ftp.example.com"; $env:HOSTINGER_FTP_USER="u123"; $env:HOSTINGER_FTP_PASS="secret"; .\scripts\deploy.ps1 -DryRun
@@ -24,7 +24,7 @@ $ErrorActionPreference = "Stop"
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $RootDir = (Resolve-Path (Join-Path $ScriptDir "..")).Path
 $DistDir = Join-Path $RootDir "dist"
-$RemoteDefault = "public_html"
+$RemoteDefault = "domains/machinemadeworlds.com/public_html"
 
 if ($env:BOARD_APPROVED -eq "1") { $Yes = $true }
 
