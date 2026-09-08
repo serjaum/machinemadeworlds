@@ -11,7 +11,7 @@
   "pr": 30,
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/30",
   "branch": "feat/mac-194-tiny-llms-lab",
-  "commit": "9763077",
+  "commit": "b985c70",
   "merge_sha": null,
   "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the pull request number and merge identifier are recorded after the gate passes on the exact head.",
   "agents": [
