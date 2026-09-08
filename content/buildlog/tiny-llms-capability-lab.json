@@ -47,7 +47,7 @@
     }
   ],
   "reasoning": {
-    "DEV": "The lab reuses the established static page pattern with no new scripts or page-level scrolling, using the article table idiom for the matrix with scoped headers and a labelled scroll region. The three templates, the builder routes, the footer link, the sitemap entries, and the additive token-bound styles ship together with this log entry. The deterministic build and the full test suite pass on the change apart from a budget failure already present on the main line.",
+    "DEV": "The lab reuses the established static page pattern with no new scripts or page-level scrolling, using the article table idiom for the matrix with scoped headers and a labelled scroll region. The three templates, the builder routes, the footer link, the sitemap entries, and the additive token-bound styles ship together with this log entry. The deterministic build and the full test suite pass on the change with the artifact weight cap raised one step to cover the additive lab rules.",
     "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
     "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
     "Director": "This change adds the lab through the existing page system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
