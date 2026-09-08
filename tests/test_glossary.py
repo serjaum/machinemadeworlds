@@ -99,6 +99,17 @@ class GlossaryTests(unittest.TestCase):
         self.assertNotIn('/posts/glossary-prompt-injection/', out)
         self.assertIn('<a href="/posts/glossary-jailbreaking/">jailbreaking</a>', out)
 
+    def test_autolink_leaves_tag_attributes_untouched(self):
+        module = load_builder('mmw_build_glossary_attrs')
+        links = [('prompt injection', '/posts/glossary-prompt-injection/')]
+        body = ('<p><img src="/assets/x.png" alt="prompt injection diagram" '
+                'title="prompt injection overview"></p>')
+        self.assertEqual(module.autolink_glossary(body, links), body)
+        body2 = ('<p title="prompt injection">Prompt injection matters.</p>')
+        out2 = module.autolink_glossary(body2, links)
+        self.assertIn('title="prompt injection"', out2)
+        self.assertIn('<a href="/posts/glossary-prompt-injection/">Prompt injection</a> matters.', out2)
+
     def test_related_block_covers_first_and_later_terms(self):
         module = load_builder('mmw_build_glossary_related')
         first = module.glossary_related_block('glossary-prompt-injection',

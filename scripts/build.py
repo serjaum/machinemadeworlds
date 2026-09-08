@@ -169,23 +169,35 @@ def autolink_glossary(body, links, skip_url=None):
     Matching is case-insensitive with strict boundaries (no adjacent
     letters, digits or hyphens), so a term never fires inside a longer
     word or a hyphenated compound, and text inside existing anchors
-    (link labels and destinations alike) is left untouched.
+    (link labels and destinations alike) is left untouched. Only text
+    nodes are scanned: markup itself is split into tags vs text first,
+    so an alias inside a title/alt attribute (or any tag) can never be
+    linkified and corrupt the tag.
     """
     if not links:
         return body
     ordered = sorted(links, key=lambda pair: (-len(pair[0]), pair[0].lower()))
     parts = re.split(r'(<a\b[^>]*>.*?</a>)', body, flags=re.S | re.I)
+    subs = {}
     for index in range(0, len(parts), 2):
-        chunk = parts[index]
-        for alias, url in ordered:
-            if skip_url is not None and url == skip_url:
+        subs[index] = re.split(r'(<[^>]*>)', parts[index])
+    for alias, url in ordered:
+        if skip_url is not None and url == skip_url:
+            continue
+        pattern = re.compile(r'(?<![A-Za-z0-9-])' + re.escape(alias) + r'(?![A-Za-z0-9-])', re.I)
+        for index in range(0, len(parts), 2):
+            sub = subs[index]
+            for j in range(0, len(sub), 2):
+                match = pattern.search(sub[j])
+                if match:
+                    sub[j] = (sub[j][:match.start()] + '<a href="%s">%s</a>' % (url, match.group(0))
+                              + sub[j][match.end():])
+                    break
+            else:
                 continue
-            pattern = re.compile(r'(?<![A-Za-z0-9-])' + re.escape(alias) + r'(?![A-Za-z0-9-])', re.I)
-            match = pattern.search(chunk)
-            if match:
-                chunk = (chunk[:match.start()] + '<a href="%s">%s</a>' % (url, match.group(0))
-                         + chunk[match.end():])
-        parts[index] = chunk
+            break
+    for index, sub in subs.items():
+        parts[index] = ''.join(sub)
     return ''.join(parts)
 
 
