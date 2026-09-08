@@ -766,9 +766,40 @@ def build(root=ROOT):
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
     urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
+    # datetime) because every source date in this repo is day-granular, so a
+    # timestamp would invent precision the content does not have.
+    # Deterministic sources: post and build-log entry URLs use their own
+    # date field; /prices/ and /benchmarks/ use their data file's updated
+    # field; listing pages use the max date of the content they list
+    # (/ is the journal home, so max post date; /blog/ max post date;
+    # /build-log/ max entry date; each topic page max date of its posts);
+    # pages that list nothing (/about/, /terms/, /privacy/, empty topics)
+    # fall back to the UTC build date. All values clamp to the build date
+    # so no URL ever carries a future date.
+    today = datetime.now(timezone.utc).date().isoformat()
+    def sitemap_date(value):
+        if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}', value):
+            return today
+        return min(value, today)
+    lastmod = {p['url']: p['date'] for p in posts}
+    lastmod.update({p['url']: p['date'] for p in entries})
+    for p in posts:
+        key = '/topics/' + p['topic'] + '/'
+        if key not in lastmod or p['date'] > lastmod[key]:
+            lastmod[key] = p['date']
+    latest_post = max([p['date'] for p in posts], default='')
+    latest_entry = max([p['date'] for p in entries], default='')
+    lastmod['/'] = latest_post
+    lastmod['/blog/'] = latest_post
+    lastmod['/build-log/'] = latest_entry
+    lastmod['/prices/'] = data['prices']['updated']
+    lastmod['/benchmarks/'] = data['benchmarks']['updated']
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
-        ET.SubElement(ET.SubElement(sitemap, 'url'), 'loc').text = site['url'] + path
+        node = ET.SubElement(sitemap, 'url')
+        ET.SubElement(node, 'loc').text = site['url'] + path
+        ET.SubElement(node, 'lastmod').text = sitemap_date(lastmod.get(path))
     put('sitemap.xml', ET.tostring(sitemap, encoding='unicode', xml_declaration=True))
     put('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + site['url'] + '/sitemap.xml\n')
     put('.htaccess', (root / 'templates/htaccess').read_text(encoding='utf-8'))
