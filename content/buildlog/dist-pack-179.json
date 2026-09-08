@@ -5,8 +5,8 @@
     "QA",
     "Director"
   ],
-  "branch": null,
-  "commit": "n/a",
+  "branch": "feat/dist-pack-179",
+  "commit": "f611145",
   "date": "2026-09-08",
   "description": "Every published essay now ships with a beside-each-article file holding a short social post, a longer professional-network post, and a one-line feed note, while the builder warns loudly when a pack is missing.",
   "draft": false,
@@ -16,8 +16,8 @@
   "mac_id": "MAC-186",
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 27,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/27",
   "reasoning": {
     "DEV": "The post loader now skips pack files explicitly and warns on stderr naming each published essay without one, keeping the exit code green. Eleven pack files were added beside their essays from the editing pass, the draft scaffold writes an empty template, and the release checklist covers the new gate. The full suite stays green and the rebuild is byte-identical.",
     "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
@@ -29,7 +29,7 @@
       "agent": "DEV",
       "stage": "Distribution packs",
       "verdict": "done",
-      "sha": "a6792732c4e302dd387526fe563d7f6ac7df139e",
+      "sha": "f611145059195da9be614064a0274c3757c779dd",
       "rationale": "Added the pack convention, the builder warning, tests, backfill, scaffold, and checklist.",
       "at": "2026-09-08"
     },
@@ -37,7 +37,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "a6792732c4e302dd387526fe563d7f6ac7df139e",
+      "sha": "f611145059195da9be614064a0274c3757c779dd",
       "rationale": "Opened the pull request from the feature branch with the packs and the log entry.",
       "at": "2026-09-08"
     }
