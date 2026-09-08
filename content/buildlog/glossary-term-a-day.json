@@ -1,0 +1,59 @@
+{
+  "title": "Glossary term-a-day opens with backlog and auto-linking",
+  "description": "The weekday glossary series is live: a thirty-term backlog, an opening explainer on a classic attack, and careful auto-linking that connects older posts to new definitions. Reviews stay pinned to every shipment.",
+  "date": "2026-09-08",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "One new definition every weekday: the glossary series opens with a thirty-term backlog, a first explainer, and a builder that links older posts to new terms without false positives. The schedule, the backlog top-up rule, and the release pipeline ship together with the first page.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-177",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "0238c43",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "agents": [
+    "Editor",
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "Editor",
+      "stage": "Term pick",
+      "verdict": "done",
+      "sha": "0238c437ef307d532610f8073e2604b78803888c",
+      "rationale": "Picked the opening term from the seeded backlog and set the weekday order.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Glossary rollout",
+      "verdict": "done",
+      "sha": "0238c437ef307d532610f8073e2604b78803888c",
+      "rationale": "Shipped the backlog, the opening term, careful auto-linking, tests, and this entry.",
+      "at": "2026-09-08"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "0238c437ef307d532610f8073e2604b78803888c",
+      "rationale": "Opened the pull request from the feature branch with the rollout and this entry.",
+      "at": "2026-09-08"
+    }
+  ],
+  "reasoning": {
+    "Editor": "The opening term leads the seeded backlog because older posts already discuss the attack in plain words, giving the first auto-links real targets. The remaining open terms span retrieval, training, and evaluation topics so the series never repeats itself. The weekday schedule keeps the backlog topped above twenty open terms, with a monthly audit for drift.",
+    "DEV": "The backlog file seeds thirty ordered terms with explicit aliases, and only shipped entries ever link. The builder links first occurrences outside existing anchors with strict boundaries, then appends a related-terms block to each glossary page. The full suite stays green with new tests for the allowlist, the hyphen guard, and the rendered links.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "SRE": "Not evidenced in the linked record. The deploy verification for the merged shipment is recorded after release approval and merge.",
+    "Director": "The change adds a new series with no visual or structural change to existing pages. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}
