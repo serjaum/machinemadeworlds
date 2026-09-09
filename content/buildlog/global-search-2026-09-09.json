@@ -8,10 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-349",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 39,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/39",
+  "branch": "feat/global-search",
+  "commit": "ec42f09",
   "merge_sha": null,
   "merge_note": "Merge pending; the pull request number and the merge SHA are recorded here after review and merge.",
   "agents": [
@@ -27,6 +27,14 @@
       "verdict": "done",
       "sha": "dc83728110e0d6689f733000477d366afaaed958",
       "rationale": "Shipped the build-time index, the header box, the results page, the ranked client, the extended browser contract, and this entry.",
+      "at": "2026-09-09"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "ec42f0976af9803a6b9028eed3b5dd0164fec05b",
+      "rationale": "Opened the pull request from the feature branch with the search rollout and this entry.",
       "at": "2026-09-09"
     }
   ],
