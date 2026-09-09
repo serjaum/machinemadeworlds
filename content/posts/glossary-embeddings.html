@@ -1,0 +1,4 @@
+<p>An embedding is a list of numbers a model computes for text, images, or other content so that items with similar meanings sit close together.</p>
+<h2>How it works</h2>
+<p>A model trained on large collections learns to map each input to a point in a shared space, where distance stands in for similarity. Two sentences that mean nearly the same thing land near each other even when they share no words, while unrelated sentences land far apart. Those vectors are stored ahead of time, so a new question is embedded the same way and matched against the collection by nearest distance. The match runs on numbers, which is why search by meaning keeps working across wording changes that defeat keyword search.</p>
+<p>Builders reach for embeddings whenever results must be found by meaning: document search, duplicate detection, grouping related items, and the retrieval step behind sourced answers.</p>

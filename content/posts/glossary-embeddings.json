@@ -1,0 +1,10 @@
+{
+  "title": "What is Embeddings?",
+  "description": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
+  "date": "2026-09-09",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "An embedding is a list of numbers a model computes for a piece of content, placed so that similar meanings sit near each other. Nearby vectors mean nearby meanings, which lets software search by meaning instead of matching exact words. The same vectors group related items, compare passages, and feed the retrieval step behind sourced answers.",
+  "featured": false,
+  "draft": false
+}

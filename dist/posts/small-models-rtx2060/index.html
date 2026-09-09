@@ -115,7 +115,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
           <li><strong>7–8B Q4:</strong> Fully on GPU, 35–55 tokens/sec via <code>ollama</code> or <code>llama.cpp</code>. Drafts, rewrites, HTML fixes — all fast.</li>
           <li><strong>Phi-3 Mini 3.8B Q4:</strong> ~2.3 GB, 70+ t/s. Perfect for summaries and title generation. Weaker on long coherence, but brilliant for QA.</li>
           <li><strong>Gemma 2 9B Q4:</strong> ~5.4 GB at 2K context. Fits if you clip context. Better style than 7B for essays.</li>
-          <li><strong>Embeddings + rerank:</strong> <code>nomic-embed-text</code> (~0.5 GB) plus a tiny reranker stay resident. They are called constantly for search, so never offload them.</li>
+          <li><strong><a href="/posts/glossary-embeddings/">Embeddings</a> + rerank:</strong> <code>nomic-embed-text</code> (~0.5 GB) plus a tiny reranker stay resident. They are called constantly for search, so never offload them.</li>
         </ul>
         <h2 id="what-needs-offload">What needs offload</h2>
         <p>A 13–14B Q4 model is ~8–8.5 GB and will not fit fully. With <code>llama.cpp</code> you split layers — keep ~30 on GPU, spill the rest to CPU:</p>

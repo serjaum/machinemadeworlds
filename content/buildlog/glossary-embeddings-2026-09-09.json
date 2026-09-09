@@ -1,0 +1,55 @@
+{
+  "title": "Third glossary term: embeddings",
+  "description": "The weekday glossary gains its third explainer: embeddings, the number lists that place similar meanings close together for search by meaning. The backlog flips to shipped with order and aliases kept, and this log entry ships in the same change.",
+  "date": "2026-09-09",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "One new definition on schedule: the glossary runbook ships its third term in backlog order, with the page, the backlog flip, the social pack, and this log entry landing together.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-373",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "3841257",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done",
+      "sha": "3841257",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-09"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Glossary term and pack",
+      "verdict": "done",
+      "sha": "3841257",
+      "rationale": "Shipped the term page, the social pack, and the backlog flip with this entry.",
+      "at": "2026-09-09"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "3841257",
+      "rationale": "Opened the pull request with the term and the log entry.",
+      "at": "2026-09-09"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The term reuses the established glossary page pattern with no new components, scripts, or styles, carrying a one-line definition plus a short explainer section and a builder-angle closing line. The backlog entry keeps its order and aliases while flipping to shipped, and the beside-each-article pack stays out of the published pages by construction. The deterministic build, the full test suite, and the presence gate pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change adds one glossary term through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}
