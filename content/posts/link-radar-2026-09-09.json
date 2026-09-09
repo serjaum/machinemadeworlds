@@ -1,0 +1,10 @@
+{
+  "title": "Link radar, September 9, 2026",
+  "description": "Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.",
+  "date": "2026-09-09",
+  "topic": "automation",
+  "kind": "Radar",
+  "lead": "Frontier labs and infra providers shipped a dense day of primary-source reading on September 8: a machine-checked mathematics proof produced by a very large agent run, a faster image generation model with new editing controls, a petabyte-scale catalogue of human DNA variant effects, post-quantum origin handshakes rolling out across billions of daily connections, and centrally managed sandboxes for coding assistants in IDEs. Each summary below is in our own words; follow the links for the originals.",
+  "featured": false,
+  "draft": false
+}

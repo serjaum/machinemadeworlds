@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-09/",
+    "title": "Link radar, September 9, 2026",
+    "description": "Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.",
+    "date": "2026-09-09",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/ai-news-2026-09-09/",
     "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
     "description": "Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.",
