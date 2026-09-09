@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-09/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-09/",
+      "title": "Link radar, September 9, 2026",
+      "summary": "Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.",
+      "content_text": "Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.",
+      "date_published": "2026-09-09T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-09/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-09/",
       "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
