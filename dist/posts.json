@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-09/",
+    "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
+    "description": "Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.",
+    "date": "2026-09-09",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/link-radar-2026-09-08/",
     "title": "Link radar, September 8, 2026",
     "description": "Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.",
