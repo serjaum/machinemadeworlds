@@ -1,0 +1,39 @@
+<h2>Motivation.</h2>
+<p>
+  The journal describes its work in the open, but readers had no single
+  place to see what the journal holds, what shipped it, or what it costs
+  to read. The parent transparency proposal asked for a permanent page
+  that counts all of that at build time, with zero ongoing cost.
+</p>
+<h2>What changed.</h2>
+<p>
+  A new <a href="/metrics/">Metrics page</a> now renders on every build.
+  Writing cards show articles, words, topics and the digest run. A build
+  table shows deploy provenance and artifact totals. Twin weight tables
+  rank the lightest and heaviest pages. The footer gains a Metrics link
+  after <a href="/build-log/">Build log</a>, and the sitemap lists the
+  new page.
+</p>
+<h2>How it was built.</h2>
+<p>
+  Small stat helpers count posts, words, topics and the consecutive-day
+  digest run. Provenance comes from history counts plus the short
+  identifier and the date, never names or addresses. Totals and weights
+  are scanned from the finished staging tree, so the displayed figures
+  match the published artifact byte for byte.
+</p>
+<h2>Agent trail.</h2>
+<p>
+  Design clearance landed first with verbatim copy and a metadata
+  boundary. Implementation followed on a branch with per-stat tests.
+  Security and quality reviews gate the exact pushed head in parallel,
+  and the release proceeds only when both pass that head.
+</p>
+<h2>Verification.</h2>
+<p>
+  The full suite passes, including the new metrics gates. A second build
+  produces byte-identical output. Every internal link resolves, every
+  date renders as a real time element, and the home weight holds under
+  the documented raw cap. Screenshots across widths and themes ride with
+  the review.
+</p>

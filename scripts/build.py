@@ -15,6 +15,7 @@ import json
 import math
 import re
 import shutil
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 
@@ -538,6 +539,176 @@ def insert_pipeline(body, pipeline_inner):
     return body[:match.start()] + '</ol>' + pipeline_inner + body[div_start:]
 
 
+DIGEST_KIND = 'News digest'
+METRICS_TABLE_LIMIT = 5
+
+
+def fmt_int(value):
+    """Deterministic thousands separator: 1234567 -> '1,234,567'."""
+    return '{:,}'.format(int(value))
+
+
+def fmt_bytes(value):
+    """Exact bytes plus integer kB in parens: 219341 -> '219,341 bytes (214 kB)'."""
+    total = int(value)
+    return '%s bytes (%s kB)' % (fmt_int(total), fmt_int(int(round(total / 1024))))
+
+
+def fmt_days(value):
+    """Streak length with singular/plural: 1 -> '1 day', 5 -> '5 days'."""
+    total = int(value)
+    return '%d day%s' % (total, '' if total == 1 else 's')
+
+
+def fmt_date_label(value):
+    """ISO date -> 'Sep 07, 2026' label for <time> elements."""
+    return date.fromisoformat(value).strftime('%b %d, %Y')
+
+
+def writing_stats(posts, site):
+    """Counts over published posts: articles, total words, journal topics."""
+    words = sum(len(plain(p['body']).split()) for p in posts)
+    return {'posts': len(posts), 'words': words, 'topics': len(site['topics'])}
+
+
+def digest_info(posts):
+    """Consecutive-day News-digest run ending at the latest digest date.
+
+    Deterministic product definition (MAC-178 spec, MAC-182 brief section 11):
+    a digest is a post whose kind is 'News digest'; the streak counts back
+    from the latest digest while each prior digest lands exactly one day
+    earlier. Empty journal -> streak 0 with no last date."""
+    dates = sorted({p['date'] for p in posts if p.get('kind') == DIGEST_KIND})
+    if not dates:
+        return {'streak': 0, 'last': None}
+    latest = date.fromisoformat(dates[-1])
+    streak, cursor = 1, latest
+    for raw in reversed(dates[:-1]):
+        day = date.fromisoformat(raw)
+        if (cursor - day).days != 1:
+            break
+        streak, cursor = streak + 1, day
+    return {'streak': streak, 'last': dates[-1]}
+
+
+def git_info(root=ROOT):
+    """Deploy provenance from git history: commit count, short SHA, head date.
+
+    SEC boundary (MAC-182 section 7): counts, short SHA and ISO dates only.
+    Author names, emails, paths and full SHAs are never extracted. Outside a
+    git checkout the build stays deterministic via the zero fallback."""
+    try:
+        root = Path(root)
+        short = subprocess.run(['git', 'rev-parse', '--short=7', 'HEAD'],
+                               cwd=root, capture_output=True, text=True, check=True).stdout.strip()
+        count = subprocess.run(['git', 'rev-list', '--count', 'HEAD'],
+                               cwd=root, capture_output=True, text=True, check=True).stdout.strip()
+        day = subprocess.run(['git', 'show', '-s', '--format=%cs', 'HEAD'],
+                             cwd=root, capture_output=True, text=True, check=True).stdout.strip()
+        if not re.fullmatch(r'[0-9a-f]{7}', short):
+            raise ValueError('Invalid git short SHA')
+        _require_iso_date(day, 'Invalid git head date')
+        return {'deploys': int(count), 'short_sha': short, 'date': day}
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        return {'deploys': 0, 'short_sha': '0000000', 'date': '1970-01-01'}
+
+
+def page_weights(staging):
+    """(url, bytes) for every rendered HTML page, ascending by size.
+
+    Deterministic: size first, URL tiebreak. The /metrics/ page itself is
+    rendered after this scan, so weight tables never self-reference."""
+    rows = []
+    for found in sorted(staging.rglob('*.html')):
+        rel = found.relative_to(staging).as_posix()
+        if rel == '404.html':
+            url = '/404.html'
+        else:
+            url = '/' + rel[:rel.rindex('/') + 1] if '/' in rel else '/'
+        rows.append((url, found.stat().st_size))
+    return sorted(rows, key=lambda row: (row[1], row[0]))
+
+
+def artifact_totals(staging):
+    """File count, total bytes, CSS bytes and JS bytes of the staging tree."""
+    assets = staging / 'assets'
+    files = [p for p in staging.rglob('*') if p.is_file()]
+    css = sum(p.stat().st_size for p in assets.glob('*.css')) if assets.is_dir() else 0
+    js = sum(p.stat().st_size for p in assets.glob('*.js')) if assets.is_dir() else 0
+    return {'files': len(files), 'bytes': sum(p.stat().st_size for p in files),
+            'css': css, 'js': js}
+
+
+def metrics_weight_rows(rows):
+    """Pre-escaped Page|Size table rows for a (url, bytes) ranking."""
+    return ''.join('<tr><th scope="row"><a href="%s">%s</a></th><td>%s</td></tr>'
+                   % (escape(url), escape(url), escape(fmt_bytes(size)))
+                   for url, size in rows)
+
+
+METRICS_DESCRIPTION = ('Every number on this page was counted at build time. '
+                       'No trackers, no dashboards.')
+
+
+def render_metrics(root, site, posts, put, render, staging):
+    """Build-time /metrics/ page (MAC-178 spec, MAC-182 design brief).
+
+    All stats are counted during this build: writing counts from posts,
+    deploy provenance from git history, artifact totals and page weights
+    from the staging tree. Displayed totals include this page's own bytes
+    via a fixed-point pass (converges immediately; bounded at 5 rounds).
+    The page itself is excluded from the weight tables so they never
+    self-reference. Deterministic for identical content + git history."""
+    writing = writing_stats(posts, site)
+    digest = digest_info(posts)
+    provenance = git_info(root)
+    weights = page_weights(staging)
+    pre = artifact_totals(staging)
+    if digest['last'] is None:
+        streak_value, streak_note = '—', 'No digest run yet.'
+    else:
+        streak_value = fmt_days(digest['streak'])
+        streak_note = ('Last digest <time datetime="%s">%s</time>'
+                       % (digest['last'], fmt_date_label(digest['last'])))
+    commit_url = '%s/commit/%s' % (BUILDLOG_REPO, provenance['short_sha'])
+
+    def body(total_bytes):
+        build_rows = ''.join(
+            '<tr><th scope="row">%s</th><td>%s</td></tr>' % (label, value)
+            for label, value in (
+                ('Deploys', escape(fmt_int(provenance['deploys']))),
+                ('Latest deploy',
+                 '<code>%s</code> (<a href="%s">commit</a>) '
+                 '<time datetime="%s">%s</time>'
+                 % (escape(provenance['short_sha']), escape(commit_url, quote=True),
+                    provenance['date'], escape(fmt_date_label(provenance['date'])))),
+                ('Pages', escape(fmt_int(len(weights) + 1))),
+                ('Files', escape(fmt_int(pre['files'] + 1))),
+                ('Total size', escape(fmt_bytes(total_bytes))),
+                ('CSS', escape(fmt_bytes(pre['css']))),
+                ('JavaScript', escape(fmt_bytes(pre['js'])))))
+        return template(root, 'metrics.html',
+                        counted_date=provenance['date'],
+                        counted_label=fmt_date_label(provenance['date']),
+                        articles=fmt_int(writing['posts']),
+                        words=fmt_int(writing['words']),
+                        topics=fmt_int(writing['topics']),
+                        streak_value=streak_value, streak_note=streak_note,
+                        build_rows=build_rows,
+                        lightest_rows=metrics_weight_rows(weights[:METRICS_TABLE_LIMIT]),
+                        heaviest_rows=metrics_weight_rows(weights[-METRICS_TABLE_LIMIT:][::-1]))
+
+    total, text = pre['bytes'], ''
+    for _ in range(5):
+        text = render('/metrics/', 'Metrics — ' + site['name'],
+                       METRICS_DESCRIPTION, body(total))
+        size = len(text.encode('utf-8'))
+        if pre['bytes'] + size == total:
+            break
+        total = pre['bytes'] + size
+    put('metrics/index.html', text)
+
+
 def template(root, filename, **values):
     return Template((root / 'templates' / filename).read_text(encoding='utf-8')).substitute(values)
 
@@ -633,6 +804,7 @@ def build(root=ROOT):
                         home_current=nav('/'), blog_current=nav('/blog/'),
                         build_current=build_current, about_current=nav('/about/'))
         put('404.html' if path == '/404.html' else path.strip('/') + '/index.html' if path != '/' else 'index.html', text)
+        return text
 
     def card(p, compact=False):
         return template(root, 'card.html', url=p['url'], title=escape(p['title']),
@@ -765,7 +937,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/build-log/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/build-log/', '/metrics/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.
@@ -803,6 +975,9 @@ def build(root=ROOT):
     put('sitemap.xml', ET.tostring(sitemap, encoding='unicode', xml_declaration=True))
     put('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + site['url'] + '/sitemap.xml\n')
     put('.htaccess', (root / 'templates/htaccess').read_text(encoding='utf-8'))
+    # Metrics renders last: page weights and artifact totals are scanned from
+    # the finished staging tree, so displayed figures match the artifact.
+    render_metrics(root, site, posts, put, render, staging)
     # Replace only the generated directory, and only after a successful render.
     if output.exists():
         shutil.rmtree(output)

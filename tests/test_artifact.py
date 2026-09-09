@@ -85,9 +85,12 @@ class ArtifactTests(unittest.TestCase):
         # 43KB -> 43.5KB. MAC-175/190 data pages add two footer links
         # (Prices, Benchmarks: ~60B on the homepage, zero new assets):
         # cap 43.5KB -> 43.6KB. MAC-177 glossary adds a homepage card
-        # for the opening term (~+200B): cap 43.6KB -> 43.9KB.
+        # for the opening term (~+200B): cap 43.6KB -> 43.9KB. MAC-178
+        # metrics adds the metrics-* CSS (~2.3KB: cards grid, tables,
+        # responsive collapse) plus the footer Metrics link: home path
+        # sat at ~45300, so cap 43.9KB -> 46.2KB.
         # Compressed/JS caps unchanged and passing.
-        self.assertLess(total, 43900)
+        self.assertLess(total, 46200)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
         for p in dist.rglob('*.html'):

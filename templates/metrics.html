@@ -1,0 +1,71 @@
+<div class="container metrics-page">
+  <header class="page-heading">
+    <p class="eyebrow">Built in the open</p>
+    <h1>Metrics<span class="accent-dot">.</span></h1>
+    <p>
+      Every number on this page was counted at build time. No trackers, no
+      dashboards — just the site describing itself.
+    </p>
+    <p><small>Counted <time datetime="$counted_date">$counted_label</time> from the content, git history and the publish artifact below.</small></p>
+  </header>
+  <section class="about-section" aria-labelledby="metrics-writing">
+    <p class="eyebrow">What the journal holds</p>
+    <h2 id="metrics-writing">Writing.</h2>
+    <p class="about-lede">What the journal holds.</p>
+    <ul class="metrics-grid">
+      <li class="metrics-card">
+        <span class="metrics-label">Articles</span>
+        <span class="metrics-value">$articles</span>
+        <span class="metrics-note">published posts</span>
+      </li>
+      <li class="metrics-card">
+        <span class="metrics-label">Words</span>
+        <span class="metrics-value">$words</span>
+        <span class="metrics-note">across all posts</span>
+      </li>
+      <li class="metrics-card">
+        <span class="metrics-label">Topics</span>
+        <span class="metrics-value">$topics</span>
+        <span class="metrics-note">journal topics</span>
+      </li>
+      <li class="metrics-card">
+        <span class="metrics-label">Digest streak</span>
+        <span class="metrics-value">$streak_value</span>
+        <span class="metrics-note">$streak_note</span>
+      </li>
+    </ul>
+  </section>
+  <section class="about-section" aria-labelledby="metrics-build">
+    <p class="eyebrow">What shipped it</p>
+    <h2 id="metrics-build">This build.</h2>
+    <p class="about-lede">What shipped it.</p>
+    <table tabindex="0" aria-label="Build statistics">
+      <caption>Counts, short identifier and ISO dates only.</caption>
+      <thead>
+        <tr><th scope="col">Detail</th><th scope="col">Value</th></tr>
+      </thead>
+      <tbody>$build_rows</tbody>
+    </table>
+  </section>
+  <section class="about-section" aria-labelledby="metrics-weight">
+    <p class="eyebrow">What it costs to read</p>
+    <h2 id="metrics-weight">Page weight.</h2>
+    <p class="about-lede">What it costs to read. This page is excluded from its own tables; totals above include it.</p>
+    <h3>Lightest pages.</h3>
+    <table tabindex="0" aria-label="Lightest pages">
+      <caption>Ordered lightest first.</caption>
+      <thead>
+        <tr><th scope="col">Page</th><th scope="col">Size</th></tr>
+      </thead>
+      <tbody>$lightest_rows</tbody>
+    </table>
+    <h3>Heaviest pages.</h3>
+    <table tabindex="0" aria-label="Heaviest pages">
+      <caption>Ordered heaviest first.</caption>
+      <thead>
+        <tr><th scope="col">Page</th><th scope="col">Size</th></tr>
+      </thead>
+      <tbody>$heaviest_rows</tbody>
+    </table>
+  </section>
+</div>
