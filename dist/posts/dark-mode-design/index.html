@@ -12,7 +12,7 @@
       /* Resolve a saved choice before CSS/first paint. New readers get light. */
 try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
     </script>
-    <link rel="stylesheet" href="/assets/site.a1e7c3d0595e.css" />
+    <link rel="stylesheet" href="/assets/site.4a53ab43ce2b.css" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
     <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
     <meta property="og:image:width" content="1200" />
@@ -45,7 +45,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         <script type="application/ld+json">
       {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Designing for dark mode first", "url": "https://machinemadeworlds.com/posts/dark-mode-design/", "inLanguage": "en", "headline": "Designing for dark mode first", "description": "Why we design dark first: contrast, elevation, and the 12KB CSS powering this static blog.", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "mainEntityOfPage": "https://machinemadeworlds.com/posts/dark-mode-design/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
     </script>
-    <script src="/assets/site.d910f5e99009.js" defer></script>
+    <script src="/assets/site.ddc3e83e670b.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -64,6 +64,11 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
           ><a href="/build-log/" >Build Log</a
           ><a href="/about/" >About</a>
         </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
         <button
           type="button"
           class="theme-toggle"
@@ -110,7 +115,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       <h2 id="contrast-not-brightness">Contrast, not brightness</h2><p>We use <code>--text: #ececf1</code> on <code>--bg: #0b0b10</code> — off-white on deep navy-black. Pure white on pure black fatigues eyes.</p>
         <h2 id="elevation-with-borders">Elevation with borders</h2><p>Cards sit on <code>--bg-raised</code> with a subtle <code>--border</code>. In dark mode, shadows disappear; borders do the work.</p>
         <h2 id="one-accent-one-signal">One accent, one signal</h2><p><code>--accent: #7c5cfb</code> for brand, <code>--accent-2: #00d9ff</code> for links. Never both at once.</p>
-        <p>See the source: <a href="/assets/site.a1e7c3d0595e.css">/styles.css</a> is ~8KB, mobile-first, no JS required.</p>
+        <p>See the source: <a href="/assets/site.4a53ab43ce2b.css">/styles.css</a> is ~8KB, mobile-first, no JS required.</p>
 
       <div class="article-end">
         <span aria-hidden="true">m·w</span
