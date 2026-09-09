@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-embeddings/",
+      "url": "https://machinemadeworlds.com/posts/glossary-embeddings/",
+      "title": "What is Embeddings?",
+      "summary": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
+      "content_text": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
+      "date_published": "2026-09-09T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-09/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-09/",
       "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
