@@ -1,0 +1,49 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE",
+    "Director"
+  ],
+  "branch": "feat/daily-news-2026-09-09",
+  "commit": "e7e8f50",
+  "date": "2026-09-09",
+  "description": "How the September 9 digest shipped: an automated morning run gathered six fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The morning digest shipped the usual way: an automated run gathered six stories, reviewers approved the result, the merge carried all six to the front page, and this entry logged the trail the same day.",
+  "mac_id": "MAC-343",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 38,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/38",
+  "reasoning": {
+    "DEV": "The scheduled run collected six fresh stories with no overlap against the prior two digests and verified every source link before drafting. The pull request opened from the digest branch with the post and the build-log entry together. The deterministic build and the full test suite passed on the reviewed head.",
+    "Director": "The morning run gathered six stories with no overlap against the prior two digests. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review child issue.",
+    "SRE": "Not evidenced in the linked record yet. Deployment and live verification are recorded in the deploy child issue after merge."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-09",
+      "rationale": "Ran the scheduled collection and gathered six stories.",
+      "sha": "e7e8f5059cb19b2b81c8a94c82b8f67b61247041",
+      "stage": "Scheduled run",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-09",
+      "rationale": "Opened the pull request from the digest branch with the post and the log entry.",
+      "sha": "e7e8f5059cb19b2b81c8a94c82b8f67b61247041",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "title": "Behind the AI digest of September 9, 2026",
+  "topic": "automation"
+}

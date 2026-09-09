@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-09/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-09/",
+      "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
+      "summary": "Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.",
+      "content_text": "Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.",
+      "date_published": "2026-09-09T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-08/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-08/",
       "title": "Link radar, September 8, 2026",
