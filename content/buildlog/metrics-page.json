@@ -6,7 +6,7 @@
     "Director"
   ],
   "branch": "feat/mac-178-metrics",
-  "commit": "bef70d7",
+  "commit": "1778936",
   "date": "2026-09-08",
   "description": "How the build-time Metrics page shipped: deterministic counts, deploy provenance and weight tables behind a footer link, reviewed at the exact pushed head before merge.",
   "draft": false,
@@ -29,7 +29,7 @@
       "agent": "DEV",
       "stage": "Implementation",
       "verdict": "done",
-      "sha": "bef70d71ce032d2fe7a665e1623bf06cffdd705a",
+      "sha": "177893620bbe4cc16c238fed3613d799b2ad99d8",
       "rationale": "Counted build-time stats and rendered the metrics page with tests.",
       "at": "2026-09-08"
     },
@@ -37,7 +37,7 @@
       "agent": "DEV",
       "stage": "Pull request",
       "verdict": "done",
-      "sha": "bef70d71ce032d2fe7a665e1623bf06cffdd705a",
+      "sha": "177893620bbe4cc16c238fed3613d799b2ad99d8",
       "rationale": "Opened the pull request from the branch with the metrics page.",
       "at": "2026-09-08"
     }
