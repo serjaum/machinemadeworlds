@@ -146,6 +146,11 @@ h1 em { color: var(--accent); font-weight: 400; }
 .search-box { display: flex; align-items: center; gap: 16px; font-size: 12px; }
 .search-box input { min-height: 44px; padding: 10px 14px; background: transparent; border: 1px solid var(--muted); color: var(--ink); border-radius: 3px; width: 245px; font-size: 13px; }
 .search-box input::placeholder { color: var(--muted); opacity: 1; }
+/* Global search (MAC-349): header box + results page scope. Additive only. */
+.masthead-search { display: flex; align-items: center; }
+.masthead-search input { min-height: 44px; width: 200px; padding: 10px 14px; font-size: 13px; background: transparent; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); }
+.masthead-search input::placeholder { color: var(--muted); opacity: 1; }
+.masthead-search input:focus { width: 240px; }
 .archive-list { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 60px; padding-bottom: 72px; }
 .archive-list .story { border-bottom: 1px solid var(--line); padding-bottom: 24px; }
 .archive-list .story h3 { font-size: 31px; }
@@ -204,6 +209,7 @@ h1 em { color: var(--accent); font-weight: 400; }
   .masthead-inner { min-height: 86px; flex-wrap: wrap; gap: 0 18px; padding-block: 16px 8px; }
   .brand { font-size: 21px; }.brand-caption { font-size: 8px; margin-top: 5px; }.theme-toggle { margin-left: auto; min-width: 70px; }
   .navigation { order: 3; width: 100%; margin: 8px 0 0; gap: 25px; }.navigation a { min-height: 40px; }
+  .masthead-search { order: 4; width: 100%; margin-top: 8px; }.masthead-search input { width: 100%; }.masthead-search input:focus { width: 100%; }
   .intro { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }.intro .eyebrow { font-size: 10px; margin-bottom: 20px; }
   .intro h1 { font-size: clamp(35px, 8vw, 51px); }.intro-note { max-width: 36ch; margin: 0; }.intro-note p { margin: 0 0 8px; }
   .featured { grid-template-columns: 1fr; }.feature-copy { padding: 26px; }.feature-copy h2 { font-size: 35px; max-width: 20ch; }.feature-art { min-height: 320px; }

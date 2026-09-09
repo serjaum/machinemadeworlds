@@ -85,11 +85,18 @@ class ArtifactTests(unittest.TestCase):
         # 43KB -> 43.5KB. MAC-175/190 data pages add two footer links
         # (Prices, Benchmarks: ~60B on the homepage, zero new assets):
         # cap 43.5KB -> 43.6KB. MAC-177 glossary adds a homepage card
-        # for the opening term (~+200B): cap 43.6KB -> 43.9KB.
-        # Compressed/JS caps unchanged and passing.
-        self.assertLess(total, 43900)
+        # for the opening term (~+200B): cap 43.6KB -> 43.9KB. MAC-349
+        # global search adds the header form (~350B HTML), masthead-search
+        # CSS (~600B) and the deferred ranking/render client (~4.5KB JS:
+        # lazy index, title > excerpt > topic > body rank, URL sync, ESC,
+        # `/`, aria-live; results render via textContent only): home path
+        # sat at ~48700, so cap 43.9KB -> 49KB. JS file cap 3.5KB -> 7KB
+        # (client search is deferred, never render-blocking; the full-text
+        # index lazy-loads async on first use). Compressed cap unchanged
+        # and passing.
+        self.assertLess(total, 49000)
         self.assertLess(compressed, 14000)
-        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
+        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
             self.assertNotRegex(source, r'<(?:script|img)[^>]+src=["\']https?://')

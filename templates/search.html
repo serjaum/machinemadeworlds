@@ -1,0 +1,30 @@
+<div class="container archive-page search-page">
+  <header class="page-heading" data-od-id="archive-heading">
+    <p class="eyebrow">Search</p>
+    <h1>Search<span class="accent-dot">.</span></h1>
+    <p>Results rank title matches first, then excerpts, then body text. <code>/</code> focuses, <code>ESC</code> clears.</p>
+  </header>
+  <div class="archive-toolbar">
+    <p><span data-result-count>0</span> articles</p>
+    <label class="search-box" data-search-control hidden
+      ><span>Search the full journal</span
+      ><input
+        type="search"
+        data-search-page
+        placeholder="Try ‘osworld’ or ‘models’"
+        autocomplete="off"
+        aria-controls="article-list"
+        maxlength="120"
+    /></label>
+  </div>
+  <div id="article-list" class="archive-list" data-global-results></div>
+  <section class="empty-state" data-empty hidden>
+    <h2>No articles found.</h2>
+    <p>Try a different word.</p>
+    <button type="button" data-clear-search class="button">Clear search</button>
+  </section>
+  <p class="sr-only" role="status" data-search-status>Type to search the full journal.</p>
+  <noscript>
+    <p>Search needs JavaScript to query the offline index. Browse <a href="/blog/">the journal</a> meanwhile.</p>
+  </noscript>
+</div>
