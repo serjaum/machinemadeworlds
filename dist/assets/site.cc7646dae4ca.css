@@ -236,6 +236,33 @@ h1 em { color: var(--accent); font-weight: 400; }
   .container { width: 100%; }.reading-layout { display: block; }.article-heading h1 { font-size: 30pt; }.article-body { font-size: 12pt; max-width: none; }
   a { text-decoration: underline; }pre { white-space: pre-wrap !important; }.article-body pre code { white-space: pre-wrap; }
 }
+/* Metrics page (MAC-182 design brief, MAC-178 spec). Additive only:
+   metrics-* classes, semantic vars, no new tokens, breakpoints, JS or motion.
+   Placed before the feature sections below: the trail/flow/animation gates
+   in tests measure from their marker comments to end of file, so later
+   blocks must keep their tails untouched. */
+.metrics-grid { list-style: none; margin: var(--s3) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s2); }
+.metrics-card { background: var(--raised); border: 1px solid var(--line); border-radius: 4px; padding: var(--s2); min-width: 0; overflow-wrap: break-word; }
+.metrics-card:first-child { grid-column: 1 / -1; background: var(--art); color: var(--art-ink); border-color: var(--art-line); }
+.metrics-card:first-child .metrics-label { color: var(--art-ink); }
+.metrics-card:first-child .metrics-note { color: var(--art-ink); }
+.metrics-label { display: block; font: 11px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: var(--s1); }
+.metrics-value { display: block; font-family: var(--serif); font-size: clamp(30px, 3vw, 42px); letter-spacing: -.03em; line-height: 1.1; overflow-wrap: break-word; }
+.metrics-note { display: block; font-size: 14px; line-height: 1.7; color: var(--muted); margin-top: var(--s1); }
+.metrics-page table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font: 13px/1.6 var(--sans); margin: 24px 0; }
+.metrics-page th, .metrics-page td { padding: 12px 16px; border-bottom: 1px solid var(--line); text-align: left; }
+.metrics-page caption { text-align: left; font-size: 12px; color: var(--muted); padding-bottom: 8px; }
+.metrics-page code { font: 13px/1.7 var(--mono); background: var(--surface); padding: 2px 5px; border-radius: 3px; }
+.metrics-page h3 { font-size: clamp(22px, 2vw, 25px); margin: 32px 0 8px; }
+@media (max-width: 980px) {
+  .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  .metrics-grid { grid-template-columns: 1fr; }
+}
 /* About autonomous company (MAC-38, per MAC-37 design brief). Additive only:
    about-/org-/pipe- classes, semantic vars, no new tokens or breakpoints. */
 .about-section { padding: var(--s4) 0 var(--s5); border-top: 1px solid var(--line); }

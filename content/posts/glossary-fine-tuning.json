@@ -1,0 +1,10 @@
+{
+  "title": "What is Fine-tuning?",
+  "description": "Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.",
+  "date": "2026-09-10",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "Fine-tuning takes a pretrained model and keeps training it on a smaller, carefully chosen set of examples. The base capabilities stay, while responses bend toward the new material: steadier formatting, domain vocabulary, and fewer reminders of the general task. It trades one-off prompt effort for upfront data work, and it pays off when the same behavior must repeat reliably.",
+  "featured": false,
+  "draft": false
+}

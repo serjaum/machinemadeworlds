@@ -1,0 +1,4 @@
+<p>Fine-tuning is further training of a finished base model on a smaller, focused set of examples so it handles one task, style, or subject area more reliably.</p>
+<h2>How it works</h2>
+<p>Training starts from the pretrained weights instead of from scratch, using a curated collection of prompts and desired answers from the target domain. Repeated passes nudge those weights toward the new patterns while most general knowledge stays intact, which is why a modest dataset can shift behavior far more than a long prompt. Teams hold back a separate evaluation set to confirm the gains carry over to unseen inputs rather than memorizing the training rows. When the data is thin or skewed, the model narrows with it, so dataset quality decides the outcome more than training length.</p>
+<p>Builders reach for fine-tuning when the same behavior must repeat at scale: steady formatting, domain vocabulary, or tool-use habits that prompting alone cannot hold.</p>

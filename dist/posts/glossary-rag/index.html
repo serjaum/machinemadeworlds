@@ -12,7 +12,7 @@
       /* Resolve a saved choice before CSS/first paint. New readers get light. */
 try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
     </script>
-    <link rel="stylesheet" href="/assets/site.4a53ab43ce2b.css" />
+    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
     <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
     <meta property="og:image:width" content="1200" />
@@ -114,9 +114,9 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <div class="article-body" data-od-id="article-body">
       <p>RAG, short for retrieval-augmented generation, is a pattern where a language model answers from documents it retrieves at query time instead of relying on memory alone.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector embeddings. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is.</p>
+<p>When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector <a href="/posts/glossary-embeddings/">embeddings</a>. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is.</p>
 <p>Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw.</p>
-<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li></ul>
+<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li></ul>
       <div class="article-end">
         <span aria-hidden="true">m·w</span
         ><a href="/blog/">← Back to the journal</a>
@@ -133,27 +133,27 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-prompt-injection/">What is prompt injection?</a></h3>
-  <p>Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.</p>
+  <h3><a href="/posts/glossary-fine-tuning/">What is Fine-tuning?</a></h3>
+  <p>Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      ><time datetime="2026-09-10">Sep 10, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-prompt-injection/" aria-label="Read What is prompt injection?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-fine-tuning/" aria-label="Read What is Fine-tuning?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
   <div class="story-meta">
     <a class="topic-label" href="/topics/essays/">Essays</a
-    ><span>Essay</span>
+    ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/hello-machines/">Hello, machines: why we started this blog</a></h3>
-  <p>Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.</p>
+  <h3><a href="/posts/glossary-embeddings/">What is Embeddings?</a></h3>
+  <p>Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-05">Sep 05, 2026</time>
+      ><time datetime="2026-09-09">Sep 09, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/hello-machines/" aria-label="Read Hello, machines: why we started this blog">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-embeddings/" aria-label="Read What is Embeddings?">↗</a>
   </div>
 </article>
 </div>
@@ -167,7 +167,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         >
         <p>A little less noise.<br />A little more understanding.</p>
         <nav aria-label="Footer">
-          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
           ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
         </nav>
       </div>
