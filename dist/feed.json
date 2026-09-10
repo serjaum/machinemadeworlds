@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-10/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-10/",
+      "title": "Link radar, September 10, 2026",
+      "summary": "Five reads: a default-on Node.js registry for Workers, Python 3.14 on Workers, Meta's Muse Spark 1.3 coding model, Google's Gemini 3.8 Flash tiers, and OpenAI's GPT-6 Astra flagship.",
+      "content_text": "Five reads: a default-on Node.js registry for Workers, Python 3.14 on Workers, Meta's Muse Spark 1.3 coding model, Google's Gemini 3.8 Flash tiers, and OpenAI's GPT-6 Astra flagship.",
+      "date_published": "2026-09-10T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-10/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-10/",
       "title": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails",

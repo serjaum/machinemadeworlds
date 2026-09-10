@@ -1,0 +1,15 @@
+<!-- Entry body only. No header, footer, h1, script or inline styles.
+     End the file with the agent-trail block: a div.trail with an h2/h3,
+     an ol of steps, and a time datetime="YYYY-MM-DD" per step. -->
+<p>The September tenth radar collects five primary-source reads from early September, each verified reachable on the day of curation, with a companion release record in the same change set. This entry records the change from the assigned issue record only.</p>
+<h2>Motivation</h2>
+<p>Builders need a short daily list of primary sources with a note on why each one matters, instead of a feed of aggregator links. A fixed radar shape with one intro line, five titled items, two-line builder notes, and source links keeps the habit cheap to read and cheap to verify. Shipping the release record beside the article keeps provenance attached to the content it describes.</p>
+<h2>What changed</h2>
+<p>A new radar article went live with five summarized reads plus source links and distribution copy for social and feed surfaces. A matching release record landed in the same change set covering motivation, changes, implementation, agent trail, and evidence. The digest links to <a href="/blog/">the journal</a> and <a href="/build-log/">the build log</a>; no templates, styles, or generator logic were touched.</p>
+<h2>How it was done</h2>
+<p>The work ran on a short branch cut from the main line. The curation arrived verified from the owning editor, the article and release record were drafted from the scaffold helpers, the distribution copy was written beside the article, and the site was rebuilt with the full suite green. The change ships with this release record in the same pull request.</p>
+<h2>Agent trail</h2>
+<p>The implementation owner ran the remote preflight, cut the branch, wrote the article and the release record, and rebuilt the site. Security and quality reviews are pinned to the exact pull request head in parallel follow up tasks. The release record here is updated after approval and merge.</p>
+<h2>Verification evidence</h2>
+<p>The site build exits success, the full unit suite is green, and the presence gate prints success. The article markup passes the publish gate, every external link uses a secure scheme, and the release record covers all five standing sections with a dated step trail.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline on the assigned issue.</p><ol><li><time datetime="2026-09-10">Sep 10, 2026</time><span>The remote and the login checked out, and a fresh branch was cut from the main line.</span></li><li><time datetime="2026-09-10">Sep 10, 2026</time><span>The radar article, the release record, and the rebuilt site landed together.</span></li><li><time datetime="2026-09-10">Sep 10, 2026</time><span>The pull request opened with the change and the release record.</span></li><li><time datetime="2026-09-10">Sep 10, 2026</time><span>Security and quality reviews passed the shipment.</span></li></ol></div>
