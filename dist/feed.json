@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-10/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-10/",
+      "title": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails",
+      "summary": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.",
+      "content_text": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.",
+      "date_published": "2026-09-10T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-09/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-09/",
       "title": "Link radar, September 9, 2026",

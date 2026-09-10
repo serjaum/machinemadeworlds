@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI news digest — September 10, 2026: image models, tiny local models, agent guardrails</title>
+    <meta name="description" content="Six builder stories: OpenAI&#x27;s Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/ai-news-2026-09-10/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.86f3f60071c0.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="AI news digest — September 10, 2026: image models, tiny local models, agent guardrails" />
+    <meta property="og:description" content="Six builder stories: OpenAI&#x27;s Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/ai-news-2026-09-10/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-10T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-10T00:00:00+00:00" />
+    <meta property="article:section" content="Automation" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails", "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-10/", "inLanguage": "en", "headline": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails", "description": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "mainEntityOfPage": "https://machinemadeworlds.com/posts/ai-news-2026-09-10/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script src="/assets/site.d910f5e99009.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      News digest <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>AI news digest — September 10, 2026: image models, tiny local models, agent guardrails</h1>
+    <p class="article-lead">Image generation got faster and more editable, small open models kept climbing, and agent operations grew up a notch with a pre-action control plane. Alongside the tooling: a researcher resignation reopening the safety debate, hard numbers on how developers actually use coding agents, and a senator&#x27;s global-pause proposal facing enforcement questions. Every summary is in our own words; follow the links for the original reporting.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-10">Sep 10, 2026</time> · 4 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#openai-ships-chatgpt-images-2-5-with-sketch-and-comment-editing">OpenAI ships ChatGPT Images 2.5 with Sketch and comment editing</a><a href="#minicpm5-2b-sets-a-new-bar-for-tiny-open-weights-reasoners">MiniCPM5-2B sets a new bar for tiny open-weights reasoners</a><a href="#veriproof-launches-a-control-plane-for-agents-in-production">VeriProof launches a control plane for agents in production</a><a href="#anthropic-researcher-quits-with-a-warning-about-the-ai-race">Anthropic researcher quits with a warning about the AI race</a><a href="#jetbrains-survey-90-percent-of-developers-now-use-coding-agents-weekly">JetBrains survey: 90 percent of developers now use coding agents weekly</a><a href="#sanders-takes-the-global-ai-pause-case-to-a-new-audience">Sanders takes the global AI pause case to a new audience</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>Image tooling, tiny local models, and agent guardrails lead the last 24 hours, with hard adoption data and two safety debates framing the week. OpenAI shipped a faster image model with sketch and comment editing, OpenBMB released a 2.6B open-weights reasoner that tops its size class, and a new control plane tackles the pilot-to-production gap for agents. A researcher resignation, a developer survey of 15,000 professionals, and a global-pause proposal round out the day. Here are six stories worth your time, each summarized in our own words with a link to the original reporting.</p>
+<h2 id="openai-ships-chatgpt-images-2-5-with-sketch-and-comment-editing">OpenAI ships ChatGPT Images 2.5 with Sketch and comment editing</h2>
+<p>OpenAI released Images 2.5 as its new image model inside ChatGPT, promising sharper detail, more consistent edits, and faster generation alongside two companion models in the API. New workflows include starting from templates for formats like posters and merch, drawing directly in chat with a Sketch tool, commenting on parts of a generated image to change only those areas, and sharing prompts so others can rerun an idea. The company says users now create more than three billion images per week across ChatGPT Images and the API models, and the release is rolling out across desktop, mobile, and web tiers.</p>
+<p>Read the full story at <a href="https://news.az/news/openai-launches-chatgpt-images-25-and-two-new-api-models">News.az</a> (September 8, 2026).</p>
+<h2 id="minicpm5-2b-sets-a-new-bar-for-tiny-open-weights-reasoners">MiniCPM5-2B sets a new bar for tiny open-weights reasoners</h2>
+<p>OpenBMB released MiniCPM5-2B, a 2.6B-parameter dense reasoning model under Apache 2.0 aimed squarely at on-device and edge deployment. Independent testing scores it highest among open-weights models under 4B parameters, ahead of larger rivals at a fraction of the size, with notably strong agentic results on real-world work tasks and banking scenarios. It is also token-efficient for a reasoning model, using roughly a third of the output tokens of its closest tiny rival per benchmark task — a detail that matters directly for local inference cost and latency.</p>
+<p>Read the full story at <a href="https://artificialanalysis.ai/articles/openbmb-releases-minicpm5-2b">Artificial Analysis</a> (September 7, 2026).</p>
+<h2 id="veriproof-launches-a-control-plane-for-agents-in-production">VeriProof launches a control plane for agents in production</h2>
+<p>A new platform launched to close the gap between working agent pilots and signed-off production rollouts. The idea is simple: check each proposed agent action against the organization's rules while it can still be changed, route exceptions to a person with authority to decide, and keep the resulting decision record in a form an outside reviewer can verify without trusting the vendor. Most enterprise agent programs stall on exactly these questions — which rule applied, who approved the exception, and what the agent actually did — so builders evaluating agent infrastructure should compare this pre-action pattern against their current approve-after-the-fact setup.</p>
+<p>Read the full story at <a href="https://www.veriproof.app/press/launch-2026">VeriProof</a> (September 8, 2026).</p>
+<h2 id="anthropic-researcher-quits-with-a-warning-about-the-ai-race">Anthropic researcher quits with a warning about the AI race</h2>
+<p>Pre-training researcher Jacob Coxon announced his resignation after three years across OpenAI and Anthropic, writing that neither company is acting responsibly and that labs are racing toward self-improving superintelligence while gambling with lives. His prior work included GPT-4o research at OpenAI before moving to Anthropic earlier this year. Two Anthropic colleagues publicly backed the broader warning while defending the lab's effort, with one estimating a greater-than-ten-percent chance of severe outcomes within a decade — asobering data point for teams deciding how much autonomy to grant their own systems.</p>
+<p>Read the full story at <a href="https://africa.businessinsider.com/news/an-anthropic-researcher-just-quit-saying-openai-and-anthropic-are-gambling-with-our/l35cr0h">Business Insider Africa</a> (September 9, 2026).</p>
+<h2 id="jetbrains-survey-90-percent-of-developers-now-use-coding-agents-weekly">JetBrains survey: 90 percent of developers now use coding agents weekly</h2>
+<p>JetBrains published results from more than 15,000 professional developers surveyed in May to July 2026, showing coding agents firmly embedded in daily work: 90 percent use them at least weekly and 68 percent daily. Claude Code leads by a wide margin at 39 percent adoption worldwide and 47 percent in the US, with Codex climbing from 3 to 16 percent while Copilot and Cursor slipped. Open-source OpenCode reached 7 percent adoption with 42 percent awareness despite no big-company backing — a useful signal for teams choosing which agent surfaces to support first.</p>
+<p>Read the full story at <a href="https://blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026">JetBrains Research</a> (August 2026).</p>
+<h2 id="sanders-takes-the-global-ai-pause-case-to-a-new-audience">Sanders takes the global AI pause case to a new audience</h2>
+<p>Senator Bernie Sanders published a Fox News op-ed on September 1 calling for labs worldwide to stop developing more powerful models and for an agreement between the US and China, citing job losses, energy costs, environmental harm, and children's mental health. Analysis of the proposal notes cross-party public support for safety-first regulation but flags the missing pieces: how a pause would be enforced and what conditions would let work resume. The piece also traces the security backdrop to a reported incident involving roughly 1,200 agents and the Hugging Face breach, with researchers acknowledging gaps in their data.</p>
+<p>Read the full story at <a href="https://www.therundown.ai/news/bernie-sanders-global-ai-pause-fox-news">The Rundown AI</a> (September 6, 2026).</p>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Radar</span>
+  </div>
+  <h3><a href="/posts/link-radar-2026-09-09/">Link radar, September 9, 2026</a></h3>
+  <p>Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-09">Sep 09, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/link-radar-2026-09-09/" aria-label="Read Link radar, September 9, 2026">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>News digest</span>
+  </div>
+  <h3><a href="/posts/ai-news-2026-09-09/">AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes</a></h3>
+  <p>Six builder stories: Meta&#x27;s personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI&#x27;s agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-09">Sep 09, 2026</time>
+      <span aria-hidden="true">·</span> 4 min read</span
+    ><a class="story-arrow" href="/posts/ai-news-2026-09-09/" aria-label="Read AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
