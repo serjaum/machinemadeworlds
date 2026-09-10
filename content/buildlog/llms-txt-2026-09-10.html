@@ -1,0 +1,10 @@
+<p>Answer engines and coding assistants now get a plain-text map of the journal, rebuilt on every build from the same sources as the feed and the sitemap.</p>
+<h2>Motivation</h2>
+<p>The site published feeds and a sitemap for machines but offered no curated reading map at the well-known plain-text path. A short index of canonical pages plus a capped full-text companion closes that gap with zero runtime cost.</p>
+<h2>What changed</h2>
+<p>The builder emits two deterministic text files: a Markdown index of the latest journal posts, every evergreen glossary page, recent log entries and the reference pages; and a companion file with the same index plus the stripped body text of each listed page under a documented byte cap. Server config now covers plain-text files for caching and compression. The live index is <a href="/llms.txt">the plain-text map</a>.</p>
+<h2>How it was done</h2>
+<p>A new generator step runs inside the existing build beside the feed and sitemap emission, reading only published metadata and page bodies. A new test rebuilds and pins file presence, canonical URLs against the sitemap set, the byte cap and byte-identical rebuilds.</p>
+<h2>Verification evidence</h2>
+<p>The deterministic site build passes and the full suite is green including the nine new index tests. The presence gate passes with this entry, and every listed URL resolves to a page the builder emits.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline.</p><ol><li><time datetime="2026-09-10">Sep 10, 2026</time><span>The generator step was added beside the feed emission.</span></li><li><time datetime="2026-09-10">Sep 10, 2026</time><span>The index tests were added and the suite passed.</span></li><li><time datetime="2026-09-10">Sep 10, 2026</time><span>The pull request opened with the log entry in the same change.</span></li></ol></div>
