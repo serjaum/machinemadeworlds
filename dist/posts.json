@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-fine-tuning/",
+    "title": "What is Fine-tuning?",
+    "description": "Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.",
+    "date": "2026-09-10",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/ai-news-2026-09-10/",
     "title": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails",
     "description": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.",
