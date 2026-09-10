@@ -1,0 +1,50 @@
+{
+  "title": "Link radar, September 10, 2026",
+  "description": "A five-link radar post for September 10 went live with summaries, sources, and distribution copy, recorded here with the usual release trail.",
+  "date": "2026-09-10",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "The daily link radar for September 10 collects five verified primary-source reads with builder notes and source links, shipped alongside this release record in a single change set.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-397",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Preflight and branch",
+      "verdict": "done",
+      "sha": "a7b2223",
+      "rationale": "Validated the remote and the login, then cut a fresh branch from the main line.",
+      "at": "2026-09-10"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Radar post and release record",
+      "verdict": "done",
+      "sha": "a7b2223",
+      "rationale": "Built the five-link radar article with summaries and source links plus the release record and distribution copy, then rebuilt the site green.",
+      "at": "2026-09-10"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Gates and pull request",
+      "verdict": "done",
+      "sha": "a7b2223",
+      "rationale": "Ran the site build, the unit suite, and the presence gate green, then opened the pull request for review.",
+      "at": "2026-09-10"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The radar reuses the established radar layout and the builder defaults for external links, so no new visual language was introduced. Summaries are paraphrased in our own words with links to the originals, keeping the article within the markup allowlist. The release record ships in the same change set so the presence gate stays satisfied.",
+    "Director": "This change adds routine dated content inside the cleared pattern with no new pages or components. Security and quality reviews are pinned to the exact pull request head in follow up tasks. Release approval fires only when both verdicts pass that exact head."
+  }
+}

@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-10/",
+    "title": "Link radar, September 10, 2026",
+    "description": "Five reads: a default-on Node.js registry for Workers, Python 3.14 on Workers, Meta's Muse Spark 1.3 coding model, Google's Gemini 3.8 Flash tiers, and OpenAI's GPT-6 Astra flagship.",
+    "date": "2026-09-10",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/ai-news-2026-09-10/",
     "title": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails",
     "description": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.",
