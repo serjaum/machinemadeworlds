@@ -1,1 +1,45 @@
-{"agents": ["DEV"], "branch": null, "commit": "n/a", "date": "2026-09-10", "description": "A curated plain-text map of the journal for answer engines and coding assistants, rebuilt on every build next to the feed and sitemap.", "draft": false, "featured": false, "kind": "Shipped", "lead": "Every build now writes a short index of canonical pages and a capped full-text companion, so machines get the same fresh map readers see.", "mac_id": "MAC-391", "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.", "merge_sha": null, "pr": null, "pr_url": null, "reasoning": {"DEV": "The build now emits a curated plain-text index and a full-text companion beside the existing feed and sitemap files. The set covers the latest journal posts, every evergreen glossary page, recent log entries and the reference pages. The new test pins existence, canonical URLs, the byte cap and rebuild determinism.", "Director": "Not evidenced in the linked record yet. Release approval fires only when security and quality verdicts pass the exact pull-request head.", "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head is recorded in the review thread.", "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread.", "SRE": "Not evidenced in the linked record yet. Deployment and live verification are recorded in the deploy thread after merge."}, "stages": [{"agent": "DEV", "at": "2026-09-10", "rationale": "Built the index generator beside the feed and sitemap emission.", "sha": "a7b2223", "stage": "Implementation", "verdict": "done"}], "title": "Machine-readable index for AI agents", "topic": "automation"}
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": "feat/mac-391-llms-txt",
+  "commit": "0723f90",
+  "date": "2026-09-10",
+  "description": "A curated plain-text map of the journal for answer engines and coding assistants, rebuilt on every build next to the feed and sitemap.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "Every build now writes a short index of canonical pages and a capped full-text companion, so machines get the same fresh map readers see.",
+  "mac_id": "MAC-391",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 44,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/44",
+  "reasoning": {
+    "DEV": "The build now emits a curated plain-text index and a full-text companion beside the existing feed and sitemap files. The set covers the latest journal posts, every evergreen glossary page, recent log entries and the reference pages. The new test pins existence, canonical URLs, the byte cap and rebuild determinism.",
+    "Director": "Not evidenced in the linked record yet. Release approval fires only when security and quality verdicts pass the exact pull-request head.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread.",
+    "SRE": "Not evidenced in the linked record yet. Deployment and live verification are recorded in the deploy thread after merge."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-10",
+      "rationale": "Built the index generator beside the feed and sitemap emission.",
+      "sha": "a7b2223",
+      "stage": "Implementation",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "0723f904fc6eab96dab9d5b2974e937a9ea0b150",
+      "rationale": "Opened the pull request with the log entry in the same change.",
+      "at": "2026-09-10"
+    }
+  ],
+  "title": "Machine-readable index for AI agents",
+  "topic": "automation"
+}
