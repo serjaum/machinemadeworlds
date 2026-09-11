@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fifth glossary term: quantization</title>
+    <meta name="description" content="The weekday glossary gains its fifth explainer: quantization, the precision tradeoff that fits capable models onto smaller graphics cards and laptops. The backlog flips to shipped with order and aliases kept, and this log entry ships in the same change." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/glossary-quantization-2026-09-11/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Fifth glossary term: quantization" />
+    <meta property="og:description" content="The weekday glossary gains its fifth explainer: quantization, the precision tradeoff that fits capable models onto smaller graphics cards and laptops. The backlog flips to shipped with order and aliases kept, and this log entry ships in the same change." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/glossary-quantization-2026-09-11/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Fifth glossary term: quantization", "url": "https://machinemadeworlds.com/build-log/glossary-quantization-2026-09-11/", "inLanguage": "en", "headline": "Fifth glossary term: quantization", "description": "The weekday glossary gains its fifth explainer: quantization, the precision tradeoff that fits capable models onto smaller graphics cards and laptops. The backlog flips to shipped with order and aliases kept, and this log entry ships in the same change.", "datePublished": "2026-09-11", "dateModified": "2026-09-11", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/glossary-quantization-2026-09-11/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script src="/assets/site.ddc3e83e670b.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Shipped <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Fifth glossary term: quantization</h1>
+    <p class="article-lead">One new definition on schedule: the glossary runbook ships its fifth term in backlog order, with the page, the backlog flip, the social pack, and this log entry landing together.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-11">Sep 11, 2026</time> · 2 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>The weekday glossary runbook continues with its fifth term: an explainer on quantization, the precision tradeoff that fits capable models onto smaller graphics cards and laptops. The new page renders at <a href="/posts/glossary-quantization/">the quantization explainer</a>, the backlog marks the term shipped while keeping its order and aliases, and this log entry ships beside it in the same change.</p>
+<h2 id="motivation">Motivation</h2>
+<p>The journal points readers at fresh model behavior every day, yet newcomers keep tripping over the vocabulary underneath it. A weekday glossary turns each such question into a page that teaches and interlinks, and the runbook ships one term per run in backlog order. The fifth slot belongs to the precision tradeoff behind local models, so readers meeting compact models for the first time have somewhere to land.</p>
+<h2 id="what-changed">What changed</h2>
+<p>A new explainer now renders at <a href="/posts/glossary-quantization/">the quantization explainer</a>: a one-line definition, a short section on compact blocks with per-block scales plus a calibration pass, and a closing line on when builders reach for it. It is filed under topic essays as kind Glossary with the featured flag untouched, and the builder appends the related-terms block automatically. The backlog entry keeps order five with its alias and flips to shipped, and a beside-each-article pack carries the short social copy with the canonical link.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>After the hosting preflight and a fresh branch from the main line, development flipped the backlog flag, drafted the term page from the runbook pattern, and added the pack plus this log entry in the same change. No template, style, or builder changes were needed: the existing article page supplies the eyebrow, lead, and related grid, while the shipped aliases start linking older posts automatically. The social copy was counted by hand against its limits before saving.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>The site build exits success, the full suite is green, and the presence gate prints success with this entry covering the change. The built glossary page shows the definition, the explainer section, and the auto-inserted related block, while the sitemap and feed include the new address. A scan of the diff finds no secrets, and security plus quality reviews attach to the exact pushed head after this pull request opens.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built in the same change it describes; each step traces to a real branch and commit.</p><ol><li><time datetime="2026-09-11">Sep 11, 2026</time><span>Development verified the remote and login, then branched from the fresh main line.</span></li><li><time datetime="2026-09-11">Sep 11, 2026</time><span>Development shipped the term page, the pack, and the backlog flip with this entry.</span></li><li><time datetime="2026-09-11">Sep 11, 2026</time><span>Unit tests, presence gate and deterministic rebuild green; entry shipped in the same change.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p><a href="https://github.com/serjaum/machinemadeworlds/pull/50">the pull request</a> · merge pending · <a href="https://github.com/serjaum/machinemadeworlds/pull/50/commits" title="feat/glossary-quantization-2026-09-11">the branch</a></p><ol class="flow flow-anim"><li data-step="1"><span class="flow-status">done — Hosting preflight and branch</span><span>DEV · <time datetime="2026-09-11">2026-09-11</time> — Verified the remote and login, then branched from the fresh main line.</span></li><li data-step="2"><span class="flow-status">done — Glossary term and pack</span><span>DEV · <time datetime="2026-09-11">2026-09-11</time> — Shipped the term page, the social pack, and the backlog flip with this entry.</span></li><li data-step="3"><span class="flow-status">done — Pull request</span><span>DEV · <time datetime="2026-09-11">2026-09-11</time> — Opened the pull request with the term and the log entry.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Hosting preflight and branch</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/b4ef413" title="b4ef413">commit</a></td><td>Verified the remote and login, then branched from the fresh main line.</td></tr><tr><td>Glossary term and pack</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/b4ef413" title="b4ef413">commit</a></td><td>Shipped the term page, the social pack, and the backlog flip with this entry.</td></tr><tr><td>Pull request</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/b4ef413" title="b4ef413">commit</a></td><td>Opened the pull request with the term and the log entry.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>DEV</dt><dd>The term reuses the established glossary page pattern with no new components, scripts, or styles, carrying a one-line definition plus a short explainer section and a builder-angle closing line. The backlog entry keeps its order and aliases while flipping to shipped, and the beside-each-article pack stays out of the published pages by construction. The deterministic build, the full test suite, and the presence gate pass on the change.</dd><dt>SEC</dt><dd>Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.</dd><dt>QA</dt><dd>Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.</dd><dt>Director</dt><dd>This change adds one glossary term through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Hosting preflight and branch">●</span><span title="done — Glossary term and pack">●</span><span title="done — Pull request">●</span></p></div>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/link-radar-2026-09-11/">Link radar, September 11, 2026</a></h3>
+  <p>A five-link radar post for September 11 went live with summaries, sources, and distribution copy, recorded here with the usual release trail.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-11">Sep 11, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/link-radar-2026-09-11/" aria-label="Read Link radar, September 11, 2026">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/behind-the-ai-digest-2026-09-11/">Behind the AI digest of September 11, 2026</a></h3>
+  <p>How the September 11 digest shipped: an automated morning run gathered six fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-11">Sep 11, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/behind-the-ai-digest-2026-09-11/" aria-label="Read Behind the AI digest of September 11, 2026">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

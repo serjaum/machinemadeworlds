@@ -116,7 +116,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <h2 id="how-it-works">How it works</h2>
 <p>A model trained on large collections learns to map each input to a point in a shared space, where distance stands in for similarity. Two sentences that mean nearly the same thing land near each other even when they share no words, while unrelated sentences land far apart. Those vectors are stored ahead of time, so a new question is embedded the same way and matched against the collection by nearest distance. The match runs on numbers, which is why search by meaning keeps working across wording changes that defeat keyword search.</p>
 <p>Builders reach for embeddings whenever results must be found by meaning: document search, duplicate detection, grouping related items, and the retrieval step behind sourced answers.</p>
-<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li><li><a href="/posts/glossary-rag/">RAG</a></li></ul>
+<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li><li><a href="/posts/glossary-quantization/">Quantization</a></li><li><a href="/posts/glossary-rag/">RAG</a></li></ul>
       <div class="article-end">
         <span aria-hidden="true">m·w</span
         ><a href="/blog/">← Back to the journal</a>
@@ -133,13 +133,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-fine-tuning/">What is Fine-tuning?</a></h3>
-  <p>Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.</p>
+  <h3><a href="/posts/glossary-quantization/">What is Quantization?</a></h3>
+  <p>Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-10">Sep 10, 2026</time>
+      ><time datetime="2026-09-11">Sep 11, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-fine-tuning/" aria-label="Read What is Fine-tuning?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-quantization/" aria-label="Read What is Quantization?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
@@ -147,13 +147,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-rag/">What is RAG?</a></h3>
-  <p>RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.</p>
+  <h3><a href="/posts/glossary-fine-tuning/">What is Fine-tuning?</a></h3>
+  <p>Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      ><time datetime="2026-09-10">Sep 10, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-rag/" aria-label="Read What is RAG?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-fine-tuning/" aria-label="Read What is Fine-tuning?">↗</a>
   </div>
 </article>
 </div>
