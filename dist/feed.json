@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-11/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-11/",
+      "title": "AI news digest — September 11, 2026: efficient models, agent governance, agentic security",
+      "summary": "Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.",
+      "content_text": "Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.",
+      "date_published": "2026-09-11T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-10/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-10/",
       "title": "Link radar, September 10, 2026",
