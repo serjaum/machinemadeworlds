@@ -1012,8 +1012,19 @@ def build(root=ROOT):
            'WebPage')
     render('/404.html', 'Page not found — ' + site['name'], 'Find your way back to the journal.',
            template(root, '404.html'))
+    render('/search/', 'Search — ' + site['name'],
+           'Search every article in the journal. Results rank title matches first, then excerpts, then body text.',
+           template(root, 'search.html'), 'SearchResultsPage')
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
     put('posts.json', json.dumps(index, ensure_ascii=False, indent=2) + '\n')
+    search_docs = []
+    for p in sorted(posts, key=lambda q: q['url']):
+        text = re.sub(r'\s+', ' ', plain(p['body'])).strip()
+        search_docs.append({'url': p['url'], 'title': p['title'],
+                            'description': p['description'], 'date': p['date'],
+                            'topic': p['topic'], 'topic_name': p['topic_name'],
+                            'body': text})
+    put('search-index.json', json.dumps(search_docs, ensure_ascii=False, indent=2) + '\n')
     rss = ET.Element('rss', version='2.0')
     channel = ET.SubElement(rss, 'channel')
     for key, value in [('title', site['name']), ('link', site['url']), ('description', site['description']), ('language', 'en')]:
@@ -1036,7 +1047,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/build-log/', '/metrics/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/search/', '/build-log/', '/metrics/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.
@@ -1063,6 +1074,7 @@ def build(root=ROOT):
     latest_entry = max([p['date'] for p in entries], default='')
     lastmod['/'] = latest_post
     lastmod['/blog/'] = latest_post
+    lastmod['/search/'] = latest_post
     lastmod['/build-log/'] = latest_entry
     lastmod['/prices/'] = data['prices']['updated']
     lastmod['/benchmarks/'] = data['benchmarks']['updated']

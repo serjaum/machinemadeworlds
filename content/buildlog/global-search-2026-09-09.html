@@ -1,0 +1,52 @@
+<h2>Motivation.</h2>
+<p>
+  The journal kept growing, but finding anything meant already knowing
+  where it lived. Each listing page filtered only its own visible cards
+  by title and excerpt, the homepage had no search at all, and words
+  that appear only inside article bodies returned nothing everywhere.
+  Readers needed one box, on every page, that searches everything.
+</p>
+<h2>What changed.</h2>
+<p>
+  Every page now carries a header search box that asks the new
+  <a href="/search/">Search page</a> for answers. The builder writes a
+  full-text index of article bodies at publish time, and the results
+  page ranks title matches first, then excerpts, then body text, with
+  newer articles winning ties. Queries live in the address bar so
+  results survive reloads and shares, a slash focuses the box, escape
+  clears it, and a live region announces every result count.
+  The old per-listing instant filter stays exactly as it was.
+</p>
+<h2>How it was done.</h2>
+<p>
+  The builder collects plain text from each article body, free of
+  navigation and footer chrome, and writes the ordered documents to a
+  single index file beside the existing journal feed. The results page
+  reuses the archive layout, cards, count, status, and empty state, and
+  its script fetches the index once, on first use, then scores titles
+  above excerpts, topics, and bodies. Rendering uses text nodes only,
+  the query echoes through text as well, and the index ships article
+  prose that was already public. First paint grows by the small form
+  and its styles; the index itself loads late and never blocks reading.
+</p>
+<h2>Agent trail.</h2>
+<p>
+  Design clearance landed first with placement, tokens, and acceptance
+  checks. Implementation followed on a fresh branch with browser checks
+  for body-only terms on every page kind. Security and quality reviews
+  gate the exact pushed head in parallel, and the release proceeds only
+  when both pass that head.
+</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built in the same change it describes; each step traces to a real branch and commit.</p><ol><li><time datetime="2026-09-09">Sep 09, 2026</time><span>Design clearance passed the header box, the results page, and the ranking contract.</span></li><li><time datetime="2026-09-09">Sep 09, 2026</time><span>Development verified the remote and login, then branched from the fresh main line.</span></li><li><time datetime="2026-09-09">Sep 09, 2026</time><span>Development shipped the index, the templates, the styles, the ranked client, and the extended browser checks.</span></li><li><time datetime="2026-09-09">Sep 09, 2026</time><span>Build, full suite, presence gate, and deterministic rebuild green; entry shipped in the same change.</span></li></ol></div>
+<h2>Evidence.</h2>
+<p>
+  The builder exits clean and rebuilds byte-identical output. The full
+  unit suite passes, including the raised raw and script weight caps,
+  and the first-paint weight holds under the sentinel flag. Browser
+  checks prove a body-only word ranks its article first, two further
+  body-only words resolve, the header box shows on the home, journal,
+  topic, and article pages, address-bar queries reproduce on reload,
+  escape clears, the slash key focuses, the empty state shows its exact
+  words, and controls stay hidden without scripts. A scan of the change
+  finds no secrets.
+</p>

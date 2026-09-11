@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Model benchmarks — Machine Made Worlds</title>
-    <meta name="description" content="Public eval scores for reference, refreshed weekly." />
-    <link rel="canonical" href="https://machinemadeworlds.com/benchmarks/" />
+    <title>Search — Machine Made Worlds</title>
+    <meta name="description" content="Search every article in the journal. Results rank title matches first, then excerpts, then body text." />
+    <link rel="canonical" href="https://machinemadeworlds.com/search/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -34,12 +34,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Model benchmarks — Machine Made Worlds" />
-    <meta property="og:description" content="Public eval scores for reference, refreshed weekly." />
-    <meta property="og:url" content="https://machinemadeworlds.com/benchmarks/" />
+    <meta property="og:title" content="Search — Machine Made Worlds" />
+    <meta property="og:description" content="Search every article in the journal. Results rank title matches first, then excerpts, then body text." />
+    <meta property="og:url" content="https://machinemadeworlds.com/search/" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "WebPage", "name": "Model benchmarks — Machine Made Worlds", "url": "https://machinemadeworlds.com/benchmarks/", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "SearchResultsPage", "name": "Search — Machine Made Worlds", "url": "https://machinemadeworlds.com/search/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.ddc3e83e670b.js" defer></script>
   </head>
@@ -78,36 +78,35 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><div class="container about-page">
-  <header class="page-heading">
-    <p class="eyebrow">Data</p>
-    <h1>Model<br /><em>benchmarks.</em></h1>
-    <p>
-      A small set of public eval scores for reference, refreshed weekly.
-      Scores measure the harness, not just the model — read the linked notes.
-    </p>
-    <p><small>Last updated <time datetime="2026-09-08">September 08, 2026</time>.</small></p>
+    <main id="main" tabindex="-1"><div class="container archive-page search-page">
+  <header class="page-heading" data-od-id="archive-heading">
+    <p class="eyebrow">Search</p>
+    <h1>Search<span class="accent-dot">.</span></h1>
+    <p>Results rank title matches first, then excerpts, then body text. <code>/</code> focuses, <code>ESC</code> clears.</p>
   </header>
-  <div class="article-body">
-    <table tabindex="0" aria-label="Model benchmark scores">
-      <thead>
-        <tr><th scope="col">Model</th><th scope="col">Benchmark</th><th scope="col">Score</th><th scope="col">Source</th><th scope="col">Checked</th></tr>
-      </thead>
-      <tbody>
-<tr><td>GPT-6 Astra</td><td>OSWorld</td><td>72.6%</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
-<tr><td>GPT-6 Astra</td><td>SWE-bench Verified</td><td>80.4%</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
-<tr><td>GPT-6 Astra</td><td>AutomationBench</td><td>41.4%</td><td><a href="https://openai.com/index/gpt-6-astra/">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
-<tr><td>Claude Sonnet 4.6</td><td>SWE-bench Verified</td><td>77.2%</td><td><a href="https://www.anthropic.com/news/claude-sonnet-4-6">Source ↗</a></td><td><time datetime="2026-09-08">2026-09-08</time></td></tr>
-      </tbody>
-    </table>
-    <h2>Methodology</h2>
-    <p>
-      Scores are copied from the vendor or harness page linked per row.
-      They are point-in-time snapshots for comparing local models against
-      hosted references, not targets to match on-device. Rows are re-checked
-      weekly; any row older than ten days is flagged for refresh.
-    </p>
+  <div class="archive-toolbar">
+    <p><span data-result-count>0</span> articles</p>
+    <label class="search-box" data-search-control hidden
+      ><span>Search the full journal</span
+      ><input
+        type="search"
+        data-search-page
+        placeholder="Try ‘osworld’ or ‘models’"
+        autocomplete="off"
+        aria-controls="article-list"
+        maxlength="120"
+    /></label>
   </div>
+  <div id="article-list" class="archive-list" data-global-results></div>
+  <section class="empty-state" data-empty hidden>
+    <h2>No articles found.</h2>
+    <p>Try a different word.</p>
+    <button type="button" data-clear-search class="button">Clear search</button>
+  </section>
+  <p class="sr-only" role="status" data-search-status>Type to search the full journal.</p>
+  <noscript>
+    <p>Search needs JavaScript to query the offline index. Browse <a href="/blog/">the journal</a> meanwhile.</p>
+  </noscript>
 </div>
 </main>
     <footer class="footer" data-od-id="footer">

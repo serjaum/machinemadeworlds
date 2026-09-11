@@ -59,6 +59,11 @@ $article_meta    <script type="application/ld+json">
           ><a href="/build-log/" $build_current>Build Log</a
           ><a href="/about/" $about_current>About</a>
         </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
         <button
           type="button"
           class="theme-toggle"

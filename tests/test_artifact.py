@@ -88,11 +88,18 @@ class ArtifactTests(unittest.TestCase):
         # for the opening term (~+200B): cap 43.6KB -> 43.9KB. MAC-178
         # metrics adds the metrics-* CSS (~2.3KB: cards grid, tables,
         # responsive collapse) plus the footer Metrics link: home path
-        # sat at ~45300, so cap 43.9KB -> 46.2KB.
-        # Compressed/JS caps unchanged and passing.
-        self.assertLess(total, 46200)
+        # sat at ~45300. MAC-349 global search adds the header form
+        # (~350B HTML), masthead-search CSS (~600B) and the deferred
+        # ranking/render client (~4.5KB JS: lazy index, title > excerpt >
+        # topic > body rank, URL sync, ESC, `/`, aria-live; results render
+        # via textContent only). Combined home path measured at 51042
+        # after the MAC-347 rebase (search + metrics CSS + footer links),
+        # so cap 43.9KB -> 51.6KB. JS file cap 3.5KB -> 7KB (client search is
+        # deferred, never render-blocking; the full-text index lazy-loads
+        # async on first use). Compressed cap unchanged and passing.
+        self.assertLess(total, 51600)
         self.assertLess(compressed, 14000)
-        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 3500)
+        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
             self.assertNotRegex(source, r'<(?:script|img)[^>]+src=["\']https?://')
