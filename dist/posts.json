@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-11/",
+    "title": "Link radar, September 11, 2026",
+    "description": "Five reads: OpenAI's Agents API, Anthropic's September threat report, Anthropic's targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub's AI Scan APIs.",
+    "date": "2026-09-11",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/ai-news-2026-09-11/",
     "title": "AI news digest — September 11, 2026: efficient models, agent governance, agentic security",
     "description": "Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.",

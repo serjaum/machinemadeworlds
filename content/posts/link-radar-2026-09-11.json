@@ -1,0 +1,10 @@
+{
+  "title": "Link radar, September 11, 2026",
+  "description": "Five reads: OpenAI's Agents API, Anthropic's September threat report, Anthropic's targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub's AI Scan APIs.",
+  "date": "2026-09-11",
+  "topic": "automation",
+  "kind": "Radar",
+  "lead": "Agent runtimes and safety reports dominated September 10: OpenAI's managed Agents API, Anthropic's misuse and capability reports, Cloudflare Containers as Codex execution, and GitHub's AI Scan APIs. Each summary below is in our own words; follow the links for the originals.",
+  "featured": false,
+  "draft": false
+}
