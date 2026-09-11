@@ -116,7 +116,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <h2 id="how-it-works">How it works</h2>
 <p>Training starts from the pretrained weights instead of from scratch, using a curated collection of prompts and desired answers from the target domain. Repeated passes nudge those weights toward the new patterns while most general knowledge stays intact, which is why a modest dataset can shift behavior far more than a long prompt. Teams hold back a separate evaluation set to confirm the gains carry over to unseen inputs rather than memorizing the training rows. When the data is thin or skewed, the model narrows with it, so dataset quality decides the outcome more than training length.</p>
 <p>Builders reach for fine-tuning when the same behavior must repeat at scale: steady formatting, domain vocabulary, or tool-use habits that prompting alone cannot hold.</p>
-<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li><li><a href="/posts/glossary-rag/">RAG</a></li></ul>
+<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li><li><a href="/posts/glossary-quantization/">Quantization</a></li><li><a href="/posts/glossary-rag/">RAG</a></li></ul>
       <div class="article-end">
         <span aria-hidden="true">m·w</span
         ><a href="/blog/">← Back to the journal</a>
@@ -133,13 +133,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-embeddings/">What is Embeddings?</a></h3>
-  <p>Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.</p>
+  <h3><a href="/posts/glossary-quantization/">What is Quantization?</a></h3>
+  <p>Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-09">Sep 09, 2026</time>
+      ><time datetime="2026-09-11">Sep 11, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-embeddings/" aria-label="Read What is Embeddings?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-quantization/" aria-label="Read What is Quantization?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
@@ -147,13 +147,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-rag/">What is RAG?</a></h3>
-  <p>RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.</p>
+  <h3><a href="/posts/glossary-embeddings/">What is Embeddings?</a></h3>
+  <p>Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-08">Sep 08, 2026</time>
+      ><time datetime="2026-09-09">Sep 09, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-rag/" aria-label="Read What is RAG?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-embeddings/" aria-label="Read What is Embeddings?">↗</a>
   </div>
 </article>
 </div>

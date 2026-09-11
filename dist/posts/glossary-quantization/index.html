@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Essays — Machine Made Worlds</title>
-    <meta name="description" content="Longer reflections on building with AI: what worked, what failed, and what slow useful writing still owes readers in a noisy feed." />
-    <link rel="canonical" href="https://machinemadeworlds.com/topics/essays/" />
+    <title>What is Quantization?</title>
+    <meta name="description" content="Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/glossary-quantization/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -32,14 +32,18 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       title="Machine Made Worlds"
       href="/feed.json"
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Essays — Machine Made Worlds" />
-    <meta property="og:description" content="Longer reflections on building with AI: what worked, what failed, and what slow useful writing still owes readers in a noisy feed." />
-    <meta property="og:url" content="https://machinemadeworlds.com/topics/essays/" />
+    <meta property="og:title" content="What is Quantization?" />
+    <meta property="og:description" content="Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/glossary-quantization/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Essays — Machine Made Worlds", "url": "https://machinemadeworlds.com/topics/essays/", "inLanguage": "en"}
+<meta property="article:published_time" content="2026-09-11T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-11T00:00:00+00:00" />
+    <meta property="article:section" content="Essays" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "What is Quantization?", "url": "https://machinemadeworlds.com/posts/glossary-quantization/", "inLanguage": "en", "headline": "What is Quantization?", "description": "Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.", "datePublished": "2026-09-11", "dateModified": "2026-09-11", "mainEntityOfPage": "https://machinemadeworlds.com/posts/glossary-quantization/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
     </script>
     <script src="/assets/site.ddc3e83e670b.js" defer></script>
   </head>
@@ -78,42 +82,53 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         </button>
       </div>
     </header>
-    <main id="main" tabindex="-1"><div class="container archive-page">
-  <header class="page-heading" data-od-id="archive-heading">
-    <p class="eyebrow">Ideas, collected</p>
-    <h1>Essays<span class="accent-dot">.</span></h1>
-    <p>Essays, guides and observations. Find something worth sitting with.</p>
-  </header>
-  <nav class="topic-tabs" aria-label="Browse topics">
-    <a href="/blog/">Everything</a><a href="/topics/local-ai/">Local AI <span aria-hidden="true">↗</span></a><a href="/topics/automation/">Automation <span aria-hidden="true">↗</span></a><a href="/topics/design/">Design <span aria-hidden="true">↗</span></a><a href="/topics/essays/">Essays <span aria-hidden="true">↗</span></a>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/essays/">Essays</a>
   </nav>
-  <div class="archive-toolbar">
-    <p><span data-result-count>6</span> articles</p>
-    <label class="search-box" data-search-control hidden
-      ><span>Search the journal</span
-      ><input
-        type="search"
-        data-search
-        placeholder="Try ‘models’ or ‘design’"
-        autocomplete="off"
-        aria-controls="article-list"
-    /></label>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Glossary <span class="tiny-rule" aria-hidden="true"></span> Essays
+    </p>
+    <h1>What is Quantization?</h1>
+    <p class="article-lead">Quantization converts a model&#x27;s weights from roomy high-precision numbers into compact lower-precision ones. The model keeps most of its skill while needing far less memory and answering noticeably faster. It is the standard move behind running capable models on a laptop or a single small graphics card, trading a small accuracy cost for a large efficiency win.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-11">Sep 11, 2026</time> · 1 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#how-it-works">How it works</a><a href="#related-terms">Related terms</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>Quantization is the practice of storing a model's weights in lower-precision numbers so the model uses less memory and runs faster at only a small accuracy cost.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>Training produces weights as roomy high-precision numbers, and quantization maps them into compact blocks of eight or four bits with a scale factor per block. Inference then runs largely in that compact form, which cuts memory use and the traffic between memory and compute. A short calibration pass over sample inputs sets the scales so the rounding error stays small, though very aggressive settings can dull rare behaviors. The result keeps most of the original skill while fitting hardware the full-size model could never touch.</p>
+<p>Builders reach for quantization whenever a model must fit cheaper hardware: local laptops, single-card servers, and cost-capped inference where full precision cannot pay its way.</p>
+<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li><li><a href="/posts/glossary-rag/">RAG</a></li></ul>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
   </div>
-  <div id="article-list" class="archive-list"><article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/essays/">Essays</a
-    ><span>Glossary</span>
-  </div>
-  <h3><a href="/posts/glossary-quantization/">What is Quantization?</a></h3>
-  <p>Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-11">Sep 11, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-quantization/" aria-label="Read What is Quantization?">↗</a>
-  </div>
-</article>
-<article class="story compact" data-search-item>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
   <div class="story-meta">
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
@@ -141,56 +156,9 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     ><a class="story-arrow" href="/posts/glossary-embeddings/" aria-label="Read What is Embeddings?">↗</a>
   </div>
 </article>
-<article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/essays/">Essays</a
-    ><span>Glossary</span>
-  </div>
-  <h3><a href="/posts/glossary-rag/">What is RAG?</a></h3>
-  <p>RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-08">Sep 08, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-rag/" aria-label="Read What is RAG?">↗</a>
-  </div>
-</article>
-<article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/essays/">Essays</a
-    ><span>Glossary</span>
-  </div>
-  <h3><a href="/posts/glossary-prompt-injection/">What is prompt injection?</a></h3>
-  <p>Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-08">Sep 08, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-prompt-injection/" aria-label="Read What is prompt injection?">↗</a>
-  </div>
-</article>
-<article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/essays/">Essays</a
-    ><span>Essay</span>
-  </div>
-  <h3><a href="/posts/hello-machines/">Hello, machines: why we started this blog</a></h3>
-  <p>Why Machine Made Worlds exists: a manifesto for slow, useful writing about AI and automation in a noisy web.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-05">Sep 05, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/hello-machines/" aria-label="Read Hello, machines: why we started this blog">↗</a>
-  </div>
-</article>
 </div>
-  <section class="empty-state" data-empty hidden>
-    <h2>No articles found.</h2>
-    <p>Try a different word, or return to the full collection.</p>
-    <button type="button" data-clear-search class="button">Clear search</button>
   </section>
-  <p class="sr-only" role="status" data-search-status></p>
-</div>
+</article>
 </main>
     <footer class="footer" data-od-id="footer">
       <div class="container footer-top">

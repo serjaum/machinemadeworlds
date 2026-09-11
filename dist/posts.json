@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-quantization/",
+    "title": "What is Quantization?",
+    "description": "Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.",
+    "date": "2026-09-11",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/ai-news-2026-09-11/",
     "title": "AI news digest — September 11, 2026: efficient models, agent governance, agentic security",
     "description": "Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.",

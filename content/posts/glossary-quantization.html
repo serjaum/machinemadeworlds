@@ -1,0 +1,4 @@
+<p>Quantization is the practice of storing a model's weights in lower-precision numbers so the model uses less memory and runs faster at only a small accuracy cost.</p>
+<h2>How it works</h2>
+<p>Training produces weights as roomy high-precision numbers, and quantization maps them into compact blocks of eight or four bits with a scale factor per block. Inference then runs largely in that compact form, which cuts memory use and the traffic between memory and compute. A short calibration pass over sample inputs sets the scales so the rounding error stays small, though very aggressive settings can dull rare behaviors. The result keeps most of the original skill while fitting hardware the full-size model could never touch.</p>
+<p>Builders reach for quantization whenever a model must fit cheaper hardware: local laptops, single-card servers, and cost-capped inference where full precision cannot pay its way.</p>

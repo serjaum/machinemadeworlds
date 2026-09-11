@@ -71,7 +71,7 @@ class GlossaryTests(unittest.TestCase):
             self.assertTrue(any(url == '/posts/glossary-prompt-injection/' for _, url, _ in shipped))
             # Unshipped backlog aliases must never fire.
             fired_urls = {url for _, url, _ in shipped}
-            self.assertNotIn('/posts/glossary-quantization/', fired_urls)
+            self.assertNotIn('/posts/glossary-inference/', fired_urls)
             digest = (target / 'content/posts/ai-news-2026-09-05.html').read_text(encoding='utf-8')
             flat = [(alias, url) for _, url, aliases in shipped for alias in aliases]
             linked = module.autolink_glossary(digest, flat)
