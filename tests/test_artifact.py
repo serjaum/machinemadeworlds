@@ -102,7 +102,13 @@ class ArtifactTests(unittest.TestCase):
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
-            self.assertNotRegex(source, r'<(?:script|img)[^>]+src=["\']https?://')
+            # Verification-only exception: the async AdSense verification
+            # snippet is the single allowed third-party script. Everything
+            # else external stays blocked.
+            scrubbed = source.replace(
+                '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>',
+                '')
+            self.assertNotRegex(scrubbed, r'<(?:script|img)[^>]+src=["\']https?://')
             self.assertNotIn('@import', source)
         ET.parse(dist / 'feed.xml')
         ET.parse(dist / 'sitemap.xml')
