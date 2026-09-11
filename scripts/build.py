@@ -709,6 +709,105 @@ def render_metrics(root, site, posts, put, render, staging):
     put('metrics/index.html', text)
 
 
+LLMS_JOURNAL_LIMIT = 10
+LLMS_BUILDLOG_LIMIT = 5
+LLMS_LINK_CAP = 40
+LLMS_FULL_CAP = 100 * 1024
+
+LLMS_STATIC_PAGES = (
+    ('/about/', 'About', 'What this journal is and how autonomous agents run it.'),
+    ('/metrics/', 'Metrics', 'Build-time counts: articles, words, deploy provenance and page weights.'),
+    ('/prices/', 'Model API prices', 'Indicative per-token list prices for widely used models, refreshed weekly.'),
+    ('/benchmarks/', 'Model benchmarks', 'Public eval scores for reference, refreshed weekly.'),
+)
+
+
+def _llms_single_line(text):
+    """Collapse a metadata field to one plain-text line for the index."""
+    return re.sub(r'\s+', ' ', text).strip()
+
+
+def llms_curated(site, posts, entries):
+    """Curated (section, title, url, description) rows for the llms index.
+
+    Deterministic: journal is date-desc (posts arrive date-sorted, glossary
+    split out), evergreen glossary is slug-asc, build log is date-desc and
+    capped, static pages are fixed order. Drafts never reach here: both
+    loaders already skip them. Descriptions reuse the published metadata
+    verbatim (already one line); only whitespace is normalized."""
+    base = site['url']
+    journal = [p for p in posts if not p['slug'].startswith('glossary-')][:LLMS_JOURNAL_LIMIT]
+    rows = [('Journal', _llms_single_line(p['title']), base + p['url'],
+             _llms_single_line(p['description'])) for p in journal]
+    glossary = sorted((p for p in posts if p['slug'].startswith('glossary-')),
+                      key=lambda p: p['slug'])
+    rows += [('Glossary', _llms_single_line(p['title']), base + p['url'],
+              _llms_single_line(p['description'])) for p in glossary]
+    rows += [('Build Log', _llms_single_line(p['title']), base + p['url'],
+              _llms_single_line(p['description'])) for p in entries[:LLMS_BUILDLOG_LIMIT]]
+    rows += [('Data pages', '%s — %s' % (title, site['name']), base + path, description)
+             for path, title, description in LLMS_STATIC_PAGES]
+    # Overflow prefers evergreen + latest: drop older build-log rows first,
+    # then older journal rows; glossary and static pages always stay.
+    while len(rows) > LLMS_LINK_CAP:
+        for index in range(len(rows) - 1, -1, -1):
+            if rows[index][0] in ('Build Log', 'Journal'):
+                del rows[index]
+                break
+        else:
+            break
+    return rows
+
+
+def render_llms_txt(site, posts, entries, put):
+    """Build-time llms.txt + llms-full.txt (MAC-391).
+
+    llms.txt is the curated Markdown index of canonical absolute URLs.
+    llms-full.txt repeats the same index header, then concatenates each
+    listed page's title, URL and body text stripped of HTML, capped so the
+    corpus stays a cheap single fetch (overflow drops older build-log
+    entries first, then older journal posts, never the evergreen
+    glossary). Pure function of content + site.json: no timestamps, no git
+    data, no network — byte-identical across rebuilds."""
+    rows = llms_curated(site, posts, entries)
+    lines = ['# Machine Made Worlds', '', site['description'].strip(), '',
+             'Machine-readable index of canonical pages. '
+             'Full text: ' + site['url'] + '/llms-full.txt', '']
+    for section in ('Journal', 'Glossary', 'Build Log', 'Data pages'):
+        section_rows = [row for row in rows if row[0] == section]
+        if not section_rows:
+            continue
+        lines.append('## ' + section)
+        lines += ['- [%s](%s): %s' % (title, url, description)
+                  for _, title, url, description in section_rows]
+        lines.append('')
+    index_text = '\n'.join(lines)
+    put('llms.txt', index_text)
+    bodies = {}
+    for p in posts + entries:
+        bodies[site['url'] + p['url']] = _llms_single_line(plain(p['body']))
+    for path, title, description in LLMS_STATIC_PAGES:
+        bodies.setdefault(site['url'] + path, description)
+    blocks, ranks = [], {}
+    for order, (section, title, url, _) in enumerate(rows):
+        # Higher drop rank is shed first under the byte cap; glossary and
+        # static pages are never shed (rank -1).
+        ranks[url] = -1 if section in ('Glossary', 'Data pages') else 0
+        blocks.append((url, '## %s\n%s\n\n%s\n' % (title, url, bodies.get(url, ''))))
+    shed = sorted(((ranks[url], order) for order, (url, _) in enumerate(blocks)), reverse=True)
+    keep = set(range(len(blocks)))
+    total = len(index_text.encode('utf-8')) + sum(len(text.encode('utf-8')) for _, text in blocks)
+    for rank, order in shed:
+        if total <= LLMS_FULL_CAP or rank < 0:
+            continue
+        keep.discard(order)
+        total -= len(blocks[order][1].encode('utf-8'))
+    full_text = index_text + ''.join(text for order, (_, text) in enumerate(blocks) if order in keep)
+    put('llms-full.txt', full_text)
+    return {'links': len(rows), 'llms_bytes': len(index_text.encode('utf-8')),
+            'full_bytes': len(full_text.encode('utf-8'))}
+
+
 def template(root, filename, **values):
     return Template((root / 'templates' / filename).read_text(encoding='utf-8')).substitute(values)
 
@@ -987,6 +1086,9 @@ def build(root=ROOT):
     put('sitemap.xml', ET.tostring(sitemap, encoding='unicode', xml_declaration=True))
     put('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + site['url'] + '/sitemap.xml\n')
     put('.htaccess', (root / 'templates/htaccess').read_text(encoding='utf-8'))
+    # Machine-readable index for AI agents: emitted before metrics so the
+    # page-weight scan and artifact totals count both text files.
+    render_llms_txt(site, posts, entries, put)
     # Metrics renders last: page weights and artifact totals are scanned from
     # the finished staging tree, so displayed figures match the artifact.
     render_metrics(root, site, posts, put, render, staging)
