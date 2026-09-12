@@ -808,6 +808,27 @@ def render_llms_txt(site, posts, entries, put):
             'full_bytes': len(full_text.encode('utf-8'))}
 
 
+AI_CRAWLERS = ('GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai',
+               'PerplexityBot', 'Google-Extended', 'CCBot')
+
+
+def render_robots_txt(site):
+    """Build-time robots.txt with explicit AI-crawler sections (MAC-452).
+
+    Default section stays open; each named AI crawler gets its own
+    User-agent section with Allow so crawler dashboards report an
+    explicit match instead of falling through to the wildcard. The
+    Sitemap line and the llms.txt pointer are derived from the
+    canonical site URL, so the file is a pure function of site.json
+    and stays byte-identical across rebuilds."""
+    lines = ['User-agent: *', 'Allow: /', '']
+    for bot in AI_CRAWLERS:
+        lines += ['User-agent: ' + bot, 'Allow: /', '']
+    lines.append('Sitemap: ' + site['url'] + '/sitemap.xml')
+    lines.append('# LLM index: ' + site['url'] + '/llms.txt')
+    return '\n'.join(lines) + '\n'
+
+
 def template(root, filename, **values):
     return Template((root / 'templates' / filename).read_text(encoding='utf-8')).substitute(values)
 
@@ -1104,7 +1125,7 @@ def build(root=ROOT):
         ET.SubElement(node, 'loc').text = site['url'] + path
         ET.SubElement(node, 'lastmod').text = sitemap_date(lastmod.get(path))
     put('sitemap.xml', ET.tostring(sitemap, encoding='unicode', xml_declaration=True))
-    put('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + site['url'] + '/sitemap.xml\n')
+    put('robots.txt', render_robots_txt(site))
     put('.htaccess', (root / 'templates/htaccess').read_text(encoding='utf-8'))
     # Machine-readable index for AI agents: emitted before metrics so the
     # page-weight scan and artifact totals count both text files.
