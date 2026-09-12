@@ -808,6 +808,27 @@ def render_llms_txt(site, posts, entries, put):
             'full_bytes': len(full_text.encode('utf-8'))}
 
 
+AI_CRAWLERS = ('GPTBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai',
+               'PerplexityBot', 'Google-Extended', 'CCBot')
+
+
+def render_robots_txt(site):
+    """Build-time robots.txt with explicit AI-crawler sections (MAC-452).
+
+    Default section stays open; each named AI crawler gets its own
+    User-agent section with Allow so crawler dashboards report an
+    explicit match instead of falling through to the wildcard. The
+    Sitemap line and the llms.txt pointer are derived from the
+    canonical site URL, so the file is a pure function of site.json
+    and stays byte-identical across rebuilds."""
+    lines = ['User-agent: *', 'Allow: /', '']
+    for bot in AI_CRAWLERS:
+        lines += ['User-agent: ' + bot, 'Allow: /', '']
+    lines.append('Sitemap: ' + site['url'] + '/sitemap.xml')
+    lines.append('# LLM index: ' + site['url'] + '/llms.txt')
+    return '\n'.join(lines) + '\n'
+
+
 def template(root, filename, **values):
     return Template((root / 'templates' / filename).read_text(encoding='utf-8')).substitute(values)
 
@@ -860,7 +881,8 @@ def build(root=ROOT):
         target.parent.mkdir(exist_ok=True)
         target.write_bytes(data)
 
-    def render(path, title, description, content, kind='WebPage', post=None, article=False):
+    def render(path, title, description, content, kind='WebPage', post=None, article=False,
+                 breadcrumbs=None):
         canonical = site['url'] + path
         # MAC-167 share card: one brand raster card (1200x630 PNG) for every
         # page. Site-wide defaults live here; the template only interpolates.
@@ -887,11 +909,27 @@ def build(root=ROOT):
         else:
             article_meta = ''
         jsonld = json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c')
+        # MAC-453: sibling BreadcrumbList block on detail pages, mirroring the
+        # visible breadcrumb trail (index -> topic -> article). The BlogPosting
+        # block above stays byte-compatible; this block gets the same `<`
+        # escaping. Absent on non-detail pages (jsonld_extra renders empty).
+        if breadcrumbs:
+            crumb = {'@context': 'https://schema.org', '@type': 'BreadcrumbList',
+                     'itemListElement': [
+                         {'@type': 'ListItem', 'position': n, 'name': name,
+                          'item': site['url'] + href if href.startswith('/') else href}
+                         for n, (name, href) in enumerate(breadcrumbs, 1)]}
+            jsonld_extra = ('\n    <script type="application/ld+json">\n      '
+                            + json.dumps(crumb, ensure_ascii=False).replace('<', '\\u003c')
+                            + '\n    </script>')
+        else:
+            jsonld_extra = ''
         nav = lambda href: ' aria-current="page"' if path == href else ''
         build_current = ' aria-current="page"' if path.startswith('/build-log/') else ''
         text = template(root, 'base.html', title=escape(title), name=escape(site['name']),
                         description=escape(description), canonical=escape(canonical),
                         og_type='article' if post else 'website', jsonld=jsonld,
+                        jsonld_extra=jsonld_extra,
                         css=assets['site.css'], js=assets['site.js'], favicon=assets['favicon.svg'],
                         logo=assets['logo.svg'], og_image=og_image,
                         og_image_width='1200', og_image_height='630',
@@ -981,7 +1019,10 @@ def build(root=ROOT):
                            related=''.join(card(q, True) for q in related),
                            index_url=index_url, index_label=index_label,
                            back_label=back_label, related_label=related_label)
-        render(p['url'], p['title'], p['description'], content, 'BlogPosting', post=p, article=article)
+        render(p['url'], p['title'], p['description'], content, 'BlogPosting', post=p, article=article,
+               breadcrumbs=[(index_label, index_url),
+                            (p['topic_name'], '/topics/' + p['topic'] + '/'),
+                            (p['title'], p['url'])])
 
     for p in posts:
         detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗', article=True)
@@ -1084,7 +1125,7 @@ def build(root=ROOT):
         ET.SubElement(node, 'loc').text = site['url'] + path
         ET.SubElement(node, 'lastmod').text = sitemap_date(lastmod.get(path))
     put('sitemap.xml', ET.tostring(sitemap, encoding='unicode', xml_declaration=True))
-    put('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + site['url'] + '/sitemap.xml\n')
+    put('robots.txt', render_robots_txt(site))
     put('.htaccess', (root / 'templates/htaccess').read_text(encoding='utf-8'))
     # Machine-readable index for AI agents: emitted before metrics so the
     # page-weight scan and artifact totals count both text files.
