@@ -1,0 +1,49 @@
+{
+  "title": "BreadcrumbList JSON-LD on article pages",
+  "description": "Article pages now emit a BreadcrumbList JSON-LD block mirroring the visible breadcrumb trail (Journal, topic, article).",
+  "date": "2026-09-12",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "Crawlers now see the same article position readers see: a BreadcrumbList block with Journal, topic, and canonical items on every detail page.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-453",
+  "pr": 53,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/53",
+  "branch": "feat/breadcrumb-jsonld-2026-09-12",
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "BreadcrumbList implementation",
+      "verdict": "done",
+      "sha": "273f920",
+      "rationale": "Added the BreadcrumbList sibling block in render() with the detail trail and the breadcrumb test module.",
+      "at": "2026-09-12"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "273f920",
+      "rationale": "Opened the pull request from the feature branch with the change and the log entry.",
+      "at": "2026-09-12"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The render path emits a BreadcrumbList sibling block derived from index, topic and canonical data already in scope. The BlogPosting block stays byte-compatible with identical escaping on both blocks.",
+    "SEC": "The pinned head adds no new input surface beyond title-derived JSON strings with preserved escaping. The security verdict for the reviewed head is recorded in the issue thread.",
+    "QA": "The breadcrumb module asserts parity with visible trails on every detail page and absence elsewhere. The quality verdict for the reviewed head is recorded in the issue thread.",
+    "SRE": "Deployment ships the merged main SHA with HTTPS and route verification afterward. The deploy evidence for the merged SHA is recorded in the issue thread.",
+    "Director": "Head-only structured-data change with no visual impact; no Design stage needed. Release fires only on SEC PASS plus QA PASS for the exact PR head SHA."
+  }
+}
