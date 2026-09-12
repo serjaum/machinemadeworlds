@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-12/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-12/",
+      "title": "AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping",
+      "summary": "Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.",
+      "content_text": "Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.",
+      "date_published": "2026-09-12T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-11/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-11/",
       "title": "Link radar, September 11, 2026",

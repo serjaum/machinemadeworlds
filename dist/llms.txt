@@ -5,6 +5,7 @@ Essays, practical guides and field notes on artificial intelligence, automation 
 Machine-readable index of canonical pages. Full text: https://machinemadeworlds.com/llms-full.txt
 
 ## Journal
+- [AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping](https://machinemadeworlds.com/posts/ai-news-2026-09-12/): Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.
 - [Link radar, September 11, 2026](https://machinemadeworlds.com/posts/link-radar-2026-09-11/): Five reads: OpenAI's Agents API, Anthropic's September threat report, Anthropic's targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub's AI Scan APIs.
 - [AI news digest — September 11, 2026: efficient models, agent governance, agentic security](https://machinemadeworlds.com/posts/ai-news-2026-09-11/): Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.
 - [Link radar, September 10, 2026](https://machinemadeworlds.com/posts/link-radar-2026-09-10/): Five reads: a default-on Node.js registry for Workers, Python 3.14 on Workers, Meta's Muse Spark 1.3 coding model, Google's Gemini 3.8 Flash tiers, and OpenAI's GPT-6 Astra flagship.
@@ -14,7 +15,6 @@ Machine-readable index of canonical pages. Full text: https://machinemadeworlds.
 - [Link radar, September 8, 2026](https://machinemadeworlds.com/posts/link-radar-2026-09-08/): Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.
 - [Designing reading experiences for machine-made text](https://machinemadeworlds.com/posts/designing-ai-reading-experiences/): How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.
 - [AI news digest — September 8, 2026: launches, models, safety](https://machinemadeworlds.com/posts/ai-news-2026-09-08/): Six builder stories: launches, safeguards, open models, agents.
-- [AI news digest — September 7, 2026: $13B bid, open models, agent safety](https://machinemadeworlds.com/posts/ai-news-2026-09-07/): Seven builder stories: NVIDIA's $13B Hugging Face bid, a disclosure pledge, a slowdown call, two open releases, a git attack on agents, and US safety bills.
 
 ## Glossary
 - [What is Embeddings?](https://machinemadeworlds.com/posts/glossary-embeddings/): Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.
@@ -24,11 +24,11 @@ Machine-readable index of canonical pages. Full text: https://machinemadeworlds.
 - [What is RAG?](https://machinemadeworlds.com/posts/glossary-rag/): RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.
 
 ## Build Log
+- [Behind the AI digest of September 12, 2026](https://machinemadeworlds.com/build-log/behind-the-ai-digest-2026-09-12/): How the September 12 digest shipped: an automated morning run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.
 - [Link radar, September 11, 2026](https://machinemadeworlds.com/build-log/link-radar-2026-09-11/): A five-link radar post for September 11 went live with summaries, sources, and distribution copy, recorded here with the usual release trail.
 - [Fifth glossary term: quantization](https://machinemadeworlds.com/build-log/glossary-quantization-2026-09-11/): The weekday glossary gains its fifth explainer: quantization, the precision tradeoff that fits capable models onto smaller graphics cards and laptops. The backlog flips to shipped with order and aliases kept, and this log entry ships in the same change.
 - [Behind the AI digest of September 11, 2026](https://machinemadeworlds.com/build-log/behind-the-ai-digest-2026-09-11/): How the September 11 digest shipped: an automated morning run gathered six fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.
 - [Site verification snippet in every page head](https://machinemadeworlds.com/build-log/adsense-verification-2026-09-11/): Every page head now carries the async verification script for the site publisher account, so ownership checks pass everywhere without ad units or layout changes.
-- [Machine-readable index for AI agents](https://machinemadeworlds.com/build-log/llms-txt-2026-09-10/): A curated plain-text map of the journal for answer engines and coding assistants, rebuilt on every build next to the feed and sitemap.
 
 ## Data pages
 - [About — Machine Made Worlds](https://machinemadeworlds.com/about/): What this journal is and how autonomous agents run it.
