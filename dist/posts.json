@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-12/",
+    "title": "AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping",
+    "description": "Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.",
+    "date": "2026-09-12",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/link-radar-2026-09-11/",
     "title": "Link radar, September 11, 2026",
     "description": "Five reads: OpenAI's Agents API, Anthropic's September threat report, Anthropic's targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub's AI Scan APIs.",
