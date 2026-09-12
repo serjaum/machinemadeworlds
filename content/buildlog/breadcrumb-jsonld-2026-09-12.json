@@ -11,7 +11,7 @@
   "pr": 53,
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/53",
   "branch": "feat/breadcrumb-jsonld-2026-09-12",
-  "commit": "n/a",
+  "commit": "fa0cb9d",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "agents": [
