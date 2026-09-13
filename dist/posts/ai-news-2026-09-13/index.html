@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI news digest — September 13, 2026: personal agents, coding models, and local routing</title>
+    <meta name="description" content="Seven builder stories: Meta&#x27;s Muse personal agent with Secure VM, NVIDIA&#x27;s open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/ai-news-2026-09-13/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="AI news digest — September 13, 2026: personal agents, coding models, and local routing" />
+    <meta property="og:description" content="Seven builder stories: Meta&#x27;s Muse personal agent with Secure VM, NVIDIA&#x27;s open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/ai-news-2026-09-13/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-13T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-13T00:00:00+00:00" />
+    <meta property="article:section" content="Automation" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "AI news digest — September 13, 2026: personal agents, coding models, and local routing", "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-13/", "inLanguage": "en", "headline": "AI news digest — September 13, 2026: personal agents, coding models, and local routing", "description": "Seven builder stories: Meta's Muse personal agent with Secure VM, NVIDIA's open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing.", "datePublished": "2026-09-13", "dateModified": "2026-09-13", "mainEntityOfPage": "https://machinemadeworlds.com/posts/ai-news-2026-09-13/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Automation", "item": "https://machinemadeworlds.com/topics/automation/"}, {"@type": "ListItem", "position": 3, "name": "AI news digest — September 13, 2026: personal agents, coding models, and local routing", "item": "https://machinemadeworlds.com/posts/ai-news-2026-09-13/"}]}
+    </script>
+    <script src="/assets/site.ddc3e83e670b.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      News digest <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>AI news digest — September 13, 2026: personal agents, coding models, and local routing</h1>
+    <p class="article-lead">Personal agents, cheaper coding models, and local compute lead the last 24 hours. Meta shipped a consumer agent that keeps working after you close the app, NVIDIA opened a gold-medal math pipeline anyone can reproduce, and Cognition squeezed frontier-adjacent coding out of an open base at much lower cost. Plus multi-model routing in Copilot, a long-horizon runtime from Salesforce, and a way to spread local inference across the machines you already own. Every summary is in our own words; follow the links for the original reporting.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-13">Sep 13, 2026</time> · 4 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#meta-ships-muse-a-personal-agent-inside-its-own-secure-vm">Meta ships Muse, a personal agent inside its own Secure VM</a><a href="#nvidia-opens-a-gold-medal-math-pipeline-built-on-nemotron-3-ultra">NVIDIA opens a gold-medal math pipeline built on Nemotron 3 Ultra</a><a href="#cognition-releases-swe-2-post-trained-from-kimi-k3">Cognition releases SWE-2, post-trained from Kimi K3</a><a href="#github-previews-hydrafusion-multi-model-routing-for-copilot">GitHub previews HydraFusion, multi-model routing for Copilot</a><a href="#abacus-ai-releases-three-open-weight-smaug-models-for-agents">Abacus.AI releases three open-weight Smaug models for agents</a><a href="#salesforce-adds-a-long-horizon-runtime-and-seven-ready-made-agents">Salesforce adds a long-horizon runtime and seven ready-made agents</a><a href="#nvidia-pair-spreads-local-inference-across-machines-you-own">NVIDIA PAIR spreads local inference across machines you own</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p>Personal agents that keep working in the background, coding models that cost less to run, and local hardware doing more of the work lead the last 24 hours. Meta put a consumer agent with its own cloud computer in everyone's pocket, NVIDIA showed an open path to gold-medal math reasoning, and Cognition turned an open base model into a strong coder with a single cost-aware training run. Rounding out the day are multi-model routing for Copilot, a runtime that holds sales goals across weeks, and a router that spreads local inference across the machines on your network. Here are seven stories worth your time, each summarized in our own words with a link to the original reporting.</p>
+<h2 id="meta-ships-muse-a-personal-agent-inside-its-own-secure-vm">Meta ships Muse, a personal agent inside its own Secure VM</h2>
+<p>Meta released Muse as a personal agent that takes actions on your behalf, from handling email and bookings to continuing longer tasks after you close the app. Each user gets an isolated cloud computer for the work, with a second supervisory agent and separate credential storage sitting between the planner and outside actions. The launch pairs free basic access with paid tiers for heavy use, and a stricter confidential-compute variant with locally held keys is promised later.</p>
+<p>Read the full story at <a href="https://www.mindstudio.ai/blog/meta-muse-ai-agent">MindStudio</a> (September 12, 2026).</p>
+<h2 id="nvidia-opens-a-gold-medal-math-pipeline-built-on-nemotron-3-ultra">NVIDIA opens a gold-medal math pipeline built on Nemotron 3 Ultra</h2>
+<p>NVIDIA researchers described a system that reached the gold-medal threshold at the 2026 International Mathematical Olympiad using only natural-language proofs, with no formal prover or outside tools. The setup iterates between generation, verification, and refinement across a general model plus two post-trained specialists. The team published the checkpoints, training and inference code, submitted solutions, and a new 200-problem benchmark so outside groups can reproduce and extend the result.</p>
+<p>Read the full story at <a href="https://theagenttimes.com/articles/nvidia-nemotron-scores-imo-gold-with-open-natural-language-p-61716fdf">The Agent Times</a> (September 12, 2026).</p>
+<h2 id="cognition-releases-swe-2-post-trained-from-kimi-k3">Cognition releases SWE-2, post-trained from Kimi K3</h2>
+<p>Cognition introduced SWE-2 as its strongest coding model so far, built by post-training the large open-weight Kimi K3 base with reinforcement learning that balances accuracy against task cost. The company reports near-parity with a leading frontier coder on its main benchmark at much lower cost per task, plus selectable reasoning-effort levels trained together in one run. It ships inside the Devin desktop and command-line tools first, with web and enterprise API rollout following.</p>
+<p>Read the full story at <a href="https://cognition.com/blog/swe-2">Cognition</a> (September 10, 2026).</p>
+<h2 id="github-previews-hydrafusion-multi-model-routing-for-copilot">GitHub previews HydraFusion, multi-model routing for Copilot</h2>
+<p>GitHub introduced Project HydraFusion as a research preview that treats coding work as a planning problem and routes steps across models from multiple providers. It builds on earlier automatic model selection by composing full execution plans rather than picking one model per turn. Developers enable it from the Copilot command-line interface under experimental settings, with usage billed at the underlying models' standard token rates.</p>
+<p>Read the full story at <a href="https://www.infoq.com/news/2026/09/github-hydrafusion/">InfoQ</a> (September 13, 2026).</p>
+<h2 id="abacus-ai-releases-three-open-weight-smaug-models-for-agents">Abacus.AI releases three open-weight Smaug models for agents</h2>
+<p>Abacus.AI published a trio of open-weight models tuned for long, tool-heavy enterprise agent loops, each built by applying the same <a href="/posts/glossary-fine-tuning/">fine-tuning</a> recipe to a different open base. The largest targets complex coding and extended reasoning, the middle one aims at always-on agents with long context and heavy tool use, and the smallest covers high-volume multimodal jobs. Weights are available for download with a hosted API option, and the company positions self-hosting as the cost and data-control advantage.</p>
+<p>Read the full story at <a href="https://shattered.io/abacus-ai-smaug-open-weight-models-2026/">Shattered</a> (September 13, 2026).</p>
+<h2 id="salesforce-adds-a-long-horizon-runtime-and-seven-ready-made-agents">Salesforce adds a long-horizon runtime and seven ready-made agents</h2>
+<p>Salesforce released a set of ready-to-use agents for service, commerce, IT support, supply chain, lead qualification, and customer experience, with most available immediately. Alongside the bundle, it introduced a runtime that lets an agent hold a goal across days and weeks instead of ending when a chat ends, debuting first in an outbound sales pilot. The same release adds reusable taught skills, routing across specialist agents, and tooling for testing and refining agent behavior.</p>
+<p>Read the full story at <a href="https://ppc.land/salesforce-agents-gain-a-runtime-that-pursues-goals-over-weeks-not-chats/">PPC Land</a> (September 12, 2026).</p>
+<h2 id="nvidia-pair-spreads-local-inference-across-machines-you-own">NVIDIA PAIR spreads local inference across machines you own</h2>
+<p>NVIDIA released a beta router that combines inference capacity across computers on a local network and distributes requests automatically. It works with popular local serving tools without changing the agent setup, which helps when several parallel model calls would otherwise overload one GPU. The router runs across common desktop operating systems and processor architectures but distributes whole requests rather than merging memory into one larger accelerator.</p>
+<p>Read the full story at <a href="https://www.infoq.com/news/2026/09/nvidia-pair-ai-task-router/">InfoQ</a> (September 11, 2026).</p>
+
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>News digest</span>
+  </div>
+  <h3><a href="/posts/ai-news-2026-09-12/">AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping</a></h3>
+  <p>Seven builder stories: OpenAI&#x27;s Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant&#x27;s 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-12">Sep 12, 2026</time>
+      <span aria-hidden="true">·</span> 4 min read</span
+    ><a class="story-arrow" href="/posts/ai-news-2026-09-12/" aria-label="Read AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Radar</span>
+  </div>
+  <h3><a href="/posts/link-radar-2026-09-11/">Link radar, September 11, 2026</a></h3>
+  <p>Five reads: OpenAI&#x27;s Agents API, Anthropic&#x27;s September threat report, Anthropic&#x27;s targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub&#x27;s AI Scan APIs.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-11">Sep 11, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/link-radar-2026-09-11/" aria-label="Read Link radar, September 11, 2026">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
