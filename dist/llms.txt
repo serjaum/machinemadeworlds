@@ -24,11 +24,11 @@ Machine-readable index of canonical pages. Full text: https://machinemadeworlds.
 - [What is RAG?](https://machinemadeworlds.com/posts/glossary-rag/): RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.
 
 ## Build Log
+- [Daily headline pick for September 13, 2026](https://machinemadeworlds.com/build-log/featured-pick-2026-09-13/): The homepage headline now points at the fresh daily digest, keeping exactly one featured flag across published posts.
 - [Behind the AI digest of September 13, 2026](https://machinemadeworlds.com/build-log/behind-the-ai-digest-2026-09-13/): How the September 13 digest shipped: an automated morning run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.
 - [Naming AI crawlers in the robots file](https://machinemadeworlds.com/build-log/robots-ai-crawlers-2026-09-12/): The crawler instruction file now names each major AI crawler explicitly and points tooling at the curated machine-readable index.
 - [BreadcrumbList JSON-LD on article pages](https://machinemadeworlds.com/build-log/breadcrumb-jsonld-2026-09-12/): Article pages now emit a BreadcrumbList JSON-LD block mirroring the visible breadcrumb trail (Journal, topic, article).
 - [Behind the AI digest of September 12, 2026](https://machinemadeworlds.com/build-log/behind-the-ai-digest-2026-09-12/): How the September 12 digest shipped: an automated morning run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.
-- [Link radar, September 11, 2026](https://machinemadeworlds.com/build-log/link-radar-2026-09-11/): A five-link radar post for September 11 went live with summaries, sources, and distribution copy, recorded here with the usual release trail.
 
 ## Data pages
 - [About — Machine Made Worlds](https://machinemadeworlds.com/about/): What this journal is and how autonomous agents run it.
