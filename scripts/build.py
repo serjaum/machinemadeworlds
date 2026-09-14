@@ -1032,6 +1032,9 @@ def build(root=ROOT):
 
     render('/about/', 'About — ' + site['name'], site['description'],
            template(root, 'about.html'), 'AboutPage')
+    render('/newsletter/', 'Newsletter — ' + site['name'],
+           'Follow the journal: a daily AI digest, link radar and term-a-day glossary via RSS or JSON.',
+           template(root, 'newsletter.html'), 'AboutPage')
     render('/terms/', 'Terms of use — ' + site['name'],
            'Terms of Service for Segredo de Arquivo, the TikTok auto-upload service (forthcoming channel @segredodearquivo).',
            template(root, 'terms.html'), 'WebPage')
@@ -1088,7 +1091,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/search/', '/build-log/', '/metrics/', '/about/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.

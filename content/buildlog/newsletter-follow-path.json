@@ -1,0 +1,62 @@
+{
+  "agents": [
+    "DEV",
+    "Director"
+  ],
+  "commit": "c41fa3b",
+  "date": "2026-09-14",
+  "description": "A subscribe strip on the homepage, a follow block at the end of every article, and one landing page give digest readers a visible one-click way to follow the journal through its feeds.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The journal finally asks readers to stay. A new strip on the homepage, a short block at the end of every article, and one landing page point at the two feeds, with no inbox and no account involved.",
+  "mac_id": "MAC-486",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 59,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/59",
+  "branch": "feat/newsletter-follow-path",
+  "reasoning": {
+    "DEV": "The strip, the follow block, and the landing page reuse existing bands, callouts, buttons, and page headings, so no new styles or scripts ship with the change. The landing page renders as a static page and the sitemap entry falls back to the build date. The deterministic build and the full test suite pass on the change commit.",
+    "Director": "The follow path closes the parent goal with a visible static-only route to both feeds. Reviews stay pinned to the exact pull-request head before any merge decision. Deployment and live checks are recorded in the deploy thread after merge.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread.",
+    "SRE": "Not evidenced in the linked record yet. Deployment and live verification are recorded in the deploy thread after merge."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-14",
+      "rationale": "Placed a second band above the existing feed band linking to the new landing page.",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
+      "stage": "Homepage strip render",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-14",
+      "rationale": "Inserted a short follow block between the article body and the back-link row on every post.",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
+      "stage": "Article follow block",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-14",
+      "rationale": "Rendered the landing page from existing styles, listed it in the sitemap, and linked it from the footer.",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
+      "stage": "Landing page, sitemap and footer",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-14",
+      "rationale": "Rebuilt the site locally and ran the full test suite with no failures.",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
+      "stage": "Local verification",
+      "verdict": "done"
+    }
+  ],
+  "title": "Newsletter follow path ships with strip, block and landing page",
+  "topic": "design"
+}

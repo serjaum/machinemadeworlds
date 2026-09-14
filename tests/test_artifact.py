@@ -97,7 +97,11 @@ class ArtifactTests(unittest.TestCase):
         # so cap 43.9KB -> 51.6KB. JS file cap 3.5KB -> 7KB (client search is
         # deferred, never render-blocking; the full-text index lazy-loads
         # async on first use). Compressed cap unchanged and passing.
-        self.assertLess(total, 51600)
+        # MAC-482 newsletter follow path adds the homepage strip block
+        # (~380B HTML) plus the footer Newsletter anchor (~35B on the
+        # homepage, zero new assets): home path measured at 51986,
+        # so cap 51.6KB -> 52.1KB.
+        self.assertLess(total, 52100)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
         for p in dist.rglob('*.html'):
