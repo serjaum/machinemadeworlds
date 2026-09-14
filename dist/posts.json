@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-14/",
+    "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
+    "description": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
+    "date": "2026-09-14",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/ai-news-2026-09-13/",
     "title": "AI news digest — September 13, 2026: personal agents, coding models, and local routing",
     "description": "Seven builder stories: Meta's Muse personal agent with Secure VM, NVIDIA's open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing.",

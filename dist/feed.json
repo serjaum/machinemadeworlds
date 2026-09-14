@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-14/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-14/",
+      "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
+      "summary": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
+      "content_text": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
+      "date_published": "2026-09-14T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-13/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-13/",
       "title": "AI news digest — September 13, 2026: personal agents, coding models, and local routing",
