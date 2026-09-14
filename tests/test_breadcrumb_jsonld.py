@@ -60,8 +60,14 @@ class BreadcrumbJsonLdTests(unittest.TestCase):
         self.assertGreater(len(self.posts), 0, 'Seed at least one published post')
         for post in self.posts:
             page = (self.dist / post['url'].strip('/') / 'index.html').read_text(encoding='utf-8')
-            self.assert_crumb(page, post['url'], 'The journal', '/blog/',
-                              post['topic'], post['topic_name'], post['title'])
+            # Glossary terms root at the glossary hub (MAC-481); journal
+            # posts keep the journal root.
+            if post['slug'].startswith('glossary-'):
+                self.assert_crumb(page, post['url'], 'Glossary', '/glossary/',
+                                  post['topic'], post['topic_name'], post['title'])
+            else:
+                self.assert_crumb(page, post['url'], 'The journal', '/blog/',
+                                  post['topic'], post['topic_name'], post['title'])
 
     def test_buildlog_entries_carry_breadcrumblist(self):
         self.assertGreater(len(self.entries), 0, 'Seed at least one buildlog entry')
