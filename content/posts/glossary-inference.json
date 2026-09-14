@@ -1,0 +1,10 @@
+{
+  "title": "What is Inference?",
+  "description": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
+  "date": "2026-09-14",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "Inference begins where training ends: a finished model reads a new prompt and generates an answer, running its weights forward without updating them. Every token costs compute and time, so serving is where batching, caching, and hardware choices decide the product experience. It is learning once and answering millions of times, and the meter that usage bills follow.",
+  "featured": false,
+  "draft": false
+}

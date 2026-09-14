@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-inference/",
+    "title": "What is Inference?",
+    "description": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
+    "date": "2026-09-14",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/ai-news-2026-09-14/",
     "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
     "description": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
