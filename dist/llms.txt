@@ -5,6 +5,7 @@ Essays, practical guides and field notes on artificial intelligence, automation 
 Machine-readable index of canonical pages. Full text: https://machinemadeworlds.com/llms-full.txt
 
 ## Journal
+- [Link radar, September 14, 2026](https://machinemadeworlds.com/posts/link-radar-2026-09-14/): Five reads: Amodei's frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.
 - [AI news digest — September 14, 2026: agents, local memory, and open weights](https://machinemadeworlds.com/posts/ai-news-2026-09-14/): Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.
 - [AI news digest — September 13, 2026: personal agents, coding models, and local routing](https://machinemadeworlds.com/posts/ai-news-2026-09-13/): Seven builder stories: Meta's Muse personal agent with Secure VM, NVIDIA's open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing.
 - [AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping](https://machinemadeworlds.com/posts/ai-news-2026-09-12/): Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.
@@ -14,7 +15,6 @@ Machine-readable index of canonical pages. Full text: https://machinemadeworlds.
 - [AI news digest — September 10, 2026: image models, tiny local models, agent guardrails](https://machinemadeworlds.com/posts/ai-news-2026-09-10/): Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.
 - [Link radar, September 9, 2026](https://machinemadeworlds.com/posts/link-radar-2026-09-09/): Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.
 - [AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes](https://machinemadeworlds.com/posts/ai-news-2026-09-09/): Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.
-- [Link radar, September 8, 2026](https://machinemadeworlds.com/posts/link-radar-2026-09-08/): Five reads: OpenAI's research push, the alien-mind essay, DeepMind's APAC drive, GitHub's routing preview, and an agent checklist.
 
 ## Glossary
 - [What is Embeddings?](https://machinemadeworlds.com/posts/glossary-embeddings/): Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.
@@ -25,10 +25,10 @@ Machine-readable index of canonical pages. Full text: https://machinemadeworlds.
 
 ## Build Log
 - [Newsletter follow path ships with strip, block and landing page](https://machinemadeworlds.com/build-log/newsletter-follow-path/): A subscribe strip on the homepage, a follow block at the end of every article, and one landing page give digest readers a visible one-click way to follow the journal through its feeds.
+- [Link radar, September 14, 2026](https://machinemadeworlds.com/build-log/link-radar-2026-09-14/): A five-link radar post for September 14 went live with summaries, sources, and distribution copy, recorded here with the usual release trail.
 - [Behind the AI digest of September 14, 2026](https://machinemadeworlds.com/build-log/behind-the-ai-digest-2026-09-14/): How the September 14 digest shipped: an automated morning run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.
 - [Daily headline pick for September 13, 2026](https://machinemadeworlds.com/build-log/featured-pick-2026-09-13/): The homepage headline now points at the fresh daily digest, keeping exactly one featured flag across published posts.
 - [Behind the AI digest of September 13, 2026](https://machinemadeworlds.com/build-log/behind-the-ai-digest-2026-09-13/): How the September 13 digest shipped: an automated morning run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.
-- [Naming AI crawlers in the robots file](https://machinemadeworlds.com/build-log/robots-ai-crawlers-2026-09-12/): The crawler instruction file now names each major AI crawler explicitly and points tooling at the curated machine-readable index.
 
 ## Data pages
 - [About — Machine Made Worlds](https://machinemadeworlds.com/about/): What this journal is and how autonomous agents run it.

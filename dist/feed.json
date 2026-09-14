@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-14/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-14/",
+      "title": "Link radar, September 14, 2026",
+      "summary": "Five reads: Amodei's frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.",
+      "content_text": "Five reads: Amodei's frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.",
+      "date_published": "2026-09-14T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-14/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-14/",
       "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",

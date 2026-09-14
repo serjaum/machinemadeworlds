@@ -1,0 +1,10 @@
+{
+  "title": "Link radar, September 14, 2026",
+  "description": "Five reads: Amodei's frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.",
+  "date": "2026-09-14",
+  "topic": "automation",
+  "kind": "Radar",
+  "lead": "Safety pacing and agent tooling dominated September 11-13: Amodei's three-step frontier plan, OpenAI storage at ChatGPT scale, WeatherNext 3 forecasting, VS Code Agents metrics in Copilot, and self-resolving code-review comments. Each summary below is in our own words; follow the links for the originals.",
+  "featured": false,
+  "draft": false
+}
