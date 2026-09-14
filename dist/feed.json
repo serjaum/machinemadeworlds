@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-inference/",
+      "url": "https://machinemadeworlds.com/posts/glossary-inference/",
+      "title": "What is Inference?",
+      "summary": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
+      "content_text": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
+      "date_published": "2026-09-14T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-14/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-14/",
       "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
