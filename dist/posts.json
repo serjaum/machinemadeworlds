@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-14/",
+    "title": "Link radar, September 14, 2026",
+    "description": "Five reads: Amodei's frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.",
+    "date": "2026-09-14",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/ai-news-2026-09-14/",
     "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
     "description": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
