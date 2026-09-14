@@ -3,7 +3,7 @@
     "DEV",
     "Director"
   ],
-  "commit": "n/a",
+  "commit": "c41fa3b",
   "date": "2026-09-14",
   "description": "A subscribe strip on the homepage, a follow block at the end of every article, and one landing page give digest readers a visible one-click way to follow the journal through its feeds.",
   "draft": false,
@@ -13,9 +13,9 @@
   "mac_id": "MAC-486",
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
+  "pr": 59,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/59",
+  "branch": "feat/newsletter-follow-path",
   "reasoning": {
     "DEV": "The strip, the follow block, and the landing page reuse existing bands, callouts, buttons, and page headings, so no new styles or scripts ship with the change. The landing page renders as a static page and the sitemap entry falls back to the build date. The deterministic build and the full test suite pass on the change commit.",
     "Director": "The follow path closes the parent goal with a visible static-only route to both feeds. Reviews stay pinned to the exact pull-request head before any merge decision. Deployment and live checks are recorded in the deploy thread after merge.",
@@ -28,7 +28,7 @@
       "agent": "DEV",
       "at": "2026-09-14",
       "rationale": "Placed a second band above the existing feed band linking to the new landing page.",
-      "sha": "2d9846f21869578e0ea8cabb5fc81764076e50ad",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
       "stage": "Homepage strip render",
       "verdict": "done"
     },
@@ -36,7 +36,7 @@
       "agent": "DEV",
       "at": "2026-09-14",
       "rationale": "Inserted a short follow block between the article body and the back-link row on every post.",
-      "sha": "2d9846f21869578e0ea8cabb5fc81764076e50ad",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
       "stage": "Article follow block",
       "verdict": "done"
     },
@@ -44,7 +44,7 @@
       "agent": "DEV",
       "at": "2026-09-14",
       "rationale": "Rendered the landing page from existing styles, listed it in the sitemap, and linked it from the footer.",
-      "sha": "2d9846f21869578e0ea8cabb5fc81764076e50ad",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
       "stage": "Landing page, sitemap and footer",
       "verdict": "done"
     },
@@ -52,7 +52,7 @@
       "agent": "DEV",
       "at": "2026-09-14",
       "rationale": "Rebuilt the site locally and ran the full test suite with no failures.",
-      "sha": "2d9846f21869578e0ea8cabb5fc81764076e50ad",
+      "sha": "c41fa3b00d396086c65aef9a7c216f53ec695d1e",
       "stage": "Local verification",
       "verdict": "done"
     }
