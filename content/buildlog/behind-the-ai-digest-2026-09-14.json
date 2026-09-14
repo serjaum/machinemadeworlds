@@ -8,10 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-477",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 57,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/57",
+  "branch": "feat/daily-news-2026-09-14",
+  "commit": "0ec0f29",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "agents": [
@@ -26,7 +26,7 @@
       "agent": "DEV",
       "at": "2026-09-14",
       "rationale": "Ran the scheduled collection and gathered seven fresh stories.",
-      "sha": "0000000",
+      "sha": "0ec0f29085f6407ef408936a0997c7777edf43d1",
       "stage": "Scheduled run",
       "verdict": "done"
     },
@@ -34,7 +34,7 @@
       "agent": "DEV",
       "at": "2026-09-14",
       "rationale": "Opened the pull request from the digest branch with the post and the log entry.",
-      "sha": "0000000",
+      "sha": "0ec0f29085f6407ef408936a0997c7777edf43d1",
       "stage": "Pull request",
       "verdict": "done"
     }
