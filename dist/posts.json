@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-15/",
+    "title": "AI news digest — September 15, 2026: pacing debate, open agents, and coding tools",
+    "description": "Seven builder stories: Amodei's pacing plan and its open-weights critique, Smaug open-weight agents, Copilot model updates, self-hosted Coder Agents, Kilo Code local coding, and a new agent-building benchmark.",
+    "date": "2026-09-15",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/link-radar-2026-09-14/",
     "title": "Link radar, September 14, 2026",
     "description": "Five reads: Amodei's frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.",
