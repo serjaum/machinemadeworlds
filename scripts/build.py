@@ -986,6 +986,29 @@ def build(root=ROOT):
                 JOURNAL_COPY, description=topic_descriptions[key])
     # Build-log index reuses the archive pattern with retargeted copy and no topic tabs.
     archive('/build-log/', 'Build log', entries, BUILDLOG_COPY, topics='')
+    # Glossary index hub (MAC-481): archive-style page reusing the same
+    # archive/card pattern. Terms are live non-draft glossary posts in
+    # slug-ascending order (stable alphabetical hub). The shipped/total
+    # count is computed at build time from live posts plus the backlog
+    # file; no hardcoded counts.
+    glossary_terms = sorted((p for p in posts if p['slug'].startswith('glossary-')),
+                            key=lambda p: p['slug'])
+    try:
+        backlog_doc = json.loads((root / GLOSSARY_BACKLOG).read_text(encoding='utf-8'))
+        backlog_rows = backlog_doc.get('terms', backlog_doc) if isinstance(backlog_doc, dict) else backlog_doc
+        backlog_total = len(backlog_rows) if isinstance(backlog_rows, list) else len(glossary_terms)
+    except (OSError, ValueError):
+        backlog_total = len(glossary_terms)
+    GLOSSARY_COPY = dict(eyebrow='Plain words first',
+                         lede=('Short definitions of the ideas this journal keeps returning to. '
+                               '%d of %d terms published; a new one lands every weekday.'
+                               % (len(glossary_terms), backlog_total)),
+                         archive_root='/glossary/', count_noun='definitions',
+                         search_label='Search definitions', search_placeholder='Try ‘models’ or ‘data’',
+                         empty_title='No definitions found.',
+                         empty_text='Try a different word, or return to the full glossary.')
+    archive('/glossary/', 'Glossary', glossary_terms, GLOSSARY_COPY, topics='',
+            description='Plain-language definitions of AI ideas, from prompt injection to quantization.')
 
     def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False, article=False):
         body = p['body']
@@ -1025,7 +1048,14 @@ def build(root=ROOT):
                             (p['title'], p['url'])])
 
     for p in posts:
-        detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗', article=True)
+        # Glossary terms link back to the glossary hub (breadcrumb,
+        # article-end back-link and related heading); journal posts keep
+        # the journal index. The related-terms block stays intact.
+        if p['slug'].startswith('glossary-'):
+            detail(p, posts, '/glossary/', 'Glossary', '← Back to all definitions',
+                   'All definitions ↗', article=True)
+        else:
+            detail(p, posts, '/blog/', 'The journal', '← Back to the journal', 'All articles ↗', article=True)
     for p in entries:
         detail(p, entries, '/build-log/', 'Build log', '← Back to the build log', 'All entries ↗',
                pipeline=True)
@@ -1091,7 +1121,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/glossary/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.
@@ -1099,7 +1129,7 @@ def build(root=ROOT):
     # date field; /prices/ and /benchmarks/ use their data file's updated
     # field; listing pages use the max date of the content they list
     # (/ is the journal home, so max post date; /blog/ max post date;
-    # /build-log/ max entry date; each topic page max date of its posts);
+    # /glossary/ max glossary post date; /build-log/ max entry date; each topic page max date of its posts);
     # pages that list nothing (/about/, /terms/, /privacy/, empty topics)
     # fall back to the UTC build date. All values clamp to the build date
     # so no URL ever carries a future date.
@@ -1116,8 +1146,10 @@ def build(root=ROOT):
             lastmod[key] = p['date']
     latest_post = max([p['date'] for p in posts], default='')
     latest_entry = max([p['date'] for p in entries], default='')
+    latest_glossary = max([p['date'] for p in posts if p['slug'].startswith('glossary-')], default='')
     lastmod['/'] = latest_post
     lastmod['/blog/'] = latest_post
+    lastmod['/glossary/'] = latest_glossary
     lastmod['/search/'] = latest_post
     lastmod['/build-log/'] = latest_entry
     lastmod['/prices/'] = data['prices']['updated']

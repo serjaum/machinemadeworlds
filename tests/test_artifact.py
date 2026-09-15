@@ -100,7 +100,9 @@ class ArtifactTests(unittest.TestCase):
         # MAC-482 newsletter follow path adds the homepage strip block
         # (~380B HTML) plus the footer Newsletter anchor (~35B on the
         # homepage, zero new assets): home path measured at 51986,
-        # so cap 51.6KB -> 52.1KB.
+        # so cap 51.6KB -> 52.1KB. MAC-481 glossary hub adds the footer
+        # Glossary link (~+30B on the homepage; the hub page itself
+        # reuses archive CSS with zero new assets): still under 52.1KB.
         self.assertLess(total, 52100)
         self.assertLess(compressed, 14000)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
