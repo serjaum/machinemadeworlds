@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/",
+      "title": "Link radar, September 15, 2026",
+      "summary": "Five reads: Anthropic's CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT.",
+      "content_text": "Five reads: Anthropic's CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT.",
+      "date_published": "2026-09-15T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-15/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-15/",
       "title": "AI news digest — September 15, 2026: pacing debate, open agents, and coding tools",
