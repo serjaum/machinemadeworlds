@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Link radar, September 15, 2026</title>
+    <meta name="description" content="Five reads: Anthropic&#x27;s CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/link-radar-2026-09-15/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Link radar, September 15, 2026" />
+    <meta property="og:description" content="Five reads: Anthropic&#x27;s CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/link-radar-2026-09-15/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-15T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-15T00:00:00+00:00" />
+    <meta property="article:section" content="Automation" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Link radar, September 15, 2026", "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/", "inLanguage": "en", "headline": "Link radar, September 15, 2026", "description": "Five reads: Anthropic's CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT.", "datePublished": "2026-09-15", "dateModified": "2026-09-15", "mainEntityOfPage": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Automation", "item": "https://machinemadeworlds.com/topics/automation/"}, {"@type": "ListItem", "position": 3, "name": "Link radar, September 15, 2026", "item": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/"}]}
+    </script>
+    <script src="/assets/site.ddc3e83e670b.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Radar <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Link radar, September 15, 2026</h1>
+    <p class="article-lead">Agent pressure on CI, model-choice controls, least-privilege scoping for agents, search-without-training switches, and a new fine-tuning adapter dominated September 14-15: Anthropic&#x27;s test-selection rebuild, Copilot auto-model tiers, Cloudflare per-Worker roles, Cloudflare training opt-outs, and ShadowPEFT in PEFT. Each summary below is in our own words; follow the links for the originals.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-15">Sep 15, 2026</time> · 2 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#agentic-coding-is-straining-ci-here-is-how-we-scaled-test-impact-analysis-at-anthropic">Agentic coding is straining CI. Here is how we scaled test impact analysis at Anthropic</a><a href="#configure-cost-and-quality-in-copilot-auto-model-selection">Configure cost and quality in Copilot auto model selection</a><a href="#give-every-teammate-and-agent-the-right-level-of-access-to-your-workers">Give every teammate and agent the right level of access to your Workers</a><a href="#have-it-both-ways-stay-discoverable-in-search-while-disallowing-ai-training">Have it both ways: stay discoverable in search while disallowing AI training</a><a href="#what-if-the-adaptation-were-a-model-shadowpeft-in-peft-library">What If the Adaptation Were a Model? ShadowPEFT in PEFT library</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p>Signal, not noise: five primary-source reads from September 14 to 15, each with a two-line note on why it matters for builders.</p>
+<h2 id="agentic-coding-is-straining-ci-here-is-how-we-scaled-test-impact-analysis-at-anthropic">Agentic coding is straining CI. Here is how we scaled test impact analysis at Anthropic</h2>
+<p>Anthropic engineering reports CI job volume up 25x in six months as output rose and test counts grew, with three stopgap fixes buying 70 days, then 29 days, then less than a day before a redesign around an in-memory journal plus stateless workers. Plan your own selection service for roughly an order of magnitude more load than today, and keep state out of the process so it can scale horizontally.</p>
+<p>Read the full story at <a href="https://claude.com/blog/agentic-coding-is-straining-ci-heres-how-we-scaled-test-impact-analysis-at-anthropic">Claude by Anthropic</a> (September 14, 2026).</p>
+<h2 id="configure-cost-and-quality-in-copilot-auto-model-selection">Configure cost and quality in Copilot auto model selection</h2>
+<p>GitHub adds three auto tiers, efficiency, balance, and intelligence, so teams can state how auto should trade cost, quality, and response time per prompt across supported surfaces. Pick one tier for routine edits and a higher tier for hard tasks, then check bills against the model auto actually selected.</p>
+<p>Read the full story at <a href="https://github.blog/changelog/2026-09-14-configure-cost-and-quality-in-copilot-auto-model-selection/">GitHub Changelog</a> (September 14, 2026).</p>
+<h2 id="give-every-teammate-and-agent-the-right-level-of-access-to-your-workers">Give every teammate and agent the right level of access to your Workers</h2>
+<p>Cloudflare now scopes access down to a single Worker with four roles covering metadata inspection, code reading, editing without deletion, and full management, assignable to users or API tokens for agents. Hand each agent a token that can touch only its own Worker, and keep broader accounts out of everyday agent runs.</p>
+<p>Read the full story at <a href="https://blog.cloudflare.com/workers-granular-authorization/">Cloudflare Blog</a> (September 15, 2026).</p>
+<h2 id="have-it-both-ways-stay-discoverable-in-search-while-disallowing-ai-training">Have it both ways: stay discoverable in search while disallowing AI training</h2>
+<p>Cloudflare introduces a training opt-out that keeps accountable mixed-use crawlers allowed for search while blocking training use, replacing the blunt block-everything tradeoff with synced robots preferences. Set the training preference once centrally instead of hand-editing robots files per operator, and review ad-page presets before the defaults apply.</p>
+<p>Read the full story at <a href="https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/">Cloudflare Blog</a> (September 15, 2026).</p>
+<h2 id="what-if-the-adaptation-were-a-model-shadowpeft-in-peft-library">What If the Adaptation Were a Model? ShadowPEFT in PEFT library</h2>
+<p>Hugging Face documents ShadowPEFT as a first-class <a href="/posts/glossary-fine-tuning/">fine-tuning</a> method in PEFT with different adapter geometry from LoRA but the same entry point and save-load path, merged to main for the next release. Try the development install on one adapter experiment first and compare directly against your LoRA baseline before standardizing.</p>
+<p>Read the full story at <a href="https://huggingface.co/blog/shadow-llm/shadowpeft-peft">Hugging Face Blog</a> (September 15, 2026).</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>News digest</span>
+  </div>
+  <h3><a href="/posts/ai-news-2026-09-15/">AI news digest — September 15, 2026: pacing debate, open agents, and coding tools</a></h3>
+  <p>Seven builder stories: Amodei&#x27;s pacing plan and its open-weights critique, Smaug open-weight agents, Copilot model updates, self-hosted Coder Agents, Kilo Code local coding, and a new agent-building benchmark.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-15">Sep 15, 2026</time>
+      <span aria-hidden="true">·</span> 4 min read</span
+    ><a class="story-arrow" href="/posts/ai-news-2026-09-15/" aria-label="Read AI news digest — September 15, 2026: pacing debate, open agents, and coding tools">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Radar</span>
+  </div>
+  <h3><a href="/posts/link-radar-2026-09-14/">Link radar, September 14, 2026</a></h3>
+  <p>Five reads: Amodei&#x27;s frontier-pacing essay, OpenAI storage engineering, WeatherNext 3, VS Code Agents usage metrics, and Copilot code-review updates.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-14">Sep 14, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/link-radar-2026-09-14/" aria-label="Read Link radar, September 14, 2026">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
