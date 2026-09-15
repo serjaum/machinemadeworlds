@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-temperature/",
+    "title": "What is Temperature?",
+    "description": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
+    "date": "2026-09-15",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/ai-news-2026-09-15/",
     "title": "AI news digest — September 15, 2026: pacing debate, open agents, and coding tools",
     "description": "Seven builder stories: Amodei's pacing plan and its open-weights critique, Smaug open-weight agents, Copilot model updates, self-hosted Coder Agents, Kilo Code local coding, and a new agent-building benchmark.",

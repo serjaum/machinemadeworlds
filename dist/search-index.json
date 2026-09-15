@@ -198,6 +198,15 @@
     "body": "RAG, short for retrieval-augmented generation, is a pattern where a language model answers from documents it retrieves at query time instead of relying on memory alone. How it works When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector embeddings. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is. Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw."
   },
   {
+    "url": "/posts/glossary-temperature/",
+    "title": "What is Temperature?",
+    "description": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
+    "date": "2026-09-15",
+    "topic": "essays",
+    "topic_name": "Essays",
+    "body": "Temperature is the sampling setting that controls how random a language model's next token looks, sharpening the distribution low for steady answers and flattening it high for varied ones. How it works Each step produces scores over the vocabulary and temperature divides them before sampling, so a near-zero value collapses choice onto the single best token while a value near one keeps the natural spread. Low settings suit extraction, classification, and anything graded against a right answer, because repetition beats surprise. Higher settings suit brainstorming and drafting, where a wider draw brings fresh phrasing at the cost of occasional drift. Teams pair it with nucleus sampling to cap the long tail, then fix one value per use case so behavior stays comparable across evaluations. Builders reach for temperature whenever output style must match the job: near zero for factual and repeatable work, higher for exploration where variety pays its way."
+  },
+  {
     "url": "/posts/gpt-6-astra-launch/",
     "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
     "description": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
