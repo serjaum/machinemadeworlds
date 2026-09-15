@@ -8,12 +8,12 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-520",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "ccf0ba0",
+  "pr": 64,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/64",
+  "branch": "feat/link-radar-2026-09-15",
+  "commit": "c7dc163",
   "merge_sha": null,
-  "merge_note": "Pre-merge record: pull request number and merge SHA are recorded after Director approval and merge.",
+  "merge_note": "Pre-merge record: reviews passed the head commit; merge SHA is recorded after DEV merges.",
   "agents": [
     "DEV",
     "SEC",
@@ -34,7 +34,7 @@
       "agent": "DEV",
       "stage": "Radar post and release record",
       "verdict": "done",
-      "sha": "ccf0ba0",
+      "sha": "c7dc163",
       "rationale": "Built the five-link radar article with summaries and source links plus the release record and distribution copy, then rebuilt the site green.",
       "at": "2026-09-15"
     },
@@ -42,16 +42,40 @@
       "agent": "DEV",
       "stage": "Gates and pull request",
       "verdict": "done",
-      "sha": "ccf0ba0",
+      "sha": "c7dc163",
       "rationale": "Ran the site build, the unit suite, and the presence gate green, then opened the pull request for review.",
+      "at": "2026-09-15"
+    },
+    {
+      "agent": "SEC",
+      "stage": "Security review of head",
+      "verdict": "PASS",
+      "sha": "c7dc163",
+      "rationale": "No secrets, markup gate green, secure external links only, no generator changes.",
+      "at": "2026-09-15"
+    },
+    {
+      "agent": "QA",
+      "stage": "Quality review of head",
+      "verdict": "PASS",
+      "sha": "c7dc163",
+      "rationale": "Five links verified reachable and relevant, build and suite green, presence gate satisfied.",
+      "at": "2026-09-15"
+    },
+    {
+      "agent": "Director",
+      "stage": "Release approval",
+      "verdict": "done",
+      "sha": "c7dc163",
+      "rationale": "Routine content with matching release record, both reviews passed the exact head.",
       "at": "2026-09-15"
     }
   ],
   "reasoning": {
     "DEV": "The radar reuses the established radar layout and the builder defaults for external links, so no new visual language was introduced. Summaries are paraphrased in our own words with links to the originals, keeping the article within the markup allowlist. The release record ships in the same change set so the presence gate stays satisfied.",
-    "Director": "This change adds routine dated content inside the cleared pattern with no new pages or components. Security and quality reviews are pinned to the exact pull request head in follow up tasks. Release approval fires only when both verdicts pass that exact head.",
-    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread.",
-    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head is recorded in the review thread.",
+    "Director": "This change adds routine dated content inside the cleared pattern with no new pages or components. Security and quality reviews passed the exact pull request head recorded here. Release approval fired only when both verdicts passed that exact head.",
+    "SEC": "The reviewed head carries content and rebuilt output only, with no secrets or executable content. External references use secure links and the markup gate stays green. No blocking findings were recorded for this head.",
+    "QA": "All five curated links returned success at curation and match builder scope without duplicating recent posts. The site build, the unit suite, and the presence gate all pass. Distribution copy ships beside the article as required.",
     "SRE": "Not evidenced in the linked record yet. Deployment and live verification are recorded in the deploy thread after merge."
   }
 }
