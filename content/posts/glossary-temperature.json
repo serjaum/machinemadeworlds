@@ -1,0 +1,10 @@
+{
+  "title": "What is Temperature?",
+  "description": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
+  "date": "2026-09-15",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "Temperature scales the model's next-token scores before sampling, deciding whether answers come out steady or surprising. A low setting concentrates probability on the top choice so replies stay deterministic, while a high setting spreads it so rarer tokens surface more often. It changes the style of sampling, never the underlying knowledge, and every product team sets it per task.",
+  "featured": false,
+  "draft": false
+}

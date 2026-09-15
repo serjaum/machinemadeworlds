@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-temperature/",
+      "url": "https://machinemadeworlds.com/posts/glossary-temperature/",
+      "title": "What is Temperature?",
+      "summary": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
+      "content_text": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
+      "date_published": "2026-09-15T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-15/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-15/",
       "title": "AI news digest — September 15, 2026: pacing debate, open agents, and coding tools",
