@@ -1,0 +1,10 @@
+{
+  "title": "Quantized Models Explained: Which Quant for Which VRAM",
+  "description": "From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs.",
+  "date": "2026-09-16",
+  "topic": "local-ai",
+  "kind": "Guide",
+  "lead": "Quantization rewrites a model's weights with smaller numbers so the same skill fits cheaper cards. This guide covers how the compression works, how many gigabytes each level needs, which quant to pick for your VRAM, what quality you trade away, and the commands to verify it all on your own GPU.",
+  "featured": false,
+  "draft": false
+}

@@ -111,7 +111,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <aside class="reading-sidebar" >
       <nav class="toc" aria-label="In this article">
         <p class="eyebrow">In this article</p>
-        <a href="#how-it-works">How it works</a><a href="#related-terms">Related terms</a>
+        <a href="#how-it-works">How it works</a><a href="#go-deeper">Go deeper</a><a href="#related-terms">Related terms</a>
       </nav>
       <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
     </aside>
@@ -120,6 +120,8 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <h2 id="how-it-works">How it works</h2>
 <p>When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector <a href="/posts/glossary-embeddings/">embeddings</a>. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is.</p>
 <p>Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw.</p>
+<h2 id="go-deeper">Go deeper</h2>
+<p>For the full local walkthrough, read <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a>, with the retrieval half covered in <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>.</p>
 <h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-inference/">Inference</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li></ul>
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>

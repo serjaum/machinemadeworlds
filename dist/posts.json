@@ -1,5 +1,21 @@
 [
   {
+    "url": "/posts/rag-on-your-own-machine/",
+    "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
+    "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
+    "date": "2026-09-16",
+    "reading": 6,
+    "topic": "local-ai"
+  },
+  {
+    "url": "/posts/quantized-models-explained/",
+    "title": "Quantized Models Explained: Which Quant for Which VRAM",
+    "description": "From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs.",
+    "date": "2026-09-16",
+    "reading": 6,
+    "topic": "local-ai"
+  },
+  {
     "url": "/posts/local-coding-agents-compared/",
     "title": "Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode",
     "description": "Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.",
@@ -14,6 +30,14 @@
     "date": "2026-09-16",
     "reading": 2,
     "topic": "automation"
+  },
+  {
+    "url": "/posts/embeddings-on-consumer-gpus/",
+    "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
+    "description": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
+    "date": "2026-09-16",
+    "reading": 6,
+    "topic": "local-ai"
   },
   {
     "url": "/posts/ai-news-2026-09-16/",

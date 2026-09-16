@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RAG on Your Own Machine: A Local Retrieval Walkthrough</title>
+    <meta name="description" content="Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/rag-on-your-own-machine/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="RAG on Your Own Machine: A Local Retrieval Walkthrough" />
+    <meta property="og:description" content="Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/rag-on-your-own-machine/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-16T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-16T00:00:00+00:00" />
+    <meta property="article:section" content="Local AI" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "RAG on Your Own Machine: A Local Retrieval Walkthrough", "url": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/", "inLanguage": "en", "headline": "RAG on Your Own Machine: A Local Retrieval Walkthrough", "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.", "datePublished": "2026-09-16", "dateModified": "2026-09-16", "mainEntityOfPage": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Local AI", "item": "https://machinemadeworlds.com/topics/local-ai/"}, {"@type": "ListItem", "position": 3, "name": "RAG on Your Own Machine: A Local Retrieval Walkthrough", "item": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/"}]}
+    </script>
+    <script src="/assets/site.ddc3e83e670b.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/local-ai/">Local AI</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Guide <span class="tiny-rule" aria-hidden="true"></span> Local AI
+    </p>
+    <h1>RAG on Your Own Machine: A Local Retrieval Walkthrough</h1>
+    <p class="article-lead">Retrieval-augmented generation fetches the relevant passages first and hands them to the model with the question. This walkthrough builds all five stages on one consumer GPU: chunking, embedding, storing, retrieving, and generating answers that cite their evidence.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-16">Sep 16, 2026</time> · 6 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#the-loop-in-five-stages">The loop in five stages</a><a href="#the-parts-list-for-a-6-gb-card">The parts list for a 6 GB card</a><a href="#walkthrough-part-one-build-the-index">Walkthrough part one: build the index</a><a href="#walkthrough-part-two-answer-from-evidence">Walkthrough part two: answer from evidence</a><a href="#tuning-what-matters-ignoring-what-does-not">Tuning what matters, ignoring what does not</a><a href="#honest-limits">Honest limits</a><a href="#keep-going">Keep going</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>A chat model knows the world up to its training date and nothing about your notes. <a href="/posts/glossary-rag/">Retrieval-augmented generation</a> fixes that by fetching the relevant passages first and handing them to the model alongside the question, so answers stay current and can point at their sources. This guide builds that loop entirely on your own machine: a local chat model, a local <a href="/posts/glossary-embeddings/">embeddings</a> model, and an index you can inspect. The pattern itself is defined in <a href="/posts/glossary-rag/">what RAG is</a> and originates with the <a href="https://arxiv.org/abs/2005.11401">retrieval-augmented generation paper</a>; the two models it needs are sized in <a href="/posts/quantized-models-explained/">our quantization guide</a> and <a href="/posts/embeddings-on-consumer-gpus/">our embeddings guide</a>.</p>
+<h2 id="the-loop-in-five-stages">The loop in five stages</h2>
+<p>Every RAG system, from a weekend script to a production cluster, runs the same five stages. First, chunk: split documents into focused passages of a few hundred tokens each, because one vector per whole page blurs every topic together. Second, embed: convert each chunk into a vector with a local <a href="/posts/glossary-embeddings/">embedding</a> model and store the pairs. Third, retrieve: embed the incoming question the same way and pull the nearest chunks by cosine similarity. Fourth, generate: place those chunks into the chat model context next to the question with instructions to answer from the evidence. Fifth, cite: require the answer to name the chunks it used so every claim stays checkable. When answers go wrong, the culprit is almost always stage one or three, never the size of the chat model, which is why this guide spends its budget on chunks and retrieval rather than a bigger quant.</p>
+<h2 id="the-parts-list-for-a-6-gb-card">The parts list for a 6 GB card</h2>
+<p>The whole stack fits the card we already run. A 7B chat quant around 4.4 GB handles generation, an embeddings model under 0.7 GB handles stages two and three, and the index itself lives on disk, not in VRAM. Concretely: pull <code>qwen2.5:7b-instruct-q4_K_M</code> from the <a href="https://ollama.com/library/qwen2.5">Ollama Qwen2.5 page</a> and <code>nomic-embed-text</code> at about 274 MB from <a href="https://ollama.com/library/nomic-embed-text">its library page</a>, keep both resident as laid out in <a href="/posts/small-models-rtx2060/">the RTX 2060 report</a>, and serve them through the chat and embeddings endpoints documented in the <a href="https://github.com/ollama/ollama/blob/main/docs/api.md">Ollama API reference</a>. For the index, start with a plain JSONL file and graduate to a real vector store such as <a href="https://docs.trychroma.com/">Chroma</a> or <a href="https://qdrant.tech/documentation/">Qdrant</a> once you pass a few thousand chunks; the single-file <a href="https://github.com/asg017/sqlite-vec">sqlite-vec extension</a> is a fine middle step. Frameworks like <a href="https://docs.llamaindex.ai/">LlamaIndex</a> package all five stages if you prefer assembly over hand-rolling, but build the manual version first so every later abstraction stays legible.</p>
+<h2 id="walkthrough-part-one-build-the-index">Walkthrough part one: build the index</h2>
+<p>Take a folder of plain-text notes and index it with a short script. Split each file into passages of roughly 300 to 800 tokens with a sentence or two of overlap, prepend the file name to every passage so each vector carries its provenance, and skip boilerplate before embedding rather than after. These ranges are starting points from our own site index, not universal constants: short crisp notes want smaller chunks, long essays want larger ones, and the inspection habit in part three tells you which way to move. Embed each passage through the local endpoint:</p>
+<pre tabindex="0" role="region" aria-label="Code example"><code>curl http://localhost:11434/api/embed \
+  -d '{"model": "nomic-embed-text", "input": ["passage one text", "passage two text"]}'</code></pre>
+<p>Store each returned vector beside its text in one JSON line per chunk: file name, chunk number, character offsets, and the vector itself. A thousand chunks of a 768-dimensional model fit comfortably in tens of megabytes of JSON, which is why no database is needed yet. Verify the index by embedding a question and scoring cosine similarity in a few lines of Python: normalize all vectors once, take dot products, and print the top three texts. Read them with your own eyes. If a human cannot see why those three won, fix the chunks before touching anything else.</p>
+<h2 id="walkthrough-part-two-answer-from-evidence">Walkthrough part two: answer from evidence</h2>
+<p>Retrieval earns its keep in the prompt. Send the chat model the question plus the winning chunks inside a template that leaves no room for improvisation:</p>
+<pre tabindex="0" role="region" aria-label="Code example"><code>Answer the question using ONLY the passages below.
+Passage [small-models-rtx2060 #3]: ...
+Passage [local-agent-team #7]: ...
+Question: Which models fit a 6 GB card?
+If the passages do not contain the answer, say so plainly.
+End every factual sentence with the passage label you used, like [small-models-rtx2060 #3].</code></pre>
+<p>Generate through the local chat endpoint with a low <a href="/posts/glossary-temperature/">temperature</a> so the model stays close to the supplied text, following the chat format in the <a href="https://github.com/ollama/ollama/blob/main/docs/api.md">API reference</a>. The labels do double duty: they force grounding during generation and they become clickable citations in the rendered answer, which readers can check against the same files you indexed. Retrieve three to five chunks per question as a starting point: one chunk starves the model, ten drown it, and the inspection loop below tells you where your collection lands. This evidence-first discipline is the same habit behind <a href="/posts/local-agent-team/">our agent workflow</a>, where every claim ships with a reproducible artifact.</p>
+<h2 id="tuning-what-matters-ignoring-what-does-not">Tuning what matters, ignoring what does not</h2>
+<p>Keep twenty real questions and read the top three hits for each after every change; that list is your evaluation harness until the collection outgrows it. The dials that move results, in order, are chunk boundaries, the number of retrieved passages, overlap size, and only then the embedding model. Search quality problems almost always trace to a chunk that mixes two topics, a question whose answer spans a boundary the splitter severed, or stale files indexed months ago. Refresh the index whenever sources change, timestamp every chunk so staleness is visible, and consider a tiny reranker only after the basics are solid. Skip hybrid keyword-plus-vector search until plain vectors demonstrably fail on your data; most personal and team collections never need it. And keep the chat model fixed while tuning retrieval, because changing both ends at once makes every experiment unreadable.</p>
+<h2 id="honest-limits">Honest limits</h2>
+<p>Local RAG inherits every weakness of its index. Contradictory sources produce confident contradictions, undated notes answer with expired facts, and anything you never indexed might as well not exist, so curate the collection like a library rather than dumping a drive into it. Very long multi-hop questions that need synthesis across dozens of passages still favor large cloud models with giant context windows; route only those upward and keep everything else local.</p>
+<p>One risk deserves its own warning: retrieved passages are untrusted input wearing a trusted uniform. A note that says to ignore previous instructions becomes part of the prompt the moment it is retrieved, which is exactly the <a href="/posts/glossary-prompt-injection/">prompt injection</a> pattern in miniature. Keep the agent that acts on RAG answers narrowly permissioned, show citations so a human sees which passage drove each claim, and never let retrieved text reach tools or credentials without review. The index stays useful precisely because it is treated as evidence to check, not orders to follow.</p>
+<p>Private data stays private throughout, which is the entire point: nothing in this loop leaves the machine, there is no per-query bill, and the index works offline on a train. Measure the split for a week as we did and you will likely find, as in <a href="/posts/small-models-rtx2060/">our measurements</a>, that local handles the large majority of daily questions.</p>
+<h2 id="keep-going">Keep going</h2>
+<p>The loop is complete: size the models with <a href="/posts/quantized-models-explained/">quantized models explained</a>, serve search with <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>, and ground answers with this walkthrough. The companion notes are <a href="/posts/small-models-rtx2060/">small models on a 6 GB card</a> and <a href="/posts/local-agent-team/">the local agent team</a>, the glossary entries are <a href="/posts/glossary-rag/">RAG</a> and <a href="/posts/glossary-embeddings/">embeddings</a>, and everything in the series hangs off <a href="/topics/local-ai/">the local-AI topic</a>.</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/quantized-models-explained/">Quantized Models Explained: Which Quant for Which VRAM</a></h3>
+  <p>From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-16">Sep 16, 2026</time>
+      <span aria-hidden="true">·</span> 6 min read</span
+    ><a class="story-arrow" href="/posts/quantized-models-explained/" aria-label="Read Quantized Models Explained: Which Quant for Which VRAM">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Comparison</span>
+  </div>
+  <h3><a href="/posts/local-coding-agents-compared/">Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode</a></h3>
+  <p>Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-16">Sep 16, 2026</time>
+      <span aria-hidden="true">·</span> 12 min read</span
+    ><a class="story-arrow" href="/posts/local-coding-agents-compared/" aria-label="Read Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -111,7 +111,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <aside class="reading-sidebar" >
       <nav class="toc" aria-label="In this article">
         <p class="eyebrow">In this article</p>
-        <a href="#how-it-works">How it works</a><a href="#related-terms">Related terms</a>
+        <a href="#how-it-works">How it works</a><a href="#go-deeper">Go deeper</a><a href="#related-terms">Related terms</a>
       </nav>
       <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
     </aside>
@@ -120,6 +120,8 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <h2 id="how-it-works">How it works</h2>
 <p>Training produces weights as roomy high-precision numbers, and quantization maps them into compact blocks of eight or four bits with a scale factor per block. <a href="/posts/glossary-inference/">Inference</a> then runs largely in that compact form, which cuts memory use and the traffic between memory and compute. A short calibration pass over sample inputs sets the scales so the rounding error stays small, though very aggressive settings can dull rare behaviors. The result keeps most of the original skill while fitting hardware the full-size model could never touch.</p>
 <p>Builders reach for quantization whenever a model must fit cheaper hardware: local laptops, single-card servers, and cost-capped inference where full precision cannot pay its way.</p>
+<h2 id="go-deeper">Go deeper</h2>
+<p>For the VRAM math per level and a which-quant-for-which-card table, read <a href="/posts/quantized-models-explained/">quantized models explained</a>, then see <a href="/posts/small-models-rtx2060/">what fits on a 6 GB card</a>.</p>
 <h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-inference/">Inference</a></li><li><a href="/posts/glossary-prompt-injection/">Prompt injection</a></li></ul>
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
