@@ -8,10 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-543",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 69,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/69",
+  "branch": "feat/local-ai-cluster-batch-1",
+  "commit": "41ca045",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "agents": [
@@ -33,6 +33,14 @@
       "rationale": "Drafted three guides with cited numbers and wired glossary backlinks plus distribution packs.",
       "sha": "3b0b41c",
       "stage": "Draft and link",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-16",
+      "rationale": "Opened the pull request from the cluster branch with the guides and the log entry.",
+      "sha": "41ca045",
+      "stage": "Pull request",
       "verdict": "done"
     }
   ],
