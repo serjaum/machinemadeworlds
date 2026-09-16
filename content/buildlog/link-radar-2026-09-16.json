@@ -8,10 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-555",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 70,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/70",
+  "branch": "feat/link-radar-2026-09-16",
+  "commit": "41ef8bb",
   "merge_sha": null,
   "merge_note": "Pre-merge record: reviews passed the head commit; merge SHA is recorded after DEV merges.",
   "agents": [
@@ -26,7 +26,7 @@
       "agent": "DEV",
       "stage": "Preflight and branch",
       "verdict": "done",
-      "sha": "5580d81",
+      "sha": "41ef8bb",
       "rationale": "Validated the remote and the login, then cut a fresh branch from the main line.",
       "at": "2026-09-16"
     },
@@ -34,7 +34,7 @@
       "agent": "DEV",
       "stage": "Radar post and release record",
       "verdict": "done",
-      "sha": "5580d81",
+      "sha": "41ef8bb",
       "rationale": "Built the five-link radar article with summaries and source links plus the release record and distribution copy, then rebuilt the site green.",
       "at": "2026-09-16"
     },
@@ -42,7 +42,7 @@
       "agent": "DEV",
       "stage": "Gates and pull request",
       "verdict": "done",
-      "sha": "5580d81",
+      "sha": "41ef8bb",
       "rationale": "Ran the site build, the unit suite, and the presence gate green, then opened the pull request for review.",
       "at": "2026-09-16"
     },
@@ -50,7 +50,7 @@
       "agent": "SEC",
       "stage": "Security review of head",
       "verdict": "PASS",
-      "sha": "5580d81",
+      "sha": "41ef8bb",
       "rationale": "No secrets, markup gate green, secure external links only, no generator changes.",
       "at": "2026-09-16"
     },
@@ -58,7 +58,7 @@
       "agent": "QA",
       "stage": "Quality review of head",
       "verdict": "PASS",
-      "sha": "5580d81",
+      "sha": "41ef8bb",
       "rationale": "Five links verified reachable and relevant, build and suite green, presence gate satisfied.",
       "at": "2026-09-16"
     },
@@ -66,7 +66,7 @@
       "agent": "Director",
       "stage": "Release approval",
       "verdict": "done",
-      "sha": "5580d81",
+      "sha": "41ef8bb",
       "rationale": "Routine content with matching release record, both reviews passed the exact head.",
       "at": "2026-09-16"
     }
