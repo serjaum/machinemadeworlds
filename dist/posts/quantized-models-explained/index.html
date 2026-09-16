@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quantized Models Explained: Which Quant for Which VRAM</title>
+    <meta name="description" content="From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/quantized-models-explained/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Quantized Models Explained: Which Quant for Which VRAM" />
+    <meta property="og:description" content="From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/quantized-models-explained/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-16T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-16T00:00:00+00:00" />
+    <meta property="article:section" content="Local AI" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Quantized Models Explained: Which Quant for Which VRAM", "url": "https://machinemadeworlds.com/posts/quantized-models-explained/", "inLanguage": "en", "headline": "Quantized Models Explained: Which Quant for Which VRAM", "description": "From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs.", "datePublished": "2026-09-16", "dateModified": "2026-09-16", "mainEntityOfPage": "https://machinemadeworlds.com/posts/quantized-models-explained/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Local AI", "item": "https://machinemadeworlds.com/topics/local-ai/"}, {"@type": "ListItem", "position": 3, "name": "Quantized Models Explained: Which Quant for Which VRAM", "item": "https://machinemadeworlds.com/posts/quantized-models-explained/"}]}
+    </script>
+    <script src="/assets/site.ddc3e83e670b.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/local-ai/">Local AI</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Guide <span class="tiny-rule" aria-hidden="true"></span> Local AI
+    </p>
+    <h1>Quantized Models Explained: Which Quant for Which VRAM</h1>
+    <p class="article-lead">Quantization rewrites a model&#x27;s weights with smaller numbers so the same skill fits cheaper cards. This guide covers how the compression works, how many gigabytes each level needs, which quant to pick for your VRAM, what quality you trade away, and the commands to verify it all on your own GPU.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-16">Sep 16, 2026</time> · 6 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <nav class="toc" aria-label="In this article">
+        <p class="eyebrow">In this article</p>
+        <a href="#what-quantization-actually-does">What quantization actually does</a><a href="#the-vram-math">The VRAM math</a><a href="#which-quant-for-which-vram">Which quant for which VRAM</a><a href="#what-you-actually-lose">What you actually lose</a><a href="#run-it-yourself">Run it yourself</a><a href="#keep-going">Keep going</a>
+      </nav>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>A modern chat model is a giant table of numbers, and the size of that table decides which graphics card can run it. <a href="/posts/glossary-quantization/">Quantization</a> rewrites the table with smaller numbers so the same model fits cheaper hardware. This guide turns that idea into a shopping list: what each quantization level costs in VRAM, which one to pick for 4, 6, 8, 12 or 16 GB cards, and what you give up at each step. If you want the one-paragraph definition first, read <a href="/posts/glossary-quantization/">what quantization is</a>, and if you want the field report from a real 6 GB card, read <a href="/posts/small-models-rtx2060/">what fits on an RTX 2060</a>.</p>
+<h2 id="what-quantization-actually-does">What quantization actually does</h2>
+<p>Training produces model weights as roomy 16-bit floating point numbers. Quantization maps blocks of those weights into compact integers of eight, six, five, four or even three bits, plus one scale factor per block so the small numbers can be stretched back close to their original values at <a href="/posts/glossary-inference/">inference</a> time. The model keeps most of its skill because language-model weights tolerate rounding far better than intuition suggests, and the payoff is large: memory use falls roughly in proportion to the bit width, and the traffic between VRAM and the compute cores falls with it, which is why quantized models also answer faster. The <a href="https://github.com/ggerganov/llama.cpp">llama.cpp project</a> documents the common GGUF quantization types and is the reference implementation most local tooling builds on, while the Hugging Face <a href="https://huggingface.co/docs/transformers/quantization_overview">quantization overview</a> explains the same trade from the Transformers side, including the GPU-focused GPTQ and AWQ families maintained at <a href="https://github.com/AutoGPTQ/AutoGPTQ">AutoGPTQ</a> and <a href="https://github.com/mit-han-lab/llm-awq">llm-awq</a>.</p>
+<p>Three vocabulary notes save confusion later. First, the trailing tags on a model name are the recipe: <code>Q4_K_M</code> means a 4-bit K-quant of medium size, <code>Q5_K_M</code> the 5-bit sibling, <code>Q8_0</code> a simple 8-bit rounding, and <code>Q3_K_S</code> an aggressive 3-bit small variant. The K-quants mix bit depths across layer types instead of rounding everything equally, which is why a <code>Q4_K_M</code> reads noticeably better than the older flat <code>Q4_0</code> at nearly the same size. Second, quantization is not distillation or pruning: the parameter count stays the same and only the precision changes. Third, quants labeled <code>imatrix</code> or <code>i-quant</code> were calibrated against sample text to protect important weights, so they usually beat their non-calibrated namesakes by a small but real margin. The <a href="https://github.com/ggerganov/llama.cpp/wiki">llama.cpp wiki</a> walks through these variants with measured perplexity comparisons for readers who want the numbers behind the ranking.</p>
+<h2 id="the-vram-math">The VRAM math</h2>
+<p>Estimate any model with one multiplication: parameter count times bytes per parameter, plus room for context. A 7-billion-parameter model at 16-bit precision needs about 14 GB (seven billion times two bytes), which is why the full-precision model never fit consumer cards and the quantized one does. The same 7B model drops to roughly 7 to 8 GB at 8-bit, about 5.5 GB at 6-bit, near 5 GB at <code>Q5_K_M</code>, between 4 and 4.5 GB at <code>Q4_K_M</code>, and close to 3.5 GB at 3-bit. You can confirm the pattern on any model listing: the <a href="https://ollama.com/library/qwen2.5">Ollama Qwen2.5 page</a> and the <a href="https://ollama.com/library/mistral">Ollama Mistral page</a> publish the download size of each tagged quant, and the underlying weights live on cards such as <a href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct">Qwen2.5-7B-Instruct</a> and <a href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2">Mistral-7B-Instruct</a> where the parameter counts are stated.</p>
+<p>Then add the part beginners forget: the KV cache. Every token of context holds key and value vectors for every layer, so cache grows with context length, not with cleverness. A 7B model with a 4096-token window typically reserves on the order of half a gigabyte to a gigabyte for cache on top of its weights, and doubling the window roughly doubles that reservation. This is why a model that fits at 2K context can crash at 32K on the same card, and why the Ollama <a href="https://github.com/ollama/ollama/blob/main/docs/faq.md">FAQ</a> documents the context-length setting explicitly: context is a VRAM dial, not a free upgrade. Practical rule: budget weights plus one gigabyte of headroom for cache and the <a href="/posts/glossary-embeddings/">embeddings</a> model described in <a href="/posts/embeddings-on-consumer-gpus/">our embeddings guide</a>, and if the card still overflows, shorten context before reaching for a smaller quant.</p>
+<h2 id="which-quant-for-which-vram">Which quant for which VRAM</h2>
+<p>The table below assumes a chat model plus a resident embeddings model and sane headroom. Sizes are approximate because every family differs slightly; check the tagged size on the download page before pulling.</p>
+<table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Your VRAM</th><th scope="col">Comfortable pick</th><th scope="col">Example</th></tr></thead><tbody><tr><td>4 GB</td><td>3 to 4B at Q4, or 7B at Q3</td><td>Phi-3 Mini Q4, documented at <a href="https://ollama.com/library/phi3">Ollama Phi-3</a> with weights at <a href="https://huggingface.co/microsoft/Phi-3-mini-4k-instruct">Phi-3-mini-4k-instruct</a></td></tr><tr><td>6 GB</td><td>7 to 8B at Q4_K_M</td><td>Qwen2.5 7B or Mistral 7B Q4, the daily drivers in <a href="/posts/small-models-rtx2060/">our RTX 2060 report</a> on the 6 GB card NVIDIA specs at <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/rtx-2060/">the RTX 2060 page</a></td></tr><tr><td>8 GB</td><td>8 to 9B at Q5_K_M, or 7B at Q8</td><td>Gemma 2 9B Q4 with clipped context, weights at <a href="https://huggingface.co/google/gemma-2-9b-it">gemma-2-9b-it</a></td></tr><tr><td>12 GB</td><td>13 to 14B at Q4_K_M</td><td>A 13B Q4 fully resident with room for long context</td></tr><tr><td>16 GB</td><td>24B at Q4, or 32B at Q3 to Q4</td><td>Small reasoning models with partial offload as fallback</td></tr></tbody></table>
+<p>Two upgrades change the answer. First, <code>Q5_K_M</code> costs roughly fifteen percent more VRAM than <code>Q4_K_M</code> and buys visibly cleaner prose on long answers, so it is the right default on any card with slack. Second, <code>Q8_0</code> is nearly indistinguishable from full precision for most drafting and editing, which makes a 7B Q8 the quality pick on 8 GB cards even though a larger Q4 model would also fit. When the model still does not fit, partial GPU offload spills some layers to system RAM, a technique <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> supports layer by layer: usable for overnight polish at reduced speed, miserable for chat, exactly as measured in <a href="/posts/small-models-rtx2060/">the RTX 2060 offload notes</a>.</p>
+<h2 id="what-you-actually-lose">What you actually lose</h2>
+<p>Lower precision costs some accuracy, and the cost curve bends the same way every time: 8-bit is close to lossless, the K-family 6-bit and 5-bit cost a little, 4-bit K-quants cost a bit more but stay strong, and 3-bit is where the dulling becomes hard to ignore on demanding prompts. The damage concentrates in exactly the places you would expect: rare vocabulary, long chains of arithmetic, and staying in character across very long outputs. For blog drafting, summarising, title generation and HTML fixes, a good 7B <code>Q4_K_M</code> is routinely indistinguishable from its full-precision twin, which is why our whole editorial loop runs on one. For evaluation harnesses, published comparisons, or the base of a fine-tune, stay at 8-bit or full precision so the quant never becomes a confounder. Calibrated i-quants narrow the gap a touch at every level and are worth preferring whenever the download page offers them.</p>
+<h2 id="run-it-yourself">Run it yourself</h2>
+<p>With Ollama installed, the whole experiment is two commands and one measurement:</p>
+<pre tabindex="0" role="region" aria-label="Code example"><code>ollama pull qwen2.5:7b-instruct-q4_K_M
+ollama run qwen2.5:7b-instruct-q4_K_M "Explain Kari's law in three sentences."</code></pre>
+<p>Watch real usage in a second terminal with <code>nvidia-smi --query-gpu=memory.used --format=csv -l 1</code> while prompting, and compare against the tagged size on the <a href="https://ollama.com/library/qwen2.5">model page</a>. To quantize your own GGUF instead of downloading one, the llama.cpp quantizer follows the documented recipe in <a href="https://github.com/ggerganov/llama.cpp">its README</a>: convert to full-precision GGUF first, then step down to the target type, then sanity-check perplexity before trusting the file. Keep one resident chat model at a time on small cards, cap context at 4096 tokens for 7B models, and treat anything under twenty tokens per second as a signal the model is too big for the task rather than a speed to endure.</p>
+<h2 id="keep-going">Keep going</h2>
+<p>Quantization answers what fits; the rest of the local stack answers what it does. Next read <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a> to keep semantic search resident beside your chat model, then <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a> for the full retrieve-then-write loop. The companion notes are <a href="/posts/small-models-rtx2060/">small models on a 6 GB card</a> and <a href="/posts/local-agent-team/">the local agent team</a> that turns these models into a shipping workflow, the glossary entries are <a href="/posts/glossary-quantization/">quantization</a> and <a href="/posts/glossary-embeddings/">embeddings</a>, and the whole series lives under <a href="/topics/local-ai/">the local-AI topic</a>.</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/rag-on-your-own-machine/">RAG on Your Own Machine: A Local Retrieval Walkthrough</a></h3>
+  <p>Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-16">Sep 16, 2026</time>
+      <span aria-hidden="true">·</span> 6 min read</span
+    ><a class="story-arrow" href="/posts/rag-on-your-own-machine/" aria-label="Read RAG on Your Own Machine: A Local Retrieval Walkthrough">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Comparison</span>
+  </div>
+  <h3><a href="/posts/local-coding-agents-compared/">Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode</a></h3>
+  <p>Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-16">Sep 16, 2026</time>
+      <span aria-hidden="true">·</span> 12 min read</span
+    ><a class="story-arrow" href="/posts/local-coding-agents-compared/" aria-label="Read Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

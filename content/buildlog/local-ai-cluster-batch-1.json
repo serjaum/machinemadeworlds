@@ -1,0 +1,43 @@
+{
+  "title": "Behind the local-AI cluster batch one",
+  "description": "Three new local-AI guides shipped together: quantization sizing, resident embeddings, and a local retrieval walkthrough, each linked into the glossary and the topic hub.",
+  "date": "2026-09-16",
+  "topic": "local-ai",
+  "kind": "Shipped",
+  "lead": "The first cluster batch adds three long guides that fit the existing templates: which quantization level for which card, how to keep embeddings resident on a consumer GPU, and a full local retrieval walkthrough. Each guide links to its cluster siblings and the topic hub, each glossary term links back, and the deterministic build plus the full test suite pass.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-543",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "Director",
+      "at": "2026-09-16",
+      "rationale": "Scoped batch one to three guides plus backlinks with design review skipped as content only.",
+      "sha": "9cb0c6b",
+      "stage": "Scope triage",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-16",
+      "rationale": "Drafted three guides with cited numbers and wired glossary backlinks plus distribution packs.",
+      "sha": "3b0b41c",
+      "stage": "Draft and link",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The three guides were drafted from the existing post template with every memory and speed figure tied to a primary source. Each guide links to its cluster siblings and the topic hub, and each glossary term links back to its guide. The deterministic build and the full test suite pass on the branch head.",
+    "Director": "Batch one covers three guides that fit the existing templates with no layout changes. Shelf-post edits stay out because the pinned bodies cannot change without breaking the preservation test, and the reserved comparison post is named without a hard link until it merges."
+  }
+}

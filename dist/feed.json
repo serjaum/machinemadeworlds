@@ -7,6 +7,28 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/",
+      "url": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/",
+      "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
+      "summary": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
+      "content_text": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
+      "date_published": "2026-09-16T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/quantized-models-explained/",
+      "url": "https://machinemadeworlds.com/posts/quantized-models-explained/",
+      "title": "Quantized Models Explained: Which Quant for Which VRAM",
+      "summary": "From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs.",
+      "content_text": "From 16-bit weights to 4-bit quants: what quantization does, the VRAM math per level, and a practical which-quant-for-which-card table for 4 to 16 GB GPUs.",
+      "date_published": "2026-09-16T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/local-coding-agents-compared/",
       "url": "https://machinemadeworlds.com/posts/local-coding-agents-compared/",
       "title": "Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode",
@@ -18,14 +40,14 @@
       ]
     },
     {
-      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-16/",
-      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-16/",
-      "title": "Link radar, September 16, 2026",
-      "summary": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
-      "content_text": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
+      "id": "https://machinemadeworlds.com/posts/embeddings-on-consumer-gpus/",
+      "url": "https://machinemadeworlds.com/posts/embeddings-on-consumer-gpus/",
+      "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
+      "summary": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
+      "content_text": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
       "date_published": "2026-09-16T00:00:00+00:00",
       "tags": [
-        "automation"
+        "local-ai"
       ]
     },
     {
