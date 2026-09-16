@@ -11,7 +11,7 @@
   "pr": 69,
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/69",
   "branch": "feat/local-ai-cluster-batch-1",
-  "commit": "ae02429",
+  "commit": "2b4fc42",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "agents": [
@@ -48,6 +48,14 @@
       "at": "2026-09-16",
       "rationale": "Rebased onto the new main after the comparison pilot merged and regenerated the site. Prior reviews on the old head are void; fresh gates requested on the new head.",
       "sha": "ae02429",
+      "stage": "Rebase",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-16",
+      "rationale": "Rebased onto the new main after the radar link merged and regenerated the site. Prior reviews on the old head are void; fresh gates requested on the new head.",
+      "sha": "2b4fc42",
       "stage": "Rebase",
       "verdict": "done"
     }

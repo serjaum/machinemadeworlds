@@ -24,6 +24,14 @@
     "topic": "local-ai"
   },
   {
+    "url": "/posts/link-radar-2026-09-16/",
+    "title": "Link radar, September 16, 2026",
+    "description": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
+    "date": "2026-09-16",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/embeddings-on-consumer-gpus/",
     "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
     "description": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",

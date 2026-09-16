@@ -40,6 +40,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-16/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-16/",
+      "title": "Link radar, September 16, 2026",
+      "summary": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
+      "content_text": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
+      "date_published": "2026-09-16T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/embeddings-on-consumer-gpus/",
       "url": "https://machinemadeworlds.com/posts/embeddings-on-consumer-gpus/",
       "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
