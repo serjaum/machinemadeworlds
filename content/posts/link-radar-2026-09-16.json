@@ -1,0 +1,10 @@
+{
+  "title": "Link radar, September 16, 2026",
+  "description": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
+  "date": "2026-09-16",
+  "topic": "automation",
+  "kind": "Radar",
+  "lead": "Ads inside assistants, database access for Python workers, governed repo metadata, self-improving agent servers, and repeatability checks dominated September 15-16: OpenAI ad experiences, Cloudflare Hyperdrive for Python, Copilot property suggestions, Reef infra, and IBM consistency work. Each summary below is in our own words; follow the links for the originals.",
+  "featured": false,
+  "draft": false
+}
