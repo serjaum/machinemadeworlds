@@ -51,6 +51,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-benchmark/",
+      "url": "https://machinemadeworlds.com/posts/glossary-benchmark/",
+      "title": "What is Benchmark?",
+      "summary": "A benchmark is a fixed test suite that scores models on the same tasks so results can be compared. What good suites measure, where they mislead, and how builders use them to pick models.",
+      "content_text": "A benchmark is a fixed test suite that scores models on the same tasks so results can be compared. What good suites measure, where they mislead, and how builders use them to pick models.",
+      "date_published": "2026-09-16T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/embeddings-on-consumer-gpus/",
       "url": "https://machinemadeworlds.com/posts/embeddings-on-consumer-gpus/",
       "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",

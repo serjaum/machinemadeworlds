@@ -32,6 +32,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-benchmark/",
+    "title": "What is Benchmark?",
+    "description": "A benchmark is a fixed test suite that scores models on the same tasks so results can be compared. What good suites measure, where they mislead, and how builders use them to pick models.",
+    "date": "2026-09-16",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/embeddings-on-consumer-gpus/",
     "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
     "description": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
