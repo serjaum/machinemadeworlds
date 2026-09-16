@@ -1,0 +1,10 @@
+{
+  "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
+  "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
+  "date": "2026-09-16",
+  "topic": "local-ai",
+  "kind": "Guide",
+  "lead": "Retrieval-augmented generation fetches the relevant passages first and hands them to the model with the question. This walkthrough builds all five stages on one consumer GPU: chunking, embedding, storing, retrieving, and generating answers that cite their evidence.",
+  "featured": false,
+  "draft": false
+}
