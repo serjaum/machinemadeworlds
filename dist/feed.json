@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-16/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-16/",
+      "title": "AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing",
+      "summary": "Seven builder stories: Gemini voice-agent models, Jev structured decisions, Salesforce Koa CRM reasoning, Mistral-Mozilla private browsing, Odyssey-3 world model, OpenAI bio-data grants, and safety-case pacing.",
+      "content_text": "Seven builder stories: Gemini voice-agent models, Jev structured decisions, Salesforce Koa CRM reasoning, Mistral-Mozilla private browsing, Odyssey-3 world model, OpenAI bio-data grants, and safety-case pacing.",
+      "date_published": "2026-09-16T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-15/",
       "title": "Link radar, September 15, 2026",
