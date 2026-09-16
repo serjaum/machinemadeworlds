@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/local-coding-agents-compared/",
+      "url": "https://machinemadeworlds.com/posts/local-coding-agents-compared/",
+      "title": "Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode",
+      "summary": "Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.",
+      "content_text": "Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.",
+      "date_published": "2026-09-16T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-16/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-16/",
       "title": "AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing",

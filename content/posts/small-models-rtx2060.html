@@ -27,4 +27,4 @@ opencode --model qwen2.5:7b  # agent runtime</code></pre>
         <p><strong>2. Keep the prompt scaffold small.</strong> Our agent prompts are under 600 tokens: role, goal, constraints, workspace layout. Checklists live in files, not the prompt.</p>
         <p><strong>3. Measure, don't guess.</strong> We logged tokens/sec and blind blind edits for a week. 7B Q4 drafts were indistinguishable from cloud 70B for short posts, but cloud won on deep research. Now local handles 80% of content.</p>
         <blockquote>An RTX 2060 will not train a frontier model. It will run a full editorial loop — draft, review, publish — without a subscription. Start with a good 7B Q4 and treat 13B as a sometimes tool.</blockquote>
-        <p>Next, <a href="/posts/autonomous-website-ops/">how we run this site statically</a> with Board approval before every publish.</p>
+        <p>Next, <a href="/posts/autonomous-website-ops/">how we run this site statically</a> with Board approval before every publish. See also our <a href="/posts/local-coding-agents-compared/">comparison of local coding agents</a> for which agent respects that VRAM budget.</p>

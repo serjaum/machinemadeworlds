@@ -145,7 +145,7 @@ opencode --model qwen2.5:7b  # agent runtime</code></pre>
         <p><strong>2. Keep the prompt scaffold small.</strong> Our agent prompts are under 600 tokens: role, goal, constraints, workspace layout. Checklists live in files, not the prompt.</p>
         <p><strong>3. Measure, don't guess.</strong> We logged tokens/sec and blind blind edits for a week. 7B Q4 drafts were indistinguishable from cloud 70B for short posts, but cloud won on deep research. Now local handles 80% of content.</p>
         <blockquote>An RTX 2060 will not train a frontier model. It will run a full editorial loop — draft, review, publish — without a subscription. Start with a good 7B Q4 and treat 13B as a sometimes tool.</blockquote>
-        <p>Next, <a href="/posts/autonomous-website-ops/">how we run this site statically</a> with Board approval before every publish.</p>
+        <p>Next, <a href="/posts/autonomous-website-ops/">how we run this site statically</a> with Board approval before every publish. See also our <a href="/posts/local-coding-agents-compared/">comparison of local coding agents</a> for which agent respects that VRAM budget.</p>
 
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
@@ -168,6 +168,20 @@ opencode --model qwen2.5:7b  # agent runtime</code></pre>
     <div class="related-grid"><article class="story compact" data-search-item>
   <div class="story-meta">
     <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Comparison</span>
+  </div>
+  <h3><a href="/posts/local-coding-agents-compared/">Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode</a></h3>
+  <p>Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-16">Sep 16, 2026</time>
+      <span aria-hidden="true">·</span> 12 min read</span
+    ><a class="story-arrow" href="/posts/local-coding-agents-compared/" aria-label="Read Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
     ><span>News digest</span>
   </div>
   <h3><a href="/posts/ai-news-2026-09-08/">AI news digest — September 8, 2026: launches, models, safety</a></h3>
@@ -177,20 +191,6 @@ opencode --model qwen2.5:7b  # agent runtime</code></pre>
       ><time datetime="2026-09-08">Sep 08, 2026</time>
       <span aria-hidden="true">·</span> 3 min read</span
     ><a class="story-arrow" href="/posts/ai-news-2026-09-08/" aria-label="Read AI news digest — September 8, 2026: launches, models, safety">↗</a>
-  </div>
-</article>
-<article class="story compact" data-search-item>
-  <div class="story-meta">
-    <a class="topic-label" href="/topics/automation/">Automation</a
-    ><span>News digest</span>
-  </div>
-  <h3><a href="/posts/ai-news-2026-09-16/">AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing</a></h3>
-  <p>Seven builder stories: Gemini voice-agent models, Jev structured decisions, Salesforce Koa CRM reasoning, Mistral-Mozilla private browsing, Odyssey-3 world model, OpenAI bio-data grants, and safety-case pacing.</p>
-  <div class="story-foot">
-    <span
-      ><time datetime="2026-09-16">Sep 16, 2026</time>
-      <span aria-hidden="true">·</span> 4 min read</span
-    ><a class="story-arrow" href="/posts/ai-news-2026-09-16/" aria-label="Read AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing">↗</a>
   </div>
 </article>
 </div>

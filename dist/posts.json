@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/local-coding-agents-compared/",
+    "title": "Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode",
+    "description": "Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.",
+    "date": "2026-09-16",
+    "reading": 12,
+    "topic": "local-ai"
+  },
+  {
     "url": "/posts/ai-news-2026-09-16/",
     "title": "AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing",
     "description": "Seven builder stories: Gemini voice-agent models, Jev structured decisions, Salesforce Koa CRM reasoning, Mistral-Mozilla private browsing, Odyssey-3 world model, OpenAI bio-data grants, and safety-case pacing.",
