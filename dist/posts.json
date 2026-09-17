@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/ai-news-2026-09-17/",
+    "title": "AI news digest — September 17, 2026: frontier agents, open weights, and private local AI",
+    "description": "Seven builder stories: GPT-6 Astra agentic launch and its Critical cyber rating, Shanghai's 744B open-weight Atria Dawn, Anthropic's merged Cowork with Docs and Slides, Perplexity's on-device Windows agent, LM-Kit One private server, and Stanford's Paper2Agent.",
+    "date": "2026-09-17",
+    "reading": 5,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/rag-on-your-own-machine/",
     "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
     "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
