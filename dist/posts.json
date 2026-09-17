@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-hallucination/",
+    "title": "What is Hallucination?",
+    "description": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+    "date": "2026-09-17",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/rag-on-your-own-machine/",
     "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
     "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",

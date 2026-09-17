@@ -189,6 +189,15 @@
     "body": "Fine-tuning is further training of a finished base model on a smaller, focused set of examples so it handles one task, style, or subject area more reliably. How it works Training starts from the pretrained weights instead of from scratch, using a curated collection of prompts and desired answers from the target domain. Repeated passes nudge those weights toward the new patterns while most general knowledge stays intact, which is why a modest dataset can shift behavior far more than a long prompt. Teams hold back a separate evaluation set to confirm the gains carry over to unseen inputs rather than memorizing the training rows. When the data is thin or skewed, the model narrows with it, so dataset quality decides the outcome more than training length. Builders reach for fine-tuning when the same behavior must repeat at scale: steady formatting, domain vocabulary, or tool-use habits that prompting alone cannot hold."
   },
   {
+    "url": "/posts/glossary-hallucination/",
+    "title": "What is Hallucination?",
+    "description": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+    "date": "2026-09-17",
+    "topic": "essays",
+    "topic_name": "Essays",
+    "body": "A hallucination is a model-generated statement presented as fact that is false or unsupported, produced because the model predicts fluent text rather than verifying truth. How it works A language model learns patterns from training text and, at inference time, emits the most likely continuation of a prompt without consulting a source of truth. When the prompt asks for something beyond its training, the same machinery that writes smooth prose fills the gap with plausible invention: fake citations, wrong numbers, confident nonsense. Retrieval grounding, which pairs generation with passages pulled from real documents, cuts the rate sharply, as do evals that score factuality on benchmark suites instead of style alone. Lowering temperature steadies wording but cannot fix missing knowledge, so anything unverified stays suspect until a source confirms it. Builders treat every ungrounded answer as guilty until proven innocent: grounding responses in retrieved documents, asking for quotes beside claims, and routing high-stakes facts through checks before they reach readers."
+  },
+  {
     "url": "/posts/glossary-inference/",
     "title": "What is Inference?",
     "description": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",

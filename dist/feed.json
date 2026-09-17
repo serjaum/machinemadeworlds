@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-hallucination/",
+      "url": "https://machinemadeworlds.com/posts/glossary-hallucination/",
+      "title": "What is Hallucination?",
+      "summary": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+      "content_text": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+      "date_published": "2026-09-17T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/",
       "url": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/",
       "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",

@@ -1,0 +1,10 @@
+{
+  "title": "What is Hallucination?",
+  "description": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+  "date": "2026-09-17",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "Hallucination is the name for a model answer delivered with full confidence that turns out to be made up: a wrong date, a nonexistent paper, a feature that never shipped. Language models predict likely next words rather than checking facts, so fluency is no guarantee of truth. Knowing the failure by name is the first step toward answers that cite real sources instead of inventing them.",
+  "featured": false,
+  "draft": false
+}
