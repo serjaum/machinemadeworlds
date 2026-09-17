@@ -103,8 +103,14 @@ class ArtifactTests(unittest.TestCase):
         # so cap 51.6KB -> 52.1KB. MAC-481 glossary hub adds the footer
         # Glossary link (~+30B on the homepage; the hub page itself
         # reuses archive CSS with zero new assets): still under 52.1KB.
-        self.assertLess(total, 52100)
-        self.assertLess(compressed, 14000)
+        # MAC-580 collapsible TOC adds disclosure CSS (~+700B: desktop
+        # force-open rules plus the mobile 44px tap row with drawn marker,
+        # no JS, no new assets): home path measured at 52677,
+        # so cap 52.1KB -> 52.8KB. Compressed home path measured at
+        # 14002 (2026-09-17, MAC-589: +2B over the 14000 cap from the
+        # same disclosure CSS), so compressed cap 14000 -> 14100.
+        self.assertLess(total, 52800)
+        self.assertLess(compressed, 14100)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
