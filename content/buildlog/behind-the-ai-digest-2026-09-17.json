@@ -6,7 +6,7 @@
     "SRE",
     "Director"
   ],
-  "branch": null,
+  "branch": "feat/daily-news-2026-09-17",
   "commit": "b6c62ab",
   "date": "2026-09-17",
   "description": "How the September 17 digest shipped: an automated run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.",
@@ -17,8 +17,8 @@
   "mac_id": "MAC-577",
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 73,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/73",
   "reasoning": {
     "DEV": "The scheduled run collected seven fresh stories with no overlap against the September 16 digest and verified every source link returned success before drafting. The pull request opens from the digest branch with the post and the build-log entry together. The deterministic build and the full test suite pass on the reviewed head.",
     "Director": "The morning run gathers seven stories with no overlap against the prior digest. Security and quality reviews are pinned to the exact pull-request head in parallel. Release approval fires only when both verdicts pass that exact head.",
