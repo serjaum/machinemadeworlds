@@ -1,0 +1,10 @@
+{
+  "title": "Link radar, September 17, 2026",
+  "description": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
+  "date": "2026-09-17",
+  "topic": "automation",
+  "kind": "Radar",
+  "lead": "Copilot credit top-ups, an 800,000-line Rust rewrite, broader AI code scanning, storefront script hunts, and bulk SSO authorization dominated September 16: five verified primary-source reads with builder notes. Each summary below is in our own words; follow the links for the originals.",
+  "featured": false,
+  "draft": false
+}
