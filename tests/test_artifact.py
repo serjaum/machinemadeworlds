@@ -109,9 +109,17 @@ class ArtifactTests(unittest.TestCase):
         # so cap 52.1KB -> 52.8KB. Compressed home path measured at
         # 14002 (2026-09-17, MAC-589: +2B over the 14000 cap from the
         # same disclosure CSS), so compressed cap 14000 -> 14100.
-        self.assertLess(total, 52800)
-        self.assertLess(compressed, 14100)
-        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 7000)
+        # MAC-579 scrollspy TOC + reading progress adds the 3px bar rule,
+        # the active TOC edge and the ~1.5KB observer/progress client
+        # (asset delta under the 2KB design gate; mobile collapsible TOC
+        # from MAC-580 untouched): home path measured at 54692,
+        # so cap 52.8KB -> 54.9KB. Compressed path measured at 14724,
+        # so cap 14100 -> 14800. JS measured at 8084, so cap 7KB -> 8.5KB
+        # (scrollspy client is deferred behind page render and only runs
+        # on article pages with a TOC).
+        self.assertLess(total, 54900)
+        self.assertLess(compressed, 14800)
+        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 8500)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
             # Verification-only exception: the async AdSense verification

@@ -1,0 +1,41 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": "feat/article-scrollspy-progress",
+  "commit": "298bfe9",
+  "date": "2026-09-17",
+  "description": "The article outline now marks the section being read while a slim bar above it fills with reading progress, with no change for readers without scripts.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "Long articles now keep readers oriented: the sidebar outline highlights the current section and a slim bar fills as the article is read. Everything is additive under the existing tokens, and the page reads exactly as before with scripts off.",
+  "mac_id": "MAC-579",
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the pull request number and merge identifier are recorded after the gate passes on the exact head.",
+  "merge_sha": null,
+  "pr": 75,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/75",
+  "reasoning": {
+    "DEV": "Development verified the remote and the login with push access, then branched from the fresh main line. It added the progress marker, the active outline edge and the small observer script under the existing tokens, then logged the change in the same branch. The full suite, the rebuild and the presence gate run green before review."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-17",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "sha": "298bfe9",
+      "stage": "Branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-17",
+      "rationale": "Added the progress marker, active outline edge and observer script, then logged the change in the same branch.",
+      "sha": "298bfe9",
+      "stage": "Implement",
+      "verdict": "done"
+    }
+  ],
+  "title": "Article outline follows the reader",
+  "topic": "design"
+}
