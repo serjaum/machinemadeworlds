@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-17/",
+    "title": "Link radar, September 17, 2026",
+    "description": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
+    "date": "2026-09-17",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/rag-on-your-own-machine/",
     "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
     "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
