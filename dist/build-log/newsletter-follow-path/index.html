@@ -12,7 +12,7 @@
       /* Resolve a saved choice before CSS/first paint. New readers get light. */
 try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
     </script>
-    <link rel="stylesheet" href="/assets/site.cc7646dae4ca.css" />
+    <link rel="stylesheet" href="/assets/site.87cc0c355a59.css" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
     <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
     <meta property="og:image:width" content="1200" />
@@ -105,10 +105,12 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
   </header>
   <div class="reading-layout">
     <aside class="reading-sidebar" >
-      <nav class="toc" aria-label="In this article">
-        <p class="eyebrow">In this article</p>
-        <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
-      </nav>
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#verification-evidence">Verification evidence</a>
+        </nav>
+      </details>
       <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
     </aside>
     <div class="article-body" data-od-id="article-body">
@@ -149,13 +151,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/design/">Design</a
     ><span>Shipped</span>
   </div>
-  <h3><a href="/build-log/glossary-index-hub/">Glossary index hub ships with sitemap and footer link</a></h3>
-  <p>Five live definitions now share one front door: the new glossary hub lists every published term with its one-line summary, shows the running shipped total, and links out to each term page.</p>
+  <h3><a href="/build-log/mobile-collapsible-toc/">Article outline turns collapsible on small screens</a></h3>
+  <p>The sidebar outline on article pages now opens on tap for pocket-size screens while the wide-screen sidebar stays exactly as readers know it, with no scripts and no new palette.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-14">Sep 14, 2026</time>
+      ><time datetime="2026-09-17">Sep 17, 2026</time>
       <span aria-hidden="true">·</span> 2 min read</span
-    ><a class="story-arrow" href="/build-log/glossary-index-hub/" aria-label="Read Glossary index hub ships with sitemap and footer link">↗</a>
+    ><a class="story-arrow" href="/build-log/mobile-collapsible-toc/" aria-label="Read Article outline turns collapsible on small screens">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
@@ -163,13 +165,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/design/">Design</a
     ><span>Shipped</span>
   </div>
-  <h3><a href="/build-log/global-search-2026-09-09/">Global search ranks the whole journal from a build-time index</a></h3>
-  <p>Every page gains a header search box backed by a build-time full-text index of article bodies, with a dedicated results page that ranks title matches first, then excerpts, then body text. Queries stay in the address bar, shortcuts focus and clear, and the per-listing filters keep working.</p>
+  <h3><a href="/build-log/glossary-index-hub/">Glossary index hub ships with sitemap and footer link</a></h3>
+  <p>Five live definitions now share one front door: the new glossary hub lists every published term with its one-line summary, shows the running shipped total, and links out to each term page.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-09">Sep 09, 2026</time>
-      <span aria-hidden="true">·</span> 3 min read</span
-    ><a class="story-arrow" href="/build-log/global-search-2026-09-09/" aria-label="Read Global search ranks the whole journal from a build-time index">↗</a>
+      ><time datetime="2026-09-14">Sep 14, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/glossary-index-hub/" aria-label="Read Glossary index hub ships with sitemap and footer link">↗</a>
   </div>
 </article>
 </div>
