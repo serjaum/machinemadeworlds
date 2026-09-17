@@ -167,8 +167,12 @@ h1 em { color: var(--accent); font-weight: 400; }
 .reading-sidebar { align-self: start; position: sticky; top: 28px; }
 .toc { margin-bottom: 30px; }
 .toc .eyebrow { margin-bottom: 14px; }
-.toc a { display: block; color: var(--muted); font-size: 13px; text-decoration: none; padding: 9px 0; }
+.toc a { display: flex; align-items: center; min-height: 44px; color: var(--muted); font-size: 13px; text-decoration: none; padding: 9px 0; padding-left: 12px; border-left: 2px solid transparent; }
 .toc a:hover { color: var(--ink); text-decoration: underline; }
+.toc a[aria-current="true"] { color: var(--ink); border-color: var(--accent); }
+/* Scrollspy + reading progress (MAC-579, additive, tokens only). Fixed 3px bar
+   via --progress; instant active edge; transparent border reserves 2px. */
+.reading-progress { height: 3px; border-radius: 2px; background: linear-gradient(to right, var(--accent) calc(var(--progress, 0) * 100%), var(--line) calc(var(--progress, 0) * 100%)); }
 /* Collapsible TOC (MAC-580). Additive only: native details/summary, tokens only.
    Markup ships WITHOUT open. Desktop forces content visible + summary inert,
    visually identical to the static sidebar. Mobile (<=700px) collapses by
@@ -247,7 +251,7 @@ h1 em { color: var(--accent); font-weight: 400; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 @media print {
   :root, [data-theme="dark"] { --bg: white; --ink: black; --muted: #333; --line: #ccc; --surface: #eee; --accent: black; }
-  .masthead, .footer, .reading-sidebar, .related, .theme-toggle, .article-end { display: none; }
+  .masthead, .footer, .reading-sidebar, .related, .theme-toggle, .article-end, .reading-progress { display: none; }
   .container { width: 100%; }.reading-layout { display: block; }.article-heading h1 { font-size: 30pt; }.article-body { font-size: 12pt; max-width: none; }
   a { text-decoration: underline; }pre { white-space: pre-wrap !important; }.article-body pre code { white-space: pre-wrap; }
 }
