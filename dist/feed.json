@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-17/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-17/",
+      "title": "Link radar, September 17, 2026",
+      "summary": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
+      "content_text": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
+      "date_published": "2026-09-17T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/",
       "url": "https://machinemadeworlds.com/posts/rag-on-your-own-machine/",
       "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
