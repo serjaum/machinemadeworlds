@@ -1,0 +1,10 @@
+{
+  "title": "What is Context window?",
+  "description": "A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.",
+  "date": "2026-09-18",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "A context window is the amount of recent text a language model can consider in a single pass, measured in tokens. Everything the model sees, the instructions, the conversation so far, and any retrieved passages, must fit inside it. When input runs past the edge, the oldest material drops out or the request fails, so knowing the limit decides how much work fits in one call.",
+  "featured": false,
+  "draft": false
+}
