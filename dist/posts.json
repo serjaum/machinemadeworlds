@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-context-window/",
+    "title": "What is Context window?",
+    "description": "A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.",
+    "date": "2026-09-18",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/ai-news-2026-09-18/",
     "title": "AI news digest — September 18, 2026: self-building models, open weights, and local runs",
     "description": "Seven builder stories: Claude's 26% self-driven R&D, a FINRA-style AI standards body, Arcee's $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap.",

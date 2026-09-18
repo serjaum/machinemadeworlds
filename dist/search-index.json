@@ -180,6 +180,15 @@
     "body": "A benchmark is a standardized test suite that measures model capability on fixed tasks, letting teams compare scores across models and over time. How it works A suite ships prompts with answers or graders, runs each model under identical settings, and publishes aggregate scores with splits by skill. Designers refresh items to fight contamination, report variance across seeds, and pair automatic grading with human review where judgment matters. Scores climb as models memorize or genuinely improve, so a single number never tells which happened without checking the method. Builders reach for benchmarks whenever a model choice must be defensible: shortlisting candidates on public suites, then confirming with their own evals on production-like tasks before committing."
   },
   {
+    "url": "/posts/glossary-context-window/",
+    "title": "What is Context window?",
+    "description": "A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.",
+    "date": "2026-09-18",
+    "topic": "essays",
+    "topic_name": "Essays",
+    "body": "A context window is the span of recent tokens a language model can read at once when it drafts its next tokens, setting a hard limit on how much instruction, history, and retrieved evidence fits in one pass. How it works Every model ships with a fixed maximum length, counted in tokens rather than words, that bounds the whole input it processes together. New tokens push older ones toward the edge, so long conversations and large documents must be trimmed, summarized, or paged into chunks to stay inside the limit. Larger windows hold more material but cost more memory and compute per request, which is why providers price long-context calls higher and teams pair them with retrieval that loads only the passages each question needs. Evals that measure recall across the full window keep teams honest about whether the model truly uses distant material or only the nearby lines. Builders reach for context budgets whenever work must fit the window: shortest sufficient instructions, retrieved passages instead of whole archives, and summaries that carry forward what no longer fits."
+  },
+  {
     "url": "/posts/glossary-embeddings/",
     "title": "What is Embeddings?",
     "description": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
