@@ -6,7 +6,7 @@
     "SRE",
     "Director"
   ],
-  "branch": null,
+  "branch": "feat/link-radar-2026-09-18",
   "commit": "n/a",
   "date": "2026-09-18",
   "description": "How the September 18 link radar shipped: an automated run gathered five fresh primary-source reads, reviewers approved the exact pull-request head, and the merge carried the radar plus this log entry to the front page.",
@@ -15,13 +15,13 @@
   "kind": "Shipped",
   "lead": "The daily radar shipped the usual way: an automated run gathered five reads, reviewers approved the result, the merge carried all five to the front page, and this entry logged the trail the same day.",
   "mac_id": "MAC-631",
-  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_note": "Pre-merge record: reviews passed the head commit; merge SHA is recorded after DEV merges.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 81,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/81",
   "reasoning": {
-    "DEV": "The scheduled run collected five fresh primary-source reads with no overlap against the September 17 radar and the September 18 digest, and verified every source link returned success before drafting. The post follows the radar pattern with an intro plus five titled reads and builder notes. The deterministic build passes on the reviewed head.",
-    "Director": "The daily run gathers five reads with no overlap against recent radar and digest posts. Security and quality reviews are pinned to the exact pull-request head in parallel. Release approval fires only when both verdicts pass that exact head.",
+    "DEV": "The scheduled run collected five fresh primary-source reads with no overlap against the September 17 radar and the September 18 digest, and verified every source link returned success before drafting. The post follows the radar pattern with an intro plus five titled reads and builder notes. The deterministic build and the full test suite pass on the reviewed head.",
+    "Director": "This change adds routine dated content inside the cleared pattern with no new pages or components. Security and quality reviews stay pinned to the exact pull-request head recorded here. Release approval fires only when both verdicts pass that exact head.",
     "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head, including the buildlog-presence check, is recorded in the review thread.",
     "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread.",
     "SRE": "Not evidenced in the linked record yet. Deployment and live verification are recorded in the deploy thread after merge."
@@ -30,17 +30,25 @@
     {
       "agent": "DEV",
       "at": "2026-09-18",
-      "rationale": "Ran the scheduled collection and gathered five fresh reads.",
-      "sha": "aa1e38d",
-      "stage": "Scheduled run",
+      "rationale": "Validated the remote and the login, then cut a fresh branch from the main line.",
+      "sha": "f0fec4b",
+      "stage": "Preflight and branch",
       "verdict": "done"
     },
     {
       "agent": "DEV",
       "at": "2026-09-18",
-      "rationale": "Drafted the radar post and this log entry on the radar branch.",
-      "sha": "aa1e38d",
-      "stage": "Draft radar post",
+      "rationale": "Built the five-link radar article with summaries and source links plus the release record and distribution copy, then rebuilt the site green.",
+      "sha": "f0fec4b",
+      "stage": "Radar post and release record",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-18",
+      "rationale": "Ran the site build, the unit suite, and the presence gate green, then opened the pull request for review.",
+      "sha": "f0fec4b",
+      "stage": "Gates and pull request",
       "verdict": "done"
     }
   ],
