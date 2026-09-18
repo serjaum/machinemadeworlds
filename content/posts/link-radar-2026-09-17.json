@@ -5,6 +5,6 @@
   "topic": "automation",
   "kind": "Radar",
   "lead": "Copilot credit top-ups, an 800,000-line Rust rewrite, broader AI code scanning, storefront script hunts, and bulk SSO authorization dominated September 16: five verified primary-source reads with builder notes. Each summary below is in our own words; follow the links for the originals.",
-  "featured": true,
+  "featured": false,
   "draft": false
 }
