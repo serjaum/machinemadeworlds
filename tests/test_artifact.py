@@ -117,8 +117,12 @@ class ArtifactTests(unittest.TestCase):
         # so cap 14100 -> 14800. JS measured at 8084, so cap 7KB -> 8.5KB
         # (scrollspy client is deferred behind page render and only runs
         # on article pages with a TOC).
-        self.assertLess(total, 54900)
-        self.assertLess(compressed, 14800)
+        # MAC-626 daily digest 2026-09-18 adds the new post + buildlog
+        # cards to the homepage (zero new assets): home path measured at
+        # 54810 raw (+118) and 14803 compressed (+79, 3B over the 14800
+        # cap), so caps 54900 -> 55000 and 14800 -> 14900.
+        self.assertLess(total, 55000)
+        self.assertLess(compressed, 14900)
         self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 8500)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')

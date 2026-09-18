@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-18/",
+    "title": "AI news digest — September 18, 2026: self-building models, open weights, and local runs",
+    "description": "Seven builder stories: Claude's 26% self-driven R&D, a FINRA-style AI standards body, Arcee's $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap.",
+    "date": "2026-09-18",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/link-radar-2026-09-17/",
     "title": "Link radar, September 17, 2026",
     "description": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
