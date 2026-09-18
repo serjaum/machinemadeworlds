@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI news digest — September 18, 2026: self-building models, open weights, and local runs</title>
+    <meta name="description" content="Seven builder stories: Claude&#x27;s 26% self-driven R&amp;D, a FINRA-style AI standards body, Arcee&#x27;s $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/ai-news-2026-09-18/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="AI news digest — September 18, 2026: self-building models, open weights, and local runs" />
+    <meta property="og:description" content="Seven builder stories: Claude&#x27;s 26% self-driven R&amp;D, a FINRA-style AI standards body, Arcee&#x27;s $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/ai-news-2026-09-18/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-18T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-18T00:00:00+00:00" />
+    <meta property="article:section" content="Automation" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "AI news digest — September 18, 2026: self-building models, open weights, and local runs", "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/", "inLanguage": "en", "headline": "AI news digest — September 18, 2026: self-building models, open weights, and local runs", "description": "Seven builder stories: Claude's 26% self-driven R&D, a FINRA-style AI standards body, Arcee's $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap.", "datePublished": "2026-09-18", "dateModified": "2026-09-18", "mainEntityOfPage": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Automation", "item": "https://machinemadeworlds.com/topics/automation/"}, {"@type": "ListItem", "position": 3, "name": "AI news digest — September 18, 2026: self-building models, open weights, and local runs", "item": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/"}]}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      News digest <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>AI news digest — September 18, 2026: self-building models, open weights, and local runs</h1>
+    <p class="article-lead">Models building models, standards for models, and models running where you live lead the last 24 hours. Anthropic quantified how much of its own research Claude now leads, the three largest labs confirmed weeks of joint safety work toward an industry testing body, and Arcee raised unicorn money to build American open weights. Mila and Mozilla launched a safe-by-design open initiative, Tencent let users plug any model into its assistant, and two memory-engineering results shrink flagship-class work onto consumer hardware. Every summary is in our own words; follow the links for the original reporting.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-18">Sep 18, 2026</time> · 4 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-progress" hidden aria-hidden="true"></div>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#anthropic-reports-claude-leads-26-percent-of-its-own-ai-research">Anthropic reports Claude leads 26 percent of its own AI research</a><a href="#three-labs-confirm-weeks-of-joint-work-on-a-finra-style-testing-body">Three labs confirm weeks of joint work on a FINRA-style testing body</a><a href="#arcee-ai-passes-1b-to-build-american-open-weight-frontier-models">Arcee AI passes $1B to build American open-weight frontier models</a><a href="#mila-and-mozilla-launch-an-open-source-ai-initiative-for-trustworthy-models">Mila and Mozilla launch an open source AI initiative for trustworthy models</a><a href="#tencent-marvis-lets-users-plug-in-third-party-and-local-models">Tencent Marvis lets users plug in third-party and local models</a><a href="#edge0-streams-a-35b-class-model-from-ssd-at-20-tokens-per-second-on-a-mac-mini">Edge0 streams a 35B-class model from SSD at 20 tokens per second on a Mac mini</a><a href="#programdistill-opens-a-20-point-coding-gap-while-harness-choice-moves-cost-not-outcomes">ProgramDistill opens a 20-point coding gap while harness choice moves cost, not outcomes</a>
+        </nav>
+      </details>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p>Builders get a number for recursive self-improvement, an institutional shape for safety testing, and fresh open-weight options in the last 24 hours, alongside a safe-by-design research bet, bring-your-own-model assistants, and local-inference wins. Anthropic published how much of its research Claude leads, three labs confirmed joint work on a pre-release testing body, and a US lab raised unicorn funding on efficient open training. Here are seven stories worth your time, each summarized in our own words with a link to the original reporting.</p>
+<h2 id="anthropic-reports-claude-leads-26-percent-of-its-own-ai-research">Anthropic reports Claude leads 26 percent of its own AI research</h2>
+<p>Anthropic published a prototype R&amp;D Automation Index showing Claude at the leads level on 26 percent of the company's research work as of August 2026, up from under 1 percent in February, with over 90 percent of work at collaborates or above and none fully autonomous. The method sampled about 15,000 tasks into a 542-node hierarchy judged on an independent automation scale, with roughly 30,000 agents running concurrently and monitors blocking about one action in 47,000. For builders the takeaway is operational: track agent share of work, concurrency, block rates, and oversight compute, because any future standards body will ask for exactly those numbers.</p>
+<p>Read the full story at <a href="https://www.anthropic.com/institute/measuring-pace-of-ai-development">Anthropic</a> (September 17, 2026).</p>
+<h2 id="three-labs-confirm-weeks-of-joint-work-on-a-finra-style-testing-body">Three labs confirm weeks of joint work on a FINRA-style testing body</h2>
+<p>OpenAI's policy chief said OpenAI, Anthropic, and Google DeepMind have coordinated on safety for weeks and are developing an industry-funded testing body modeled on the financial industry's self-regulator to evaluate powerful systems before release. The proposal originated with DeepMind's chief in July, drew endorsement from OpenAI's chief executive, and immediately drew a cartel objection from Cohere's chief plus calls for binding international rules instead. Builders should watch the structure, not just the sentiment: whoever funds and governs pre-release testing shapes audit access, disclosure duties, and release timelines for everyone downstream.</p>
+<p>Read the full story at <a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/">TechCrunch</a> (September 15, 2026).</p>
+<h2 id="arcee-ai-passes-1b-to-build-american-open-weight-frontier-models">Arcee AI passes $1B to build American open-weight frontier models</h2>
+<p>Arcee AI announced a Series B led by Vista Equity Partners, Cambium Capital, and Emergence Capital valuing the company above $1 billion, with participation from Microsoft's M12, Hitachi, Wipro, and others. The company says it built its 400-billion-parameter Trinity Large mixture-of-experts plus its 2025 lineup for roughly $20 million, and will fund the next Trinity generation, deployment tooling, and an open scientific model with the US Department of Energy's national labs. The pitch to builders is control without capability loss: permissively licensed weights you can inspect, adapt, and self-host instead of renting a closed API.</p>
+<p>Read the full story at <a href="https://www.arcee.ai/blog/arcee-ai-raises-series-b-to-build-the-future-of-american-open-models">Arcee AI</a> (September 16, 2026).</p>
+<h2 id="mila-and-mozilla-launch-an-open-source-ai-initiative-for-trustworthy-models">Mila and Mozilla launch an open source AI initiative for trustworthy models</h2>
+<p>Mila and Mozilla announced a joint initiative to build trustworthy open source AI for everyone, pairing a leading academic lab with the nonprofit behind Firefox. The effort centers on safe-by-design research, open development practices, and sovereign compute, with government backing already announced in Canada and Germany for related safety work. For builders who default to closed APIs, it is a second credible pole: openly developed models with transparent methods and public-interest governance rather than purely commercial licensing.</p>
+<p>Read the full story at <a href="https://blog.mozilla.org/en/mozilla/mila-canada-open-source-ai-initiative">Mozilla Blog</a> (September 17, 2026).</p>
+<h2 id="tencent-marvis-lets-users-plug-in-third-party-and-local-models">Tencent Marvis lets users plug in third-party and local models</h2>
+<p>Tencent switched on a custom-model feature in Marvis, its operating-system-level assistant, letting users connect third-party models such as Kimi, Zhipu GLM, DeepSeek, and MiniMax alongside bundled options, or point it at locally deployed open source models. Configuration syncs across devices, switching happens mid-conversation, and third-party usage bills to the user's own account outside the daily free quota. The local path matters most for privacy-sensitive builders: run weights on your own machine through a simple configuration and keep that conversation data off cloud servers entirely.</p>
+<p>Read the full story at <a href="https://pandaily.com/tencent-marvis-custom-model-integration-sep2026">Pandaily</a> (September 1, 2026).</p>
+<h2 id="edge0-streams-a-35b-class-model-from-ssd-at-20-tokens-per-second-on-a-mac-mini">Edge0 streams a 35B-class model from SSD at 20 tokens per second on a Mac mini</h2>
+<p>AutoArk's Edge0 keeps a 35-billion-parameter-class mixture-of-experts model on SSD and streams active experts into memory, reporting about 20 tokens per second on a 24-gigabyte Mac mini with under 3 gibibytes resident against under 4 tokens per second for the baseline. The reported quality cost is a few points at the 35B tier and less at 8B, which many local tasks will gladly trade for a fivefold speedup. The pattern matches the week's other memory-engineering results: judge the next local models on active gigabytes per token, not raw parameter counts.</p>
+<p>Read the full story at <a href="https://aiweekly.co/ai-news-today">AI Weekly</a> (September 18, 2026).</p>
+<h2 id="programdistill-opens-a-20-point-coding-gap-while-harness-choice-moves-cost-not-outcomes">ProgramDistill opens a 20-point coding gap while harness choice moves cost, not outcomes</h2>
+<p>Microsoft researchers released ProgramDistill, mining about 4,000 software tasks from reference apps and asking models to reconstruct them; GPT-6 Astra reached about 49 percent on full reconstruction against roughly 29 percent for Claude Opus 5. A companion harness study found the agent harness barely changes success rates but substantially changes token spend, while Nvidia's multi-agent Git experiment and a confidence estimator round out the week's coding evidence. The builder lesson is split: model choice still decides whether the code gets built, and harness choice decides what the bill looks like.</p>
+<p>Read the full story at <a href="https://blog.buildfastwithai.com/ai-news-today-september-18-2026">Build Fast with AI</a> (September 18, 2026).</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Radar</span>
+  </div>
+  <h3><a href="/posts/link-radar-2026-09-17/">Link radar, September 17, 2026</a></h3>
+  <p>Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-17">Sep 17, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/link-radar-2026-09-17/" aria-label="Read Link radar, September 17, 2026">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Radar</span>
+  </div>
+  <h3><a href="/posts/link-radar-2026-09-16/">Link radar, September 16, 2026</a></h3>
+  <p>Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-16">Sep 16, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/link-radar-2026-09-16/" aria-label="Read Link radar, September 16, 2026">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
