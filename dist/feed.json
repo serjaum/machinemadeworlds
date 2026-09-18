@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-context-window/",
+      "url": "https://machinemadeworlds.com/posts/glossary-context-window/",
+      "title": "What is Context window?",
+      "summary": "A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.",
+      "content_text": "A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.",
+      "date_published": "2026-09-18T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/",
       "title": "AI news digest — September 18, 2026: self-building models, open weights, and local runs",
