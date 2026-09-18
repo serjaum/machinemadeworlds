@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-18/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-18/",
+      "title": "Link radar, September 18, 2026",
+      "summary": "Five reads: Actions execution protections, Ubuntu 26 runners, Copilot feature engagement, life-science model access, and faster biomolecular modeling.",
+      "content_text": "Five reads: Actions execution protections, Ubuntu 26 runners, Copilot feature engagement, life-science model access, and faster biomolecular modeling.",
+      "date_published": "2026-09-18T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-18/",
       "title": "AI news digest — September 18, 2026: self-building models, open weights, and local runs",
