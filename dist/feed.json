@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-19/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-19/",
+      "title": "AI news digest — September 19, 2026: legal agents, tiny models, and kill switches",
+      "summary": "Seven builder stories: OpenAI's Astra for Law with a 230M-URL legal index, TypeSafe's Jev decision model, Cua's 706K-parameter forms planner, California's kill-switch order, Qwen's omni-modal agent, a stealth-model reveal, and a 27B model in 5.9GB.",
+      "content_text": "Seven builder stories: OpenAI's Astra for Law with a 230M-URL legal index, TypeSafe's Jev decision model, Cua's 706K-parameter forms planner, California's kill-switch order, Qwen's omni-modal agent, a stealth-model reveal, and a 27B model in 5.9GB.",
+      "date_published": "2026-09-19T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-18/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-18/",
       "title": "Link radar, September 18, 2026",
