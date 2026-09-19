@@ -10,8 +10,8 @@
       "id": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
       "url": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
       "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
-      "summary": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.",
-      "content_text": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.",
+      "summary": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
+      "content_text": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
       "date_published": "2026-09-19T00:00:00+00:00",
       "tags": [
         "local-ai"
