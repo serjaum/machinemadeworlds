@@ -15,8 +15,8 @@
   "kind": "Shipped",
   "lead": "The morning digest shipped the usual way: an automated run gathered seven stories, reviewers approved the result, the merge carried all seven to the front page, and this entry logged the trail the same day.",
   "mac_id": "MAC-638",
-  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
-  "merge_sha": null,
+  "merge_note": "Merged via PR #84 on 2026-09-19.",
+  "merge_sha": "ca5d392ea603b460448d54f83f734df339092525",
   "pr": 84,
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/84",
   "reasoning": {
