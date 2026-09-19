@@ -1,6 +1,6 @@
 {
   "title": "What is Inference?",
-  "description": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
+  "description": "Inference turns a trained model plus a fresh prompt into an answer. How serving differs from training, latency and cost budgets.",
   "date": "2026-09-14",
   "topic": "essays",
   "kind": "Glossary",

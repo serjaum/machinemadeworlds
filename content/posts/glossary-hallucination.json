@@ -1,6 +1,6 @@
 {
   "title": "What is Hallucination?",
-  "description": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+  "description": "Hallucination: a fluent model answer that sounds true but is not grounded in sources. Why models invent facts and how builders stop it.",
   "date": "2026-09-17",
   "topic": "essays",
   "kind": "Glossary",

@@ -1,6 +1,6 @@
 {
   "title": "What is Benchmark?",
-  "description": "A benchmark is a fixed test suite that scores models on the same tasks so results can be compared. What good suites measure, where they mislead, and how builders use them to pick models.",
+  "description": "Benchmark: a fixed test suite scoring models on the same tasks so results compare. What good suites measure and where they mislead.",
   "date": "2026-09-16",
   "topic": "essays",
   "kind": "Glossary",

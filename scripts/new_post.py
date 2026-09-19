@@ -8,8 +8,28 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# SEO guard (MAC-647): SERP snippets truncate past ~155 chars; below ~50
+# chars the snippet has no substance. Drafts may still be created with an
+# empty description and completed later; any caller-supplied description
+# must already sit inside the band.
+DESCRIPTION_MIN = 50
+DESCRIPTION_MAX = 155
 
-def create_post(root, slug, title, topic, published_date):
+
+def validate_description(value):
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(
+            'Description must contain %d-%d characters' % (DESCRIPTION_MIN, DESCRIPTION_MAX))
+    if len(value) != len(value.strip()) or any(ord(c) < 32 for c in value):
+        raise ValueError('Description must be a single trimmed line')
+    if not DESCRIPTION_MIN <= len(value) <= DESCRIPTION_MAX:
+        raise ValueError(
+            'Description must contain %d-%d characters (got %d)'
+            % (DESCRIPTION_MIN, DESCRIPTION_MAX, len(value)))
+    return value
+
+
+def create_post(root, slug, title, topic, published_date, description=None):
     if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
         raise ValueError('Slug must contain lowercase words separated by hyphens')
     if not title.strip() or len(title) > 180:
@@ -28,6 +48,8 @@ def create_post(root, slug, title, topic, published_date):
         raise FileExistsError(f'Post already exists: {slug}')
     data = dict(title=title, description='', date=published_date, topic=topic,
                 kind='Essay', lead='', featured=False, draft=True)
+    if description is not None:
+        data['description'] = validate_description(description)
     with meta.open('x', encoding='utf-8', newline='\n') as stream:
         stream.write(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
     try:
@@ -50,9 +72,14 @@ if __name__ == '__main__':
     parser.add_argument('--title', required=True)
     parser.add_argument('--topic', required=True)
     parser.add_argument('--date', required=True, help='Actual publication date, YYYY-MM-DD')
+    parser.add_argument('--description', default=None,
+                        help='Optional meta description; when given it must be 50-155 chars')
     args = parser.parse_args()
     try:
-        for path in create_post(ROOT, args.slug, args.title, args.topic, args.date):
+        if args.description is not None:
+            validate_description(args.description)
+        for path in create_post(ROOT, args.slug, args.title, args.topic, args.date,
+                                description=args.description):
             print(path.relative_to(ROOT))
         print('Draft created. Complete the metadata and body; set draft=false when ready.')
     except (ValueError, OSError) as error:
