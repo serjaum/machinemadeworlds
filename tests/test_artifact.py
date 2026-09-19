@@ -121,9 +121,19 @@ class ArtifactTests(unittest.TestCase):
         # cards to the homepage (zero new assets): home path measured at
         # 54810 raw (+118) and 14803 compressed (+79, 3B over the 14800
         # cap), so caps 54900 -> 55000 and 14800 -> 14900.
-        self.assertLess(total, 55000)
-        self.assertLess(compressed, 14900)
-        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 8500)
+        # MAC-649/653 arcade family adds the Star Drift game: the deferred
+        # per-game canvas client (~10KB JS, loads only on game pages),
+        # the additive arcade CSS block (~2.7KB: game grid, stage, HUD,
+        # frame, controls, status, devlog plus the 700px collapse and the
+        # print rule) and the masthead/footer Games links (~60B on the
+        # homepage). Home path measured at 67204 raw and 18276
+        # compressed with JS at 18256, so caps 55000 -> 67500,
+        # 14900 -> 18400 and 8500 -> 18500. Per-game budgets stay pinned
+        # in test_games (game JS <= 15KB, game page < 60KB,
+        # added dist < 120KB).
+        self.assertLess(total, 67500)
+        self.assertLess(compressed, 18400)
+        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 18500)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
             # Verification-only exception: the async AdSense verification

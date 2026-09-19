@@ -76,7 +76,7 @@ class AnimatedPipelineTests(unittest.TestCase):
 
     def test_animation_css_stays_within_budget_and_token_only(self):
         source = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
-        anim = source.split('/* Pipeline animation')[1]
+        anim = source.split('/* Pipeline animation')[1].split('/* Arcade')[0]
         self.assertLessEqual(len(anim.encode('utf-8')), 3072,
                              'animation addition exceeds 3KB raw')
         self.assertNotRegex(anim, r'#[0-9a-fA-F]{3,6}')
@@ -88,7 +88,7 @@ class AnimatedPipelineTests(unittest.TestCase):
 
     def test_keyframes_animate_opacity_and_transform_only(self):
         source = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
-        anim = source.split('/* Pipeline animation')[1]
+        anim = source.split('/* Pipeline animation')[1].split('/* Arcade')[0]
         frames = re.findall(r'@keyframes\s+\S+\s*\{((?:[^{}]|\{[^{}]*\})*)\}', anim)
         self.assertGreaterEqual(len(frames), 3)
         for body in frames:
