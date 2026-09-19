@@ -10,7 +10,7 @@
   {
     "url": "/posts/ai-news-2026-09-19/",
     "title": "AI news digest — September 19, 2026: legal agents, tiny models, and kill switches",
-    "description": "Seven builder stories: OpenAI's Astra for Law with a 230M-URL legal index, TypeSafe's Jev decision model, Cua's 706K-parameter forms planner, California's kill-switch order, Qwen's omni-modal agent, a stealth-model reveal, and a 27B model in 5.9GB.",
+    "description": "AI news digest Sep 19: Astra for Law legal index, TypeSafe Jev model, 706K-param forms planner, kill-switch order, 27B in 5.9GB.",
     "date": "2026-09-19",
     "reading": 4,
     "topic": "local-ai"
@@ -34,7 +34,7 @@
   {
     "url": "/posts/ai-news-2026-09-18/",
     "title": "AI news digest — September 18, 2026: self-building models, open weights, and local runs",
-    "description": "Seven builder stories: Claude's 26% self-driven R&D, a FINRA-style AI standards body, Arcee's $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap.",
+    "description": "AI news digest Sep 18: Claude 26 pct self-driven R and D, Arcee 1B Trinity open weights, Tencent Marvis, Edge0 35B on Mac mini.",
     "date": "2026-09-18",
     "reading": 4,
     "topic": "automation"
@@ -42,7 +42,7 @@
   {
     "url": "/posts/link-radar-2026-09-17/",
     "title": "Link radar, September 17, 2026",
-    "description": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
+    "description": "Link radar Sep 17: Copilot budget top-ups, Rust-rewritten runtime, AI Scan sans CodeQL, script hunts, bulk SSO authorization.",
     "date": "2026-09-17",
     "reading": 2,
     "topic": "automation"
@@ -50,7 +50,7 @@
   {
     "url": "/posts/glossary-hallucination/",
     "title": "What is Hallucination?",
-    "description": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
+    "description": "Hallucination: a fluent model answer that sounds true but is not grounded in sources. Why models invent facts and how builders stop it.",
     "date": "2026-09-17",
     "reading": 1,
     "topic": "essays"
@@ -58,7 +58,7 @@
   {
     "url": "/posts/rag-on-your-own-machine/",
     "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
-    "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
+    "description": "Build retrieve-then-write locally: chunking, a resident embeddings model, a JSONL index to Chroma/Qdrant, cited grounded answers.",
     "date": "2026-09-16",
     "reading": 6,
     "topic": "local-ai"
@@ -74,7 +74,7 @@
   {
     "url": "/posts/local-coding-agents-compared/",
     "title": "Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode",
-    "description": "Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.",
+    "description": "Kilo Code vs self-hosted Coder Agents vs Copilot agent mode: which local-friendly coding agent fits solo builders and teams.",
     "date": "2026-09-16",
     "reading": 12,
     "topic": "local-ai"
@@ -82,7 +82,7 @@
   {
     "url": "/posts/link-radar-2026-09-16/",
     "title": "Link radar, September 16, 2026",
-    "description": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
+    "description": "Link radar Sep 16: ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot suggestions, Reef agent infra, consistency checks.",
     "date": "2026-09-16",
     "reading": 2,
     "topic": "automation"
@@ -90,7 +90,7 @@
   {
     "url": "/posts/glossary-benchmark/",
     "title": "What is Benchmark?",
-    "description": "A benchmark is a fixed test suite that scores models on the same tasks so results can be compared. What good suites measure, where they mislead, and how builders use them to pick models.",
+    "description": "Benchmark: a fixed test suite scoring models on the same tasks so results compare. What good suites measure and where they mislead.",
     "date": "2026-09-16",
     "reading": 1,
     "topic": "essays"
@@ -98,7 +98,7 @@
   {
     "url": "/posts/embeddings-on-consumer-gpus/",
     "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
-    "description": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
+    "description": "Which embedding models fit beside a chat quant on a 6GB card, real VRAM costs, and three local runners: Ollama, llama.cpp, Python.",
     "date": "2026-09-16",
     "reading": 6,
     "topic": "local-ai"
@@ -106,7 +106,7 @@
   {
     "url": "/posts/ai-news-2026-09-16/",
     "title": "AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing",
-    "description": "Seven builder stories: Gemini voice-agent models, Jev structured decisions, Salesforce Koa CRM reasoning, Mistral-Mozilla private browsing, Odyssey-3 world model, OpenAI bio-data grants, and safety-case pacing.",
+    "description": "AI news digest Sep 16: Gemini voice agents, Jev structured decisions, Salesforce Koa reasoning, private browsing, world model.",
     "date": "2026-09-16",
     "reading": 4,
     "topic": "automation"
@@ -114,7 +114,7 @@
   {
     "url": "/posts/link-radar-2026-09-15/",
     "title": "Link radar, September 15, 2026",
-    "description": "Five reads: Anthropic's CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT.",
+    "description": "Link radar Sep 15: Anthropic CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, ShadowPEFT in PEFT.",
     "date": "2026-09-15",
     "reading": 2,
     "topic": "automation"
@@ -122,7 +122,7 @@
   {
     "url": "/posts/glossary-temperature/",
     "title": "What is Temperature?",
-    "description": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
+    "description": "Temperature is the sampling dial for token randomness. What low and high settings do, and where builders set it for fact vs flair.",
     "date": "2026-09-15",
     "reading": 1,
     "topic": "essays"
@@ -130,7 +130,7 @@
   {
     "url": "/posts/ai-news-2026-09-15/",
     "title": "AI news digest — September 15, 2026: pacing debate, open agents, and coding tools",
-    "description": "Seven builder stories: Amodei's pacing plan and its open-weights critique, Smaug open-weight agents, Copilot model updates, self-hosted Coder Agents, Kilo Code local coding, and a new agent-building benchmark.",
+    "description": "AI news digest Sep 15: Amodei pacing-plan debate, Smaug open agents, Copilot updates, self-hosted Coder Agents, Kilo Code.",
     "date": "2026-09-15",
     "reading": 4,
     "topic": "automation"
@@ -146,7 +146,7 @@
   {
     "url": "/posts/glossary-inference/",
     "title": "What is Inference?",
-    "description": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
+    "description": "Inference turns a trained model plus a fresh prompt into an answer. How serving differs from training, latency and cost budgets.",
     "date": "2026-09-14",
     "reading": 1,
     "topic": "essays"
@@ -154,7 +154,7 @@
   {
     "url": "/posts/ai-news-2026-09-14/",
     "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
-    "description": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
+    "description": "AI news digest Sep 14: GPT-6 Astra tops agent benchmarks, Hugging Face incident detail, Kimi K2.8 coding, KIRA and m3 local.",
     "date": "2026-09-14",
     "reading": 4,
     "topic": "automation"
@@ -162,7 +162,7 @@
   {
     "url": "/posts/ai-news-2026-09-13/",
     "title": "AI news digest — September 13, 2026: personal agents, coding models, and local routing",
-    "description": "Seven builder stories: Meta's Muse personal agent with Secure VM, NVIDIA's open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing.",
+    "description": "AI news digest Sep 13: Meta Muse agent, NVIDIA open math pipeline, Cognition SWE-2 on Kimi K3, HydraFusion routing, PAIR local.",
     "date": "2026-09-13",
     "reading": 4,
     "topic": "automation"
@@ -170,7 +170,7 @@
   {
     "url": "/posts/ai-news-2026-09-12/",
     "title": "AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping",
-    "description": "Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.",
+    "description": "AI news digest Sep 12: OpenAI Agents API beta and GPT-Live-1 voice, Ant 124B vision model, NASA-IBM lunar model, Senate talks.",
     "date": "2026-09-12",
     "reading": 4,
     "topic": "automation"
@@ -178,7 +178,7 @@
   {
     "url": "/posts/link-radar-2026-09-11/",
     "title": "Link radar, September 11, 2026",
-    "description": "Five reads: OpenAI's Agents API, Anthropic's September threat report, Anthropic's targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub's AI Scan APIs.",
+    "description": "Link radar Sep 11: OpenAI Agents API, Anthropic threat report and targeting evals, Cloudflare Containers, GitHub AI Scan APIs.",
     "date": "2026-09-11",
     "reading": 2,
     "topic": "automation"
@@ -186,7 +186,7 @@
   {
     "url": "/posts/glossary-quantization/",
     "title": "What is Quantization?",
-    "description": "Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.",
+    "description": "Quantization stores model weights in fewer bits to fit small GPUs and laptops. Accuracy-vs-speed tradeoffs and when builders use it.",
     "date": "2026-09-11",
     "reading": 1,
     "topic": "essays"
@@ -194,7 +194,7 @@
   {
     "url": "/posts/ai-news-2026-09-11/",
     "title": "AI news digest — September 11, 2026: efficient models, agent governance, agentic security",
-    "description": "Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.",
+    "description": "AI news digest Sep 11: DeepSeek V4.1-Flash at lower cost, agent confidence-gap data, Agentic SOC, NeMo video agents, AI rules.",
     "date": "2026-09-11",
     "reading": 4,
     "topic": "automation"
@@ -202,7 +202,7 @@
   {
     "url": "/posts/link-radar-2026-09-10/",
     "title": "Link radar, September 10, 2026",
-    "description": "Five reads: a default-on Node.js registry for Workers, Python 3.14 on Workers, Meta's Muse Spark 1.3 coding model, Google's Gemini 3.8 Flash tiers, and OpenAI's GPT-6 Astra flagship.",
+    "description": "Link radar Sep 10: Node.js registry for Workers, Python 3.14 on Workers, Muse Spark 1.3, Gemini 3.8 Flash, GPT-6 Astra flagship.",
     "date": "2026-09-10",
     "reading": 2,
     "topic": "automation"
@@ -210,7 +210,7 @@
   {
     "url": "/posts/glossary-fine-tuning/",
     "title": "What is Fine-tuning?",
-    "description": "Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.",
+    "description": "Fine-tuning keeps training a ready model on focused examples for one task or style. What changes, what it costs, prompting vs tuning.",
     "date": "2026-09-10",
     "reading": 1,
     "topic": "essays"
@@ -218,7 +218,7 @@
   {
     "url": "/posts/ai-news-2026-09-10/",
     "title": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails",
-    "description": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.",
+    "description": "AI news digest Sep 10: OpenAI Images 2.5 Sketch editing, 2.6B open reasoner, agent control plane, adoption data, pause debate.",
     "date": "2026-09-10",
     "reading": 4,
     "topic": "automation"
@@ -226,7 +226,7 @@
   {
     "url": "/posts/link-radar-2026-09-09/",
     "title": "Link radar, September 9, 2026",
-    "description": "Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.",
+    "description": "Link radar Sep 9: machine-checked proof from an agent run, faster image model, petabyte variant catalogue, quantum handshakes, sandbox.",
     "date": "2026-09-09",
     "reading": 2,
     "topic": "automation"
@@ -234,7 +234,7 @@
   {
     "url": "/posts/glossary-embeddings/",
     "title": "What is Embeddings?",
-    "description": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
+    "description": "Embeddings turn text, images, or rows into number lists placing similar meanings together. How vectors are made and used for search.",
     "date": "2026-09-09",
     "reading": 1,
     "topic": "essays"
@@ -242,7 +242,7 @@
   {
     "url": "/posts/ai-news-2026-09-09/",
     "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
-    "description": "Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.",
+    "description": "AI news digest Sep 9: Meta personal agent, 1100 tok/s diffusion model, open agent sandbox, agent metrics, wiki hijack.",
     "date": "2026-09-09",
     "reading": 4,
     "topic": "automation"
@@ -258,7 +258,7 @@
   {
     "url": "/posts/glossary-rag/",
     "title": "What is RAG?",
-    "description": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
+    "description": "RAG grounds a model in documents retrieved at query time instead of memory alone. How the retrieve-then-write loop works for builders.",
     "date": "2026-09-08",
     "reading": 1,
     "topic": "essays"
@@ -266,7 +266,7 @@
   {
     "url": "/posts/glossary-prompt-injection/",
     "title": "What is prompt injection?",
-    "description": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
+    "description": "Prompt injection hides hostile instructions in data a model reads, hijacking its task. How the trick works and builder defenses.",
     "date": "2026-09-08",
     "reading": 1,
     "topic": "essays"
@@ -274,7 +274,7 @@
   {
     "url": "/posts/designing-ai-reading-experiences/",
     "title": "Designing reading experiences for machine-made text",
-    "description": "How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.",
+    "description": "How typography, pacing, anchors, and dark-mode contrast build trust in AI-assisted articles, using this site's template as example.",
     "date": "2026-09-08",
     "reading": 7,
     "topic": "design"
@@ -290,7 +290,7 @@
   {
     "url": "/posts/ai-news-2026-09-07/",
     "title": "AI news digest — September 7, 2026: $13B bid, open models, agent safety",
-    "description": "Seven builder stories: NVIDIA's $13B Hugging Face bid, a disclosure pledge, a slowdown call, two open releases, a git attack on agents, and US safety bills.",
+    "description": "AI news digest Sep 7: NVIDIA 13B Hugging Face bid, open model releases, an agent git attack, and US safety bills.",
     "date": "2026-09-07",
     "reading": 4,
     "topic": "automation"
@@ -298,7 +298,7 @@
   {
     "url": "/posts/gpt-6-astra-launch/",
     "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
-    "description": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
+    "description": "GPT-6 Astra launched Sep 3, 2026: computer-use leader, 1.05M context, $10/$50 pricing. Benchmarks, limits, and solo-builder takeaways.",
     "date": "2026-09-06",
     "reading": 7,
     "topic": "automation"
@@ -306,7 +306,7 @@
   {
     "url": "/posts/ai-news-2026-09-06/",
     "title": "AI news digest — September 6, 2026: rogue agents, Daybreak's $1B, and chatbot safety",
-    "description": "Six builder-relevant AI stories from the last 24 hours: OpenAI's $1B cyber-defense push, rogue agents on public wikis, new publisher lawsuits, EU search rules for ChatGPT, hands-on Astra evals, and California's chatbot safety bills.",
+    "description": "AI news digest Sep 6: OpenAI 1B cyber-defense push, rogue agents on wikis, publisher lawsuits, EU rules, chatbot safety bills.",
     "date": "2026-09-06",
     "reading": 3,
     "topic": "automation"
@@ -314,7 +314,7 @@
   {
     "url": "/posts/agents-reviewing-agents/",
     "title": "Agents reviewing agents: how automated gates catch what humans miss",
-    "description": "Five real episodes from this very site in which automated review gates caught defects, refused a publish, and rewrote their own rules — each linked to its original evidence.",
+    "description": "Five real episodes where automated gates on this site caught defects, refused a publish, and rewrote their own rules, with evidence.",
     "date": "2026-09-06",
     "reading": 7,
     "topic": "automation"
@@ -354,7 +354,7 @@
   {
     "url": "/posts/ai-news-2026-09-05/",
     "title": "AI news digest — September 5, 2026: GPT-6 Astra, token cuts, and chip clusters",
-    "description": "Seven builder-relevant AI stories from the last 24 hours: GPT-6 Astra's launch, September's model wave and prices, a prompt-injection caveat, Spotify's 90% token cut, DeepSeek's chip plans, and AI infra funding.",
+    "description": "AI news digest Sep 5: GPT-6 Astra launch, September model wave and prices, Spotify 90 pct token cut, DeepSeek chips, AI funding.",
     "date": "2026-09-05",
     "reading": 3,
     "topic": "automation"
