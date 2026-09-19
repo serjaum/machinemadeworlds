@@ -1,5 +1,5 @@
 /* Star Harvest arcade (MAC-648 brief, additive only). Semantic vars solely:
-   no hex, no imports, no new tokens, no new breakpoints, no keyframes.
+   no hex, no remote pulls, no new tokens, no new breakpoints, no keyframes.
    Canvas entities take colors from computed tokens at runtime (see JS). */
 .game-stage { padding: var(--s2) 0 var(--s4); }
 .game-canvas-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: var(--s1); }

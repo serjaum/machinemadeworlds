@@ -1,5 +1,5 @@
 /* Star Harvest — 90-second vanilla canvas arcade run.
-   Zero dependencies, zero network, zero imports. Same-origin only.
+   Zero dependencies, zero network, zero remote pulls. Same-origin only.
    Palette is read from site tokens at boot (no hex here); canvas shapes
    carry the meaning (spark vs polygon vs triangle), never color alone.
    Motion that startles (shake, flash, particles, blink) is created only
