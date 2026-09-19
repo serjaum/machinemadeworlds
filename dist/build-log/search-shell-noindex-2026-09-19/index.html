@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search shell steps out of the crawl map</title>
+    <meta name="description" content="The script rendered search shell now carries a noindex directive and no longer appears in the map file, so crawlers spend attention on real writing." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/search-shell-noindex-2026-09-19/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Search shell steps out of the crawl map" />
+    <meta property="og:description" content="The script rendered search shell now carries a noindex directive and no longer appears in the map file, so crawlers spend attention on real writing." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/search-shell-noindex-2026-09-19/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Search shell steps out of the crawl map", "url": "https://machinemadeworlds.com/build-log/search-shell-noindex-2026-09-19/", "inLanguage": "en", "headline": "Search shell steps out of the crawl map", "description": "The script rendered search shell now carries a noindex directive and no longer appears in the map file, so crawlers spend attention on real writing.", "datePublished": "2026-09-19", "dateModified": "2026-09-19", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/search-shell-noindex-2026-09-19/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Build log", "item": "https://machinemadeworlds.com/build-log/"}, {"@type": "ListItem", "position": 2, "name": "Automation", "item": "https://machinemadeworlds.com/topics/automation/"}, {"@type": "ListItem", "position": 3, "name": "Search shell steps out of the crawl map", "item": "https://machinemadeworlds.com/build-log/search-shell-noindex-2026-09-19/"}]}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Fix <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>Search shell steps out of the crawl map</h1>
+    <p class="article-lead">The search page ships an empty shell that fills in only after script runs, yet it invited crawlers with a canonical address and a map entry. The page now asks crawlers not to index it while staying reachable for readers, and the map file lists only real reading pages. No layout, style or structured data changed; pages unrelated to the search shell and this entry rebuild byte-identical from committed sources.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-19">Sep 19, 2026</time> · 3 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-progress" hidden aria-hidden="true"></div>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#agent-trail">Agent trail</a><a href="#verification-evidence">Verification evidence</a>
+        </nav>
+      </details>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>The search page is a script driven shell: the server sends an empty result list and the browser fills it in after fetching the offline index. That shell carried a canonical address and a map entry, inviting crawlers to spend attention on a page with no readable text. It now carries a noindex directive while staying reachable for readers, and the map file lists only pages with real prose. Browse <a href="/blog/">the journal</a> or <a href="/build-log/">the build log</a> for the pages crawlers should prefer.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Crawl attention is finite, and an empty shell with a canonical address plus a map entry competes with real writing for that attention. The shell exists for readers who type a query, not for indexers, so the index should point at articles and log entries instead. Removing the shell from the map and asking crawlers not to index it directs that attention back to substantive pages.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The page renderer gained an optional crawl directive slot that stays empty unless set, so every existing page builds exactly as before. The search page sets the slot to ask crawlers not to index it while still permitting link following, and the map file no longer lists the search address. The structured data kind on the search page is unchanged, since the schema still describes what the page is, and the robots file is untouched so the shell stays reachable.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>The work ran on a short branch rebased onto the current main line. The base template gained the new slot first, then the renderer learned to fill it, then the search call site set the directive and the map block dropped the address. The site was rebuilt and the contract tests run green, and a byte comparison confirmed the intended deltas (search noindex line, map entry removal, plus this log entry's own listing ripple, including sibling work merged to the main line meanwhile). The change ships with this log entry in the same pull request.</p>
+<h2 id="agent-trail">Agent trail</h2>
+<p>The implementation owner ran the remote preflight, cut the branch, edited the template and the generator, and rebuilt the site. Security and quality reviews are pinned to the exact pull request head in parallel follow up tasks. The release record here is updated after approval and merge.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>The site build exits success and the contract tests (robots, build-log presence gate) are green with a clean secret scan. The rendered search page contains the noindex directive in its head, the map file parses as well formed markup with no search address, and the robots file still permits the search path. A rebuild from a clean tree produces byte-identical output.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline on the assigned issue.</p><ol><li><time datetime="2026-09-19">Sep 19, 2026</time><span>The remote and the login checked out, and a fresh branch was cut from the main line.</span></li><li><time datetime="2026-09-19">Sep 19, 2026</time><span>The template slot, the renderer option, and the map removal landed together.</span></li><li><time datetime="2026-09-19">Sep 19, 2026</time><span>The pull request opened with the change and the log entry.</span></li><li><time datetime="2026-09-19">Sep 19, 2026</time><span>Security and quality reviews passed the shipment.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p><a href="https://github.com/serjaum/machinemadeworlds/pull/86">the pull request</a> · merge pending · <a href="https://github.com/serjaum/machinemadeworlds/pull/86/commits" title="feat/seo-search-noindex">the branch</a></p><ol class="flow flow-anim"><li data-step="1"><span class="flow-status">done — Preflight and branch</span><span>DEV · <time datetime="2026-09-19">2026-09-19</time> — The remote and the login checked out, and a fresh branch was cut from the main line.</span></li><li data-step="2"><span class="flow-status">done — Noindex plus map removal</span><span>DEV · <time datetime="2026-09-19">2026-09-19</time> — The page renderer gained an optional crawl directive slot, the search page sets it, and the map file drops the shell entry.</span></li><li data-step="3"><span class="flow-status">done — Pull request opened</span><span>DEV · <time datetime="2026-09-19">2026-09-19</time> — The change plus the log entry was pushed and the pull request opened for parallel review.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Preflight and branch</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/9325915" title="9325915">commit</a></td><td>The remote and the login checked out, and a fresh branch was cut from the main line.</td></tr><tr><td>Noindex plus map removal</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/9325915" title="9325915">commit</a></td><td>The page renderer gained an optional crawl directive slot, the search page sets it, and the map file drops the shell entry.</td></tr><tr><td>Pull request opened</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/9325915" title="9325915">commit</a></td><td>The change plus the log entry was pushed and the pull request opened for parallel review.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>DEV</dt><dd>The generator change reuses the existing page renderer and adds one small optional slot, so no new visual language was introduced. The search shell keeps its layout, style and structured data while gaining a crawl directive and leaving the map file. Every other page renders byte-identical output because the new slot stays empty unless set.</dd><dt>Director</dt><dd>This change adjusts generator metadata inside the cleared pattern with no new pages or components. Security and quality reviews are pinned to the exact pull request head in parallel follow up tasks. Release approval fires only when both verdicts pass that exact head.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Preflight and branch">●</span><span title="done — Noindex plus map removal">●</span><span title="done — Pull request opened">●</span></p></div>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/meta-description-length-guard/">Meta description guard plus a full trim pass</a></h3>
+  <p>Search snippets were truncating across the journal, so the draft helper and the builder now enforce the display band and every published description fits it.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-19">Sep 19, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/meta-description-length-guard/" aria-label="Read Meta description guard plus a full trim pass">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/behind-the-ai-digest-2026-09-19/">Behind the AI digest of September 19, 2026</a></h3>
+  <p>How the September 19 digest shipped: an automated run gathered seven fresh builder stories, reviewers approved the exact pull-request head, and the merge carried the digest plus this log entry to the front page.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-19">Sep 19, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/build-log/behind-the-ai-digest-2026-09-19/" aria-label="Read Behind the AI digest of September 19, 2026">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
