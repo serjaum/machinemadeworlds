@@ -2,7 +2,7 @@
   {
     "url": "/posts/agents-reviewing-agents/",
     "title": "Agents reviewing agents: how automated gates catch what humans miss",
-    "description": "Five real episodes where automated gates on this site caught defects, refused a publish, and rewrote their own rules, with evidence.",
+    "description": "Five real episodes from this very site in which automated review gates caught defects, refused a publish, and rewrote their own rules — each linked to its original evidence.",
     "date": "2026-09-06",
     "topic": "automation",
     "topic_name": "Automation",
@@ -11,7 +11,7 @@
   {
     "url": "/posts/ai-news-2026-09-05/",
     "title": "AI news digest — September 5, 2026: GPT-6 Astra, token cuts, and chip clusters",
-    "description": "AI news digest Sep 5: GPT-6 Astra launch, September model wave and prices, Spotify 90 pct token cut, DeepSeek chips, AI funding.",
+    "description": "Seven builder-relevant AI stories from the last 24 hours: GPT-6 Astra's launch, September's model wave and prices, a prompt-injection caveat, Spotify's 90% token cut, DeepSeek's chip plans, and AI infra funding.",
     "date": "2026-09-05",
     "topic": "automation",
     "topic_name": "Automation",
@@ -20,7 +20,7 @@
   {
     "url": "/posts/ai-news-2026-09-06/",
     "title": "AI news digest — September 6, 2026: rogue agents, Daybreak's $1B, and chatbot safety",
-    "description": "AI news digest Sep 6: OpenAI 1B cyber-defense push, rogue agents on wikis, publisher lawsuits, EU rules, chatbot safety bills.",
+    "description": "Six builder-relevant AI stories from the last 24 hours: OpenAI's $1B cyber-defense push, rogue agents on public wikis, new publisher lawsuits, EU search rules for ChatGPT, hands-on Astra evals, and California's chatbot safety bills.",
     "date": "2026-09-06",
     "topic": "automation",
     "topic_name": "Automation",
@@ -29,7 +29,7 @@
   {
     "url": "/posts/ai-news-2026-09-07/",
     "title": "AI news digest — September 7, 2026: $13B bid, open models, agent safety",
-    "description": "AI news digest Sep 7: NVIDIA 13B Hugging Face bid, open model releases, an agent git attack, and US safety bills.",
+    "description": "Seven builder stories: NVIDIA's $13B Hugging Face bid, a disclosure pledge, a slowdown call, two open releases, a git attack on agents, and US safety bills.",
     "date": "2026-09-07",
     "topic": "automation",
     "topic_name": "Automation",
@@ -47,7 +47,7 @@
   {
     "url": "/posts/ai-news-2026-09-09/",
     "title": "AI news digest — September 9, 2026: personal agents, fast models, safer sandboxes",
-    "description": "AI news digest Sep 9: Meta personal agent, 1100 tok/s diffusion model, open agent sandbox, agent metrics, wiki hijack.",
+    "description": "Six builder stories: Meta's personal agent, a diffusion model at 1,100 tok/s, an open-source agent sandbox, OpenAI's agent-work metrics, a wiki hijacked by agents, and a benchmark for building agents.",
     "date": "2026-09-09",
     "topic": "automation",
     "topic_name": "Automation",
@@ -56,7 +56,7 @@
   {
     "url": "/posts/ai-news-2026-09-10/",
     "title": "AI news digest — September 10, 2026: image models, tiny local models, agent guardrails",
-    "description": "AI news digest Sep 10: OpenAI Images 2.5 Sketch editing, 2.6B open reasoner, agent control plane, adoption data, pause debate.",
+    "description": "Six builder stories: OpenAI's Images 2.5 with Sketch editing, a 2.6B open-weights reasoner leading its size class, an agent control plane for production, a safety resignation, fresh agent-adoption numbers, and the global pause debate.",
     "date": "2026-09-10",
     "topic": "automation",
     "topic_name": "Automation",
@@ -65,7 +65,7 @@
   {
     "url": "/posts/ai-news-2026-09-11/",
     "title": "AI news digest — September 11, 2026: efficient models, agent governance, agentic security",
-    "description": "AI news digest Sep 11: DeepSeek V4.1-Flash at lower cost, agent confidence-gap data, Agentic SOC, NeMo video agents, AI rules.",
+    "description": "Six builder stories: DeepSeek's V4.1-Flash topping its flagship at lower cost, Harness data on the agent confidence gap, Zscaler's Agentic SOC, video-data agents on NVIDIA NeMo, a seven-framework field guide, and new workplace AI rules.",
     "date": "2026-09-11",
     "topic": "automation",
     "topic_name": "Automation",
@@ -74,7 +74,7 @@
   {
     "url": "/posts/ai-news-2026-09-12/",
     "title": "AI news digest — September 12, 2026: agent APIs, open vision models, and lunar mapping",
-    "description": "AI news digest Sep 12: OpenAI Agents API beta and GPT-Live-1 voice, Ant 124B vision model, NASA-IBM lunar model, Senate talks.",
+    "description": "Seven builder stories: OpenAI's Agents API beta and GPT-Live-1 voice layer, Images 2.5 Flare and Sunburst, Ant's 124B MIT vision model, the NASA-IBM lunar foundation model, AWS Pizza Bot, and the Senate duty-of-care talks.",
     "date": "2026-09-12",
     "topic": "automation",
     "topic_name": "Automation",
@@ -83,7 +83,7 @@
   {
     "url": "/posts/ai-news-2026-09-13/",
     "title": "AI news digest — September 13, 2026: personal agents, coding models, and local routing",
-    "description": "AI news digest Sep 13: Meta Muse agent, NVIDIA open math pipeline, Cognition SWE-2 on Kimi K3, HydraFusion routing, PAIR local.",
+    "description": "Seven builder stories: Meta's Muse personal agent with Secure VM, NVIDIA's open IMO-gold math pipeline, Cognition SWE-2 on Kimi K3, GitHub HydraFusion routing, Abacus Smaug agents, Salesforce long-horizon runtime, and NVIDIA PAIR local routing.",
     "date": "2026-09-13",
     "topic": "automation",
     "topic_name": "Automation",
@@ -92,7 +92,7 @@
   {
     "url": "/posts/ai-news-2026-09-14/",
     "title": "AI news digest — September 14, 2026: agents, local memory, and open weights",
-    "description": "AI news digest Sep 14: GPT-6 Astra tops agent benchmarks, Hugging Face incident detail, Kimi K2.8 coding, KIRA and m3 local.",
+    "description": "Seven builder stories: GPT-6 Astra tops agent benchmarks, METR details the Hugging Face agent incident, Kimi K2.8 lands in coding tools, plus KIRA local agents, m3 local memory, a quiet 744B open-weight drop, and Cursor Projects.",
     "date": "2026-09-14",
     "topic": "automation",
     "topic_name": "Automation",
@@ -101,7 +101,7 @@
   {
     "url": "/posts/ai-news-2026-09-15/",
     "title": "AI news digest — September 15, 2026: pacing debate, open agents, and coding tools",
-    "description": "AI news digest Sep 15: Amodei pacing-plan debate, Smaug open agents, Copilot updates, self-hosted Coder Agents, Kilo Code.",
+    "description": "Seven builder stories: Amodei's pacing plan and its open-weights critique, Smaug open-weight agents, Copilot model updates, self-hosted Coder Agents, Kilo Code local coding, and a new agent-building benchmark.",
     "date": "2026-09-15",
     "topic": "automation",
     "topic_name": "Automation",
@@ -110,7 +110,7 @@
   {
     "url": "/posts/ai-news-2026-09-16/",
     "title": "AI news digest — September 16, 2026: voice agents, structured decisions, and open browsing",
-    "description": "AI news digest Sep 16: Gemini voice agents, Jev structured decisions, Salesforce Koa reasoning, private browsing, world model.",
+    "description": "Seven builder stories: Gemini voice-agent models, Jev structured decisions, Salesforce Koa CRM reasoning, Mistral-Mozilla private browsing, Odyssey-3 world model, OpenAI bio-data grants, and safety-case pacing.",
     "date": "2026-09-16",
     "topic": "automation",
     "topic_name": "Automation",
@@ -119,7 +119,7 @@
   {
     "url": "/posts/ai-news-2026-09-18/",
     "title": "AI news digest — September 18, 2026: self-building models, open weights, and local runs",
-    "description": "AI news digest Sep 18: Claude 26 pct self-driven R and D, Arcee 1B Trinity open weights, Tencent Marvis, Edge0 35B on Mac mini.",
+    "description": "Seven builder stories: Claude's 26% self-driven R&D, a FINRA-style AI standards body, Arcee's $1B open-weight Trinity, Mila-Mozilla safe open AI, Tencent Marvis custom models, Edge0 35B on a Mac mini, and a 20-point coding gap.",
     "date": "2026-09-18",
     "topic": "automation",
     "topic_name": "Automation",
@@ -128,7 +128,7 @@
   {
     "url": "/posts/ai-news-2026-09-19/",
     "title": "AI news digest — September 19, 2026: legal agents, tiny models, and kill switches",
-    "description": "AI news digest Sep 19: Astra for Law legal index, TypeSafe Jev model, 706K-param forms planner, kill-switch order, 27B in 5.9GB.",
+    "description": "Seven builder stories: OpenAI's Astra for Law with a 230M-URL legal index, TypeSafe's Jev decision model, Cua's 706K-parameter forms planner, California's kill-switch order, Qwen's omni-modal agent, a stealth-model reveal, and a 27B model in 5.9GB.",
     "date": "2026-09-19",
     "topic": "local-ai",
     "topic_name": "Local AI",
@@ -164,7 +164,7 @@
   {
     "url": "/posts/designing-ai-reading-experiences/",
     "title": "Designing reading experiences for machine-made text",
-    "description": "How typography, pacing, anchors, and dark-mode contrast build trust in AI-assisted articles, using this site's template as example.",
+    "description": "How typography, pacing, TOC/anchor structure, and dark-mode contrast shape trust in AI-assisted articles, using this site’s post.html template as the worked example.",
     "date": "2026-09-08",
     "topic": "design",
     "topic_name": "Design",
@@ -173,7 +173,7 @@
   {
     "url": "/posts/embeddings-on-consumer-gpus/",
     "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
-    "description": "Which embedding models fit beside a chat quant on a 6GB card, real VRAM costs, and three local runners: Ollama, llama.cpp, Python.",
+    "description": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
     "date": "2026-09-16",
     "topic": "local-ai",
     "topic_name": "Local AI",
@@ -182,7 +182,7 @@
   {
     "url": "/posts/glossary-benchmark/",
     "title": "What is Benchmark?",
-    "description": "Benchmark: a fixed test suite scoring models on the same tasks so results compare. What good suites measure and where they mislead.",
+    "description": "A benchmark is a fixed test suite that scores models on the same tasks so results can be compared. What good suites measure, where they mislead, and how builders use them to pick models.",
     "date": "2026-09-16",
     "topic": "essays",
     "topic_name": "Essays",
@@ -200,7 +200,7 @@
   {
     "url": "/posts/glossary-embeddings/",
     "title": "What is Embeddings?",
-    "description": "Embeddings turn text, images, or rows into number lists placing similar meanings together. How vectors are made and used for search.",
+    "description": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
     "date": "2026-09-09",
     "topic": "essays",
     "topic_name": "Essays",
@@ -209,7 +209,7 @@
   {
     "url": "/posts/glossary-fine-tuning/",
     "title": "What is Fine-tuning?",
-    "description": "Fine-tuning keeps training a ready model on focused examples for one task or style. What changes, what it costs, prompting vs tuning.",
+    "description": "Fine-tuning keeps training a ready-made model on focused examples so it follows one task, style, or domain more reliably. What changes under the hood, what it costs, and when builders choose it over prompting alone.",
     "date": "2026-09-10",
     "topic": "essays",
     "topic_name": "Essays",
@@ -218,7 +218,7 @@
   {
     "url": "/posts/glossary-hallucination/",
     "title": "What is Hallucination?",
-    "description": "Hallucination: a fluent model answer that sounds true but is not grounded in sources. Why models invent facts and how builders stop it.",
+    "description": "A hallucination is a fluent model answer that sounds true but is not grounded in its sources or the real world. Why confident models invent facts, how to spot it, and the grounding habits builders use to stop it.",
     "date": "2026-09-17",
     "topic": "essays",
     "topic_name": "Essays",
@@ -227,7 +227,7 @@
   {
     "url": "/posts/glossary-inference/",
     "title": "What is Inference?",
-    "description": "Inference turns a trained model plus a fresh prompt into an answer. How serving differs from training, latency and cost budgets.",
+    "description": "Inference turns a trained model and a fresh prompt into an answer, running the weights forward instead of learning. How serving differs from training, and where builders spend their latency and cost budget.",
     "date": "2026-09-14",
     "topic": "essays",
     "topic_name": "Essays",
@@ -236,7 +236,7 @@
   {
     "url": "/posts/glossary-prompt-injection/",
     "title": "What is prompt injection?",
-    "description": "Prompt injection hides hostile instructions in data a model reads, hijacking its task. How the trick works and builder defenses.",
+    "description": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
     "date": "2026-09-08",
     "topic": "essays",
     "topic_name": "Essays",
@@ -245,16 +245,16 @@
   {
     "url": "/posts/glossary-quantization/",
     "title": "What is Quantization?",
-    "description": "Quantization stores model weights in fewer bits to fit small GPUs and laptops. Accuracy-vs-speed tradeoffs and when builders use it.",
+    "description": "Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.",
     "date": "2026-09-11",
     "topic": "essays",
     "topic_name": "Essays",
-    "body": "Quantization is the practice of storing a model's weights in lower-precision numbers so the model uses less memory and runs faster at only a small accuracy cost. How it works Training produces weights as roomy high-precision numbers, and quantization maps them into compact blocks of eight or four bits with a scale factor per block. Inference then runs largely in that compact form, which cuts memory use and the traffic between memory and compute. A short calibration pass over sample inputs sets the scales so the rounding error stays small, though very aggressive settings can dull rare behaviors. The result keeps most of the original skill while fitting hardware the full-size model could never touch. Builders reach for quantization whenever a model must fit cheaper hardware: local laptops, single-card servers, and cost-capped inference where full precision cannot pay its way. Go deeper For the VRAM math per level and a which-quant-for-which-card table, read quantized models explained , then see what fits on a 6 GB card ."
+    "body": "Quantization is the practice of storing a model's weights in lower-precision numbers so the model uses less memory and runs faster at only a small accuracy cost. How it works Training produces weights as roomy high-precision numbers, and quantization maps them into compact blocks of eight or four bits with a scale factor per block. Inference then runs largely in that compact form, which cuts memory use and the traffic between memory and compute. A short calibration pass over sample inputs sets the scales so the rounding error stays small, though very aggressive settings can dull rare behaviors. The result keeps most of the original skill while fitting hardware the full-size model could never touch. Builders reach for quantization whenever a model must fit cheaper hardware: local laptops, single-card servers, and cost-capped inference where full precision cannot pay its way. Go deeper For the VRAM math per level and a which-quant-for-which-card table, read quantized models explained , then see what fits on a 6 GB card . For the licence side of downloadable weights, read open weights vs open source ."
   },
   {
     "url": "/posts/glossary-rag/",
     "title": "What is RAG?",
-    "description": "RAG grounds a model in documents retrieved at query time instead of memory alone. How the retrieve-then-write loop works for builders.",
+    "description": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
     "date": "2026-09-08",
     "topic": "essays",
     "topic_name": "Essays",
@@ -263,7 +263,7 @@
   {
     "url": "/posts/glossary-temperature/",
     "title": "What is Temperature?",
-    "description": "Temperature is the sampling dial for token randomness. What low and high settings do, and where builders set it for fact vs flair.",
+    "description": "Temperature is the sampling dial that sets how random a model's next token feels. What low and high settings do, and where builders set it for factual versus creative work.",
     "date": "2026-09-15",
     "topic": "essays",
     "topic_name": "Essays",
@@ -272,7 +272,7 @@
   {
     "url": "/posts/gpt-6-astra-launch/",
     "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
-    "description": "GPT-6 Astra launched Sep 3, 2026: computer-use leader, 1.05M context, $10/$50 pricing. Benchmarks, limits, and solo-builder takeaways.",
+    "description": "OpenAI launched GPT-6 Astra on Sept 3, 2026: computer-use leader with 1.05M context, $10/$50 API pricing, and Critical cyber safeguards. Analysis of official benchmarks, limits, and builder takeaways.",
     "date": "2026-09-06",
     "topic": "automation",
     "topic_name": "Automation",
@@ -299,7 +299,7 @@
   {
     "url": "/posts/link-radar-2026-09-09/",
     "title": "Link radar, September 9, 2026",
-    "description": "Link radar Sep 9: machine-checked proof from an agent run, faster image model, petabyte variant catalogue, quantum handshakes, sandbox.",
+    "description": "Five reads: a machine-checked proof from a large agent run, a faster image model, a petabyte-scale variant catalogue, post-quantum origin handshakes, and a managed sandbox for coding agents.",
     "date": "2026-09-09",
     "topic": "automation",
     "topic_name": "Automation",
@@ -308,7 +308,7 @@
   {
     "url": "/posts/link-radar-2026-09-10/",
     "title": "Link radar, September 10, 2026",
-    "description": "Link radar Sep 10: Node.js registry for Workers, Python 3.14 on Workers, Muse Spark 1.3, Gemini 3.8 Flash, GPT-6 Astra flagship.",
+    "description": "Five reads: a default-on Node.js registry for Workers, Python 3.14 on Workers, Meta's Muse Spark 1.3 coding model, Google's Gemini 3.8 Flash tiers, and OpenAI's GPT-6 Astra flagship.",
     "date": "2026-09-10",
     "topic": "automation",
     "topic_name": "Automation",
@@ -317,7 +317,7 @@
   {
     "url": "/posts/link-radar-2026-09-11/",
     "title": "Link radar, September 11, 2026",
-    "description": "Link radar Sep 11: OpenAI Agents API, Anthropic threat report and targeting evals, Cloudflare Containers, GitHub AI Scan APIs.",
+    "description": "Five reads: OpenAI's Agents API, Anthropic's September threat report, Anthropic's targeting-capability evaluations, Cloudflare Containers for Codex, and GitHub's AI Scan APIs.",
     "date": "2026-09-11",
     "topic": "automation",
     "topic_name": "Automation",
@@ -335,7 +335,7 @@
   {
     "url": "/posts/link-radar-2026-09-15/",
     "title": "Link radar, September 15, 2026",
-    "description": "Link radar Sep 15: Anthropic CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, ShadowPEFT in PEFT.",
+    "description": "Five reads: Anthropic's CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT.",
     "date": "2026-09-15",
     "topic": "automation",
     "topic_name": "Automation",
@@ -344,7 +344,7 @@
   {
     "url": "/posts/link-radar-2026-09-16/",
     "title": "Link radar, September 16, 2026",
-    "description": "Link radar Sep 16: ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot suggestions, Reef agent infra, consistency checks.",
+    "description": "Five reads: OpenAI ChatGPT Ads experiences, Hyperdrive for Python Workers, Copilot property suggestions, Reef continual-agent infra, and agent consistency checks.",
     "date": "2026-09-16",
     "topic": "automation",
     "topic_name": "Automation",
@@ -353,7 +353,7 @@
   {
     "url": "/posts/link-radar-2026-09-17/",
     "title": "Link radar, September 17, 2026",
-    "description": "Link radar Sep 17: Copilot budget top-ups, Rust-rewritten runtime, AI Scan sans CodeQL, script hunts, bulk SSO authorization.",
+    "description": "Five reads: Copilot budget top-ups, the Copilot runtime rewritten in Rust, AI Scan without CodeQL setup, client-side script hunts, and bulk SSO authorization.",
     "date": "2026-09-17",
     "topic": "automation",
     "topic_name": "Automation",
@@ -380,7 +380,7 @@
   {
     "url": "/posts/local-coding-agents-compared/",
     "title": "Local Coding Agents Compared: Kilo Code vs Coder Agents vs Copilot Agent Mode",
-    "description": "Kilo Code vs self-hosted Coder Agents vs Copilot agent mode: which local-friendly coding agent fits solo builders and teams.",
+    "description": "Kilo Code vs self-hosted Coder Agents vs GitHub Copilot agent mode: which local-friendly coding agent fits solo builders, regulated teams, and editor-first developers.",
     "date": "2026-09-16",
     "topic": "local-ai",
     "topic_name": "Local AI",
@@ -389,11 +389,11 @@
   {
     "url": "/posts/open-weights-vs-open-source/",
     "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
-    "description": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.",
+    "description": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
     "date": "2026-09-19",
     "topic": "local-ai",
     "topic_name": "Local AI",
-    "body": ""
+    "body": "This week brought two permissively-licensed agentic releases: Alibaba's Accio team shipped Occamy-1.0, an open-weights agent with vendor-reported frontier co-work scores ( TechTimes, September 15, 2026 ), and Shanghai AI Lab released Atria Dawn Preview, a 744-billion-parameter agentic model under a permissive licence ( GenAI Daily, September 17, 2026 ; Lycoris Technologies, September 16, 2026 ; paper at arXiv 2609.15818 ). Add the RSIAgent result, a training-free harness that lets open models beat a frontier closed model on agent benchmarks ( arXiv 2609.15364 ), and solo builders face a practical question our digests only mention in passing: what can you actually download, run, and build on? This page is the evergreen answer. If you want the one-paragraph definition of the compression that makes local runs fit, start with what quantization is . Open weights is a download; open source is a licence \"Open weights\" means the trained weight files are published for download, usually with a licence file attached. \"Open source\" means much more: the Open Source Definition maintained at opensource.org sets licence criteria, and a fully open release would also share the training data recipe and the training code. Most \"open\" model releases sit somewhere in between: downloadable weights, a licence ranging from permissive to restrictive, and the data and training pipeline withheld. Atria Dawn Preview illustrates the permissive end: coverage describes it as shipping under an MIT-style licence ( GenAI Daily ), so treat the licence file in the release, not the headline, as the source of truth. Before you build on any release, read three things: the licence text (commercial use? attribution? redistribution of fine-tunes?), the model card (what data it saw, what it was never tested on), and whether the weights are actually hosted somewhere you can pull them from or only described in a paper. Why builders care: your card, your rules Downloadable weights change the economics of a one-person shop. Self-hosting removes per-token fees, keeps customer data on your own disk, and lets you freeze a version instead of waking up to a silently updated API. That is why the local stack on this site exists: embeddings on consumer GPUs keeps semantic search resident beside your chat model, and RAG on your own machine closes the retrieve-then-write loop, both without a single API call. Open weights are the missing first step of that loop: the model itself, running where you live. The VRAM math: total versus active parameters Mixture-of-experts releases quote two numbers, and only one decides whether the model fits your card. Total parameters must all be stored in memory; active parameters are the subset consulted per token, which sets speed and per-token cost instead. Estimate fit with one multiplication: total parameters times bytes per parameter, plus headroom for context. The per-level bytes come from quantized models explained : roughly two bytes at full precision, about half a byte at 4-bit. Occamy-1.0 is vendor-reported as a 35-billion-parameter MoE with about 3 billion active parameters ( TechTimes ). At full precision 35 billion parameters need about 70 GB, which no consumer card holds; at 4-bit the same weights need roughly 17 to 18 GB, which fits a 24 GB card with room for context. The 3-billion-active figure does not shrink that footprint: it tells you the model should answer briskly once loaded, not that it loads small. Atria Dawn Preview is coverage-reported as a 744-billion-parameter MoE with about 40 billion active ( GenAI Daily ; Lycoris Technologies ). At full precision that is on the order of 1.5 TB of weights, and even at 4-bit it stays near 370 GB: datacenter territory, downloadable but not self-hostable on a desk. Same math, opposite verdicts, which is exactly why the two numbers must never be confused. The third datapoint needs no download at all. RSIAgent is a training-free harness: curriculum, actor, and verifier agents explore an environment, validate outcomes, and freeze reusable environment knowledge without updating any model weights, and the paper reports open models (Kimi-K3, GLM-5.3) outperforming frontier closed models including GPT-6 on OSWorld-v2 and Agent's Last Exam ( arXiv 2609.15364 ; also covered at Singularity Moments, September 16, 2026 ). The lesson for builders: the harness around open weights can matter more than the weights themselves. Trust checklist: licences and numbers Two habits keep you honest. First, separate vendor-reported numbers from independent ones. Occamy's frontier co-work scores are vendor-reported ( TechTimes ); Atria Dawn's paper claims competitive frontier-agent scores with the highest reported score on five of sixteen benchmarks ( arXiv 2609.15818 ), which is a peer-readable claim you can check, not a trophy you should quote. Second, treat viral provenance chatter as rumor until a primary source exists: unverified claims about where a model's capabilities were distilled from circulate with every major release, and repeating them as fact is how a builder blog loses reader trust. Licence file, model card, downloadable weights, reproducible numbers: in that order. Keep going Weights you can download still need the rest of the local stack. Next read quantized models explained for the per-level VRAM table, then embeddings on consumer GPUs and RAG on your own machine for the full private loop. The glossary companions are quantization , RAG , and embeddings , and the whole series lives under the local-AI topic ."
   },
   {
     "url": "/posts/quantized-models-explained/",
@@ -407,7 +407,7 @@
   {
     "url": "/posts/rag-on-your-own-machine/",
     "title": "RAG on Your Own Machine: A Local Retrieval Walkthrough",
-    "description": "Build retrieve-then-write locally: chunking, a resident embeddings model, a JSONL index to Chroma/Qdrant, cited grounded answers.",
+    "description": "Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.",
     "date": "2026-09-16",
     "topic": "local-ai",
     "topic_name": "Local AI",
@@ -421,14 +421,5 @@
     "topic": "local-ai",
     "topic_name": "Local AI",
     "body": "Many teams assume you need a 24 GB card to do anything serious with local models. You do not. A 6 GB RTX 2060 with 32 GB of system RAM handles drafting, QA and summarisation for this entire blog. Cloud models are called only when a local draft stalls. The VRAM math A 7-billion-parameter model at 16-bit needs ~14 GB. Quantize it to 4-bit and it drops to ~4.2 GB, leaving headroom for context and KV cache. The format matters: Q4_K_M balances quality and size, Q5_K_M buys a bit of clarity for 15% more VRAM, Q4_0 is faster but duller. Our daily drivers are qwen2.5:7b-instruct-q4_K_M (~4.4 GB) and mistral:7b-instruct-q4_K_M (~4.1 GB). Both fit fully with a 4096-token context and ~800 MB to spare. What fits comfortably 7–8B Q4: Fully on GPU, 35–55 tokens/sec via ollama or llama.cpp . Drafts, rewrites, HTML fixes — all fast. Phi-3 Mini 3.8B Q4: ~2.3 GB, 70+ t/s. Perfect for summaries and title generation. Weaker on long coherence, but brilliant for QA. Gemma 2 9B Q4: ~5.4 GB at 2K context. Fits if you clip context. Better style than 7B for essays. Embeddings + rerank: nomic-embed-text (~0.5 GB) plus a tiny reranker stay resident. They are called constantly for search, so never offload them. What needs offload A 13–14B Q4 model is ~8–8.5 GB and will not fit fully. With llama.cpp you split layers — keep ~30 on GPU, spill the rest to CPU: # full offload for 7B — fast ollama run qwen2.5:7b-instruct-q4_K_M # partial offload for 13B — slower but usable ./llama-cli -m yi-34b-q4_k_m.gguf --gpu-layers 32 --ctx-size 4096 Expect 8–15 t/s with partial offload on a quad-core i5. Fine for a nightly polish, painful for chat. Rule: below 20 t/s, the model is too big for the task. Swap it. Our daily stack ollama run qwen2.5:7b # drafting ollama run phi3:mini # summaries, titles ollama run nomic-embed-text # local search opencode --model qwen2.5:7b # agent runtime One resident model at a time avoids fragmentation. Context capped at 4096 for 7B, 2048 for 9B+. Temperature 0.6 for drafts, 0.2 for edits. Three tips from real runs 1. Pin VRAM, watch the cache. Run nvidia-smi --query-gpu=memory.used --format=csv -l 1 while prompting. Above 5.8 GB, shorten context or switch to Q4_0. KV cache grows with context, not parameters, and is the usual OOM culprit. 2. Keep the prompt scaffold small. Our agent prompts are under 600 tokens: role, goal, constraints, workspace layout. Checklists live in files, not the prompt. 3. Measure, don't guess. We logged tokens/sec and blind blind edits for a week. 7B Q4 drafts were indistinguishable from cloud 70B for short posts, but cloud won on deep research. Now local handles 80% of content. An RTX 2060 will not train a frontier model. It will run a full editorial loop — draft, review, publish — without a subscription. Start with a good 7B Q4 and treat 13B as a sometimes tool. Next, how we run this site statically with Board approval before every publish."
-  },
-  {
-    "url": "/games/star-drift/",
-    "title": "Star Drift",
-    "description": "Star Drift is a small canvas arcade game: steer a ship through falling debris, brake with Space, and chase a high score.",
-    "date": "2026-09-19",
-    "topic": "arcade",
-    "topic_name": "Arcade",
-    "body": "Steer a small ship through falling debris and survive as long as you can. The first ship taught us restraint. A canvas, a scoreboard, and three buttons turned out to be enough for a real game, so nothing else was added. The debris falls a little faster the longer you survive, which keeps each run under a few minutes. Sound is synthesized in the browser and stays quiet until you ask for it."
   }
 ]

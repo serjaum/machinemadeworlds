@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Open Weights vs Open Source: What You Can Actually Download and Run</title>
-    <meta name="description" content="Open weights is not open source. What you can download, the VRAM math, and how to self-host models." />
+    <meta name="description" content="Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host." />
     <link rel="canonical" href="https://machinemadeworlds.com/posts/open-weights-vs-open-source/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
@@ -35,7 +35,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Machine Made Worlds" />
     <meta property="og:title" content="Open Weights vs Open Source: What You Can Actually Download and Run" />
-    <meta property="og:description" content="Open weights is not open source. What you can download, the VRAM math, and how to self-host models." />
+    <meta property="og:description" content="Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host." />
     <meta property="og:url" content="https://machinemadeworlds.com/posts/open-weights-vs-open-source/" />
     <meta name="twitter:card" content="summary_large_image" />
 <meta property="article:published_time" content="2026-09-19T00:00:00+00:00" />
@@ -43,7 +43,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <meta property="article:section" content="Local AI" />
     <meta property="article:author" content="Machine Made Worlds" />
         <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Open Weights vs Open Source: What You Can Actually Download and Run", "url": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/", "inLanguage": "en", "headline": "Open Weights vs Open Source: What You Can Actually Download and Run", "description": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.", "datePublished": "2026-09-19", "dateModified": "2026-09-19", "mainEntityOfPage": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Open Weights vs Open Source: What You Can Actually Download and Run", "url": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/", "inLanguage": "en", "headline": "Open Weights vs Open Source: What You Can Actually Download and Run", "description": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.", "datePublished": "2026-09-19", "dateModified": "2026-09-19", "mainEntityOfPage": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
     </script>
     <script type="application/ld+json">
       {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Local AI", "item": "https://machinemadeworlds.com/topics/local-ai/"}, {"@type": "ListItem", "position": 3, "name": "Open Weights vs Open Source: What You Can Actually Download and Run", "item": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/"}]}
@@ -96,31 +96,43 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       Guide <span class="tiny-rule" aria-hidden="true"></span> Local AI
     </p>
     <h1>Open Weights vs Open Source: What You Can Actually Download and Run</h1>
-    <p class="article-lead">Vendors now ship powerful models you can download, but open weights and open source promise different things. This guide draws the line, works the VRAM math on two real releases, and shows what each licence lets a solo builder do.</p>
+    <p class="article-lead">Downloading the weights is not the same as open-sourcing the model. This guide draws the line, works the VRAM math on two real releases, and lists what to check before you self-host.</p>
     <div class="byline">
       <span class="avatar" aria-hidden="true">m</span>
       <div>
         <span>Machine Made Worlds</span
         ><span class="meta"
-          ><time datetime="2026-09-19">Sep 19, 2026</time> · 1 min read</span
+          ><time datetime="2026-09-19">Sep 19, 2026</time> · 4 min read</span
         >
       </div>
     </div>
   </header>
   <div class="reading-progress" hidden aria-hidden="true"></div>
   <div class="reading-layout">
-    <aside class="reading-sidebar"  hidden>
+    <aside class="reading-sidebar" >
       <details class="toc-details">
         <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
         <nav class="toc" aria-label="In this article">
-          
+          <a href="#open-weights-is-a-download-open-source-is-a-licence">Open weights is a download; open source is a licence</a><a href="#why-builders-care-your-card-your-rules">Why builders care: your card, your rules</a><a href="#the-vram-math-total-versus-active-parameters">The VRAM math: total versus active parameters</a><a href="#trust-checklist-licences-and-numbers">Trust checklist: licences and numbers</a><a href="#keep-going">Keep going</a>
         </nav>
       </details>
       <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
     </aside>
     <div class="article-body" data-od-id="article-body">
       <!-- Article body only. No header, footer, h1, script or inline styles. -->
-<p></p>
+<p>This week brought two permissively-licensed agentic releases: Alibaba's Accio team shipped Occamy-1.0, an open-weights agent with vendor-reported frontier co-work scores (<a href="https://www.techtimes.com/articles/327532/20260915/alibaba-releases-open-weights-ai-agent-claiming-frontier-co-work-scores-3b-active-parameters.htm">TechTimes, September 15, 2026</a>), and Shanghai AI Lab released Atria Dawn Preview, a 744-billion-parameter agentic model under a permissive licence (<a href="https://genaidaily.com/shanghai-ai-lab-unveils-atria-dawn-as-open-source-744b-agentic-model/">GenAI Daily, September 17, 2026</a>; <a href="https://lycoristechnologies.com/blog/atria-dawn-preview-shanghai-ai-lab-744b/">Lycoris Technologies, September 16, 2026</a>; paper at <a href="https://arxiv.org/abs/2609.15818">arXiv 2609.15818</a>). Add the RSIAgent result, a training-free harness that lets open models beat a frontier closed model on agent <a href="/posts/glossary-benchmark/">benchmarks</a> (<a href="https://arxiv.org/abs/2609.15364">arXiv 2609.15364</a>), and solo builders face a practical question our digests only mention in passing: what can you actually download, run, and build on? This page is the evergreen answer. If you want the one-paragraph definition of the compression that makes local runs fit, start with <a href="/posts/glossary-quantization/">what quantization is</a>.</p>
+<h2 id="open-weights-is-a-download-open-source-is-a-licence">Open weights is a download; open source is a licence</h2>
+<p>"Open weights" means the trained weight files are published for download, usually with a licence file attached. "Open source" means much more: the Open Source Definition maintained at <a href="https://opensource.org/osd">opensource.org</a> sets licence criteria, and a fully open release would also share the training data recipe and the training code. Most "open" model releases sit somewhere in between: downloadable weights, a licence ranging from permissive to restrictive, and the data and training pipeline withheld. Atria Dawn Preview illustrates the permissive end: coverage describes it as shipping under an MIT-style licence (<a href="https://genaidaily.com/shanghai-ai-lab-unveils-atria-dawn-as-open-source-744b-agentic-model/">GenAI Daily</a>), so treat the licence file in the release, not the headline, as the source of truth. Before you build on any release, read three things: the licence text (commercial use? attribution? redistribution of fine-tunes?), the model card (what data it saw, what it was never tested on), and whether the weights are actually hosted somewhere you can pull them from or only described in a paper.</p>
+<h2 id="why-builders-care-your-card-your-rules">Why builders care: your card, your rules</h2>
+<p>Downloadable weights change the economics of a one-person shop. Self-hosting removes per-token fees, keeps customer data on your own disk, and lets you freeze a version instead of waking up to a silently updated API. That is why the local stack on this site exists: <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a> keeps semantic search resident beside your chat model, and <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a> closes the retrieve-then-write loop, both without a single API call. Open weights are the missing first step of that loop: the model itself, running where you live.</p>
+<h2 id="the-vram-math-total-versus-active-parameters">The VRAM math: total versus active parameters</h2>
+<p>Mixture-of-experts releases quote two numbers, and only one decides whether the model fits your card. Total parameters must all be stored in memory; active parameters are the subset consulted per token, which sets speed and per-token cost instead. Estimate fit with one multiplication: total parameters times bytes per parameter, plus headroom for context. The per-level bytes come from <a href="/posts/quantized-models-explained/">quantized models explained</a>: roughly two bytes at full precision, about half a byte at 4-bit.</p>
+<p>Occamy-1.0 is vendor-reported as a 35-billion-parameter MoE with about 3 billion active parameters (<a href="https://www.techtimes.com/articles/327532/20260915/alibaba-releases-open-weights-ai-agent-claiming-frontier-co-work-scores-3b-active-parameters.htm">TechTimes</a>). At full precision 35 billion parameters need about 70 GB, which no consumer card holds; at 4-bit the same weights need roughly 17 to 18 GB, which fits a 24 GB card with room for context. The 3-billion-active figure does not shrink that footprint: it tells you the model should answer briskly once loaded, not that it loads small. Atria Dawn Preview is coverage-reported as a 744-billion-parameter MoE with about 40 billion active (<a href="https://genaidaily.com/shanghai-ai-lab-unveils-atria-dawn-as-open-source-744b-agentic-model/">GenAI Daily</a>; <a href="https://lycoristechnologies.com/blog/atria-dawn-preview-shanghai-ai-lab-744b/">Lycoris Technologies</a>). At full precision that is on the order of 1.5 TB of weights, and even at 4-bit it stays near 370 GB: datacenter territory, downloadable but not self-hostable on a desk. Same math, opposite verdicts, which is exactly why the two numbers must never be confused.</p>
+<p>The third datapoint needs no download at all. RSIAgent is a training-free harness: curriculum, actor, and verifier agents explore an environment, validate outcomes, and freeze reusable environment knowledge without updating any model weights, and the paper reports open models (Kimi-K3, GLM-5.3) outperforming frontier closed models including GPT-6 on OSWorld-v2 and Agent's Last Exam (<a href="https://arxiv.org/abs/2609.15364">arXiv 2609.15364</a>; also covered at <a href="http://www.singularitymoments.com/content/open-source-ai-agents-are-beating-gpt-6-without-touching-model-weights/">Singularity Moments, September 16, 2026</a>). The lesson for builders: the harness around open weights can matter more than the weights themselves.</p>
+<h2 id="trust-checklist-licences-and-numbers">Trust checklist: licences and numbers</h2>
+<p>Two habits keep you honest. First, separate vendor-reported numbers from independent ones. Occamy's frontier co-work scores are vendor-reported (<a href="https://www.techtimes.com/articles/327532/20260915/alibaba-releases-open-weights-ai-agent-claiming-frontier-co-work-scores-3b-active-parameters.htm">TechTimes</a>); Atria Dawn's paper claims competitive frontier-agent scores with the highest reported score on five of sixteen benchmarks (<a href="https://arxiv.org/abs/2609.15818">arXiv 2609.15818</a>), which is a peer-readable claim you can check, not a trophy you should quote. Second, treat viral provenance chatter as rumor until a primary source exists: unverified claims about where a model's capabilities were distilled from circulate with every major release, and repeating them as fact is how a builder blog loses reader trust. Licence file, model card, downloadable weights, reproducible numbers: in that order.</p>
+<h2 id="keep-going">Keep going</h2>
+<p>Weights you can download still need the rest of the local stack. Next read <a href="/posts/quantized-models-explained/">quantized models explained</a> for the per-level VRAM table, then <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a> and <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a> for the full private loop. The glossary companions are <a href="/posts/glossary-quantization/">quantization</a>, <a href="/posts/glossary-rag/">RAG</a>, and <a href="/posts/glossary-embeddings/">embeddings</a>, and the whole series lives under <a href="/topics/local-ai/">the local-AI topic</a>.</p>
 
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
@@ -146,7 +158,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     ><span>News digest</span>
   </div>
   <h3><a href="/posts/ai-news-2026-09-19/">AI news digest — September 19, 2026: legal agents, tiny models, and kill switches</a></h3>
-  <p>AI news digest Sep 19: Astra for Law legal index, TypeSafe Jev model, 706K-param forms planner, kill-switch order, 27B in 5.9GB.</p>
+  <p>Seven builder stories: OpenAI&#x27;s Astra for Law with a 230M-URL legal index, TypeSafe&#x27;s Jev decision model, Cua&#x27;s 706K-parameter forms planner, California&#x27;s kill-switch order, Qwen&#x27;s omni-modal agent, a stealth-model reveal, and a 27B model in 5.9GB.</p>
   <div class="story-foot">
     <span
       ><time datetime="2026-09-19">Sep 19, 2026</time>
@@ -160,7 +172,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     ><span>Guide</span>
   </div>
   <h3><a href="/posts/rag-on-your-own-machine/">RAG on Your Own Machine: A Local Retrieval Walkthrough</a></h3>
-  <p>Build retrieve-then-write locally: chunking, a resident embeddings model, a JSONL index to Chroma/Qdrant, cited grounded answers.</p>
+  <p>Build the full retrieve-then-write loop locally: chunking, a resident embeddings model, a JSONL index that graduates to Chroma or Qdrant, and grounded answers with citations.</p>
   <div class="story-foot">
     <span
       ><time datetime="2026-09-16">Sep 16, 2026</time>
