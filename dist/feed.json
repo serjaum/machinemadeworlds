@@ -7,7 +7,6 @@
   "language": "en",
   "items": [
     {
-<<<<<<< HEAD
       "id": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
       "url": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
       "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
@@ -19,8 +18,6 @@
       ]
     },
     {
-=======
->>>>>>> 5e4a533a (fix(MAC-653): re-scope shared gates for arcade routes and rebuild dist)
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-19/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-19/",
       "title": "AI news digest — September 19, 2026: legal agents, tiny models, and kill switches",
