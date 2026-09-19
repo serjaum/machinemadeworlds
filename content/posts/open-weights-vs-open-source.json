@@ -1,0 +1,10 @@
+{
+  "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
+  "description": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
+  "date": "2026-09-19",
+  "topic": "local-ai",
+  "kind": "Guide",
+  "lead": "Downloading the weights is not the same as open-sourcing the model. This guide draws the line, works the VRAM math on two real releases, and lists what to check before you self-host.",
+  "featured": false,
+  "draft": false
+}

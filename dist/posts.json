@@ -2,9 +2,9 @@
   {
     "url": "/posts/open-weights-vs-open-source/",
     "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
-    "description": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.",
+    "description": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
     "date": "2026-09-19",
-    "reading": 1,
+    "reading": 4,
     "topic": "local-ai"
   },
   {
