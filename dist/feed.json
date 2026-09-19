@@ -7,17 +7,6 @@
   "language": "en",
   "items": [
     {
-      "id": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
-      "url": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
-      "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
-      "summary": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.",
-      "content_text": "Open weights is not open source. What you can download, the VRAM math, and how to self-host models.",
-      "date_published": "2026-09-19T00:00:00+00:00",
-      "tags": [
-        "local-ai"
-      ]
-    },
-    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-19/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-19/",
       "title": "AI news digest — September 19, 2026: legal agents, tiny models, and kill switches",
