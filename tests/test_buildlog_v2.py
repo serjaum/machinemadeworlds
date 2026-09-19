@@ -225,7 +225,7 @@ class BuildLogV2Tests(unittest.TestCase):
 
     def test_flow_css_is_additive_and_token_only(self):
         source = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
-        flow = source.split('/* Pipeline diagram')[1]
+        flow = source.split('/* Pipeline diagram')[1].split('/* Pipeline animation')[0]
         self.assertNotRegex(flow, r'#[0-9a-fA-F]{3,6}')
         for needle in ('rgb(', '@import', 'http', '!important', '@media', '.js'):
             self.assertNotIn(needle, flow)

@@ -153,7 +153,7 @@ class MetricsPageTests(unittest.TestCase):
         sitemap = (ROOT / 'dist/sitemap.xml').read_text(encoding='utf-8')
         self.assertIn('<loc>https://machinemadeworlds.com/metrics/</loc>', sitemap)
         home = (ROOT / 'dist/index.html').read_text(encoding='utf-8')
-        self.assertIn('<a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a>', home)
+        self.assertIn('<a href="/build-log/">Build log</a><a href="/games/">Games</a><a href="/metrics/">Metrics</a>', home)
 
     def test_no_header_metrics_link(self):
         home = (ROOT / 'dist/index.html').read_text(encoding='utf-8')

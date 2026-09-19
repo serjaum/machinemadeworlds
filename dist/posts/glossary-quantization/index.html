@@ -12,7 +12,7 @@
       /* Resolve a saved choice before CSS/first paint. New readers get light. */
 try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
     </script>
-    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="stylesheet" href="/assets/site.69b504b1c122.css" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
     <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
     <meta property="og:image:width" content="1200" />
@@ -66,7 +66,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
           <a href="/" >Home</a
           ><a href="/blog/" >Journal</a
           ><a href="/build-log/" >Build Log</a
-          ><a href="/about/" >About</a>
+          ><a href="/about/" >About</a><a href="/games/" >Games</a>
         </nav>
         <form class="masthead-search" action="/search/" method="get" role="search">
           <label class="sr-only" for="site-search">Search articles</label>
@@ -124,7 +124,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <p>Training produces weights as roomy high-precision numbers, and quantization maps them into compact blocks of eight or four bits with a scale factor per block. <a href="/posts/glossary-inference/">Inference</a> then runs largely in that compact form, which cuts memory use and the traffic between memory and compute. A short calibration pass over sample inputs sets the scales so the rounding error stays small, though very aggressive settings can dull rare behaviors. The result keeps most of the original skill while fitting hardware the full-size model could never touch.</p>
 <p>Builders reach for quantization whenever a model must fit cheaper hardware: local laptops, single-card servers, and cost-capped inference where full precision cannot pay its way.</p>
 <h2 id="go-deeper">Go deeper</h2>
-<p>For the VRAM math per level and a which-quant-for-which-card table, read <a href="/posts/quantized-models-explained/">quantized models explained</a>, then see <a href="/posts/small-models-rtx2060/">what fits on a 6 GB card</a>. For the licence side of downloadable weights, read <a href="/posts/open-weights-vs-open-source/">open weights vs open source</a>.</p>
+<p>For the VRAM math per level and a which-quant-for-which-card table, read <a href="/posts/quantized-models-explained/">quantized models explained</a>, then see <a href="/posts/small-models-rtx2060/">what fits on a 6 GB card</a>.</p>
 <h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-benchmark/">Benchmark</a></li><li><a href="/posts/glossary-context-window/">Context window</a></li><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li></ul>
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
@@ -183,7 +183,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
         >
         <p>A little less noise.<br />A little more understanding.</p>
         <nav aria-label="Footer">
-          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/games/">Games</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
           ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
         </nav>
       </div>

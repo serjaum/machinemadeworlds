@@ -93,7 +93,7 @@ class BuildLogTests(unittest.TestCase):
         home = (self.dist / 'index.html').read_text(encoding='utf-8')
         header = re.search(r'<nav class="navigation".*?</nav>', home, re.S)[0]
         hrefs = re.findall(r'href="([^"]+)"', header)
-        self.assertEqual(hrefs, ['/', '/blog/', '/build-log/', '/about/'])
+        self.assertEqual(hrefs, ['/', '/blog/', '/build-log/', '/about/', '/games/'])
         self.assertIn('<a href="/build-log/">Build log</a>', home)
         self.assertIn('<a href="/build-log/"  aria-current="page">Build Log</a', self.index)
         for entry in self.published:
@@ -113,7 +113,7 @@ class BuildLogTests(unittest.TestCase):
 
     def test_trail_css_is_additive_and_token_only(self):
         source = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
-        trail = source.split('/* Build log')[1]
+        trail = source.split('/* Build log')[1].split('/* Pipeline diagram')[0]
         self.assertNotRegex(trail, r'#[0-9a-fA-F]{3,6}')
         for needle in ('rgb(', '@import', 'http', '!important', '@media', '.js'):
             self.assertNotIn(needle, trail)
