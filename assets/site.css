@@ -367,3 +367,34 @@ h1 em { color: var(--accent); font-weight: 400; }
 .trail .flow-dots span:nth-child(3n){animation-delay:.6s}
 .trail .flow-anim>li:last-child .flow-status{display:inline-block;animation:flow-dot 2.6s ease-in-out infinite}
 @keyframes flow-dot{0%,100%{opacity:.45;transform:none}50%{opacity:1;transform:translateY(-2px)}}
+/* Arcade (MAC-649). Additive only: game-* + how-to classes, semantic vars,
+   no new tokens, fonts, or breakpoints beyond the existing 700px collapse. */
+.game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); padding-bottom: var(--s5); }
+.game-card { background: var(--raised); border: 1px solid var(--line); border-radius: 4px; padding: var(--s2); display: flex; flex-direction: column; gap: var(--s1); }
+.game-card h2 { font-size: clamp(22px, 2vw, 25px); }
+.game-card p { font-size: 14px; line-height: 1.7; color: var(--muted); }
+.game-card .button { margin-top: auto; align-self: flex-start; }
+.how-to { padding: var(--s2) 0; max-width: var(--reading); }
+.how-to h2 { font-size: clamp(22px, 2vw, 25px); margin-bottom: var(--s1); }
+.how-to ul { margin: var(--s1) 0 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+.how-to kbd { font: 12px/1.6 var(--mono); background: var(--raised); border: 1px solid var(--line); border-radius: 3px; padding: 2px 6px; }
+.game-stage { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: var(--s2); display: grid; gap: var(--s2); max-width: 860px; }
+.game-stage h2 { font-size: clamp(22px, 2vw, 25px); }
+.game-hud { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); list-style: none; margin: 0; padding: 0; font: 11px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.game-hud b { display: block; font-family: var(--serif); font-size: 24px; letter-spacing: -.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.game-frame { border: 1px solid var(--line); border-radius: 4px; background: var(--raised); overflow: hidden; }
+.game-frame canvas { display: block; width: 100%; height: auto; aspect-ratio: 16/10; touch-action: none; }
+.game-controls { display: flex; flex-wrap: wrap; gap: var(--s1); }
+.game-btn { min-width: 44px; min-height: 44px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 12px 20px; font-size: 13px; font-weight: 600; }
+.game-btn:hover { background: var(--raised); }
+.game-status { font: 13px/1.7 var(--sans); color: var(--muted); min-height: 44px; display: flex; align-items: center; }
+.devlog { padding: var(--s3) 0 var(--s5); max-width: var(--reading); }
+.devlog h2 { font-size: clamp(22px, 2vw, 25px); margin-bottom: var(--s1); }
+.devlog p { font-size: 16px; line-height: 1.75; color: var(--muted); }
+@media (max-width: 700px) {
+  .game-grid { grid-template-columns: 1fr; }
+  .game-controls .button, .game-controls .game-btn { flex: 1 1 100%; }
+}
+@media print {
+  .game-stage { display: none; }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Star Drift joins the new arcade corner",
+  "description": "The site grows a small arcade corner with its first game. Star Drift is a canvas dodger with keyboard controls, a scoreboard, and synthesized sound.",
+  "date": "2026-09-19",
+  "topic": "design",
+  "kind": "Shipped",
+  "lead": "The journal now has a place to play. A new arcade index lists the studio games, and the first one, Star Drift, is ready at its own page with instructions, a scoreboard, and a devlog.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-653",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Preflight and branch",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Verified the remote and push access, then cut a fresh branch from the main line.",
+      "at": "2026-09-19"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Game pages and builder wiring",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Added the arcade templates, game script, styles, builder routes, log entry, and tests, then rebuilt the site green.",
+      "at": "2026-09-19"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The arcade is a new capability, so the design assessment came first and its acceptance list shaped the whole change. Templates, styles, script, builder routes, navigation, search, and sitemap all landed together so no route ever renders half-built. The log entry ships in the same pull request to keep provenance beside the feature. Security and quality reviews stay pinned to the exact pull request head before any merge."
+  }
+}

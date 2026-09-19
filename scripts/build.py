@@ -404,6 +404,37 @@ def load_buildlog(root, site):
     return sorted(entries, key=lambda p: (p['date'], p['slug']), reverse=True)
 
 
+def load_games(root):
+    """Arcade family (MAC-649): small browser games as JSON metadata.
+
+    Each file in content/games/<slug>.json carries title, description,
+    one-line pitch, devlog paragraph and date. Slugs become /games/<slug>/
+    routes. No external URLs: any web reference fails the build, keeping
+    the arcade offline-first like the rest of the site."""
+    games = []
+    folder = Path(root) / 'content/games'
+    if not folder.is_dir():
+        return []
+    for path in sorted(folder.glob('*.json')):
+        g = json.loads(path.read_text(encoding='utf-8'))
+        slug = path.stem
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
+            raise ValueError('Invalid game slug')
+        for key, limit in (('title', 80), ('description', 320),
+                           ('pitch', 140), ('devlog', 1200)):
+            if (not isinstance(g.get(key), str) or not g[key].strip()
+                    or len(g[key]) > limit):
+                raise ValueError('Invalid game %s' % key)
+        _require_iso_date(g.get('date'), 'Games require YYYY-MM-DD')
+        for key in ('title', 'description', 'pitch', 'devlog'):
+            if 'http' in g[key] or '\\' in g[key]:
+                raise ValueError('Games carry no external URLs')
+        g['slug'] = slug
+        g['url'] = '/games/' + slug + '/'
+        games.append(g)
+    return sorted(games, key=lambda g: (g['date'], g['slug']))
+
+
 DATA_FILES = {
     'prices': ('content/data/prices.json', ('model', 'input_per_1m_usd', 'output_per_1m_usd')),
     'benchmarks': ('content/data/benchmarks.json', ('model', 'benchmark', 'score')),
@@ -881,6 +912,7 @@ def build(root=ROOT):
         raise ValueError('Per-topic descriptions must be unique and cover every topic')
     posts = load_posts(root, site)
     entries = load_buildlog(root, site)
+    games = load_games(root)
     output = root / 'dist'
     staging = root / '.build-staging'
     if staging.is_symlink() or output.is_symlink():
@@ -1034,6 +1066,28 @@ def build(root=ROOT):
     archive('/glossary/', 'Glossary', glossary_terms, GLOSSARY_COPY, topics='',
             description='Plain-language definitions of AI ideas, from prompt injection to quantization.')
 
+    # Arcade family (MAC-649): /games/ index plus one page per game.
+    # Cards reuse the archive rhythm; each game page pairs the game
+    # template with its deferred per-game script (assets/<slug>.js).
+    def game_card(g):
+        return ('<article class="game-card"><h2>%s</h2><p>%s</p>'
+                '<a class="button" href="%s">Play %s</a></article>'
+                % (escape(g['title']), escape(g['pitch']), g['url'],
+                   escape(g['title'])))
+    render('/games/', 'Games — ' + site['name'],
+           'Small browser games from the studio. No accounts, no downloads.',
+           template(root, 'games.html',
+                    cards=''.join(game_card(g) for g in games)),
+           'CollectionPage')
+    for g in games:
+        script = assets.get(g['slug'] + '.js', '')
+        extra = ('\n    <script src="%s" defer></script>' % script) if script else ''
+        render(g['url'], g['title'] + ' — ' + site['name'], g['description'],
+               template(root, 'game.html', game_title=escape(g['title']),
+                        pitch=escape(g['pitch']), devlog=escape(g['devlog'])),
+               'WebPage', breadcrumbs=[('Games', '/games/'), (g['title'], g['url'])],
+               extra_js=extra)
+
     def detail(p, pool, index_url, index_label, back_label, related_label, pipeline=False, article=False):
         body = p['body']
         if p['url'].startswith('/posts/'):
@@ -1122,6 +1176,11 @@ def build(root=ROOT):
                             'description': p['description'], 'date': p['date'],
                             'topic': p['topic'], 'topic_name': p['topic_name'],
                             'body': text})
+    for g in sorted(games, key=lambda q: q['url']):
+        search_docs.append({'url': g['url'], 'title': g['title'],
+                            'description': g['description'], 'date': g['date'],
+                            'topic': 'arcade', 'topic_name': 'Arcade',
+                            'body': (g['pitch'] + ' ' + g['devlog'])})
     put('search-index.json', json.dumps(search_docs, ensure_ascii=False, indent=2) + '\n')
     rss = ET.Element('rss', version='2.0')
     channel = ET.SubElement(rss, 'channel')
@@ -1145,7 +1204,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/glossary/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/glossary/', '/search/', '/games/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries] + [g['url'] for g in games]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.
@@ -1164,6 +1223,7 @@ def build(root=ROOT):
         return min(value, today)
     lastmod = {p['url']: p['date'] for p in posts}
     lastmod.update({p['url']: p['date'] for p in entries})
+    lastmod.update({g['url']: g['date'] for g in games})
     for p in posts:
         key = '/topics/' + p['topic'] + '/'
         if key not in lastmod or p['date'] > lastmod[key]:
@@ -1171,9 +1231,11 @@ def build(root=ROOT):
     latest_post = max([p['date'] for p in posts], default='')
     latest_entry = max([p['date'] for p in entries], default='')
     latest_glossary = max([p['date'] for p in posts if p['slug'].startswith('glossary-')], default='')
+    latest_game = max([g['date'] for g in games], default='')
     lastmod['/'] = latest_post
     lastmod['/blog/'] = latest_post
     lastmod['/glossary/'] = latest_glossary
+    lastmod['/games/'] = latest_game
     lastmod['/search/'] = latest_post
     lastmod['/build-log/'] = latest_entry
     lastmod['/prices/'] = data['prices']['updated']
