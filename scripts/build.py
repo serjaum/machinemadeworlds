@@ -410,6 +410,66 @@ DATA_FILES = {
 }
 
 
+def load_games(root):
+    """Arcade index (MAC-648): one JSON file per game in content/games/.
+
+    Slugs become /games/<slug>/ routes. Copy fields carry the same
+    offline-first gates as posts: length caps plus http/backslash
+    rejection, so game metadata can never pull remote content. Format
+    and playtime label the index card and default when a game omits
+    them, so a later game file extends the index without builder edits.
+    Game pages bypass ArticleMarkup and render from templates/game.html
+    with same-origin hashed assets only."""
+    games = []
+    folder = Path(root) / 'content/games'
+    if not folder.is_dir():
+        return []
+    for path in sorted(folder.glob('*.json')):
+        g = json.loads(path.read_text(encoding='utf-8'))
+        slug = path.stem
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', slug):
+            raise ValueError('Invalid game slug')
+        for key, limit in (('title', 80), ('description', 320),
+                           ('pitch', 140), ('devlog', 1200)):
+            if (not isinstance(g.get(key), str) or not g[key].strip()
+                    or len(g[key]) > limit):
+                raise ValueError('Invalid game %s' % key)
+        _require_iso_date(g.get('date'), 'Games require YYYY-MM-DD')
+        for key in ('title', 'description', 'pitch', 'devlog'):
+            if 'http' in g[key] or '\\' in g[key]:
+                raise ValueError('Games carry no external URLs')
+        for key, limit, default in (('format', 40, 'Arcade game'),
+                                    ('playtime', 20, 'Short play')):
+            value = g.get(key, default)
+            if (not isinstance(value, str) or not value.strip()
+                    or len(value) > limit):
+                raise ValueError('Invalid game %s' % key)
+            if 'http' in value or '\\' in value:
+                raise ValueError('Games carry no external URLs')
+            g[key] = value.strip()
+        g['slug'] = slug
+        g['url'] = '/games/' + slug + '/'
+        g['date_label'] = date.fromisoformat(g['date']).strftime('%b %d, %Y')
+        games.append(g)
+    return sorted(games, key=lambda g: (g['date'], g['slug']))
+
+
+def game_card(g):
+    """One archive-family index card per game (MAC-648 brief section 3)."""
+    return ('<article class="story" data-search-item>'
+            '<div class="story-meta"><span class="topic-label" aria-hidden="true">Arcade</span>'
+            '<span>%s</span></div>'
+            '<h3><a href="%s">%s</a></h3>'
+            '<p>%s</p>'
+            '<div class="story-foot"><span><time datetime="%s">%s</time>'
+            '<span aria-hidden="true"> · </span>%s</span>'
+            '<a class="story-arrow" href="%s" aria-label="Play %s">↗</a></div>'
+            '</article>'
+            % (escape(g['format']), g['url'], escape(g['title']),
+               escape(g['pitch']), g['date'], g['date_label'],
+               escape(g['playtime']), g['url'], escape(g['title'])))
+
+
 def _require_data_source(value):
     if (not isinstance(value, str) or not value.strip() or len(value) > 500
             or value != value.strip() or '\\' in value
@@ -881,6 +941,7 @@ def build(root=ROOT):
         raise ValueError('Per-topic descriptions must be unique and cover every topic')
     posts = load_posts(root, site)
     entries = load_buildlog(root, site)
+    games = load_games(root)
     output = root / 'dist'
     staging = root / '.build-staging'
     if staging.is_symlink() or output.is_symlink():
@@ -896,12 +957,45 @@ def build(root=ROOT):
 
     assets = {}
     for source in sorted((root / 'assets').iterdir()):
+        if not source.is_file():
+            continue
         data = source.read_bytes()
         name = f'{source.stem}.{sha256(data).hexdigest()[:12]}{source.suffix}'
         assets[source.name] = '/assets/' + name
         target = staging / 'assets' / name
         target.parent.mkdir(exist_ok=True)
         target.write_bytes(data)
+    # Arcade game scripts and styles (MAC-648): per-game vanilla files
+    # hashed exactly like top-level assets, staged flat so the hashed-name
+    # and artifact-total gates keep working unchanged.
+    game_assets = {}
+    games_dir = root / 'assets' / 'games'
+    if games_dir.is_dir():
+        for source in sorted(games_dir.iterdir()):
+            if not source.is_file() or source.suffix not in ('.js', '.css'):
+                raise ValueError('Game assets carry only per-game .js and .css')
+            data = source.read_bytes()
+            name = f'{source.stem}.{sha256(data).hexdigest()[:12]}{source.suffix}'
+            game_assets[source.name] = '/assets/' + name
+            target = staging / 'assets' / name
+            target.parent.mkdir(exist_ok=True)
+            target.write_bytes(data)
+
+    def game_head(slug=None):
+        """Head tags for arcade pages: every game stylesheet plus the one
+        game script. Index pages pass no slug (CSS only); game pages pass
+        their slug. Empty string when no game assets ship, so existing
+        pages render byte-identical."""
+        tags = ['<link rel="stylesheet" href="%s" />' % game_assets[name]
+                for name in sorted(game_assets) if name.endswith('.css')]
+        if slug is not None:
+            script = slug + '.js'
+            if script not in game_assets:
+                raise ValueError('Game page has no script: %s' % slug)
+            tags.append('<script src="%s" defer></script>' % game_assets[script])
+        if not tags:
+            return ''
+        return '\n    ' + '\n    '.join(tags)
 
     def render(path, title, description, content, kind='WebPage', post=None, article=False,
                  breadcrumbs=None, extra_js=''):
@@ -1113,6 +1207,22 @@ def build(root=ROOT):
     render('/search/', 'Search — ' + site['name'],
            'Search every article in the journal. Results rank title matches first, then excerpts, then body text.',
            template(root, 'search.html'), 'SearchResultsPage')
+    # Arcade (MAC-648): index lists every game in content/games/; each
+    # game page renders standalone from templates/game.html and bypasses
+    # ArticleMarkup (canvas/script/button tags are rejected there).
+    # Unknown slugs fail fast: a game needs its page template before it
+    # can ship, so a metadata file alone never publishes a dead route.
+    render('/games/', 'The arcade — ' + site['name'],
+           'Short browser games from the journal workshop. No accounts, no downloads — just play.',
+           template(root, 'games-index.html',
+                    cards=''.join(game_card(g) for g in games)),
+           'CollectionPage', extra_js=game_head())
+    for g in games:
+        if g['slug'] != 'star-harvest':
+            raise ValueError('Game page has no template: %s' % g['slug'])
+        render(g['url'], g['title'] + ' — ' + site['name'], g['description'],
+               template(root, 'game.html', devlog=escape(g['devlog'])),
+               'VideoGame', extra_js=game_head(g['slug']))
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
     put('posts.json', json.dumps(index, ensure_ascii=False, indent=2) + '\n')
     search_docs = []
@@ -1145,7 +1255,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/glossary/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/glossary/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/', '/games/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries] + [g['url'] for g in games]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.
@@ -1178,6 +1288,11 @@ def build(root=ROOT):
     lastmod['/build-log/'] = latest_entry
     lastmod['/prices/'] = data['prices']['updated']
     lastmod['/benchmarks/'] = data['benchmarks']['updated']
+    for g in games:
+        lastmod[g['url']] = g['date']
+    latest_game = max([g['date'] for g in games], default='')
+    if latest_game:
+        lastmod['/games/'] = latest_game
     sitemap = ET.Element('urlset', xmlns='http://www.sitemaps.org/schemas/sitemap/0.9')
     for path in urls:
         node = ET.SubElement(sitemap, 'url')
