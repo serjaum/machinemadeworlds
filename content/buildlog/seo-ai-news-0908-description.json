@@ -1,0 +1,41 @@
+{
+  "title": "SEO backfill: ai-news-0908 meta description",
+  "description": "The September eighth digest now carries a story-specific search description covering model fatigue, gated cyber models, coding-agent attacks, local open-model ranks, two-GPU picks, and agent governance.",
+  "date": "2026-09-19",
+  "topic": "local-ai",
+  "kind": "Fix",
+  "lead": "Search snippets for the September eighth digest were generic filler. This fix rewrites the description around the six published sections and ships the provenance log beside it.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-651",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Preflight and branch",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Verified the private remote and push access, then cut a fresh branch from the main line.",
+      "at": "2026-09-19"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Description and log entry",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Rewrote the digest description around its six sections, added the log entry, and rebuilt the site green.",
+      "at": "2026-09-19"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The old description was generic filler that named no story, so search snippets could not tell readers what the digest covers. Rewriting it around the six published sections keeps the snippet truthful while staying inside the snippet band. The change touches metadata only, so no layout or visual review is needed. The log entry ships in the same pull request to keep provenance beside the fix."
+  }
+}
