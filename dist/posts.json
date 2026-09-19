@@ -1,13 +1,5 @@
 [
   {
-    "url": "/posts/open-weights-vs-open-source/",
-    "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
-    "description": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
-    "date": "2026-09-19",
-    "reading": 4,
-    "topic": "local-ai"
-  },
-  {
     "url": "/posts/ai-news-2026-09-19/",
     "title": "AI news digest — September 19, 2026: legal agents, tiny models, and kill switches",
     "description": "AI news digest Sep 19: Astra for Law legal index, TypeSafe Jev model, 706K-param forms planner, kill-switch order, 27B in 5.9GB.",
