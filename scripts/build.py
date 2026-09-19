@@ -928,6 +928,10 @@ def build(root=ROOT):
 
     assets = {}
     for source in sorted((root / 'assets').iterdir()):
+        # Only top-level files are fingerprinted publish artifacts;
+        # stray directories (editor state, OS metadata) never enter dist.
+        if not source.is_file():
+            continue
         data = source.read_bytes()
         name = f'{source.stem}.{sha256(data).hexdigest()[:12]}{source.suffix}'
         assets[source.name] = '/assets/' + name
