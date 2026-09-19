@@ -1,0 +1,27 @@
+/* Star Harvest arcade (MAC-648 brief, additive only). Semantic vars solely:
+   no hex, no remote pulls, no new tokens, no new breakpoints, no keyframes.
+   Canvas entities take colors from computed tokens at runtime (see JS). */
+.game-stage { padding: var(--s2) 0 var(--s4); }
+.game-canvas-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: var(--s1); }
+.game-canvas-wrap canvas { display: block; width: 100%; height: auto; aspect-ratio: 16/10; background: var(--raised); border: 1px solid var(--line); border-radius: 4px; touch-action: pan-y; }
+.game-hud { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s1); margin: var(--s2) 0 0; padding: 0; }
+.game-hud > div { background: var(--raised); border: 1px solid var(--line); border-radius: 4px; padding: var(--s1) var(--s2); min-width: 0; }
+.game-hud dt { font: 500 11px/1.6 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.game-hud dd { margin: var(--s1) 0 0; font: 400 26px/1.2 var(--serif); color: var(--ink); font-variant-numeric: tabular-nums; }
+.game-controls { display: flex; flex-wrap: wrap; gap: var(--s1); margin-top: var(--s2); }
+.game-hint { margin-top: var(--s2); color: var(--muted); font-size: 13px; }
+.game-pad { display: none; }
+@media (pointer: coarse) {
+  .game-pad { display: grid; grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(2, 48px); gap: var(--s1); margin-top: var(--s2); justify-content: start; }
+  .game-pad [data-dir="up"] { grid-column: 2; grid-row: 1; }
+  .game-pad [data-dir="left"] { grid-column: 1; grid-row: 2; }
+  .game-pad [data-dir="down"] { grid-column: 2; grid-row: 2; }
+  .game-pad [data-dir="right"] { grid-column: 3; grid-row: 2; }
+  .game-pad button { min-width: 48px; min-height: 48px; background: var(--raised); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; font-size: 20px; }
+}
+.game-note { background: var(--surface); padding: var(--s2); border-radius: 4px; margin: 0 0 var(--s5); }
+.game-note p { color: var(--muted); font-size: 14px; }
+.game-note strong { color: var(--ink); }
+@media (max-width: 700px) {
+  .game-hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

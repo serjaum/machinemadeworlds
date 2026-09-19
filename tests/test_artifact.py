@@ -75,6 +75,15 @@ class ArtifactTests(unittest.TestCase):
         self.assertTrue(any(p.name.startswith('social-card.') for p in assets),
                         'Brand social card must ship')
         home = (dist / 'index.html').read_bytes()
+        # MAC-648 arcade: game scripts and styles ship as separate hashed
+        # assets referenced only by /games/* pages, never by the homepage.
+        # The home budget stays a critical-path budget: home HTML plus the
+        # assets home actually cites. Game-page weight has its own gates in
+        # tests/test_games_arcade.py (JS+CSS <= 60KB, page <= 150KB).
+        home_refs = set(re.findall(r'/assets/[^\s"\']+', home.decode('utf-8')))
+        inpage = [p for p in assets
+                  if ('/assets/' + p.name) in home_refs
+                  and not p.name.startswith('social-card.')]
         total = len(home) + sum(p.stat().st_size for p in inpage)
         compressed = len(gzip.compress(home)) + sum(len(gzip.compress(p.read_bytes())) for p in inpage)
         # Raw cap raised 40KB -> 42KB (MAC-72 merge): main sat at 39836
@@ -121,9 +130,11 @@ class ArtifactTests(unittest.TestCase):
         # cards to the homepage (zero new assets): home path measured at
         # 54810 raw (+118) and 14803 compressed (+79, 3B over the 14800
         # cap), so caps 54900 -> 55000 and 14800 -> 14900.
+        # MAC-648 arcade ships game assets outside the home critical path
+        # (see scoping above): the JS cap covers home-cited scripts only.
         self.assertLess(total, 55000)
         self.assertLess(compressed, 14900)
-        self.assertLess(sum(p.stat().st_size for p in assets if p.suffix == '.js'), 8500)
+        self.assertLess(sum(p.stat().st_size for p in inpage if p.suffix == '.js'), 8500)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')
             # Verification-only exception: the async AdSense verification
