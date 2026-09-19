@@ -1,6 +1,6 @@
 {
   "title": "Link radar, September 15, 2026",
-  "description": "Five reads: Anthropic's CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, Cloudflare search-without-training controls, and ShadowPEFT in PEFT.",
+  "description": "Link radar Sep 15: Anthropic CI scaling lessons, Copilot auto-model tiers, Cloudflare per-Worker access, ShadowPEFT in PEFT.",
   "date": "2026-09-15",
   "topic": "automation",
   "kind": "Radar",

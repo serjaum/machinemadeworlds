@@ -1,6 +1,6 @@
 {
   "title": "What is Embeddings?",
-  "description": "Embeddings turn text, images, or rows into lists of numbers that place similar meanings close together. How the vectors are made and where builders use them for search and grouping.",
+  "description": "Embeddings turn text, images, or rows into number lists placing similar meanings together. How vectors are made and used for search.",
   "date": "2026-09-09",
   "topic": "essays",
   "kind": "Glossary",

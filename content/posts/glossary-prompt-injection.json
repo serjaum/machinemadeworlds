@@ -1,6 +1,6 @@
 {
   "title": "What is prompt injection?",
-  "description": "Prompt injection hides hostile instructions inside data a language model reads, steering it to disobey its real task. How the trick works and how builders counter it.",
+  "description": "Prompt injection hides hostile instructions in data a model reads, hijacking its task. How the trick works and builder defenses.",
   "date": "2026-09-08",
   "topic": "essays",
   "kind": "Glossary",

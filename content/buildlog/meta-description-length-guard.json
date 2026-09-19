@@ -1,0 +1,55 @@
+{
+  "title": "Meta description guard plus a full trim pass",
+  "description": "Search snippets were truncating across the journal, so the draft helper and the builder now enforce the display band and every published description fits it.",
+  "date": "2026-09-19",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "A length guard now stops over-long search snippets at draft time and warns at build time, and the thirty-four published descriptions that sat outside the display band were rewritten to fit it.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-647",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "6d58c12",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "at": "2026-09-19"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Guard plus trim pass and tests",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Shipped the draft and build guards, the trimmed descriptions, and the regression test with this entry.",
+      "at": "2026-09-19"
+    },
+    {
+      "agent": "DEV",
+      "stage": "Pull request",
+      "verdict": "done",
+      "sha": "6d58c12",
+      "rationale": "Opened the pull request with the guard, the trims, the test, and the log entry.",
+      "at": "2026-09-19"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The snippet band is enforced where descriptions are born and where the site is assembled, so the next digest cannot silently repeat the old overflow. The thirty-four legacy descriptions were rewritten with keywords kept up front and no other copy touched. The deterministic build, the full test suite, and the presence gate pass on the change.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "This change touches draft tooling, build warnings, and published copy with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  }
+}

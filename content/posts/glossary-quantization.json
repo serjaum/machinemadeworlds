@@ -1,6 +1,6 @@
 {
   "title": "What is Quantization?",
-  "description": "Quantization shrinks a model by storing its weights in fewer bits so it fits smaller GPUs and laptops. How lower precision trades a little accuracy for speed and where builders reach for it.",
+  "description": "Quantization stores model weights in fewer bits to fit small GPUs and laptops. Accuracy-vs-speed tradeoffs and when builders use it.",
   "date": "2026-09-11",
   "topic": "essays",
   "kind": "Glossary",

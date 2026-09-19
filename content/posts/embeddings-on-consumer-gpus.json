@@ -1,6 +1,6 @@
 {
   "title": "Embeddings on Consumer GPUs: Local Search That Stays Resident",
-  "description": "Which embedding models fit beside a chat quant on a 6 GB card, how much VRAM each really takes, and three local ways to run them: Ollama, llama.cpp server, and plain Python.",
+  "description": "Which embedding models fit beside a chat quant on a 6GB card, real VRAM costs, and three local runners: Ollama, llama.cpp, Python.",
   "date": "2026-09-16",
   "topic": "local-ai",
   "kind": "Guide",

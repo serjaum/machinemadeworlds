@@ -102,7 +102,29 @@ def load_posts(root, site):
     for missing in missing_dist_packs(root, posts):
         print('WARNING: post %s has no dist-pack (expected content/posts/%s.dist-pack.md)'
               % (missing, missing), file=sys.stderr)
+    for slug, length in meta_description_violations(posts):
+        print('WARNING: post %s description is %d chars (keep %d-%d for SERP snippets)'
+              % (slug, length, META_DESCRIPTION_MIN, META_DESCRIPTION_MAX), file=sys.stderr)
     return posts
+
+
+# SEO guard (MAC-647, Director decision 2026-09-19: warn-only). Google
+# displays ~155-160 chars; the regression test enforces the band while the
+# build stays green on legacy content.
+META_DESCRIPTION_MIN = 50
+META_DESCRIPTION_MAX = 155
+
+
+def meta_description_violations(posts):
+    """(slug, length) for non-draft posts outside the SERP band, slug-sorted."""
+    bad = []
+    for p in posts:
+        if p.get('draft', False):
+            continue
+        length = len(p.get('description', ''))
+        if not META_DESCRIPTION_MIN <= length <= META_DESCRIPTION_MAX:
+            bad.append((p.get('slug', '?'), length))
+    return sorted(bad)
 
 
 def missing_dist_packs(root, posts):
@@ -882,7 +904,7 @@ def build(root=ROOT):
         target.write_bytes(data)
 
     def render(path, title, description, content, kind='WebPage', post=None, article=False,
-                 breadcrumbs=None):
+                 breadcrumbs=None, extra_js=''):
         canonical = site['url'] + path
         # MAC-167 share card: one brand raster card (1200x630 PNG) for every
         # page. Site-wide defaults live here; the template only interpolates.
@@ -926,6 +948,7 @@ def build(root=ROOT):
             jsonld_extra = ''
         nav = lambda href: ' aria-current="page"' if path == href else ''
         build_current = ' aria-current="page"' if path.startswith('/build-log/') else ''
+        games_current = ' aria-current="page"' if path.startswith('/games/') else ''
         text = template(root, 'base.html', title=escape(title), name=escape(site['name']),
                         description=escape(description), canonical=escape(canonical),
                         og_type='article' if post else 'website', jsonld=jsonld,
@@ -939,7 +962,8 @@ def build(root=ROOT):
                         theme_init=(root / 'templates/theme-init.js').read_text(encoding='utf-8').strip(),
                         content=content, year=max((p['date'][:4] for p in posts), default='2026'),
                         home_current=nav('/'), blog_current=nav('/blog/'),
-                        build_current=build_current, about_current=nav('/about/'))
+                        build_current=build_current, about_current=nav('/about/'),
+                        games_current=games_current, extra_js=extra_js)
         put('404.html' if path == '/404.html' else path.strip('/') + '/index.html' if path != '/' else 'index.html', text)
         return text
 

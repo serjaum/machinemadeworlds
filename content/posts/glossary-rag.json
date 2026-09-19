@@ -1,6 +1,6 @@
 {
   "title": "What is RAG?",
-  "description": "RAG grounds a language model in documents retrieved at query time instead of memory alone, cutting hallucinations on facts the model never learned. How the retrieve-then-write loop works and where builders reach for it.",
+  "description": "RAG grounds a model in documents retrieved at query time instead of memory alone. How the retrieve-then-write loop works for builders.",
   "date": "2026-09-08",
   "topic": "essays",
   "kind": "Glossary",
