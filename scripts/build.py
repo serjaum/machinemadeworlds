@@ -904,7 +904,7 @@ def build(root=ROOT):
         target.write_bytes(data)
 
     def render(path, title, description, content, kind='WebPage', post=None, article=False,
-                 breadcrumbs=None, extra_js=''):
+                 breadcrumbs=None, extra_js='', robots=None):
         canonical = site['url'] + path
         # MAC-167 share card: one brand raster card (1200x630 PNG) for every
         # page. Site-wide defaults live here; the template only interpolates.
@@ -949,10 +949,15 @@ def build(root=ROOT):
         nav = lambda href: ' aria-current="page"' if path == href else ''
         build_current = ' aria-current="page"' if path.startswith('/build-log/') else ''
         games_current = ' aria-current="page"' if path.startswith('/games/') else ''
+        # MAC-650: optional robots meta (e.g. noindex for the /search/ shell).
+        # Empty string keeps every other page byte-identical: $robots sits
+        # inline before the color-scheme meta in base.html.
+        robots_slot = ('<meta name="robots" content="%s" />\n    ' % escape(robots)
+                       if robots else '')
         text = template(root, 'base.html', title=escape(title), name=escape(site['name']),
                         description=escape(description), canonical=escape(canonical),
                         og_type='article' if post else 'website', jsonld=jsonld,
-                        jsonld_extra=jsonld_extra,
+                        jsonld_extra=jsonld_extra, robots=robots_slot,
                         css=assets['site.css'], js=assets['site.js'], favicon=assets['favicon.svg'],
                         logo=assets['logo.svg'], og_image=og_image,
                         og_image_width='1200', og_image_height='630',
@@ -1112,7 +1117,7 @@ def build(root=ROOT):
            template(root, '404.html'))
     render('/search/', 'Search — ' + site['name'],
            'Search every article in the journal. Results rank title matches first, then excerpts, then body text.',
-           template(root, 'search.html'), 'SearchResultsPage')
+           template(root, 'search.html'), 'SearchResultsPage', robots='noindex, follow')
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
     put('posts.json', json.dumps(index, ensure_ascii=False, indent=2) + '\n')
     search_docs = []
@@ -1145,7 +1150,7 @@ def build(root=ROOT):
             'home_page_url': site['url'] + '/', 'feed_url': site['url'] + '/feed.json',
             'description': site['description'], 'language': 'en', 'items': feed_items}
     put('feed.json', json.dumps(feed, ensure_ascii=False, indent=2) + '\n')
-    urls = ['/', '/blog/', '/glossary/', '/search/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
+    urls = ['/', '/blog/', '/glossary/', '/build-log/', '/metrics/', '/about/', '/newsletter/', '/terms/', '/privacy/', '/prices/', '/benchmarks/'] + [f'/topics/{k}/' for k in site['topics']] + [p['url'] for p in posts] + [p['url'] for p in entries]
     # Sitemap <lastmod> in W3C date form (YYYY-MM-DD). Date-only (not full
     # datetime) because every source date in this repo is day-granular, so a
     # timestamp would invent precision the content does not have.
@@ -1174,7 +1179,6 @@ def build(root=ROOT):
     lastmod['/'] = latest_post
     lastmod['/blog/'] = latest_post
     lastmod['/glossary/'] = latest_glossary
-    lastmod['/search/'] = latest_post
     lastmod['/build-log/'] = latest_entry
     lastmod['/prices/'] = data['prices']['updated']
     lastmod['/benchmarks/'] = data['benchmarks']['updated']
