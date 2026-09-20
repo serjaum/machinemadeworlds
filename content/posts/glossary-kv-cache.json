@@ -1,0 +1,10 @@
+{
+  "title": "What is KV Cache?",
+  "description": "KV cache reuses past attention keys and values so long chats and agents run faster. What it costs, and how builders shrink it.",
+  "date": "2026-09-20",
+  "topic": "local-ai",
+  "kind": "Glossary",
+  "lead": "The KV cache stores attention keys and values from tokens already processed so each new token reuses them instead of recomputing the past. It buys speed and longer sessions at the price of GPU memory, which is why builders tune context sizes, precision, and session counts around it.",
+  "featured": false,
+  "draft": false
+}

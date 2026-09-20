@@ -1,0 +1,55 @@
+{
+  "title": "Glossary term: what is KV cache",
+  "description": "The journal gains a plain-English explainer on the KV cache: reused past-token memory that caps sessions per GPU. Term page, social pack, and this log entry ship together.",
+  "date": "2026-09-20",
+  "topic": "local-ai",
+  "kind": "Shipped",
+  "lead": "One new definition on the local-AI shelf: the KV cache, the memory that decides how many sessions fit on one card. Page, pack, and this log entry land in the same change.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-707",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-20",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "sha": "8679338",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-20",
+      "rationale": "Drafted the term page with cited example plus the pack and this entry.",
+      "sha": "8679338",
+      "stage": "Glossary term and pack",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-20",
+      "rationale": "Rebuilt the site and ran the full suite with the presence gate green.",
+      "sha": "8679338",
+      "stage": "Build and test",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The term reuses the established glossary page pattern with no new components, scripts, or styles, carrying a one-line definition plus builder-angle sections and a cited example. Numbers stay out unless the cited report owns them, and every internal link points at an existing page. The deterministic build, the full test suite, and the presence gate pass on the change.",
+    "Director": "This change adds one glossary term through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel, and release approval fires only when both verdicts pass that exact head.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head, including the buildlog-presence check, is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread."
+  }
+}
