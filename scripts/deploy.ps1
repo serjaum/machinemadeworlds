@@ -47,7 +47,32 @@ $ProtoVal = [Environment]::GetEnvironmentVariable("HOSTINGER_FTP_PROTOCOL")
 if (-not $ProtoVal) { $ProtoVal = "ftp" }
 $RemoteVal = [Environment]::GetEnvironmentVariable("HOSTINGER_FTP_REMOTE_DIR")
 if (-not $RemoteVal) { $RemoteVal = [Environment]::GetEnvironmentVariable("HOSTINGER_REMOTE_DIR") }
+# MAC-726 hardening: fail fast when REMOTE_DIR is explicitly set but empty/blank.
+# An empty remote would mirror dist/ to the FTP login root (unsafe); never fall back silently.
+$FtpRemoteRaw = [Environment]::GetEnvironmentVariable("HOSTINGER_FTP_REMOTE_DIR")
+$LegacyRemoteRaw = [Environment]::GetEnvironmentVariable("HOSTINGER_REMOTE_DIR")
+if (($null -ne $FtpRemoteRaw -and $FtpRemoteRaw.Trim() -eq "") -or ($null -ne $LegacyRemoteRaw -and $LegacyRemoteRaw.Trim() -eq "" -and -not $FtpRemoteRaw)) {
+  Write-Error "HOSTINGER_FTP_REMOTE_DIR is set but empty - refusing to deploy to FTP root"
+  exit 1
+}
 if (-not $RemoteVal) { $RemoteVal = $RemoteDefault }
+
+# MAC-726 hardening: tolerate scheme-prefixed FTP host (e.g. ftp://host, ftps://host:21/path).
+# Strip scheme, userinfo, path, and embedded port; port stays in HOSTINGER_FTP_PORT.
+if ($HostVal) {
+  $HostVal = $HostVal.Trim() -replace '^[a-zA-Z][a-zA-Z0-9+.-]*://', ''
+  if ($HostVal -match '@') { $HostVal = ($HostVal -split '@')[-1] }
+  $HostVal = ($HostVal -split '/')[0]
+  $HostVal = ($HostVal -split ':')[0]
+  $HostVal = $HostVal.Trim()
+}
+
+# MAC-726 hardening: fail fast on missing/unsafe REMOTE_DIR (never mirror to FTP root).
+if ($RemoteVal) { $RemoteVal = $RemoteVal.Trim().Trim('/').Trim() }
+if (-not $RemoteVal -or $RemoteVal -eq "/" -or $RemoteVal -eq ".") {
+  Write-Error "HOSTINGER_FTP_REMOTE_DIR resolves to an empty/unsafe path - refusing to deploy to FTP root"
+  exit 1
+}
 
 if (-not $PortVal) {
   if ($ProtoVal -eq "sftp") { $PortVal = "22" } else { $PortVal = "21" }

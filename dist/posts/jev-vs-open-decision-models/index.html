@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling</title>
+    <meta name="description" content="Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/jev-vs-open-decision-models/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling" />
+    <meta property="og:description" content="Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/jev-vs-open-decision-models/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-20T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-20T00:00:00+00:00" />
+    <meta property="article:section" content="Local AI" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling", "url": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/", "inLanguage": "en", "headline": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling", "description": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.", "datePublished": "2026-09-20", "dateModified": "2026-09-20", "mainEntityOfPage": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Local AI", "item": "https://machinemadeworlds.com/topics/local-ai/"}, {"@type": "ListItem", "position": 3, "name": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling", "item": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/"}]}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/local-ai/">Local AI</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Comparison <span class="tiny-rule" aria-hidden="true"></span> Local AI
+    </p>
+    <h1>Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling</h1>
+    <p class="article-lead">Verdict first: reach for Jev when you want a managed decision API today, self-host Laya when you need open weights and vendor-reported 33ms latency on your own hardware, and distill to CUA-S1-FORMS-shaped tiny specialists for single repetitive workflows like form-filling.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-20">Sep 20, 2026</time> · 8 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-progress" hidden aria-hidden="true"></div>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#what-jev-actually-is">What Jev actually is</a><a href="#head-to-head-jev-vs-laya-vs-cua-s1-forms">Head-to-head: Jev vs Laya vs CUA-S1-FORMS</a><a href="#jev-best-for-shipping-this-week-on-a-managed-api">Jev: best for shipping this week on a managed API</a><a href="#laya-best-for-local-first-builders-who-self-host">Laya: best for local-first builders who self-host</a><a href="#cua-s1-forms-best-as-a-template-for-tiny-specialists">CUA-S1-FORMS: best as a template for tiny specialists</a><a href="#honest-limits">Honest limits</a><a href="#how-we-compared">How we compared</a><a href="#questions-and-answers">Questions and answers</a>
+        </nav>
+      </details>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p><strong>Verdict first:</strong> reach for <a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">Jev</a> when you want a managed decision API today, self-host <a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">Laya</a> when you need open weights and vendor-reported 33-millisecond latency on your own hardware, and distill single repetitive workflows such as form-filling into tiny specialists shaped like <a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">CUA-S1-FORMS</a>. Everything below exists to defend that verdict: what a decision model is, a head-to-head grid in which every cell traces to a cited source, per-contender best-for notes, the honest limits, and answers to the questions readers actually ask. This comparison extends the pilot format from <a href="/posts/local-coding-agents-compared/">our local coding agents comparison</a> and the story we first covered in <a href="/posts/ai-news-2026-09-19/">the September 19 digest</a>.</p>
+<h2 id="what-jev-actually-is">What Jev actually is</h2>
+<p>TypeSafe AI, founded by ex-OpenAI researcher Diogo Almeida, shipped Jev as a transformer that skips text generation entirely and returns calibrated probabilities over a fixed set of options for software automation; demand reportedly overwhelmed its API at launch (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch, September 18, 2026</a>; <a href="https://www.inputsdaily.com/article/former-openai-researchers-typesafe-ai-debuts-jev-a-non-language-model-for-software-automation">Inputs Daily, September 20, 2026</a>). The idea compresses to three decision primitives: <em>choice</em> over a bounded set of actions, <em>score</em> for each candidate, and a calibrated <em>probability</em> you can threshold, log, and test. When the action space is bounded — route this ticket, approve or escalate, fill these fields — scoring options beats sampling strings on cost, latency, and testability, because there is no prose to parse and no sampling <a href="/posts/glossary-temperature/">temperature</a> to tame. That is why the open-source response was immediate and viral: 36 million views in 48 hours, the fastest model adoption on record, and six community Jev clones in two days (<a href="https://aistory.news/open-source-ai/why-jev-clones-explodedand-what-they-reveal-about-ai">AIStory, September 19, 2026</a>). Demand context helps too: open-weight models carried 78.4 percent of token volume on September 19 versus 21.6 percent closed (<a href="https://runtimewire.com/article/vercel-ai-gateway-open-weight-models-78-percent-token-volume">RuntimeWire, September 20, 2026</a>).</p>
+<h2 id="head-to-head-jev-vs-laya-vs-cua-s1-forms">Head-to-head: Jev vs Laya vs CUA-S1-FORMS</h2>
+<p>The grid below summarizes the documented position of each system at the time of writing. Cells marked vendor-reported come from the vendor's own published tables; follow each link to the primary source before making a build decision, because shipping details move fast.</p>
+<table tabindex="0" aria-label="Article data"><caption>Decision models at a glance</caption><thead><tr><th scope="col">Criterion</th><th scope="col">Jev (TypeSafe AI)</th><th scope="col">Laya (ConvAI Innovations)</th><th scope="col">CUA-S1-FORMS (Cua)</th></tr></thead><tbody><tr><th scope="row">What it returns</th><td>Calibrated probabilities over fixed options, no text generation (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch</a>)</td><td>Typed decisions with vendor-reported accuracy and calibration tables (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">vendor-reported via El Solitario</a>)</td><td>Form-filling plans in one pass over predefined actions (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr><tr><th scope="row">License</th><td>Proprietary managed API, closed weights (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch</a>)</td><td>Apache 2.0 decision-model family (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>MIT license with training code and dataset (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr><tr><th scope="row">Size</th><td>Undisclosed; served API only (<a href="https://www.inputsdaily.com/article/former-openai-researchers-typesafe-ai-debuts-jev-a-non-language-model-for-software-automation">Inputs Daily</a>)</td><td>421M ModernBERT-large plus 322M multilingual checkpoints, vendor-reported (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>706,048 parameters in a 2.8 MB model (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr><tr><th scope="row">Latency</th><td>Roughly 150 to 276ms per query in the vendor comparison table, vendor-reported (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>32.8ms per query, vendor-reported (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>Single-pass plan over predefined actions, no per-call large-model round trips (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr><tr><th scope="row">Cost</th><td>Metered API at $0.042 per million input tokens with zero output cost (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>Free on self-hosted hardware under Apache 2.0 (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>Free and self-hostable under MIT; 2.8 MB runs anywhere (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr><tr><th scope="row">Self-hostable</th><td>No; API only, and launch demand reportedly overwhelmed it (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch</a>)</td><td>Yes; downloadable weights for your own hardware (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>Yes; tiny open weights with training code (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr><tr><th scope="row">Accuracy signal</th><td>Calibrated probabilities; independent head-to-head numbers not published (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch</a>)</td><td>0.766 typed-decision accuracy, vendor-reported (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>)</td><td>Single-workflow specialist; general decision accuracy not claimed (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>)</td></tr></tbody></table>
+<h2 id="jev-best-for-shipping-this-week-on-a-managed-api">Jev: best for shipping this week on a managed API</h2>
+<p>Jev is the fastest path from idea to production when the decision set is fixed and you would rather pay per call than operate weights. The launch story matters here: developers overwhelmed the API on day one (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch</a>), which signals real demand and a real dependency at once. Move routing, triage, and guardrail checks off generative models first: each is a bounded action space where a scored choice is cheaper, faster, and easier to test than a sampled paragraph. Keep the generative model for the open-ended steps — drafting the reply after the router chose its destination — and put the decision model in front as the gate. The trade is control for convenience: closed weights, metered pricing, and an API that can saturate, so budget a fallback and log every score for later audit.</p>
+<h2 id="laya-best-for-local-first-builders-who-self-host">Laya: best for local-first builders who self-host</h2>
+<p>Laya is the natural default for a reader of this journal: downloadable Apache 2.0 weights you can run on your own hardware, with vendor-reported latency near 33ms per query against roughly 150 to 276ms for Jev in the vendor's own comparison table (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario, vendor-reported</a>). The family ships two checkpoints — a 421M ModernBERT-large build and a 322M multilingual one — so teams outside English-first locales get a first-class option rather than an afterthought. The community reception backs the interest: the release thread drew 303 points and 54 comments (<a href="https://aweai.co/news/hackernews-laya-the-open-source-version-of-jev-mu8i6fze">Hacker News discussion</a>). If you already follow the <a href="/posts/open-weights-vs-open-source/">open weights versus open source distinction</a>, Laya sits on the right side of it: weights you can download plus a licence that permits self-hosting. Treat the vendor's accuracy and calibration tables as vendor-reported until independent reproductions land, pin the checkpoint you evaluated, and re-run the head-to-head on your own traffic before promising latency numbers to anyone.</p>
+<h2 id="cua-s1-forms-best-as-a-template-for-tiny-specialists">CUA-S1-FORMS: best as a template for tiny specialists</h2>
+<p>CUA-S1-FORMS answers a narrower question and is more useful for it: what happens when one repetitive bounded workflow gets its own distilled model. At 706,048 parameters and 2.8 MB under MIT, with training code and dataset included, it plans form-filling in one pass over predefined actions instead of repeatedly calling a large model (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>). Copy the pattern, not just the weights: pick your own highest-volume bounded workflow, collect the demonstrations, distill the specialist, and keep the big model out of the loop. The economics compound exactly like <a href="/posts/quantized-models-explained/">quantization</a> does — a smaller artifact that fits cheaper hardware and answers faster — except the savings come from task narrowness rather than precision reduction. Best for: form-filling, field extraction, and any single workflow where the action set is fixed and the volume justifies one training run.</p>
+<h2 id="honest-limits">Honest limits</h2>
+<p>Three limits keep this comparison honest. First, the strongest numbers for Laya — 32.8ms latency, 0.766 typed-decision accuracy, and the head-to-head tables — are vendor-reported, published by the vendor and not yet independently reproduced; treat them as a claim to verify, not a result to quote (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>). Second, discriminative decision models need predefined schemas: they score the options you declare and cannot invent a new action at runtime, so open-ended work still belongs to generative models — the same split behind <a href="/posts/glossary-rag/">retrieval grounding</a> and watching for <a href="/posts/glossary-hallucination/">hallucination</a> in sampled text. Third, Jev's closed weights mean the cheapest per-call option is also the least inspectable: no download, no local run, and pricing that moves with someone else's meter. None of these limits kills the category; each tells you which contender to distrust in which way.</p>
+<h2 id="how-we-compared">How we compared</h2>
+<blockquote><p>Scope honesty: we compared published documentation and reporting, not models on our own hardware. No synthetic <a href="/posts/glossary-benchmark/">benchmark</a> scores, no invented win rates, no leaderboard. Every table cell links the source it came from, vendor-reported figures are labeled as such, and anything numeric describes a cited claim, not our measurement.</p></blockquote>
+<p>Our method follows <a href="/posts/local-coding-agents-compared/">the comparison pilot</a>: verdict first, then evidence, then method, then questions. We read the launch reporting for Jev (<a href="https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/">TechCrunch</a>; <a href="https://www.inputsdaily.com/article/former-openai-researchers-typesafe-ai-debuts-jev-a-non-language-model-for-software-automation">Inputs Daily</a>), the viral-response analysis (<a href="https://aistory.news/open-source-ai/why-jev-clones-explodedand-what-they-reveal-about-ai">AIStory</a>), the Laya release tables (<a href="https://elsolitario.org/en/2026/09/19/laya-convai-decision-engine-33ms/">El Solitario</a>) and discussion (<a href="https://aweai.co/news/hackernews-laya-the-open-source-version-of-jev-mu8i6fze">Hacker News</a>), the CUA-S1-FORMS release note (<a href="https://runtimewire.com/article/cua-open-sources-cua-s1-forms-model">RuntimeWire</a>), and the demand context (<a href="https://runtimewire.com/article/vercel-ai-gateway-open-weight-models-78-percent-token-volume">RuntimeWire</a>). Readers should reproduce the comparison rather than trust our adjectives: each linked source contains enough detail to re-check every row of the grid in an afternoon.</p>
+<h2 id="questions-and-answers">Questions and answers</h2>
+<h3>When should scoring beat sampling?</h3>
+<p>Whenever the action space is bounded and known in advance: routing, triage, approvals, guardrails, form-filling. Scoring gives you calibrated probabilities over fixed options that you can threshold, log, and regression-test; sampling gives you prose you must parse. Keep the generative model for steps where the output space is genuinely open.</p>
+<h3>Which open alternative to Jev should I try first?</h3>
+<p>Laya if you need a general decision model on your own hardware under Apache 2.0, with the caveat that its best numbers are vendor-reported. CUA-S1-FORMS if your workload is one repetitive workflow worth distilling into a 2.8 MB specialist. Both are free to self-host; Jev is the only metered API of the three.</p>
+<h3>Can I run a decision model entirely on my own hardware?</h3>
+<p>Yes with either open option: Laya's checkpoints download under Apache 2.0 and CUA-S1-FORMS is a 2.8 MB MIT artifact with training code. Size your hardware first with <a href="/posts/quantized-models-explained/">the quantization guide</a> and confirm the licence permits your use with <a href="/posts/open-weights-vs-open-source/">the open-weights explainer</a>. Jev is API-only and cannot run locally.</p>
+<h3>What should I distrust in this space right now?</h3>
+<p>Unreproduced vendor tables and viral provenance chatter. Laya's latency and accuracy figures come from the vendor's own published comparison — useful directionally, not citable as fact until someone independent reruns them. The same discipline applies to every release: licence file, model card, downloadable weights, reproducible numbers, in that order.</p>
+<h3>Where do I go next on this site?</h3>
+<p>Draw the licence line with <a href="/posts/open-weights-vs-open-source/">open weights versus open source</a>, size your card with <a href="/posts/quantized-models-explained/">the quantization guide</a>, revisit the format pilot in <a href="/posts/local-coding-agents-compared/">the coding-agents comparison</a>, then catch the wider context in <a href="/posts/ai-news-2026-09-19/">the September 19 digest</a> where Jev and the forms model first appeared side by side.</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Glossary</span>
+  </div>
+  <h3><a href="/posts/glossary-kv-cache/">What is KV Cache?</a></h3>
+  <p>KV cache reuses past attention keys and values so long chats and agents run faster. What it costs, and how builders shrink it.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-20">Sep 20, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/glossary-kv-cache/" aria-label="Read What is KV Cache?">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Guide</span>
+  </div>
+  <h3><a href="/posts/open-weights-vs-open-source/">Open Weights vs Open Source: What You Can Actually Download and Run</a></h3>
+  <p>Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-19">Sep 19, 2026</time>
+      <span aria-hidden="true">·</span> 4 min read</span
+    ><a class="story-arrow" href="/posts/open-weights-vs-open-source/" aria-label="Read Open Weights vs Open Source: What You Can Actually Download and Run">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

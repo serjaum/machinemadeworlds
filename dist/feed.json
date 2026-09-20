@@ -7,6 +7,39 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/",
+      "url": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/",
+      "title": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling",
+      "summary": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.",
+      "content_text": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.",
+      "date_published": "2026-09-20T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/glossary-kv-cache/",
+      "url": "https://machinemadeworlds.com/posts/glossary-kv-cache/",
+      "title": "What is KV Cache?",
+      "summary": "KV cache reuses past attention keys and values so long chats and agents run faster. What it costs, and how builders shrink it.",
+      "content_text": "KV cache reuses past attention keys and values so long chats and agents run faster. What it costs, and how builders shrink it.",
+      "date_published": "2026-09-20T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-20/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-20/",
+      "title": "AI news digest — September 20, 2026: agents patched, agents audited, cheaper models",
+      "summary": "AI news digest Sep 20: Step 5 600B MoE API, Plugin4Shell agent RCE, Anthropic embedded evals and $100B pace, Grok transcribe, Siri AI, CXMT G5 memory.",
+      "content_text": "AI news digest Sep 20: Step 5 600B MoE API, Plugin4Shell agent RCE, Anthropic embedded evals and $100B pace, Grok transcribe, Siri AI, CXMT G5 memory.",
+      "date_published": "2026-09-20T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
       "url": "https://machinemadeworlds.com/posts/open-weights-vs-open-source/",
       "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
