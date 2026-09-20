@@ -6,8 +6,8 @@
     "SRE",
     "Director"
   ],
-  "branch": null,
-  "commit": "8d20e0a",
+  "branch": "feat/daily-news-2026-09-20",
+  "commit": "6774589",
   "date": "2026-09-20",
   "description": "How the September 20 digest shipped: seven builder stories with 200-verified links, same-PR log entry, parallel reviews on the exact head, then merge and live verification.",
   "draft": false,
@@ -17,8 +17,8 @@
   "mac_id": "MAC-692",
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 93,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/93",
   "reasoning": {
     "DEV": "Collected seven fresh stories with no overlap against the September 19 digest and verified every source link returned HTTP 200 before drafting. The PR opens from the digest branch with post plus log entry; deterministic build and full test suite pass on the head.",
     "Director": "Routine digest post on the existing design system, so no DESIGN stage. Release approval fires only on SEC PASS plus QA PASS for the exact PR head SHA.",
@@ -31,7 +31,7 @@
       "agent": "DEV",
       "at": "2026-09-20",
       "rationale": "Ran scheduled collection and drafted seven fresh stories with this log entry.",
-      "sha": "8d20e0a",
+      "sha": "6774589",
       "stage": "Scheduled run",
       "verdict": "done"
     },
@@ -39,7 +39,7 @@
       "agent": "DEV",
       "at": "2026-09-20",
       "rationale": "Opened pull request from the digest branch with post and log entry.",
-      "sha": "8d20e0a",
+      "sha": "6774589",
       "stage": "Pull request",
       "verdict": "done"
     }
