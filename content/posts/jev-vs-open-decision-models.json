@@ -1,0 +1,10 @@
+{
+  "title": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling",
+  "description": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.",
+  "date": "2026-09-20",
+  "topic": "local-ai",
+  "kind": "Comparison",
+  "lead": "Verdict first: reach for Jev when you want a managed decision API today, self-host Laya when you need open weights and vendor-reported 33ms latency on your own hardware, and distill to CUA-S1-FORMS-shaped tiny specialists for single repetitive workflows like form-filling.",
+  "featured": false,
+  "draft": false
+}

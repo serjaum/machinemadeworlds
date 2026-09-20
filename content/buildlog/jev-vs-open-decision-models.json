@@ -1,0 +1,49 @@
+{
+  "title": "Behind the Jev vs open decision models comparison",
+  "description": "How the evergreen Jev comparison was scoped, drafted, and shipped with cited numbers and a same-request log entry.",
+  "date": "2026-09-20",
+  "topic": "local-ai",
+  "kind": "Shipped",
+  "lead": "One new comparison plus this log entry ship in the same pull request, with security and quality verdicts recorded in the linked review threads.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-701",
+  "pr": 92,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/92",
+  "branch": "feat/jev-vs-open-decision-models",
+  "commit": "b7d955b",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "agents": [
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "Director",
+      "at": "2026-09-20",
+      "rationale": "Scoped a content-only comparison on the existing post template with design review skipped.",
+      "sha": "b7d955b",
+      "stage": "Scope triage",
+      "verdict": "done"
+    },
+    {
+      "agent": "Director",
+      "at": "2026-09-20",
+      "rationale": "Drafted the guide with cited numbers, wired the cluster links, and rebuilt the site.",
+      "sha": "b7d955b",
+      "stage": "Draft and link",
+      "verdict": "done"
+    },
+    {
+      "agent": "Director",
+      "at": "2026-09-20",
+      "rationale": "Opened the pull request from the comparison branch with the guide and the rebuilt pages.",
+      "sha": "b7d955b",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "Director": "The comparison targets forming alternative queries with an evergreen page in the builder voice the comparison pilot owns. Every table cell cites its source beside the claim, and open release numbers are labeled as vendor-reported. The deterministic build and the full test suite pass on the branch head."
+  }
+}

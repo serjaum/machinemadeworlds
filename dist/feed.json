@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/",
+      "url": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/",
+      "title": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling",
+      "summary": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.",
+      "content_text": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.",
+      "date_published": "2026-09-20T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-20/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-20/",
       "title": "AI news digest — September 20, 2026: agents patched, agents audited, cheaper models",
