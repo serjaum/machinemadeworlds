@@ -55,7 +55,33 @@ USER_VAL="${HOSTINGER_FTP_USER:-${HOSTINGER_USER:-}}"
 PASS_VAL="${HOSTINGER_FTP_PASS:-${HOSTINGER_PASS:-}}"
 PORT="${HOSTINGER_FTP_PORT:-${HOSTINGER_PORT:-}}"
 PROTO="${HOSTINGER_FTP_PROTOCOL:-ftp}"
+# MAC-726 hardening: fail fast when REMOTE_DIR is explicitly set but empty/blank.
+# An empty remote would mirror dist/ to the FTP login root (unsafe); never fall back silently.
+if [[ "${HOSTINGER_FTP_REMOTE_DIR+x}" == "x" || "${HOSTINGER_REMOTE_DIR+x}" == "x" ]]; then
+  _explicit_remote="${HOSTINGER_FTP_REMOTE_DIR:-${HOSTINGER_REMOTE_DIR:-}}"
+  if [[ -z "${_explicit_remote//[[:space:]]/}" ]]; then
+    echo "ERROR: HOSTINGER_FTP_REMOTE_DIR is set but empty — refusing to deploy to FTP root"
+    exit 1
+  fi
+fi
 REMOTE="${HOSTINGER_FTP_REMOTE_DIR:-${HOSTINGER_REMOTE_DIR:-$REMOTE_DEFAULT}}"
+
+# MAC-726 hardening: tolerate scheme-prefixed FTP host (e.g. ftp://host, ftps://host:21/path).
+# Strip scheme, userinfo, path, and embedded port; port stays in HOSTINGER_FTP_PORT.
+if [[ "$HOST" == *"://"* ]]; then HOST="${HOST#*://}"; fi
+if [[ "$HOST" == *"@"* ]]; then HOST="${HOST##*@}"; fi
+HOST="${HOST%%/*}"
+HOST="${HOST%%:*}"
+HOST="$(echo "$HOST" | tr -d '[:space:]')"
+
+# MAC-726 hardening: fail fast on missing/unsafe REMOTE_DIR (never mirror to FTP root).
+REMOTE="$(echo "$REMOTE" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+REMOTE="${REMOTE#/}"
+REMOTE="${REMOTE%/}"
+if [[ -z "$REMOTE" || "$REMOTE" == "/" || "$REMOTE" == "." ]]; then
+  echo "ERROR: HOSTINGER_FTP_REMOTE_DIR resolves to an empty/unsafe path — refusing to deploy to FTP root"
+  exit 1
+fi
 
 # Default port by protocol
 if [[ -z "$PORT" ]]; then
