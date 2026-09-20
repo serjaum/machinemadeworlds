@@ -1,0 +1,49 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": "feat/star-harvest-arcade-mac-648",
+  "commit": "612f0ee",
+  "date": "2026-09-19",
+  "description": "Star Harvest opens the site arcade: a 90-second canvas run that gathers stars, dodges rocks and chains quick pickups into a combo, with the games index listing it first.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The journal grows a small arcade. Star Harvest is a 90-second canvas run with a combo multiplier, three lives and a persistent best score, and the new games index lists it with a note that more games are coming. Everything is vanilla script and tokens, with hashed same-origin assets and no network calls.",
+  "mac_id": "MAC-648",
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the merge identifier is recorded after the gate passes on the exact head.",
+  "merge_sha": null,
+  "pr": 90,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/90",
+  "reasoning": {
+    "DEV": "Development verified the remote and the login with push access, then branched from the fresh main line. It added the game metadata, the index and game templates, the vanilla script and stylesheet, and the builder routes with hashed assets, then logged the change in the same branch. The full suite, the rebuild and the presence gate run green before review, with contrast and weight budgets sampled and reported."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-19",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "sha": "612f0ee",
+      "stage": "Branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-19",
+      "rationale": "Added the game metadata, index and game templates, vanilla script and stylesheet, plus builder routes with hashed assets.",
+      "sha": "612f0ee",
+      "stage": "Implement",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-19",
+      "rationale": "Rebuilt the site, ran the full suite and the presence gate green, and sampled contrast and weight budgets.",
+      "sha": "612f0ee",
+      "stage": "Verify",
+      "verdict": "done"
+    }
+  ],
+  "title": "Star Harvest opens the arcade",
+  "topic": "design"
+}

@@ -1,0 +1,46 @@
+<div class="container">
+  <p class="breadcrumbs"><a href="/games/">Arcade</a><span aria-hidden="true"> / </span><span>Star Harvest</span></p>
+  <header class="page-heading" data-od-id="game-heading">
+    <p class="eyebrow">Star Harvest</p>
+    <h1>Gather stars. Dodge rocks<span class="accent-dot">.</span></h1>
+    <p>A 90-second arcade run. Chain quick pickups to grow your combo — three hits ends the flight.</p>
+  </header>
+  <section class="game-stage" aria-labelledby="game-title">
+    <h2 id="game-title" class="sr-only">Star Harvest game</h2>
+    <div class="game-canvas-wrap">
+      <canvas id="star-harvest" width="800" height="500" role="img" aria-label="Star Harvest playfield: pilot a ship, collect star sparks, avoid polygon asteroids"></canvas>
+    </div>
+    <dl class="game-hud" aria-label="Game status">
+      <div><dt>Score</dt><dd data-hud="score">0</dd></div>
+      <div><dt>Time</dt><dd data-hud="time">1:30</dd></div>
+      <div><dt>Lives</dt><dd data-hud="lives">3</dd></div>
+      <div><dt>Combo</dt><dd data-hud="combo">×1</dd></div>
+      <div><dt>Best</dt><dd data-hud="best">0</dd></div>
+    </dl>
+    <p class="sr-only" role="status" data-game-status>Ready. Press Start or Enter to play.</p>
+    <div class="game-controls">
+      <button type="button" class="button" data-action="start">Start</button>
+      <button type="button" class="button" data-action="pause" aria-pressed="false">Pause</button>
+      <button type="button" class="button" data-action="restart">Restart</button>
+      <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
+    </div>
+    <p class="game-hint" data-hint>Drag to steer on touch, or use arrow keys / WASD. P pauses, M mutes.</p>
+    <div class="game-pad" data-pad>
+      <button type="button" data-dir="up" aria-label="Steer up">↑</button>
+      <button type="button" data-dir="left" aria-label="Steer left">←</button>
+      <button type="button" data-dir="down" aria-label="Steer down">↓</button>
+      <button type="button" data-dir="right" aria-label="Steer right">→</button>
+    </div>
+  </section>
+  <div class="about-layout">
+    <aside><p class="eyebrow">How to play</p><p class="about-motto">Quick hands.<br />Calm nerves.</p></aside>
+    <div class="article-body">
+      <h2>How to play</h2>
+      <p>Thrust with arrow keys or WASD, drag on touch. Collect star sparks for points — grab them less than 2.5 seconds apart to grow your combo. Polygon rocks cost a life; you get three. P or Esc pauses, Enter starts or restarts, M mutes the bleeps.</p>
+      <h2>Restart</h2>
+      <p>Every run lasts 90 seconds or until your three lives run out. Your best score stays in this browser. Press Restart (or Enter) any time for a fresh flight.</p>
+      <h2>Devlog</h2>
+      <p>$devlog</p>
+    </div>
+  </div>
+</div>
