@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-20/",
+    "title": "AI news digest — September 20, 2026: agents patched, agents audited, cheaper models",
+    "description": "AI news digest Sep 20: Step 5 600B MoE API, Plugin4Shell agent RCE, Anthropic embedded evals and $100B pace, Grok transcribe, Siri AI, CXMT G5 memory.",
+    "date": "2026-09-20",
+    "reading": 4,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/open-weights-vs-open-source/",
     "title": "Open Weights vs Open Source: What You Can Actually Download and Run",
     "description": "Open weights vs open source, explained for builders: what you can download, the VRAM math, and which licences let you self-host.",
