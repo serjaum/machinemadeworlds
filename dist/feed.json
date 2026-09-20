@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-kv-cache/",
+      "url": "https://machinemadeworlds.com/posts/glossary-kv-cache/",
+      "title": "What is KV Cache?",
+      "summary": "KV cache reuses past attention keys and values so long chats and agents run faster. What it costs, and how builders shrink it.",
+      "content_text": "KV cache reuses past attention keys and values so long chats and agents run faster. What it costs, and how builders shrink it.",
+      "date_published": "2026-09-20T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-20/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-20/",
       "title": "AI news digest — September 20, 2026: agents patched, agents audited, cheaper models",
