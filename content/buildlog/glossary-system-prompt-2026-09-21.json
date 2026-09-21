@@ -6,12 +6,12 @@
   "kind": "Shipped",
   "lead": "One new definition on schedule: the glossary runbook ships its eleventh term in backlog order, with the page, the backlog flip, two replacement backlog entries, the social pack, and this log entry landing together.",
   "featured": false,
-  "draft": true,
+  "draft": false,
   "mac_id": "MAC-767",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 103,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/103",
+  "branch": "feat/glossary-system-prompt-2026-09-21",
+  "commit": "f5c202bb",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "agents": [
@@ -20,6 +20,36 @@
     "QA",
     "Director"
   ],
-  "stages": [],
-  "reasoning": {}
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "sha": "f5c202bb",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Shipped the term page, the social pack, and the backlog flip with this entry.",
+      "sha": "f5c202bb",
+      "stage": "Glossary term and pack",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Opened the pull request with the term and the log entry.",
+      "sha": "f5c202bb",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The term reuses the established glossary page pattern with no new components, scripts, or styles, carrying a one-line definition plus a short explainer section and a builder-angle closing line. The backlog entry keeps its order and aliases while flipping to shipped, two fresh open terms keep the queue above twenty, and the beside-each-article pack stays out of the published pages by construction. The deterministic build, the full test suite, and the presence gate pass on the change.",
+    "Director": "This change adds one glossary term through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head, including the buildlog-presence check, is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread."
+  }
 }
