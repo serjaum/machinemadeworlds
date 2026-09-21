@@ -82,8 +82,9 @@ class ArcadeRouteTests(unittest.TestCase):
         cls.tags = TagCounter(cls.page)
 
     def test_index_lists_game_with_more_coming_note(self):
-        self.assertEqual(self.index.count('<article class="story"'), 1)
+        self.assertEqual(self.index.count('<article class="story"'), 2)
         self.assertIn('<a href="/games/star-harvest/">Star Harvest</a>', self.index)
+        self.assertIn('<a href="/games/star-relay/">Star Relay</a>', self.index)
         self.assertIn('More games coming.', self.index)
         self.assertIn('class="callout game-note"', self.index)
         self.assertIn('<title>The arcade', self.index)
@@ -267,6 +268,8 @@ class ArcadeIsolationTests(unittest.TestCase):
         # The journal, topics, glossary, data pages and feeds stay clean.
         carriers = {'games/index.html',
                     'games/star-harvest/index.html',
+                    'games/star-relay/index.html',
+                    'games/star-relay/index.html',
                     'sitemap.xml',
                     'metrics/index.html',
                     'llms.txt',

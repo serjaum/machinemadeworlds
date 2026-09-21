@@ -1,0 +1,71 @@
+<section class="game-stage" aria-labelledby="game-title">
+  <h2 id="game-title" class="sr-only">Star Relay game</h2>
+  <div class="relay-board" data-relay-board role="group" aria-label="Relay grid: rotate tiles to link the reactor to the beacon"></div>
+  <dl class="game-hud" aria-label="Game status">
+    <div><dt>Level</dt><dd data-hud="level">1 / 6</dd></div>
+    <div><dt>Moves left</dt><dd data-hud="moves">0</dd></div>
+    <div><dt>Score</dt><dd data-hud="score">0</dd></div>
+    <div><dt>Best</dt><dd data-hud="best">0</dd></div>
+  </dl>
+  <p class="sr-only" role="status" data-game-status>Star Relay ready. Open the start panel to play.</p>
+  <div class="game-controls">
+    <button type="button" class="button" data-action="start">Start</button>
+    <button type="button" class="button" data-action="pause">Pause</button>
+    <button type="button" class="button" data-action="retry">Retry</button>
+    <button type="button" class="button" data-action="levels">Levels</button>
+    <button type="button" class="button" data-action="motion" aria-pressed="false">Motion on</button>
+    <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
+  </div>
+  <p class="game-hint">Tap a tile (or focus it and press R, Space or Enter) to rotate it. Arrows move focus, P pauses, N retries, M mutes.</p>
+  <div data-overlays>
+    <div class="relay-overlay" data-overlay="start">
+      <h3>Link the reactor</h3>
+      <p>Twist each relay so power flows from the reactor to the beacon before the move budget runs out. Lit tiles carry power.</p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="start">Play</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="paused" hidden>
+      <h3>Paused</h3>
+      <p>The board waits. Nothing ticks while you think.</p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="resume">Resume</button>
+        <button type="button" class="button" data-action="retry">Retry level</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="complete" hidden>
+      <h3>Relay linked</h3>
+      <p data-complete-text></p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="next">Next level</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="campaign" hidden>
+      <h3>All six relays hum</h3>
+      <p data-campaign-text></p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="again">Play again</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="stuck" hidden>
+      <h3>Out of moves</h3>
+      <p>The budget ran out before the beacon lit. Retry deals a fresh scramble of the same level.</p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="retry">Retry</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="levels" hidden>
+      <h3>Levels</h3>
+      <p>Six short relays. Later ones unlock as you link earlier ones.</p>
+      <div class="relay-levels" data-level-list></div>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="close">Close</button>
+      </div>
+    </div>
+  </div>
+  <noscript><p>Star Relay needs JavaScript to play: every move is computed locally in your browser.</p></noscript>
+</section>

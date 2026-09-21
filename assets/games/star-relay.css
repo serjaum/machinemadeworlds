@@ -1,0 +1,26 @@
+/* Star Relay board (DOM grid, additive only). Semantic vars solely:
+   no hex, no remote pulls, no new tokens, no keyframes. The spin on
+   glyphs runs only when motion is wanted (see gates below). */
+.relay-board { display: grid; grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr)); gap: var(--s1); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: var(--s2); max-width: 560px; touch-action: manipulation; }
+.relay-tile { min-width: 48px; min-height: 52px; background: var(--raised); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; font: 30px/1 var(--mono); cursor: pointer; padding: 0; }
+.relay-tile:hover { border-color: var(--accent); }
+.relay-tile.lit { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.relay-tile:disabled { cursor: default; }
+.relay-tile.wall { background: var(--surface); border-style: dashed; }
+.relay-glyph { display: inline-block; }
+.relay-endpoint { font-weight: 700; border-width: 2px; border-color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) {
+  .game-stage:not(.relay-still) .relay-glyph { transition: transform .18s ease; }
+}
+.relay-overlay { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: var(--s3) var(--s2); margin-top: var(--s2); max-width: 560px; }
+.relay-overlay[hidden] { display: none; }
+.relay-overlay h3 { margin: 0 0 var(--s1); font-size: 22px; }
+.relay-overlay p { margin: 0 0 var(--s2); color: var(--muted); font-size: 14px; }
+.relay-overlay-row { display: flex; flex-wrap: wrap; gap: var(--s1); }
+.relay-levels { display: flex; flex-wrap: wrap; gap: var(--s1); margin: 0 0 var(--s2); padding: 0; list-style: none; }
+.relay-level { min-height: 44px; padding: 8px 14px; background: var(--raised); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; font-size: 14px; cursor: pointer; }
+.relay-level:disabled { opacity: .45; cursor: default; }
+.relay-level:not(:disabled):hover { border-color: var(--accent); }
+@media (max-width: 700px) {
+  .relay-tile { min-height: 48px; font-size: 26px; }
+}

@@ -1,0 +1,49 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": "feat/star-relay-arcade-mac-711",
+  "commit": "n/a",
+  "date": "2026-09-21",
+  "description": "Star Relay joins the site arcade: a turn-based grid puzzle that twists relays to link the reactor to the beacon across six quiet levels, with the games index listing both games.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The arcade grows a second shelf. Star Relay is a turn-based relay puzzle with a move budget and no timer, and the games index lists it beside the first game. Everything is vanilla script and tokens, with hashed same-origin assets and no network calls.",
+  "mac_id": "MAC-700",
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the merge identifier is recorded after the gate passes on the exact head.",
+  "merge_sha": null,
+  "pr": 98,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/98",
+  "reasoning": {
+    "DEV": "Development verified the remote and the login with push access, then branched from the merged arcade line. It added the game metadata, the relay stage fragment with shared-shell words, the vanilla script and stylesheet, and the builder route with hashed assets, then logged the change in the same branch. The full suite, the generation gate, the rebuild and the presence checks run green before review, with contrast and weight budgets sampled and reported."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Verified the remote and login, then branched from the merged arcade line.",
+      "sha": "1b39e5b",
+      "stage": "Branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Added the game metadata, stage fragment, script, stylesheet, builder route and tests in the same branch.",
+      "sha": "1b39e5b",
+      "stage": "Implement",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Rebuilt the site, ran the full suite and the generation gate green, and sampled contrast and weight budgets.",
+      "sha": "1b39e5b",
+      "stage": "Verify",
+      "verdict": "done"
+    }
+  ],
+  "title": "Star Relay joins the arcade",
+  "topic": "design"
+}

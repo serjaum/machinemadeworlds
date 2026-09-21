@@ -470,6 +470,45 @@ def game_card(g):
                escape(g['playtime']), g['url'], escape(g['title'])))
 
 
+def game_page_copy(root, g):
+    """Per-game shell copy for templates/game.html (MAC-700): the shell,
+    HUD and how-to layout stay shared; only the stage fragment and the
+    words change. Unknown slugs fail fast so a metadata file alone
+    never publishes a dead route."""
+    root = Path(root)
+    if g['slug'] == 'star-harvest':
+        return dict(
+            crumb='Star Harvest', eyebrow='Star Harvest',
+            headline='Gather stars. Dodge rocks<span class="accent-dot">.</span>',
+            standfirst=('A 90-second arcade run. Chain quick pickups to grow '
+                        'your combo — three hits ends the flight.'),
+            stage=(root / 'templates/game-stage-harvest.html').read_text(encoding='utf-8'),
+            motto='Quick hands.<br />Calm nerves.',
+            howto=('Thrust with arrow keys or WASD, drag on touch. Collect star sparks '
+                   'for points — grab them less than 2.5 seconds apart to grow your combo. '
+                   'Polygon rocks cost a life; you get three. P or Esc pauses, Enter starts '
+                   'or restarts, M mutes the bleeps.'),
+            restart=('Every run lasts 90 seconds or until your three lives run out. '
+                     'Your best score stays in this browser. Press Restart (or Enter) '
+                     'any time for a fresh flight.'))
+    if g['slug'] == 'star-relay':
+        return dict(
+            crumb='Star Relay', eyebrow='Star Relay',
+            headline='Link the reactor to the beacon<span class="accent-dot">.</span>',
+            standfirst=('A turn-based relay puzzle. Rotate tiles to carry power across '
+                        'six quiet levels — no timer, just a move budget.'),
+            stage=(root / 'templates/game-stage-relay.html').read_text(encoding='utf-8'),
+            motto='Slow hands.<br />Lit paths.',
+            howto=('Tap a tile to rotate it clockwise; keyboard players move focus with the '
+                   'arrows and rotate with R, Space or Enter. Lit tiles carry power from the '
+                   'reactor to the beacon — link them before the move budget runs out. '
+                   'P or Esc pauses, N retries the level with a fresh scramble, M mutes the bleeps.'),
+            restart=('Every retry deals a fresh scramble of the same level, and your unlocked '
+                     'levels plus best score stay in this browser. Open Levels any time '
+                     'to replay an unlocked stage.'))
+    raise ValueError('Game page has no template: %s' % g['slug'])
+
+
 def _require_data_source(value):
     if (not isinstance(value, str) or not value.strip() or len(value) > 500
             or value != value.strip() or '\\' in value
@@ -1218,10 +1257,10 @@ def build(root=ROOT):
                     cards=''.join(game_card(g) for g in games)),
            'CollectionPage', extra_js=game_head())
     for g in games:
-        if g['slug'] != 'star-harvest':
-            raise ValueError('Game page has no template: %s' % g['slug'])
+        copy = game_page_copy(root, g)
+        copy['devlog'] = escape(g['devlog'])
         render(g['url'], g['title'] + ' — ' + site['name'], g['description'],
-               template(root, 'game.html', devlog=escape(g['devlog'])),
+               template(root, 'game.html', **copy),
                'VideoGame', extra_js=game_head(g['slug']))
     index = [{k: p[k] for k in ('url', 'title', 'description', 'date', 'reading', 'topic')} for p in posts]
     put('posts.json', json.dumps(index, ensure_ascii=False, indent=2) + '\n')

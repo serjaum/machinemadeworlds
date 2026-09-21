@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Star Relay — Machine Made Worlds</title>
+    <meta name="description" content="Star Relay is a turn-based relay puzzle: rotate tiles on a small grid to carry power from the reactor to the beacon before the move budget runs out, across six short levels." />
+    <link rel="canonical" href="https://machinemadeworlds.com/games/star-relay/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Star Relay — Machine Made Worlds" />
+    <meta property="og:description" content="Star Relay is a turn-based relay puzzle: rotate tiles on a small grid to carry power from the reactor to the beacon before the move budget runs out, across six short levels." />
+    <meta property="og:url" content="https://machinemadeworlds.com/games/star-relay/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "VideoGame", "name": "Star Relay — Machine Made Worlds", "url": "https://machinemadeworlds.com/games/star-relay/", "inLanguage": "en"}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <link rel="stylesheet" href="/assets/star-harvest.52a1e482f704.css" />
+    <link rel="stylesheet" href="/assets/star-relay.46db16a338a3.css" />
+    <script src="/assets/star-relay.b584fdbfcd20.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><div class="container">
+  <p class="breadcrumbs"><a href="/games/">Arcade</a><span aria-hidden="true"> / </span><span>Star Relay</span></p>
+  <header class="page-heading" data-od-id="game-heading">
+    <p class="eyebrow">Star Relay</p>
+    <h1>Link the reactor to the beacon<span class="accent-dot">.</span></h1>
+    <p>A turn-based relay puzzle. Rotate tiles to carry power across six quiet levels — no timer, just a move budget.</p>
+  </header>
+<section class="game-stage" aria-labelledby="game-title">
+  <h2 id="game-title" class="sr-only">Star Relay game</h2>
+  <div class="relay-board" data-relay-board role="group" aria-label="Relay grid: rotate tiles to link the reactor to the beacon"></div>
+  <dl class="game-hud" aria-label="Game status">
+    <div><dt>Level</dt><dd data-hud="level">1 / 6</dd></div>
+    <div><dt>Moves left</dt><dd data-hud="moves">0</dd></div>
+    <div><dt>Score</dt><dd data-hud="score">0</dd></div>
+    <div><dt>Best</dt><dd data-hud="best">0</dd></div>
+  </dl>
+  <p class="sr-only" role="status" data-game-status>Star Relay ready. Open the start panel to play.</p>
+  <div class="game-controls">
+    <button type="button" class="button" data-action="start">Start</button>
+    <button type="button" class="button" data-action="pause">Pause</button>
+    <button type="button" class="button" data-action="retry">Retry</button>
+    <button type="button" class="button" data-action="levels">Levels</button>
+    <button type="button" class="button" data-action="motion" aria-pressed="false">Motion on</button>
+    <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
+  </div>
+  <p class="game-hint">Tap a tile (or focus it and press R, Space or Enter) to rotate it. Arrows move focus, P pauses, N retries, M mutes.</p>
+  <div data-overlays>
+    <div class="relay-overlay" data-overlay="start">
+      <h3>Link the reactor</h3>
+      <p>Twist each relay so power flows from the reactor to the beacon before the move budget runs out. Lit tiles carry power.</p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="start">Play</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="paused" hidden>
+      <h3>Paused</h3>
+      <p>The board waits. Nothing ticks while you think.</p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="resume">Resume</button>
+        <button type="button" class="button" data-action="retry">Retry level</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="complete" hidden>
+      <h3>Relay linked</h3>
+      <p data-complete-text></p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="next">Next level</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="campaign" hidden>
+      <h3>All six relays hum</h3>
+      <p data-campaign-text></p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="again">Play again</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="stuck" hidden>
+      <h3>Out of moves</h3>
+      <p>The budget ran out before the beacon lit. Retry deals a fresh scramble of the same level.</p>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="retry">Retry</button>
+        <button type="button" class="button" data-action="levels">Levels</button>
+      </div>
+    </div>
+    <div class="relay-overlay" data-overlay="levels" hidden>
+      <h3>Levels</h3>
+      <p>Six short relays. Later ones unlock as you link earlier ones.</p>
+      <div class="relay-levels" data-level-list></div>
+      <div class="relay-overlay-row">
+        <button type="button" class="button" data-action="close">Close</button>
+      </div>
+    </div>
+  </div>
+  <noscript><p>Star Relay needs JavaScript to play: every move is computed locally in your browser.</p></noscript>
+</section>
+  <div class="about-layout">
+    <aside><p class="eyebrow">How to play</p><p class="about-motto">Slow hands.<br />Lit paths.</p></aside>
+    <div class="article-body">
+      <h2>How to play</h2>
+      <p>Tap a tile to rotate it clockwise; keyboard players move focus with the arrows and rotate with R, Space or Enter. Lit tiles carry power from the reactor to the beacon — link them before the move budget runs out. P or Esc pauses, N retries the level with a fresh scramble, M mutes the bleeps.</p>
+      <h2>Restart</h2>
+      <p>Every retry deals a fresh scramble of the same level, and your unlocked levels plus best score stay in this browser. Open Levels any time to replay an unlocked stage.</p>
+      <h2>Devlog</h2>
+      <p>The second arcade ship is the deliberate opposite of the first: no canvas, no animation loop, no timer. Star Relay renders real button tiles on a CSS grid and keeps every rule in a small state machine that only runs when the player acts, so the page does zero render work while idle. Boards generate from a solved path and then scramble, which keeps all six levels solvable by construction without a solver. Power flow is recomputed on each move and lit through token colors, and progress plus best score live in guarded integer browser keys. Sound is a few oscillator bleeps created after the first gesture, with a mute switch.</p>
+    </div>
+  </div>
+</div>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
