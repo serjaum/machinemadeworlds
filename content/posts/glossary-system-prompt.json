@@ -1,0 +1,10 @@
+{
+  "title": "What is System prompt?",
+  "description": "A system prompt is the hidden instruction block that sets a model's role, rules, and tone. What it controls and how builders shape it.",
+  "date": "2026-09-21",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "A system prompt is the persistent instruction block placed before a conversation that tells a language model which role to play, which rules to obey, and which style to use. It outranks each user message yet stays invisible to the reader, so everything the model drafts downstream is colored by what was written there. Getting that block right decides whether the model behaves like a careful assistant, a terse tool, or an unpredictable stranger.",
+  "featured": false,
+  "draft": false
+}

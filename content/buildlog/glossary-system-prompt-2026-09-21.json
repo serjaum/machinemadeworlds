@@ -1,0 +1,25 @@
+{
+  "title": "Eleventh glossary term: system prompt",
+  "description": "The weekday glossary gains its eleventh explainer: system prompt, the hidden instruction block behind a model's role, rules, and tone. The backlog flips to shipped with order and aliases kept, two fresh terms keep the open queue above twenty, and this log entry ships in the same change.",
+  "date": "2026-09-21",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "One new definition on schedule: the glossary runbook ships its eleventh term in backlog order, with the page, the backlog flip, two replacement backlog entries, the social pack, and this log entry landing together.",
+  "featured": false,
+  "draft": true,
+  "mac_id": "MAC-767",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [],
+  "reasoning": {}
+}

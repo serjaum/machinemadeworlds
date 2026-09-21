@@ -27,6 +27,7 @@ Machine-readable index of canonical pages. Full text: https://machinemadeworlds.
 - [What is prompt injection?](https://machinemadeworlds.com/posts/glossary-prompt-injection/): Prompt injection hides hostile instructions in data a model reads, hijacking its task. How the trick works and builder defenses.
 - [What is Quantization?](https://machinemadeworlds.com/posts/glossary-quantization/): Quantization stores model weights in fewer bits to fit small GPUs and laptops. Accuracy-vs-speed tradeoffs and when builders use it.
 - [What is RAG?](https://machinemadeworlds.com/posts/glossary-rag/): RAG grounds a model in documents retrieved at query time instead of memory alone. How the retrieve-then-write loop works for builders.
+- [What is System prompt?](https://machinemadeworlds.com/posts/glossary-system-prompt/): A system prompt is the hidden instruction block that sets a model's role, rules, and tone. What it controls and how builders shape it.
 - [What is Temperature?](https://machinemadeworlds.com/posts/glossary-temperature/): Temperature is the sampling dial for token randomness. What low and high settings do, and where builders set it for fact vs flair.
 
 ## Build Log
@@ -121,6 +122,10 @@ Quantization is the practice of storing a model's weights in lower-precision num
 https://machinemadeworlds.com/posts/glossary-rag/
 
 RAG, short for retrieval-augmented generation, is a pattern where a language model answers from documents it retrieves at query time instead of relying on memory alone. How it works When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector embeddings. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is. Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw. Go deeper For the full local walkthrough, read RAG on your own machine , with the retrieval half covered in embeddings on consumer GPUs .
+## What is System prompt?
+https://machinemadeworlds.com/posts/glossary-system-prompt/
+
+A system prompt is the persistent instruction block placed before a conversation that tells a language model which role to play, which rules to obey, and which style to use. How it works Providers slot these instructions above every user message, so they frame the whole exchange while staying invisible to the reader. A good block names the role, states the hard constraints, fixes the output shape, and lists what to refuse, in that order of importance. Because the block consumes context on every call, long preambles cost tokens and can crowd out retrieved evidence, which is why teams keep it short and move examples into the conversation or tools. It steers strongly but never guarantees obedience: hostile user text can still pull the model off script, so refusal rules get tested against injection attempts rather than trusted on paper. Builders treat the system prompt as versioned configuration: shortest sufficient instructions, reviewed like code, and evaluated against the behaviors each release must keep.
 ## What is Temperature?
 https://machinemadeworlds.com/posts/glossary-temperature/
 
