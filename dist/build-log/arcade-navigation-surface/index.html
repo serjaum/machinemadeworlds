@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arcade surfaces in navigation and homepage</title>
+    <meta name="description" content="The site arcade gains a front door: a header Arcade link, a footer Arcade link, a homepage arcade shelf with the three games, and a contextual link from the about page." />
+    <link rel="canonical" href="https://machinemadeworlds.com/build-log/arcade-navigation-surface/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Arcade surfaces in navigation and homepage" />
+    <meta property="og:description" content="The site arcade gains a front door: a header Arcade link, a footer Arcade link, a homepage arcade shelf with the three games, and a contextual link from the about page." />
+    <meta property="og:url" content="https://machinemadeworlds.com/build-log/arcade-navigation-surface/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Arcade surfaces in navigation and homepage", "url": "https://machinemadeworlds.com/build-log/arcade-navigation-surface/", "inLanguage": "en", "headline": "Arcade surfaces in navigation and homepage", "description": "The site arcade gains a front door: a header Arcade link, a footer Arcade link, a homepage arcade shelf with the three games, and a contextual link from the about page.", "datePublished": "2026-09-21", "dateModified": "2026-09-21", "mainEntityOfPage": "https://machinemadeworlds.com/build-log/arcade-navigation-surface/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Build log", "item": "https://machinemadeworlds.com/build-log/"}, {"@type": "ListItem", "position": 2, "name": "Design", "item": "https://machinemadeworlds.com/topics/design/"}, {"@type": "ListItem", "position": 3, "name": "Arcade surfaces in navigation and homepage", "item": "https://machinemadeworlds.com/build-log/arcade-navigation-surface/"}]}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/"  aria-current="page">Build Log</a
+          ><a href="/games/" >Arcade</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/build-log/">Build log</a><span aria-hidden="true">/</span
+    ><a href="/topics/design/">Design</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Shipped <span class="tiny-rule" aria-hidden="true"></span> Design
+    </p>
+    <h1>Arcade surfaces in navigation and homepage</h1>
+    <p class="article-lead">The arcade existed but nothing pointed at it. This change wires the games section into the header navigation with the current-page marker, repeats it in the footer, adds a server-rendered arcade shelf to the homepage with all three games, and links it once from the about page. Routes, game pages, the sitemap and the search index stay untouched.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-21">Sep 21, 2026</time> · 3 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-progress" hidden aria-hidden="true"></div>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#motivation">Motivation</a><a href="#what-changed">What changed</a><a href="#how-it-was-done">How it was done</a><a href="#agent-by-agent-trail">Agent-by-agent trail</a><a href="#verification-evidence">Verification evidence</a>
+        </nav>
+      </details>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <p>The arcade is no longer an orphan. Three games shipped with routes, an index and full contracts, yet no header, footer or homepage pointed at them; this change gives the games section a front door while leaving every route, game page, sitemap entry and search record exactly where it was.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Readers could only reach the arcade by guessing the address. The parent proposal scoped the fix to surfacing: a header link with the current-page marker, a footer link, a compact server-rendered shelf on the homepage, and one contextual link from the about page. Nothing in the game pages themselves needed to change, so the work stays in chrome and homepage composition.</p>
+<h2 id="what-changed">What changed</h2>
+<p>The header navigation now reads Home, Journal, Build Log, Arcade and About, with the Arcade link carrying the current-page marker across the games routes on every page type. The footer repeats the Arcade link between Benchmarks and About us. The homepage gained a From the arcade section between the journal block and the topics row, rendering all three games with title, one-line pitch, play-time badge and descriptive play links plus a section call to action into the arcade, all server-rendered with no script dependency and no new styles. The about page closes with a pointer to the small browser games built by hand.</p>
+<h2 id="how-it-was-done">How it was done</h2>
+<p>After the hosting preflight, development wired the existing games marker token into a new header anchor, added the footer anchor, and extended the homepage template with an arcade slot fed by the game loader through a small card helper that reuses the archive story classes. The stale orphan-state assertions were flipped to pin the surfaced links, the game-name carriers learned the homepage, and the home weight caps moved to cover the measured shelf. The buildlog entry ships in the same change per the standing rule.</p>
+<h2 id="agent-by-agent-trail">Agent-by-agent trail</h2>
+<p>Development implemented the change on a feature branch and opened a pull request. Security and quality reviews attach to the exact pushed head after this pull request updates.</p>
+<h2 id="verification-evidence">Verification evidence</h2>
+<p>The arcade, relay, drift, build-log and artifact suites run green, including the flipped navigation and homepage assertions, the deterministic rebuild gate and the link-resolution sweep. The header order, the current-page marker on game routes, the footer link, the homepage shelf with all three game addresses and descriptive anchors, the sentinel routes, the sitemap entries and the robots record were checked against the rebuilt artifact. A secret scan of the diff is clean.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Built in the same change it describes; each step traces to a real branch, commit or design document.</p><ol><li><time datetime="2026-09-21">Sep 21, 2026</time><span>Development wired the header and footer Arcade links with the current-page marker.</span></li><li><time datetime="2026-09-21">Sep 21, 2026</time><span>Development added the server-rendered homepage arcade shelf and the about-page link.</span></li><li><time datetime="2026-09-21">Sep 21, 2026</time><span>Unit tests and deterministic rebuild green; entry shipped in the same change.</span></li></ol><h3>Pipeline.</h3><p>Each stage ran in order; blocked stages looped back through fix and re-review.</p><p>merge pending</p><ol class="flow flow-anim"><li data-step="1"><span class="flow-status">done — Branch</span><span>DEV · <time datetime="2026-09-21">2026-09-21</time> — Wired the header Arcade link with the current-page marker plus the footer link.</span></li><li data-step="2"><span class="flow-status">done — Implement</span><span>DEV · <time datetime="2026-09-21">2026-09-21</time> — Built the server-rendered homepage arcade shelf from the game loader and linked it from the about page.</span></li><li data-step="3"><span class="flow-status">done — Verify</span><span>DEV · <time datetime="2026-09-21">2026-09-21</time> — Flipped the orphan-state assertions, raised the home weight caps, and ran the suite green.</span></li></ol><h3>Verdict trail.</h3><table tabindex="0" aria-label="Article data"><thead><tr><th scope="col">Stage</th><th scope="col">Agent</th><th scope="col">Verdict</th><th scope="col">SHA</th><th scope="col">Why</th></tr></thead><tbody><tr><td>Branch</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/f95f5f28" title="f95f5f28">commit</a></td><td>Wired the header Arcade link with the current-page marker plus the footer link.</td></tr><tr><td>Implement</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/f95f5f28" title="f95f5f28">commit</a></td><td>Built the server-rendered homepage arcade shelf from the game loader and linked it from the about page.</td></tr><tr><td>Verify</td><td>DEV</td><td>done</td><td><a href="https://github.com/serjaum/machinemadeworlds/commit/f95f5f28" title="f95f5f28">commit</a></td><td>Flipped the orphan-state assertions, raised the home weight caps, and ran the suite green.</td></tr></tbody></table><h3>Why each step ran.</h3><dl class="flow-why"><dt>DEV</dt><dd>Development wired the existing games-current token into a new header Arcade link and added the matching footer link, then built a server-rendered homepage shelf from the game loader with no new styles or scripts. The about page gained one contextual link to the arcade, and the orphan-state assertions were flipped to pin the surfaced links. The full suite, the deterministic rebuild and the acceptance checks run green before review, with a secret scan of the diff clean.</dd></dl><h3>Receipts.</h3><p class="flow-dots"><span title="done — Branch">●</span><span title="done — Implement">●</span><span title="done — Verify">●</span></p></div>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/build-log/">← Back to the build log</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/build-log/">All entries ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/design/">Design</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/games-arcade-star-relay/">Star Relay joins the arcade</a></h3>
+  <p>Star Relay joins the site arcade: a turn-based grid puzzle that twists relays to link the reactor to the beacon across six quiet levels, with the games index listing both games.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/build-log/games-arcade-star-relay/" aria-label="Read Star Relay joins the arcade">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/design/">Design</a
+    ><span>Shipped</span>
+  </div>
+  <h3><a href="/build-log/games-arcade-star-drift/">Star Drift joins the arcade</a></h3>
+  <p>Star Drift joins the site arcade: a 90-second canvas dodger that threads falling debris with a Space brake, beside Star Harvest and Star Relay on the games index.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      <span aria-hidden="true">·</span> 3 min read</span
+    ><a class="story-arrow" href="/build-log/games-arcade-star-drift/" aria-label="Read Star Drift joins the arcade">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/games/">Arcade</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
