@@ -1,0 +1,49 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": "feat/star-chime-arcade-mac-756",
+  "commit": "n/a",
+  "date": "2026-09-21",
+  "description": "Star Chime joins the site arcade: an audio-first sequence-memory game where four pads sing a growing tune across twelve rounds, with three lives, two hints a round, and the games index listing all four games.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The arcade grows a fourth shelf. Star Chime is an audio-first memory game with a tune that grows by one note each round, and the games index lists it beside the earlier games. Everything is vanilla script and tokens, with hashed same-origin assets and no network calls.",
+  "mac_id": "MAC-756",
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the merge identifier is recorded after the gate passes on the exact head.",
+  "merge_sha": null,
+  "pr": 101,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/101",
+  "reasoning": {
+    "DEV": "Development verified the remote and the login with push access, then branched from the merged arcade line. It added the game metadata, the chime stage fragment with shared-shell words, the vanilla script and stylesheet, and the builder route with hashed assets, then logged the change in the same branch. The full suite, the winnability gate, the rebuild and the presence checks run green before review, with contrast and weight budgets sampled and reported."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Verified the remote and login, then branched from the merged arcade line.",
+      "sha": "50e8510",
+      "stage": "Branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Added the game metadata, stage fragment, script, stylesheet, builder route and tests in the same branch.",
+      "sha": "50e8510",
+      "stage": "Implement",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Rebuilt the site, ran the full suite and the winnability gate green, and sampled contrast and weight budgets.",
+      "sha": "50e8510",
+      "stage": "Verify",
+      "verdict": "done"
+    }
+  ],
+  "title": "Star Chime joins the arcade",
+  "topic": "design"
+}
