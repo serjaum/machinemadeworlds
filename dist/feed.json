@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-system-prompt/",
+      "url": "https://machinemadeworlds.com/posts/glossary-system-prompt/",
+      "title": "What is System prompt?",
+      "summary": "A system prompt is the hidden instruction block that sets a model's role, rules, and tone. What it controls and how builders shape it.",
+      "content_text": "A system prompt is the hidden instruction block that sets a model's role, rules, and tone. What it controls and how builders shape it.",
+      "date_published": "2026-09-21T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-21/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-21/",
       "title": "AI news digest — September 21, 2026: compact builders, paper agents, judge the judges",

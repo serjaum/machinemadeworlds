@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>What is Context window?</title>
-    <meta name="description" content="A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it." />
-    <link rel="canonical" href="https://machinemadeworlds.com/posts/glossary-context-window/" />
+    <title>What is System prompt?</title>
+    <meta name="description" content="A system prompt is the hidden instruction block that sets a model&#x27;s role, rules, and tone. What it controls and how builders shape it." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/glossary-system-prompt/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -34,19 +34,19 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="What is Context window?" />
-    <meta property="og:description" content="A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it." />
-    <meta property="og:url" content="https://machinemadeworlds.com/posts/glossary-context-window/" />
+    <meta property="og:title" content="What is System prompt?" />
+    <meta property="og:description" content="A system prompt is the hidden instruction block that sets a model&#x27;s role, rules, and tone. What it controls and how builders shape it." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/glossary-system-prompt/" />
     <meta name="twitter:card" content="summary_large_image" />
-<meta property="article:published_time" content="2026-09-18T00:00:00+00:00" />
-    <meta property="article:modified_time" content="2026-09-18T00:00:00+00:00" />
+<meta property="article:published_time" content="2026-09-21T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-21T00:00:00+00:00" />
     <meta property="article:section" content="Essays" />
     <meta property="article:author" content="Machine Made Worlds" />
         <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "What is Context window?", "url": "https://machinemadeworlds.com/posts/glossary-context-window/", "inLanguage": "en", "headline": "What is Context window?", "description": "A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.", "datePublished": "2026-09-18", "dateModified": "2026-09-18", "mainEntityOfPage": "https://machinemadeworlds.com/posts/glossary-context-window/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "What is System prompt?", "url": "https://machinemadeworlds.com/posts/glossary-system-prompt/", "inLanguage": "en", "headline": "What is System prompt?", "description": "A system prompt is the hidden instruction block that sets a model's role, rules, and tone. What it controls and how builders shape it.", "datePublished": "2026-09-21", "dateModified": "2026-09-21", "mainEntityOfPage": "https://machinemadeworlds.com/posts/glossary-system-prompt/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
     </script>
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Glossary", "item": "https://machinemadeworlds.com/glossary/"}, {"@type": "ListItem", "position": 2, "name": "Essays", "item": "https://machinemadeworlds.com/topics/essays/"}, {"@type": "ListItem", "position": 3, "name": "What is Context window?", "item": "https://machinemadeworlds.com/posts/glossary-context-window/"}]}
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Glossary", "item": "https://machinemadeworlds.com/glossary/"}, {"@type": "ListItem", "position": 2, "name": "Essays", "item": "https://machinemadeworlds.com/topics/essays/"}, {"@type": "ListItem", "position": 3, "name": "What is System prompt?", "item": "https://machinemadeworlds.com/posts/glossary-system-prompt/"}]}
     </script>
     <script src="/assets/site.f7ceb0112d60.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
@@ -96,14 +96,14 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <p class="eyebrow">
       Glossary <span class="tiny-rule" aria-hidden="true"></span> Essays
     </p>
-    <h1>What is Context window?</h1>
-    <p class="article-lead">A context window is the amount of recent text a language model can consider in a single pass, measured in tokens. Everything the model sees, the instructions, the conversation so far, and any retrieved passages, must fit inside it. When input runs past the edge, the oldest material drops out or the request fails, so knowing the limit decides how much work fits in one call.</p>
+    <h1>What is System prompt?</h1>
+    <p class="article-lead">A system prompt is the persistent instruction block placed before a conversation that tells a language model which role to play, which rules to obey, and which style to use. It outranks each user message yet stays invisible to the reader, so everything the model drafts downstream is colored by what was written there. Getting that block right decides whether the model behaves like a careful assistant, a terse tool, or an unpredictable stranger.</p>
     <div class="byline">
       <span class="avatar" aria-hidden="true">m</span>
       <div>
         <span>Machine Made Worlds</span
         ><span class="meta"
-          ><time datetime="2026-09-18">Sep 18, 2026</time> · 1 min read</span
+          ><time datetime="2026-09-21">Sep 21, 2026</time> · 1 min read</span
         >
       </div>
     </div>
@@ -120,11 +120,11 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
     </aside>
     <div class="article-body" data-od-id="article-body">
-      <p>A context window is the span of recent tokens a language model can read at once when it drafts its next tokens, setting a hard limit on how much instruction, history, and retrieved evidence fits in one pass.</p>
+      <p>A system prompt is the persistent instruction block placed before a conversation that tells a language model which role to play, which rules to obey, and which style to use.</p>
 <h2 id="how-it-works">How it works</h2>
-<p>Every model ships with a fixed maximum length, counted in tokens rather than words, that bounds the whole input it processes together. New tokens push older ones toward the edge, so long conversations and large documents must be trimmed, summarized, or paged into chunks to stay inside the limit. Larger windows hold more material but cost more memory and compute per request, which is why providers price long-context calls higher and teams pair them with retrieval that loads only the passages each question needs. Evals that measure recall across the full window keep teams honest about whether the model truly uses distant material or only the nearby lines.</p>
-<p>Builders reach for context budgets whenever work must fit the window: shortest sufficient instructions, retrieved passages instead of whole archives, and summaries that carry forward what no longer fits.</p>
-<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-benchmark/">Benchmark</a></li><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li><li><a href="/posts/glossary-hallucination/">Hallucination</a></li></ul>
+<p>Providers slot these instructions above every user message, so they frame the whole exchange while staying invisible to the reader. A good block names the role, states the hard constraints, fixes the output shape, and lists what to refuse, in that order of importance. Because the block consumes context on every call, long preambles cost tokens and can crowd out retrieved evidence, which is why teams keep it short and move examples into the conversation or tools. It steers strongly but never guarantees obedience: hostile user text can still pull the model off script, so refusal rules get tested against injection attempts rather than trusted on paper.</p>
+<p>Builders treat the system prompt as versioned configuration: shortest sufficient instructions, reviewed like code, and evaluated against the behaviors each release must keep.</p>
+<h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-benchmark/">Benchmark</a></li><li><a href="/posts/glossary-context-window/">Context window</a></li><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li></ul>
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
         <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
@@ -148,13 +148,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-system-prompt/">What is System prompt?</a></h3>
-  <p>A system prompt is the hidden instruction block that sets a model&#x27;s role, rules, and tone. What it controls and how builders shape it.</p>
+  <h3><a href="/posts/glossary-context-window/">What is Context window?</a></h3>
+  <p>A context window is the stretch of tokens a model can read at once. What sets its size, what happens past the edge, and how builders fit work inside it.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      ><time datetime="2026-09-18">Sep 18, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-system-prompt/" aria-label="Read What is System prompt?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-context-window/" aria-label="Read What is Context window?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>

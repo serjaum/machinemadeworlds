@@ -8,6 +8,14 @@
     "topic": "automation"
   },
   {
+    "url": "/posts/glossary-system-prompt/",
+    "title": "What is System prompt?",
+    "description": "A system prompt is the hidden instruction block that sets a model's role, rules, and tone. What it controls and how builders shape it.",
+    "date": "2026-09-21",
+    "reading": 1,
+    "topic": "essays"
+  },
+  {
     "url": "/posts/ai-news-2026-09-21/",
     "title": "AI news digest — September 21, 2026: compact builders, paper agents, judge the judges",
     "description": "AI news digest Sep 21: Qwen-Image-2.1 7B, Jev plus open Kev decision models, Atria Dawn MIT agent, Paper2Agent, virtual biotech, ScientistTwo.",
