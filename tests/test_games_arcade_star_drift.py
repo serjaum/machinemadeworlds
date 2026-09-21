@@ -1,10 +1,11 @@
-"""Star Harvest arcade contract (MAC-648 brief section 6 + parent spec section 8).
+"""Star Drift arcade contract (MAC-653 parent MAC-649 section 9).
 
-Run: python -m pytest tests/test_games_arcade.py -q
-Gates: both routes render; zero external URLs/imports in game files;
-JS+CSS <= 60KB and game page first load <= 150KB; pause/restart/score
-hooks; reduced-motion branch; single live region; 44px targets;
-sampled contrast on real token pairs; no secrets.
+Run: python -m pytest tests/test_games_arcade_star_drift.py -q
+Gates: /games/star-drift/ renders the canvas-dodger variant; zero external
+URLs/imports in game files; JS+CSS <= 60KB and game page first load <= 150KB;
+start/pause/restart/mute/score hooks plus the Space brake; reduced-motion
+branch; single live region; 44px targets; sampled contrast on real token
+pairs; no secrets.
 """
 import importlib.util
 import json
@@ -14,13 +15,13 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('mmw_games_build', ROOT / 'scripts/build.py')
+spec = importlib.util.spec_from_file_location('mmw_drift_build', ROOT / 'scripts/build.py')
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
 
-GAME_JS = ROOT / 'assets/games/star-harvest.js'
-GAME_CSS = ROOT / 'assets/games/star-harvest.css'
-BEST_KEY = 'mmw.star-harvest.best.v1'
+GAME_JS = ROOT / 'assets/games/star-drift.js'
+GAME_CSS = ROOT / 'assets/games/star-drift.css'
+BEST_KEY = 'mmw.star-drift.best.v1'
 
 SITE_TOKENS = ('--bg', '--surface', '--raised', '--ink', '--muted', '--line',
                '--accent', '--accent-ink', '--art', '--art-line', '--art-core',
@@ -73,28 +74,18 @@ class TagCounter(HTMLParser):
             self.buttons.append(attrs)
 
 
-class ArcadeRouteTests(unittest.TestCase):
+class DriftRouteTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         builder.build(ROOT)
-        cls.index = (ROOT / 'dist/games/index.html').read_text(encoding='utf-8')
-        cls.page = (ROOT / 'dist/games/star-harvest/index.html').read_text(encoding='utf-8')
+        cls.page = (ROOT / 'dist/games/star-drift/index.html').read_text(encoding='utf-8')
         cls.tags = TagCounter(cls.page)
-
-    def test_index_lists_game_with_more_coming_note(self):
-        self.assertEqual(self.index.count('<article class="story"'), 3)
-        self.assertIn('<a href="/games/star-harvest/">Star Harvest</a>', self.index)
-        self.assertIn('<a href="/games/star-relay/">Star Relay</a>', self.index)
-        self.assertIn('<a href="/games/star-drift/">Star Drift</a>', self.index)
-        self.assertIn('More games coming.', self.index)
-        self.assertIn('class="callout game-note"', self.index)
-        self.assertIn('<title>The arcade', self.index)
 
     def test_game_page_shell_matches_brief(self):
         self.assertEqual(self.tags.h1, 1)
         self.assertEqual(len(self.tags.canvas), 1)
         canvas = self.tags.canvas[0]
-        self.assertEqual(canvas.get('id'), 'star-harvest')
+        self.assertEqual(canvas.get('id'), 'star-drift')
         self.assertEqual(canvas.get('role'), 'img')
         self.assertIn('aria-label', canvas)
         for hook in ('data-hud="score"', 'data-hud="time"', 'data-hud="lives"',
@@ -106,7 +97,8 @@ class ArcadeRouteTests(unittest.TestCase):
         self.assertIn('data-pad', self.page)
         self.assertIn('How to play', self.page)
         self.assertIn('Devlog', self.page)
-        self.assertIn('Star Harvest draws every sprite procedurally', self.page)
+        self.assertIn('heavier helm', self.page)
+        self.assertIn('brake', self.page.lower())
 
     def test_single_live_region_outside_hud(self):
         self.assertEqual(self.tags.status, 1)
@@ -120,19 +112,12 @@ class ArcadeRouteTests(unittest.TestCase):
         for attrs in self.tags.buttons:
             self.assertEqual(attrs.get('type'), 'button')
 
-    def test_no_nav_item_added(self):
-        base = (ROOT / 'templates/base.html').read_text(encoding='utf-8')
-        nav = base[base.index('<nav class="navigation"'):base.index('</nav>')]
-        self.assertNotIn('/games/', nav)
-        self.assertEqual(base.count('$extra_js'), 1)
-
-    def test_sitemap_lists_arcade_routes(self):
+    def test_sitemap_lists_drift_route(self):
         sitemap = (ROOT / 'dist/sitemap.xml').read_text(encoding='utf-8')
-        self.assertIn('<loc>https://machinemadeworlds.com/games/</loc>', sitemap)
-        self.assertIn('<loc>https://machinemadeworlds.com/games/star-harvest/</loc>', sitemap)
+        self.assertIn('<loc>https://machinemadeworlds.com/games/star-drift/</loc>', sitemap)
 
 
-class GameSourceTests(unittest.TestCase):
+class DriftSourceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.js = GAME_JS.read_text(encoding='utf-8')
@@ -153,16 +138,18 @@ class GameSourceTests(unittest.TestCase):
         self.assertNotIn('eval(', self.js)
         self.assertNotIn('document.write', self.js)
 
-    def test_pause_restart_score_hooks(self):
+    def test_pause_restart_score_and_brake_hooks(self):
         for hook in ('data-hud="score"', 'data-hud="time"', 'data-hud="lives"',
                      'data-hud="combo"', 'data-hud="best"',
                      'data-action="pause"', 'data-action="restart"',
                      'data-action="start"', 'data-action="mute"', 'data-dir'):
             self.assertIn(hook, self.js)
-        for key in ('Enter', 'KeyP', 'Escape', 'KeyM', 'ArrowLeft', 'KeyW'):
+        for key in ('Enter', 'KeyP', 'Escape', 'KeyM', 'ArrowLeft', 'KeyW', 'Space'):
             self.assertIn(key, self.js)
         self.assertIn('requestAnimationFrame', self.js)
         self.assertIn('textContent', self.js)
+        self.assertIn('braking', self.js)
+        self.assertIn('keys.Space', self.js)
 
     def test_best_score_storage_is_namespaced_integer_only(self):
         self.assertIn(BEST_KEY, self.js)
@@ -192,8 +179,6 @@ class GameSourceTests(unittest.TestCase):
         self.assertIn('getComputedStyle', self.js)
         for token in JS_TOKENS:
             self.assertIn(token, self.js)
-        # Offline-safe initializer only: every other canvas color resolves
-        # from computed site tokens at boot, never from literals.
         hexes = set(re.findall(r'#[0-9a-fA-F]{6}', self.js))
         self.assertLessEqual(hexes, {'#ffffff', '#000000'})
 
@@ -220,20 +205,19 @@ class GameSourceTests(unittest.TestCase):
                 self.assertNotIn(marker, lowered, name)
 
     def test_legacy_storage_key_absent(self):
-        tree = [GAME_JS, GAME_CSS, ROOT / 'templates/game.html',
-                ROOT / 'templates/games-index.html',
-                ROOT / 'content/games/star-harvest.json']
+        tree = [GAME_JS, GAME_CSS, ROOT / 'templates/game-stage-drift.html',
+                ROOT / 'content/games/star-drift.json']
         for path in tree:
-            self.assertNotIn('mmw-star-harvest-best', path.read_text(encoding='utf-8'), str(path))
+            self.assertNotIn('mmw-star-drift-best', path.read_text(encoding='utf-8'), str(path))
 
 
-class ArcadeBudgetTests(unittest.TestCase):
+class DriftBudgetTests(unittest.TestCase):
     def test_js_plus_css_within_60kb(self):
         total = GAME_JS.stat().st_size + GAME_CSS.stat().st_size
         self.assertLessEqual(total, 60 * 1024)
 
     def test_game_page_first_load_within_150kb(self):
-        page_path = ROOT / 'dist/games/star-harvest/index.html'
+        page_path = ROOT / 'dist/games/star-drift/index.html'
         html = page_path.read_bytes()
         refs = set(re.findall(rb'(?:href|src)="(/assets/[^"]+)"', html))
         total = len(html) + sum((ROOT / 'dist' / ref.decode('ascii').lstrip('/')).stat().st_size
@@ -241,7 +225,7 @@ class ArcadeBudgetTests(unittest.TestCase):
         self.assertLess(total, 150 * 1024)
 
 
-class ArcadeContrastTests(unittest.TestCase):
+class DriftContrastTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         site_css = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
@@ -258,20 +242,16 @@ class ArcadeContrastTests(unittest.TestCase):
             self.assertGreaterEqual(contrast(theme['--muted'], theme['--surface']), 4.5, name)
 
 
-class ArcadeIsolationTests(unittest.TestCase):
+class DriftIsolationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         builder.build(ROOT)
 
     def test_game_strings_stay_in_carriers(self):
-        # New build-log entries surface in sibling related grids by design,
-        # so every build-log page may carry the arcade title and link.
-        # The journal, topics, glossary, data pages and feeds stay clean.
         carriers = {'games/index.html',
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
                     'games/star-drift/index.html',
-                    'games/star-relay/index.html',
                     'sitemap.xml',
                     'metrics/index.html',
                     'llms.txt',
@@ -283,53 +263,22 @@ class ArcadeIsolationTests(unittest.TestCase):
             if rel in carriers or rel.startswith('build-log/'):
                 continue
             source = path.read_text(encoding='utf-8')
-            self.assertNotIn('star-harvest', source.lower(), rel)
+            self.assertNotIn('star-drift', source.lower(), rel)
 
     def test_existing_pages_carry_no_game_head(self):
         home = (ROOT / 'dist/index.html').read_text(encoding='utf-8')
-        self.assertNotIn('star-harvest', home.lower())
+        self.assertNotIn('star-drift', home.lower())
         self.assertNotIn('/games/', home)
 
 
-class GameValidationTests(unittest.TestCase):
-    def test_load_games_accepts_family_file(self):
-        site = json.loads((ROOT / 'content/site.json').read_text(encoding='utf-8'))
+class DriftValidationTests(unittest.TestCase):
+    def test_load_games_accepts_drift_file(self):
         games = builder.load_games(ROOT)
         slugs = [g['slug'] for g in games]
-        self.assertIn('star-harvest', slugs)
-        game = next(g for g in games if g['slug'] == 'star-harvest')
+        self.assertIn('star-drift', slugs)
+        game = next(g for g in games if g['slug'] == 'star-drift')
         self.assertTrue(game['url'].startswith('/games/'))
         self.assertIn('date_label', game)
-
-    def test_load_games_rejects_bad_metadata(self):
-        site = json.loads((ROOT / 'content/site.json').read_text(encoding='utf-8'))
-        good = json.loads((ROOT / 'content/games/star-harvest.json').read_text(encoding='utf-8'))
-        import tempfile as temp_module
-        with temp_module.TemporaryDirectory() as tmp:
-            folder = Path(tmp) / 'content' / 'games'
-            folder.mkdir(parents=True)
-            (folder / 'star-harvest.json').write_text(json.dumps(good), encoding='utf-8')
-            self.assertEqual(len(builder.load_games(Path(tmp))), 1)
-            bad = dict(good, title='x' * 81)
-            (folder / 'star-harvest.json').write_text(json.dumps(bad), encoding='utf-8')
-            with self.assertRaises(ValueError):
-                builder.load_games(Path(tmp))
-            bad = dict(good, pitch='see https://example.com for more')
-            (folder / 'star-harvest.json').write_text(json.dumps(bad), encoding='utf-8')
-            with self.assertRaises(ValueError):
-                builder.load_games(Path(tmp))
-
-    def test_unknown_game_slug_fails_fast(self):
-        import tempfile as temp_module
-        good = json.loads((ROOT / 'content/games/star-harvest.json').read_text(encoding='utf-8'))
-        with temp_module.TemporaryDirectory() as tmp:
-            target = Path(tmp)
-            for name in ('content', 'templates', 'assets'):
-                import shutil
-                shutil.copytree(ROOT / name, target / name)
-            (target / 'content/games/mystery.json').write_text(json.dumps(good), encoding='utf-8')
-            with self.assertRaises(ValueError):
-                builder.build(target)
 
 
 if __name__ == '__main__':

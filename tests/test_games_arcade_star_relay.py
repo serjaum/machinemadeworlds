@@ -281,6 +281,7 @@ class RelayIsolationTests(unittest.TestCase):
         carriers = {'games/index.html',
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
+                    'games/star-drift/index.html',
                     'sitemap.xml',
                     'metrics/index.html',
                     'llms.txt',
@@ -297,7 +298,7 @@ class RelayIsolationTests(unittest.TestCase):
     def test_relay_game_accepted_by_loader(self):
         games = builder.load_games(ROOT)
         slugs = [g['slug'] for g in games]
-        self.assertEqual(sorted(slugs), ['star-harvest', 'star-relay'])
+        self.assertEqual(sorted(slugs), ['star-drift', 'star-harvest', 'star-relay'])
 
 
 if __name__ == '__main__':

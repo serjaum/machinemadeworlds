@@ -506,6 +506,21 @@ def game_page_copy(root, g):
             restart=('Every retry deals a fresh scramble of the same level, and your unlocked '
                      'levels plus best score stay in this browser. Open Levels any time '
                      'to replay an unlocked stage.'))
+    if g['slug'] == 'star-drift':
+        return dict(
+            crumb='Star Drift', eyebrow='Star Drift',
+            headline='Thread the debris. Brake late<span class="accent-dot">.</span>',
+            standfirst=('A 90-second arcade dodger. Steer through falling debris, '
+                        'hold Space to brake, chain quick pickups — three hits ends the flight.'),
+            stage=(root / 'templates/game-stage-drift.html').read_text(encoding='utf-8'),
+            motto='Loose helm.<br />Late braking.',
+            howto=('Thrust with arrow keys or WASD, drag on touch. Hold Space to brake into gaps. '
+                   'Collect star sparks for points — grab them less than 2.5 seconds apart to grow your combo. '
+                   'Falling debris costs a life; you get three. P or Esc pauses, Enter starts '
+                   'or restarts, M mutes the bleeps.'),
+            restart=('Every run lasts 90 seconds or until your three lives run out. '
+                     'Your best score stays in this browser. Press Restart (or Enter) '
+                     'any time for a fresh drift.'))
     raise ValueError('Game page has no template: %s' % g['slug'])
 
 
