@@ -2,7 +2,7 @@
   "agents": [
     "DEV"
   ],
-  "branch": null,
+  "branch": "feat/star-relay-arcade-mac-711",
   "commit": "n/a",
   "date": "2026-09-21",
   "description": "Star Relay joins the site arcade: a turn-based grid puzzle that twists relays to link the reactor to the beacon across six quiet levels, with the games index listing both games.",
@@ -13,8 +13,8 @@
   "mac_id": "MAC-700",
   "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the merge identifier is recorded after the gate passes on the exact head.",
   "merge_sha": null,
-  "pr": null,
-  "pr_url": null,
+  "pr": 98,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/98",
   "reasoning": {
     "DEV": "Development verified the remote and the login with push access, then branched from the merged arcade line. It added the game metadata, the relay stage fragment with shared-shell words, the vanilla script and stylesheet, and the builder route with hashed assets, then logged the change in the same branch. The full suite, the generation gate, the rebuild and the presence checks run green before review, with contrast and weight budgets sampled and reported."
   },
