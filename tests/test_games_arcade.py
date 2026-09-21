@@ -120,10 +120,12 @@ class ArcadeRouteTests(unittest.TestCase):
         for attrs in self.tags.buttons:
             self.assertEqual(attrs.get('type'), 'button')
 
-    def test_no_nav_item_added(self):
+    def test_nav_surfaces_arcade(self):
         base = (ROOT / 'templates/base.html').read_text(encoding='utf-8')
         nav = base[base.index('<nav class="navigation"'):base.index('</nav>')]
-        self.assertNotIn('/games/', nav)
+        self.assertIn('<a href="/games/" $games_current>Arcade</a', nav)
+        footer = base[base.index('<nav aria-label="Footer">'):base.index('</nav>', base.index('<nav aria-label="Footer">'))]
+        self.assertIn('<a href="/games/">Arcade</a>', footer)
         self.assertEqual(base.count('$extra_js'), 1)
 
     def test_sitemap_lists_arcade_routes(self):
@@ -267,7 +269,9 @@ class ArcadeIsolationTests(unittest.TestCase):
         # New build-log entries surface in sibling related grids by design,
         # so every build-log page may carry the arcade title and link.
         # The journal, topics, glossary, data pages and feeds stay clean.
-        carriers = {'games/index.html',
+        carriers = {'index.html',
+                    'about/index.html',
+                    'games/index.html',
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
                     'games/star-drift/index.html',
@@ -285,10 +289,14 @@ class ArcadeIsolationTests(unittest.TestCase):
             source = path.read_text(encoding='utf-8')
             self.assertNotIn('star-harvest', source.lower(), rel)
 
-    def test_existing_pages_carry_no_game_head(self):
+    def test_homepage_surfaces_arcade(self):
         home = (ROOT / 'dist/index.html').read_text(encoding='utf-8')
-        self.assertNotIn('star-harvest', home.lower())
-        self.assertNotIn('/games/', home)
+        self.assertIn('data-od-id="arcade"', home)
+        self.assertIn('href="/games/"', home)
+        self.assertIn('Play in the arcade', home)
+        for slug in ('star-harvest', 'star-drift', 'star-relay'):
+            self.assertIn('/games/%s/' % slug, home)
+        self.assertIn('/games/', home)
 
 
 class GameValidationTests(unittest.TestCase):

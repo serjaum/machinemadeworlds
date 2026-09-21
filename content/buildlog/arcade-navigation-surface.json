@@ -1,0 +1,49 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": null,
+  "commit": "f95f5f28",
+  "date": "2026-09-21",
+  "description": "The site arcade gains a front door: a header Arcade link, a footer Arcade link, a homepage arcade shelf with the three games, and a contextual link from the about page.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The arcade existed but nothing pointed at it. This change wires the games section into the header navigation with the current-page marker, repeats it in the footer, adds a server-rendered arcade shelf to the homepage with all three games, and links it once from the about page. Routes, game pages, the sitemap and the search index stay untouched.",
+  "mac_id": "MAC-750",
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the merge identifier is recorded after the gate passes on the exact head.",
+  "merge_sha": null,
+  "pr": null,
+  "pr_url": null,
+  "reasoning": {
+    "DEV": "Development wired the existing games-current token into a new header Arcade link and added the matching footer link, then built a server-rendered homepage shelf from the game loader with no new styles or scripts. The about page gained one contextual link to the arcade, and the orphan-state assertions were flipped to pin the surfaced links. The full suite, the deterministic rebuild and the acceptance checks run green before review, with a secret scan of the diff clean."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Wired the header Arcade link with the current-page marker plus the footer link.",
+      "sha": "f95f5f28",
+      "stage": "Branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Built the server-rendered homepage arcade shelf from the game loader and linked it from the about page.",
+      "sha": "f95f5f28",
+      "stage": "Implement",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Flipped the orphan-state assertions, raised the home weight caps, and ran the suite green.",
+      "sha": "f95f5f28",
+      "stage": "Verify",
+      "verdict": "done"
+    }
+  ],
+  "title": "Arcade surfaces in navigation and homepage",
+  "topic": "design"
+}
