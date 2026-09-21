@@ -470,6 +470,23 @@ def game_card(g):
                escape(g['playtime']), g['url'], escape(g['title'])))
 
 
+def arcade_card(g):
+    """Compact homepage card (MAC-748): title, one-line pitch, playtime
+    badge. Reuses the archive-family story classes so no new CSS ships;
+    every link is server-rendered with no JS dependency."""
+    return ('<article class="story compact">'
+            '<div class="story-meta"><span class="topic-label" aria-hidden="true">Arcade</span>'
+            '<span>%s</span></div>'
+            '<h3><a href="%s">%s</a></h3>'
+            '<p>%s</p>'
+            '<div class="story-foot"><span>%s</span>'
+            '<a class="story-arrow" href="%s" aria-label="Play %s in the arcade">↗</a></div>'
+            '</article>'
+            % (escape(g['playtime']), g['url'], escape(g['title']),
+               escape(g['pitch']), escape(g['format']),
+               g['url'], escape(g['title'])))
+
+
 def game_page_copy(root, g):
     """Per-game shell copy for templates/game.html (MAC-700): the shell,
     HUD and how-to layout stay shared; only the stage fragment and the
@@ -1130,9 +1147,11 @@ def build(root=ROOT):
                        topic_name=escape(featured['topic_name']), kind=escape(featured['kind']),
                        date=featured['date'], date_label=featured['date_label'], reading=featured['reading']) if featured else ''
     remaining = [p for p in posts if p != featured]
+    arcade = ''.join(arcade_card(g) for g in games)
     home = template(root, 'home.html', featured=feature,
                     stories=''.join(card(p) for p in remaining[:2]),
-                    more=''.join(card(p, compact=True) for p in remaining[2:5]), topics=topic_links)
+                    more=''.join(card(p, compact=True) for p in remaining[2:5]),
+                    arcade=arcade, topics=topic_links)
     render('/', site['name'] + ' — AI, considered.', site['description'], home, 'WebSite')
 
     JOURNAL_COPY = dict(eyebrow='Ideas, collected',

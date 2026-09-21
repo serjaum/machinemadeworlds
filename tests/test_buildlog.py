@@ -93,7 +93,7 @@ class BuildLogTests(unittest.TestCase):
         home = (self.dist / 'index.html').read_text(encoding='utf-8')
         header = re.search(r'<nav class="navigation".*?</nav>', home, re.S)[0]
         hrefs = re.findall(r'href="([^"]+)"', header)
-        self.assertEqual(hrefs, ['/', '/blog/', '/build-log/', '/about/'])
+        self.assertEqual(hrefs, ['/', '/blog/', '/build-log/', '/games/', '/about/'])
         self.assertIn('<a href="/build-log/">Build log</a>', home)
         self.assertIn('<a href="/build-log/"  aria-current="page">Build Log</a', self.index)
         for entry in self.published:

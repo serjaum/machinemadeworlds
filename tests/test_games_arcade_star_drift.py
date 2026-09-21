@@ -248,7 +248,8 @@ class DriftIsolationTests(unittest.TestCase):
         builder.build(ROOT)
 
     def test_game_strings_stay_in_carriers(self):
-        carriers = {'games/index.html',
+        carriers = {'index.html',
+                    'games/index.html',
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
                     'games/star-drift/index.html',
@@ -265,10 +266,11 @@ class DriftIsolationTests(unittest.TestCase):
             source = path.read_text(encoding='utf-8')
             self.assertNotIn('star-drift', source.lower(), rel)
 
-    def test_existing_pages_carry_no_game_head(self):
+    def test_homepage_surfaces_arcade(self):
         home = (ROOT / 'dist/index.html').read_text(encoding='utf-8')
-        self.assertNotIn('star-drift', home.lower())
-        self.assertNotIn('/games/', home)
+        self.assertIn('data-od-id="arcade"', home)
+        self.assertIn('/games/star-drift/', home)
+        self.assertIn('/games/', home)
 
 
 class DriftValidationTests(unittest.TestCase):

@@ -132,8 +132,13 @@ class ArtifactTests(unittest.TestCase):
         # cap), so caps 54900 -> 55000 and 14800 -> 14900.
         # MAC-648 arcade ships game assets outside the home critical path
         # (see scoping above): the JS cap covers home-cited scripts only.
-        self.assertLess(total, 55000)
-        self.assertLess(compressed, 14900)
+        # MAC-748 arcade surfacing adds the header/footer Arcade links
+        # (~70B) plus the server-rendered homepage arcade shelf with three
+        # game cards (zero new assets): home path measured at 56529 raw
+        # (+1719) and 15041 compressed (+238), so caps 55000 -> 57000
+        # and 14900 -> 15200.
+        self.assertLess(total, 57000)
+        self.assertLess(compressed, 15200)
         self.assertLess(sum(p.stat().st_size for p in inpage if p.suffix == '.js'), 8500)
         for p in dist.rglob('*.html'):
             source = p.read_text(encoding='utf-8')

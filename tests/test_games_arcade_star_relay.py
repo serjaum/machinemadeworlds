@@ -278,7 +278,8 @@ class RelayIsolationTests(unittest.TestCase):
         builder.build(ROOT)
 
     def test_relay_strings_stay_in_carriers(self):
-        carriers = {'games/index.html',
+        carriers = {'index.html',
+                    'games/index.html',
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
                     'games/star-drift/index.html',
