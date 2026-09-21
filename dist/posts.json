@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/ai-news-2026-09-21/",
+    "title": "AI news digest — September 21, 2026: compact builders, paper agents, judge the judges",
+    "description": "AI news digest Sep 21: Qwen-Image-2.1 7B, Jev plus open Kev decision models, Atria Dawn MIT agent, Paper2Agent, virtual biotech, ScientistTwo.",
+    "date": "2026-09-21",
+    "reading": 6,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/jev-vs-open-decision-models/",
     "title": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling",
     "description": "Jev vs Laya vs Cua-S1-Forms: when scoring fixed options beats sampling text, and which open model to self-host.",

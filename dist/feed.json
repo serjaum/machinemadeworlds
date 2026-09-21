@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-21/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-21/",
+      "title": "AI news digest — September 21, 2026: compact builders, paper agents, judge the judges",
+      "summary": "AI news digest Sep 21: Qwen-Image-2.1 7B, Jev plus open Kev decision models, Atria Dawn MIT agent, Paper2Agent, virtual biotech, ScientistTwo.",
+      "content_text": "AI news digest Sep 21: Qwen-Image-2.1 7B, Jev plus open Kev decision models, Atria Dawn MIT agent, Paper2Agent, virtual biotech, ScientistTwo.",
+      "date_published": "2026-09-21T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/",
       "url": "https://machinemadeworlds.com/posts/jev-vs-open-decision-models/",
       "title": "Jev vs Open Decision Models: Laya, Cua-S1-Forms, and When Scoring Beats Sampling",
