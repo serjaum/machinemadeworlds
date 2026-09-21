@@ -3,7 +3,7 @@
     "DEV"
   ],
   "branch": "feat/star-drift-games",
-  "commit": "8e088caf",
+  "commit": "f372cb50d6ab11b8197e3051447d150823493c83",
   "date": "2026-09-21",
   "description": "Star Drift joins the site arcade: a 90-second canvas dodger that threads falling debris with a Space brake, beside Star Harvest and Star Relay on the games index.",
   "draft": false,
@@ -23,7 +23,7 @@
       "agent": "DEV",
       "at": "2026-09-21",
       "rationale": "Rebased the stale branch onto the merged arcade line and ported the game onto the current family contract.",
-      "sha": "8e088ca",
+      "sha": "f372cb5",
       "stage": "Branch",
       "verdict": "done"
     },
@@ -31,7 +31,7 @@
       "agent": "DEV",
       "at": "2026-09-21",
       "rationale": "Added the game metadata, stage fragment, script with Space brake, stylesheet, builder route and tests in the same branch.",
-      "sha": "8e088ca",
+      "sha": "f372cb5",
       "stage": "Implement",
       "verdict": "done"
     },
@@ -39,7 +39,7 @@
       "agent": "DEV",
       "at": "2026-09-21",
       "rationale": "Rebuilt the site, ran the arcade suite and the presence checks green, and sampled contrast and weight budgets.",
-      "sha": "8e088ca",
+      "sha": "f372cb5",
       "stage": "Verify",
       "verdict": "done"
     }
