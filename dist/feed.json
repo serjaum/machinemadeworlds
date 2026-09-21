@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-21/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-21/",
+      "title": "Link radar, September 21, 2026",
+      "summary": "Five reads: Copilot review UX, coverage rulesets, npm stage-only tokens, model deprecations, and embedded AI evaluation.",
+      "content_text": "Five reads: Copilot review UX, coverage rulesets, npm stage-only tokens, model deprecations, and embedded AI evaluation.",
+      "date_published": "2026-09-21T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-21/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-21/",
       "title": "AI news digest — September 21, 2026: compact builders, paper agents, judge the judges",

@@ -1,5 +1,13 @@
 [
   {
+    "url": "/posts/link-radar-2026-09-21/",
+    "title": "Link radar, September 21, 2026",
+    "description": "Five reads: Copilot review UX, coverage rulesets, npm stage-only tokens, model deprecations, and embedded AI evaluation.",
+    "date": "2026-09-21",
+    "reading": 2,
+    "topic": "automation"
+  },
+  {
     "url": "/posts/ai-news-2026-09-21/",
     "title": "AI news digest — September 21, 2026: compact builders, paper agents, judge the judges",
     "description": "AI news digest Sep 21: Qwen-Image-2.1 7B, Jev plus open Kev decision models, Atria Dawn MIT agent, Paper2Agent, virtual biotech, ScientistTwo.",
