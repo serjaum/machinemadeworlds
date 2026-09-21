@@ -538,6 +538,21 @@ def game_page_copy(root, g):
             restart=('Every run lasts 90 seconds or until your three lives run out. '
                      'Your best score stays in this browser. Press Restart (or Enter) '
                      'any time for a fresh drift.'))
+    if g['slug'] == 'star-chime':
+        return dict(
+            crumb='Star Chime', eyebrow='Star Chime',
+            headline='Hear the tune. Play it back<span class="accent-dot">.</span>',
+            standfirst=('An audio-first sequence-memory game. Repeat the growing '
+                        'tune across twelve rounds — three lives, two hints a round.'),
+            stage=(root / 'templates/game-stage-chime.html').read_text(encoding='utf-8'),
+            motto='Soft ears.<br />Sure hands.',
+            howto=('Watch the four pads glow and sing, then tap them back in order — '
+                   'or press keys 1 to 4. Each round adds one note up to twelve rounds. '
+                   'A wrong pad costs a life; you get three. P or Esc pauses, '
+                   'H spends a hint (two per round), M mutes the tones.'),
+            restart=('Every run restarts at round one with three fresh lives, and your '
+                     'best score stays in this browser. Press Replay (or Enter) '
+                     'any time for a fresh tune.'))
     raise ValueError('Game page has no template: %s' % g['slug'])
 
 

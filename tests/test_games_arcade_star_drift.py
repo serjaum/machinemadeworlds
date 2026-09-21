@@ -253,6 +253,7 @@ class DriftIsolationTests(unittest.TestCase):
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
                     'games/star-drift/index.html',
+                    'games/star-chime/index.html',
                     'sitemap.xml',
                     'metrics/index.html',
                     'llms.txt',

@@ -1,13 +1,14 @@
-"""Star Relay arcade contract (MAC-700 parent spec sections 5-10).
+"""Star Chime arcade contract (MAC-756 parent spec sections 5-8).
 
-Run: python -m pytest tests/test_games_arcade_star_relay.py -q
-Gates: /games/star-relay/ renders the DOM-grid variant; zero external
-URLs/imports/sinks in game files; JS <= 20KB and CSS <= 8KB unminified;
-page weight (HTML+CSS+JS excl. shared chrome) <= 45KB; zero render work
-idle (no RAF); pause/retry/level/mute hooks; reduced-motion branch plus
-manual still toggle; single live region; 44px targets; sampled contrast
-on real token pairs; all 6 levels solvable by construction (node-driven
-generation test with a static fallback); no secrets.
+Run: python -m pytest tests/test_games_arcade_star_chime.py -q
+Gates: /games/star-chime/ renders the audio-first memory variant; zero
+external URLs/imports/sinks in game files; JS <= 20KB and CSS <= 8KB
+unminified; page weight (HTML+CSS+JS excl. shared chrome) <= 45KB;
+timer-only playback idle (setTimeout, no RAF, no intervals);
+start/pause/replay/hint/mute hooks; reduced-motion branch; single live
+region; 48px targets; sampled contrast on real token pairs; all 12
+rounds winnable by construction (node-driven generation test);
+no secrets.
 """
 import importlib.util
 import json
@@ -19,15 +20,14 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('mmw_relay_build', ROOT / 'scripts/build.py')
+spec = importlib.util.spec_from_file_location('mmw_chime_build', ROOT / 'scripts/build.py')
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
 
-GAME_JS = ROOT / 'assets/games/star-relay.js'
-GAME_CSS = ROOT / 'assets/games/star-relay.css'
-GAME_JSON = ROOT / 'content/games/star-relay.json'
-PROGRESS_KEY = 'mmw-star-relay-progress'
-BEST_KEY = 'mmw-star-relay-best'
+GAME_JS = ROOT / 'assets/games/star-chime.js'
+GAME_CSS = ROOT / 'assets/games/star-chime.css'
+GAME_JSON = ROOT / 'content/games/star-chime.json'
+BEST_KEY = 'mmw.star-chime.best.v1'
 
 SITE_TOKENS = ('--bg', '--surface', '--raised', '--ink', '--muted', '--line',
                '--accent', '--accent-ink', '--art', '--art-line', '--art-core',
@@ -78,32 +78,32 @@ class TagCounter(HTMLParser):
             self.buttons.append(attrs)
 
 
-class RelayRouteTests(unittest.TestCase):
+class ChimeRouteTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         builder.build(ROOT)
-        cls.page = (ROOT / 'dist/games/star-relay/index.html').read_text(encoding='utf-8')
+        cls.page = (ROOT / 'dist/games/star-chime/index.html').read_text(encoding='utf-8')
         cls.tags = TagCounter(cls.page)
 
-    def test_grid_variant_shell(self):
+    def test_pads_and_hud_shell(self):
         self.assertEqual(self.tags.h1, 1)
         self.assertEqual(len(self.tags.canvas), 0)
-        self.assertIn('data-relay-board', self.page)
+        self.assertIn('data-chime-pads', self.page)
         self.assertIn('role="group"', self.page)
-        for hook in ('data-hud="level"', 'data-hud="moves"',
-                     'data-hud="score"', 'data-hud="best"'):
+        for pad in ('data-pad="1"', 'data-pad="2"', 'data-pad="3"', 'data-pad="4"'):
+            self.assertIn(pad, self.page)
+        for hook in ('data-hud="round"', 'data-hud="score"',
+                     'data-hud="lives"', 'data-hud="best"'):
             self.assertIn(hook, self.page)
-        for action in ('start', 'pause', 'retry', 'levels', 'motion', 'mute',
-                       'resume', 'next', 'again', 'close'):
+        for action in ('start', 'pause', 'replay', 'hint', 'mute', 'resume'):
             self.assertIn('data-action="%s"' % action, self.page)
-        for panel in ('start', 'paused', 'complete', 'campaign', 'stuck', 'levels'):
+        for panel in ('start', 'paused', 'complete', 'victory'):
             self.assertIn('data-overlay="%s"' % panel, self.page)
-        self.assertIn('data-level-list', self.page)
         self.assertIn('data-complete-text', self.page)
-        self.assertIn('data-campaign-text', self.page)
+        self.assertIn('data-victory-text', self.page)
         self.assertIn('How to play', self.page)
         self.assertIn('Devlog', self.page)
-        self.assertIn('no canvas, no animation loop, no timer', self.page)
+        self.assertIn('state machine', self.page)
         self.assertIn('<noscript>', self.page)
 
     def test_single_live_region_outside_hud(self):
@@ -114,16 +114,21 @@ class RelayRouteTests(unittest.TestCase):
         self.assertNotIn('aria-live', hud)
 
     def test_all_controls_are_native_buttons(self):
-        self.assertGreaterEqual(len(self.tags.buttons), 17)
+        self.assertGreaterEqual(len(self.tags.buttons), 14)
         for attrs in self.tags.buttons:
             self.assertEqual(attrs.get('type'), 'button')
 
-    def test_sitemap_lists_relay_route(self):
+    def test_sitemap_lists_chime_route(self):
         sitemap = (ROOT / 'dist/sitemap.xml').read_text(encoding='utf-8')
-        self.assertIn('<loc>https://machinemadeworlds.com/games/star-relay/</loc>', sitemap)
+        self.assertIn('<loc>https://machinemadeworlds.com/games/star-chime/</loc>', sitemap)
+
+    def test_index_lists_fourth_game_with_note(self):
+        index = (ROOT / 'dist/games/index.html').read_text(encoding='utf-8')
+        self.assertIn('<a href="/games/star-chime/">Star Chime</a>', index)
+        self.assertIn('More games coming.', index)
 
 
-class RelaySourceTests(unittest.TestCase):
+class ChimeSourceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.js = GAME_JS.read_text(encoding='utf-8')
@@ -131,7 +136,7 @@ class RelaySourceTests(unittest.TestCase):
         cls.site_css = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
 
     def test_zero_external_urls_imports_and_sinks(self):
-        for name, source in (('relay js', self.js), ('relay css', self.css)):
+        for name, source in (('chime js', self.js), ('chime css', self.css)):
             lowered = source.lower()
             self.assertNotIn('http', lowered, name)
             self.assertNotIn('import', lowered, name)
@@ -144,48 +149,52 @@ class RelaySourceTests(unittest.TestCase):
         self.assertNotIn('eval(', self.js)
         self.assertNotIn('document.write', self.js)
 
-    def test_zero_render_work_idle(self):
+    def test_timer_only_playback_idle(self):
+        self.assertIn('setTimeout', self.js)
         self.assertNotIn('requestAnimationFrame', self.js)
         self.assertNotIn('setInterval', self.js)
-        self.assertNotIn('setTimeout', self.js)
 
     def test_flow_input_and_audio_hooks(self):
-        for hook in ('data-relay-board', 'data-hud="level"', 'data-hud="moves"',
-                     'data-hud="score"', 'data-hud="best"', 'data-action',
-                     'data-overlay', 'data-level-list'):
+        for hook in ('data-chime-pads', 'data-hud="round"', 'data-hud="score"',
+                     'data-hud="lives"', 'data-hud="best"', 'data-action',
+                     'data-overlay', 'data-pad'):
             self.assertIn(hook, self.js)
-        for action in ("'pause'", "'retry'", "'levels'", "'motion'",
-                       "'start'", "'mute'", "'resume'", "'next'", "'again'"):
+        for action in ("'pause'", "'replay'", "'hint'",
+                       "'start'", "'mute'", "'resume'"):
             self.assertIn(action, self.js)
-        for key in ('ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
-                    'KeyR', 'KeyP', 'KeyM', 'KeyN', 'Escape', 'Enter', 'Space'):
+        for key in ('Enter', 'Digit1', 'Digit2', 'Digit3', 'Digit4',
+                    'KeyP', 'KeyH', 'KeyM', 'Escape'):
             self.assertIn(key, self.js)
+        for state in ("'idle'", "'showing'", "'input'", "'round-clear'",
+                      "'mistake'", "'gameover'", "'victory'"):
+            self.assertIn(state, self.js)
         self.assertIn('AudioContext', self.js)
         self.assertIn('textContent', self.js)
 
-    def test_progress_storage_is_namespaced_integer_only(self):
-        for key in (PROGRESS_KEY, BEST_KEY):
-            self.assertIn(key, self.js)
+    def test_timing_constants_and_rules(self):
+        for marker in ('WIN_ROUNDS', 'MAX_LIVES = 3', 'MAX_HINTS = 2',
+                       '450', '250', '280', '0.95'):
+            self.assertIn(marker, self.js)
+        self.assertIn('12', self.js)
+
+    def test_best_storage_is_namespaced_integer_only(self):
+        self.assertIn(BEST_KEY, self.js)
         self.assertIn('parseInt', self.js)
         self.assertIn('localStorage', self.js)
         self.assertIn('try', self.js)
 
-    def test_reduced_motion_branch_plus_manual_still(self):
+    def test_reduced_motion_branch_without_motion_css(self):
         self.assertIn('prefers-reduced-motion', self.js)
         self.assertIn('matchMedia', self.js)
-        self.assertIn('relay-still', self.js)
+        self.assertIn('chime-still', self.js)
         self.assertIn('prefers-reduced-motion', self.css)
         self.assertNotIn('@keyframes', self.css)
         self.assertNotIn('animation', self.css)
-
-    def test_solvable_by_construction_markers(self):
-        for marker in ('buildPath', 'scramble', 'flow(', 'fixCost', 'optimal', 'budget'):
-            self.assertIn(marker, self.js)
-        self.assertIn('LEVELS', self.js)
+        self.assertNotIn('transition', self.css)
 
     def test_no_secrets_in_game_files(self):
-        for name, source in (('relay js', self.js), ('relay css', self.css),
-                             ('relay json', GAME_JSON.read_text(encoding='utf-8'))):
+        for name, source in (('chime js', self.js), ('chime css', self.css),
+                             ('chime json', GAME_JSON.read_text(encoding='utf-8'))):
             lowered = source.lower()
             for marker in ('api_key', 'apikey', 'password', 'private key',
                            'github_pat_', 'ghp_', 'bearer '):
@@ -197,27 +206,23 @@ class RelaySourceTests(unittest.TestCase):
         for token in re.findall(r'var\((--[a-z0-9-]+)\)', self.css):
             self.assertIn(token, SITE_TOKENS, token)
         self.assertIn('touch-action: manipulation', self.css)
-        self.assertIn('@media (prefers-reduced-motion: no-preference)', self.css)
+        self.assertIn('@media (pointer: coarse)', self.css)
         self.assertIn('@media (max-width: 700px)', self.css)
 
-    def test_targets_stay_44px(self):
-        self.assertIn('min-height: 44px', self.css)
-        self.assertIn('min-height: 52px', self.css)
+    def test_targets_stay_48px(self):
         self.assertIn('min-width: 48px', self.css)
+        self.assertIn('min-height: 88px', self.css)
+        self.assertIn('min-height: 48px', self.css)
 
-    def test_metadata_levels_match_script(self):
+    def test_metadata_matches_brief(self):
         meta = json.loads(GAME_JSON.read_text(encoding='utf-8'))
-        self.assertEqual(len(meta['levels']), 6)
-        script_levels = re.findall(
-            r"\{ size: (\d), slack: (\d), tees: (\d), walls: (\d) \}", self.js)
-        self.assertEqual(len(script_levels), 6)
-        for (size, slack, tees, walls), level in zip(script_levels, meta['levels']):
-            self.assertEqual(
-                (int(size), int(slack), int(tees), int(walls)),
-                (level['size'], level['slack'], level['tees'], level['walls']))
+        self.assertEqual(meta['format'], 'Turn-based memory')
+        self.assertEqual(meta['playtime'], '5 min play')
+        self.assertLessEqual(len(meta['title']), 80)
+        self.assertNotIn('http', meta['pitch'])
 
 
-class RelayBudgetTests(unittest.TestCase):
+class ChimeBudgetTests(unittest.TestCase):
     def test_js_within_20kb(self):
         self.assertLessEqual(GAME_JS.stat().st_size, 20 * 1024)
 
@@ -225,17 +230,17 @@ class RelayBudgetTests(unittest.TestCase):
         self.assertLessEqual(GAME_CSS.stat().st_size, 8 * 1024)
 
     def test_page_weight_within_45kb_excl_chrome(self):
-        page_path = ROOT / 'dist/games/star-relay/index.html'
+        page_path = ROOT / 'dist/games/star-chime/index.html'
         html = page_path.read_bytes()
         refs = set(re.findall(rb'(?:href|src)="(/assets/[^"]+)"', html))
-        relay_refs = [ref for ref in refs if b'star-relay.' in ref]
-        self.assertTrue(relay_refs)
+        chime_refs = [ref for ref in refs if b'star-chime.' in ref]
+        self.assertTrue(chime_refs)
         game_bytes = sum((ROOT / 'dist' / ref.decode('ascii').lstrip('/')).stat().st_size
-                         for ref in relay_refs)
+                         for ref in chime_refs)
         self.assertLess(len(html) + game_bytes, 45 * 1024)
 
 
-class RelayContrastTests(unittest.TestCase):
+class ChimeContrastTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         site_css = (ROOT / 'assets/site.css').read_text(encoding='utf-8')
@@ -248,36 +253,44 @@ class RelayContrastTests(unittest.TestCase):
             self.assertGreaterEqual(contrast(theme['--muted'], theme['--surface']), 4.5, name)
 
 
-class RelaySolvabilityTests(unittest.TestCase):
+class ChimeWinnabilityTests(unittest.TestCase):
     @unittest.skipUnless(shutil.which('node'), 'node is required for the generation gate')
-    def test_all_six_levels_solvable_by_construction(self):
+    def test_all_twelve_rounds_winnable_by_construction(self):
         harness = (
-            "const R = require(%s);" % json.dumps(str(GAME_JS)) +
-            "for (let L = 0; L < 6; L++) {"
-            "  if (R.LEVELS.length !== 6) throw new Error('level count');"
-            "  for (let a = 0; a < 6; a++) {"
-            "    const g = R.generate(L, a);"
-            "    if (R.flow(g.tiles, g.size, g.row).won) throw new Error('pre-solved L' + L);"
-            "    const fixed = g.tiles.map((t, i) => Object.assign({}, t,"
-            "      { rot: (t.rot + R.fixCost(t.base, t.rot, g.home[i])) % 4 }));"
-            "    if (!R.flow(fixed, g.size, g.row).won) throw new Error('unsolvable L' + L);"
-            "    if (g.budget !== g.optimal + g.slack) throw new Error('budget L' + L);"
+            "const C = require(%s);" % json.dumps(str(GAME_JS)) +
+            "if (C.WIN_ROUNDS !== 12) throw new Error('win rounds');"
+            "if (C.MAX_LIVES !== 3) throw new Error('lives');"
+            "if (C.MAX_HINTS !== 2) throw new Error('hints');"
+            "if (C.flashMs(1) !== 450) throw new Error('base flash');"
+            "if (C.gapMs(1) !== 250) throw new Error('base gap');"
+            "let total = 0;"
+            "for (let r = 1; r <= C.WIN_ROUNDS; r++) {"
+            "  const len = C.roundLen(r);"
+            "  if (len !== r + 2) throw new Error('length r' + r);"
+            "  const seq = C.buildRound(1000 + r, len);"
+            "  if (seq.length !== len) throw new Error('seq r' + r);"
+            "  for (const pad of seq) {"
+            "    if (pad < 1 || pad > 4) throw new Error('pad range r' + r);"
+            "    total += 1;"
             "  }"
+            "  if (r > 1 && C.flashMs(r) > C.flashMs(r - 1)) throw new Error('quicken r' + r);"
             "}"
-            "console.log('SOLVABILITY OK');"
+            "if (C.flashMs(500) !== 280) throw new Error('flash floor');"
+            "if (total !== 102) throw new Error('score ' + total);"
+            "console.log('WINNABILITY OK');"
         )
         proc = subprocess.run(['node', '-e', harness], capture_output=True,
                               text=True, timeout=120)
         self.assertEqual(proc.returncode, 0, proc.stderr[-2000:])
-        self.assertIn('SOLVABILITY OK', proc.stdout)
+        self.assertIn('WINNABILITY OK', proc.stdout)
 
 
-class RelayIsolationTests(unittest.TestCase):
+class ChimeIsolationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         builder.build(ROOT)
 
-    def test_relay_strings_stay_in_carriers(self):
+    def test_chime_strings_stay_in_carriers(self):
         carriers = {'index.html',
                     'games/index.html',
                     'games/star-harvest/index.html',
@@ -295,12 +308,12 @@ class RelayIsolationTests(unittest.TestCase):
             if rel in carriers or rel.startswith('build-log/'):
                 continue
             source = path.read_text(encoding='utf-8')
-            self.assertNotIn('star-relay', source.lower(), rel)
+            self.assertNotIn('star-chime', source.lower(), rel)
 
-    def test_relay_game_accepted_by_loader(self):
+    def test_chime_game_accepted_by_loader(self):
         games = builder.load_games(ROOT)
         slugs = [g['slug'] for g in games]
-        self.assertEqual(sorted(slugs), ['star-chime', 'star-drift', 'star-harvest', 'star-relay'])
+        self.assertIn('star-chime', slugs)
 
 
 if __name__ == '__main__':
