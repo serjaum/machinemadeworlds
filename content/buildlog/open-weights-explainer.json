@@ -12,8 +12,8 @@
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/87",
   "branch": "feat/open-weights-explainer",
   "commit": "7e1eded4",
-  "merge_sha": null,
-  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": "932591579efd9cd23fe3cb98236c7ba45e5fecae",
+  "merge_note": "Merged via PR #87 on 2026-09-19.",
   "agents": [
     "Director"
   ],
