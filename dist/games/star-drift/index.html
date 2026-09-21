@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Star Harvest — Machine Made Worlds</title>
-    <meta name="description" content="Star Harvest is a 90-second canvas arcade run: pilot a small ship, gather drifting star sparks, dodge polygon rocks, and chain quick pickups into a combo multiplier." />
-    <link rel="canonical" href="https://machinemadeworlds.com/games/star-harvest/" />
+    <title>Star Drift — Machine Made Worlds</title>
+    <meta name="description" content="Star Drift is a 90-second canvas arcade dodger: steer a small ship through falling debris, hold Space to brake, gather star sparks and chain quick pickups into a combo multiplier." />
+    <link rel="canonical" href="https://machinemadeworlds.com/games/star-drift/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -34,18 +34,18 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Star Harvest — Machine Made Worlds" />
-    <meta property="og:description" content="Star Harvest is a 90-second canvas arcade run: pilot a small ship, gather drifting star sparks, dodge polygon rocks, and chain quick pickups into a combo multiplier." />
-    <meta property="og:url" content="https://machinemadeworlds.com/games/star-harvest/" />
+    <meta property="og:title" content="Star Drift — Machine Made Worlds" />
+    <meta property="og:description" content="Star Drift is a 90-second canvas arcade dodger: steer a small ship through falling debris, hold Space to brake, gather star sparks and chain quick pickups into a combo multiplier." />
+    <meta property="og:url" content="https://machinemadeworlds.com/games/star-drift/" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "VideoGame", "name": "Star Harvest — Machine Made Worlds", "url": "https://machinemadeworlds.com/games/star-harvest/", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "VideoGame", "name": "Star Drift — Machine Made Worlds", "url": "https://machinemadeworlds.com/games/star-drift/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.f7ceb0112d60.js" defer></script>
     <link rel="stylesheet" href="/assets/star-drift.e7a0be9571d6.css" />
     <link rel="stylesheet" href="/assets/star-harvest.52a1e482f704.css" />
     <link rel="stylesheet" href="/assets/star-relay.46db16a338a3.css" />
-    <script src="/assets/star-harvest.f600b4a2b1be.js" defer></script>
+    <script src="/assets/star-drift.e03838f651ac.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -84,16 +84,16 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       </div>
     </header>
     <main id="main" tabindex="-1"><div class="container">
-  <p class="breadcrumbs"><a href="/games/">Arcade</a><span aria-hidden="true"> / </span><span>Star Harvest</span></p>
+  <p class="breadcrumbs"><a href="/games/">Arcade</a><span aria-hidden="true"> / </span><span>Star Drift</span></p>
   <header class="page-heading" data-od-id="game-heading">
-    <p class="eyebrow">Star Harvest</p>
-    <h1>Gather stars. Dodge rocks<span class="accent-dot">.</span></h1>
-    <p>A 90-second arcade run. Chain quick pickups to grow your combo — three hits ends the flight.</p>
+    <p class="eyebrow">Star Drift</p>
+    <h1>Thread the debris. Brake late<span class="accent-dot">.</span></h1>
+    <p>A 90-second arcade dodger. Steer through falling debris, hold Space to brake, chain quick pickups — three hits ends the flight.</p>
   </header>
   <section class="game-stage" aria-labelledby="game-title">
-    <h2 id="game-title" class="sr-only">Star Harvest game</h2>
+    <h2 id="game-title" class="sr-only">Star Drift game</h2>
     <div class="game-canvas-wrap">
-      <canvas id="star-harvest" width="800" height="500" role="img" aria-label="Star Harvest playfield: pilot a ship, collect star sparks, avoid polygon asteroids"></canvas>
+      <canvas id="star-drift" width="800" height="500" role="img" aria-label="Star Drift playfield: steer a ship through falling debris, brake with Space"></canvas>
     </div>
     <dl class="game-hud" aria-label="Game status">
       <div><dt>Score</dt><dd data-hud="score">0</dd></div>
@@ -109,7 +109,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       <button type="button" class="button" data-action="restart">Restart</button>
       <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
     </div>
-    <p class="game-hint" data-hint>Drag to steer on touch, or use arrow keys / WASD. P pauses, M mutes.</p>
+    <p class="game-hint" data-hint>Drag to steer on touch, or use arrow keys / WASD. Hold Space to brake, P pauses, M mutes.</p>
     <div class="game-pad" data-pad>
       <button type="button" data-dir="up" aria-label="Steer up">↑</button>
       <button type="button" data-dir="left" aria-label="Steer left">←</button>
@@ -117,15 +117,16 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       <button type="button" data-dir="right" aria-label="Steer right">→</button>
     </div>
   </section>
+
   <div class="about-layout">
-    <aside><p class="eyebrow">How to play</p><p class="about-motto">Quick hands.<br />Calm nerves.</p></aside>
+    <aside><p class="eyebrow">How to play</p><p class="about-motto">Loose helm.<br />Late braking.</p></aside>
     <div class="article-body">
       <h2>How to play</h2>
-      <p>Thrust with arrow keys or WASD, drag on touch. Collect star sparks for points — grab them less than 2.5 seconds apart to grow your combo. Polygon rocks cost a life; you get three. P or Esc pauses, Enter starts or restarts, M mutes the bleeps.</p>
+      <p>Thrust with arrow keys or WASD, drag on touch. Hold Space to brake into gaps. Collect star sparks for points — grab them less than 2.5 seconds apart to grow your combo. Falling debris costs a life; you get three. P or Esc pauses, Enter starts or restarts, M mutes the bleeps.</p>
       <h2>Restart</h2>
-      <p>Every run lasts 90 seconds or until your three lives run out. Your best score stays in this browser. Press Restart (or Enter) any time for a fresh flight.</p>
+      <p>Every run lasts 90 seconds or until your three lives run out. Your best score stays in this browser. Press Restart (or Enter) any time for a fresh drift.</p>
       <h2>Devlog</h2>
-      <p>The arcade starts with restraint: one canvas, one script, no dependencies. Star Harvest draws every sprite procedurally each frame, so there are no image assets to audit and nothing to download. The combo multiplier is the only system beyond steer, collect and dodge, and it teaches the whole game: quick pickups raise the stakes, a hit or a slow gap resets them. Timing runs on requestAnimationFrame with a capped delta and a fixed pool of particles, and the palette is read from the site tokens at boot so both themes stay correct without extra rules.</p>
+      <p>The third arcade ship reuses the Harvest flight engine with a heavier helm: the same canvas, HUD and synthesized bleeps, but thrust now answers a stronger damper while Space brakes hard, so threading debris feels like drifting rather than darting. Rocks fall just as fast and the combo window stays at 2.5 seconds, which keeps the whole family on one skill curve. Palette still resolves from computed site tokens at boot, particles still vanish under reduced motion, and the best score lives in its own guarded browser key.</p>
     </div>
   </div>
 </div>

@@ -1,0 +1,49 @@
+{
+  "agents": [
+    "DEV"
+  ],
+  "branch": "feat/star-drift-games",
+  "commit": "f372cb50d6ab11b8197e3051447d150823493c83",
+  "date": "2026-09-21",
+  "description": "Star Drift joins the site arcade: a 90-second canvas dodger that threads falling debris with a Space brake, beside Star Harvest and Star Relay on the games index.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "The arcade grows a third shelf. Star Drift is a 90-second canvas dodger with a Space brake and a combo multiplier, and the games index lists it beside the first two games. Everything is vanilla script and tokens, with hashed same-origin assets and no network calls.",
+  "mac_id": "MAC-653",
+  "merge_note": "Pre-merge: this entry ships in the same change per the standing rule; the merge identifier is recorded after the gate passes on the exact head.",
+  "merge_sha": null,
+  "pr": 91,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/91",
+  "reasoning": {
+    "DEV": "Development rebased the stale Star Drift branch onto the merged arcade line and rebuilt the game on the current family contract: metadata with format and playtime, a stage fragment on the shared shell, a vanilla script ported from the Harvest engine with a Space brake, a token-only stylesheet, and a builder route with hashed assets, then logged the change in the same branch. The arcade suite, the rebuild and the presence checks run green before review, with contrast and weight budgets sampled and reported."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Rebased the stale branch onto the merged arcade line and ported the game onto the current family contract.",
+      "sha": "f372cb5",
+      "stage": "Branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Added the game metadata, stage fragment, script with Space brake, stylesheet, builder route and tests in the same branch.",
+      "sha": "f372cb5",
+      "stage": "Implement",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-21",
+      "rationale": "Rebuilt the site, ran the arcade suite and the presence checks green, and sampled contrast and weight budgets.",
+      "sha": "f372cb5",
+      "stage": "Verify",
+      "verdict": "done"
+    }
+  ],
+  "title": "Star Drift joins the arcade",
+  "topic": "design"
+}
