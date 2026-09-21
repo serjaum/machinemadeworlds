@@ -82,10 +82,11 @@ class ArcadeRouteTests(unittest.TestCase):
         cls.tags = TagCounter(cls.page)
 
     def test_index_lists_game_with_more_coming_note(self):
-        self.assertEqual(self.index.count('<article class="story"'), 3)
+        self.assertEqual(self.index.count('<article class="story"'), 4)
         self.assertIn('<a href="/games/star-harvest/">Star Harvest</a>', self.index)
         self.assertIn('<a href="/games/star-relay/">Star Relay</a>', self.index)
         self.assertIn('<a href="/games/star-drift/">Star Drift</a>', self.index)
+        self.assertIn('<a href="/games/star-chime/">Star Chime</a>', self.index)
         self.assertIn('More games coming.', self.index)
         self.assertIn('class="callout game-note"', self.index)
         self.assertIn('<title>The arcade', self.index)
@@ -275,6 +276,7 @@ class ArcadeIsolationTests(unittest.TestCase):
                     'games/star-harvest/index.html',
                     'games/star-relay/index.html',
                     'games/star-drift/index.html',
+                    'games/star-chime/index.html',
                     'games/star-relay/index.html',
                     'sitemap.xml',
                     'metrics/index.html',
@@ -294,7 +296,7 @@ class ArcadeIsolationTests(unittest.TestCase):
         self.assertIn('data-od-id="arcade"', home)
         self.assertIn('href="/games/"', home)
         self.assertIn('Play in the arcade', home)
-        for slug in ('star-harvest', 'star-drift', 'star-relay'):
+        for slug in ('star-harvest', 'star-drift', 'star-relay', 'star-chime'):
             self.assertIn('/games/%s/' % slug, home)
         self.assertIn('/games/', home)
 

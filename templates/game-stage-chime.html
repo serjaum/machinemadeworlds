@@ -1,0 +1,56 @@
+<section class="game-stage" aria-labelledby="game-title">
+  <h2 id="game-title" class="sr-only">Star Chime game</h2>
+  <div class="chime-pads" data-chime-pads role="group" aria-label="Chime pads: four tones. Watch the sequence, then repeat it">
+    <button type="button" class="chime-pad" data-pad="1" aria-label="Chime pad 1, low tone"><span class="chime-glyph" aria-hidden="true">1</span><span class="chime-note" aria-hidden="true">Do</span></button>
+    <button type="button" class="chime-pad" data-pad="2" aria-label="Chime pad 2, mid-low tone"><span class="chime-glyph" aria-hidden="true">2</span><span class="chime-note" aria-hidden="true">Mi</span></button>
+    <button type="button" class="chime-pad" data-pad="3" aria-label="Chime pad 3, mid-high tone"><span class="chime-glyph" aria-hidden="true">3</span><span class="chime-note" aria-hidden="true">Sol</span></button>
+    <button type="button" class="chime-pad" data-pad="4" aria-label="Chime pad 4, high tone"><span class="chime-glyph" aria-hidden="true">4</span><span class="chime-note" aria-hidden="true">La</span></button>
+  </div>
+  <dl class="game-hud" aria-label="Game status">
+    <div><dt>Round</dt><dd data-hud="round">1 / 12</dd></div>
+    <div><dt>Score</dt><dd data-hud="score">0</dd></div>
+    <div><dt>Lives</dt><dd data-hud="lives">3</dd></div>
+    <div><dt>Best</dt><dd data-hud="best">0</dd></div>
+  </dl>
+  <p class="sr-only" role="status" data-game-status>Star Chime ready. Open the start panel to play.</p>
+  <div class="game-controls">
+    <button type="button" class="button" data-action="start">Start</button>
+    <button type="button" class="button" data-action="pause">Pause</button>
+    <button type="button" class="button" data-action="replay">Replay</button>
+    <button type="button" class="button" data-action="hint">Hint</button>
+    <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
+  </div>
+  <p class="game-hint">Watch the pads glow, then press 1 to 4 (or tap a pad) to repeat the tune. P pauses, H asks for a hint, M mutes.</p>
+  <div data-overlays>
+    <div class="chime-overlay" data-overlay="start">
+      <h3>Hear it, play it back</h3>
+      <p>Four pads sing a short tune that grows by one note each round. Repeat all twelve rounds to win. A wrong pad costs a life; you get three.</p>
+      <div class="chime-overlay-row">
+        <button type="button" class="button" data-action="start">Play</button>
+      </div>
+    </div>
+    <div class="chime-overlay" data-overlay="paused" hidden>
+      <h3>Paused</h3>
+      <p>The tune waits. Resume replays the current round from the top.</p>
+      <div class="chime-overlay-row">
+        <button type="button" class="button" data-action="resume">Resume</button>
+        <button type="button" class="button" data-action="replay">Restart run</button>
+      </div>
+    </div>
+    <div class="chime-overlay" data-overlay="complete" hidden>
+      <h3>Out of chimes</h3>
+      <p data-complete-text></p>
+      <div class="chime-overlay-row">
+        <button type="button" class="button" data-action="replay">Try again</button>
+      </div>
+    </div>
+    <div class="chime-overlay" data-overlay="victory" hidden>
+      <h3>All twelve rounds ring out</h3>
+      <p data-victory-text></p>
+      <div class="chime-overlay-row">
+        <button type="button" class="button" data-action="replay">Play again</button>
+      </div>
+    </div>
+  </div>
+  <noscript><p>Star Chime needs JavaScript to play: the tune is sequenced locally in your browser.</p></noscript>
+</section>

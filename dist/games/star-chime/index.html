@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Star Relay — Machine Made Worlds</title>
-    <meta name="description" content="Star Relay is a turn-based relay puzzle: rotate tiles on a small grid to carry power from the reactor to the beacon before the move budget runs out, across six short levels." />
-    <link rel="canonical" href="https://machinemadeworlds.com/games/star-relay/" />
+    <title>Star Chime — Machine Made Worlds</title>
+    <meta name="description" content="Star Chime is an audio-first sequence-memory game: watch four pads glow and sing, then repeat the growing tune across twelve rounds with three lives and two hints per round." />
+    <link rel="canonical" href="https://machinemadeworlds.com/games/star-chime/" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f7f8f4" />
     <script>
@@ -34,19 +34,19 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Machine Made Worlds" />
-    <meta property="og:title" content="Star Relay — Machine Made Worlds" />
-    <meta property="og:description" content="Star Relay is a turn-based relay puzzle: rotate tiles on a small grid to carry power from the reactor to the beacon before the move budget runs out, across six short levels." />
-    <meta property="og:url" content="https://machinemadeworlds.com/games/star-relay/" />
+    <meta property="og:title" content="Star Chime — Machine Made Worlds" />
+    <meta property="og:description" content="Star Chime is an audio-first sequence-memory game: watch four pads glow and sing, then repeat the growing tune across twelve rounds with three lives and two hints per round." />
+    <meta property="og:url" content="https://machinemadeworlds.com/games/star-chime/" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
-      {"@context": "https://schema.org", "@type": "VideoGame", "name": "Star Relay — Machine Made Worlds", "url": "https://machinemadeworlds.com/games/star-relay/", "inLanguage": "en"}
+      {"@context": "https://schema.org", "@type": "VideoGame", "name": "Star Chime — Machine Made Worlds", "url": "https://machinemadeworlds.com/games/star-chime/", "inLanguage": "en"}
     </script>
     <script src="/assets/site.f7ceb0112d60.js" defer></script>
     <link rel="stylesheet" href="/assets/star-chime.755b9059dc87.css" />
     <link rel="stylesheet" href="/assets/star-drift.e7a0be9571d6.css" />
     <link rel="stylesheet" href="/assets/star-harvest.52a1e482f704.css" />
     <link rel="stylesheet" href="/assets/star-relay.46db16a338a3.css" />
-    <script src="/assets/star-relay.b584fdbfcd20.js" defer></script>
+    <script src="/assets/star-chime.d0f698ecdbce.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -86,92 +86,78 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       </div>
     </header>
     <main id="main" tabindex="-1"><div class="container">
-  <p class="breadcrumbs"><a href="/games/">Arcade</a><span aria-hidden="true"> / </span><span>Star Relay</span></p>
+  <p class="breadcrumbs"><a href="/games/">Arcade</a><span aria-hidden="true"> / </span><span>Star Chime</span></p>
   <header class="page-heading" data-od-id="game-heading">
-    <p class="eyebrow">Star Relay</p>
-    <h1>Link the reactor to the beacon<span class="accent-dot">.</span></h1>
-    <p>A turn-based relay puzzle. Rotate tiles to carry power across six quiet levels — no timer, just a move budget.</p>
+    <p class="eyebrow">Star Chime</p>
+    <h1>Hear the tune. Play it back<span class="accent-dot">.</span></h1>
+    <p>An audio-first sequence-memory game. Repeat the growing tune across twelve rounds — three lives, two hints a round.</p>
   </header>
 <section class="game-stage" aria-labelledby="game-title">
-  <h2 id="game-title" class="sr-only">Star Relay game</h2>
-  <div class="relay-board" data-relay-board role="group" aria-label="Relay grid: rotate tiles to link the reactor to the beacon"></div>
+  <h2 id="game-title" class="sr-only">Star Chime game</h2>
+  <div class="chime-pads" data-chime-pads role="group" aria-label="Chime pads: four tones. Watch the sequence, then repeat it">
+    <button type="button" class="chime-pad" data-pad="1" aria-label="Chime pad 1, low tone"><span class="chime-glyph" aria-hidden="true">1</span><span class="chime-note" aria-hidden="true">Do</span></button>
+    <button type="button" class="chime-pad" data-pad="2" aria-label="Chime pad 2, mid-low tone"><span class="chime-glyph" aria-hidden="true">2</span><span class="chime-note" aria-hidden="true">Mi</span></button>
+    <button type="button" class="chime-pad" data-pad="3" aria-label="Chime pad 3, mid-high tone"><span class="chime-glyph" aria-hidden="true">3</span><span class="chime-note" aria-hidden="true">Sol</span></button>
+    <button type="button" class="chime-pad" data-pad="4" aria-label="Chime pad 4, high tone"><span class="chime-glyph" aria-hidden="true">4</span><span class="chime-note" aria-hidden="true">La</span></button>
+  </div>
   <dl class="game-hud" aria-label="Game status">
-    <div><dt>Level</dt><dd data-hud="level">1 / 6</dd></div>
-    <div><dt>Moves left</dt><dd data-hud="moves">0</dd></div>
+    <div><dt>Round</dt><dd data-hud="round">1 / 12</dd></div>
     <div><dt>Score</dt><dd data-hud="score">0</dd></div>
+    <div><dt>Lives</dt><dd data-hud="lives">3</dd></div>
     <div><dt>Best</dt><dd data-hud="best">0</dd></div>
   </dl>
-  <p class="sr-only" role="status" data-game-status>Star Relay ready. Open the start panel to play.</p>
+  <p class="sr-only" role="status" data-game-status>Star Chime ready. Open the start panel to play.</p>
   <div class="game-controls">
     <button type="button" class="button" data-action="start">Start</button>
     <button type="button" class="button" data-action="pause">Pause</button>
-    <button type="button" class="button" data-action="retry">Retry</button>
-    <button type="button" class="button" data-action="levels">Levels</button>
-    <button type="button" class="button" data-action="motion" aria-pressed="false">Motion on</button>
+    <button type="button" class="button" data-action="replay">Replay</button>
+    <button type="button" class="button" data-action="hint">Hint</button>
     <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
   </div>
-  <p class="game-hint">Tap a tile (or focus it and press R, Space or Enter) to rotate it. Arrows move focus, P pauses, N retries, M mutes.</p>
+  <p class="game-hint">Watch the pads glow, then press 1 to 4 (or tap a pad) to repeat the tune. P pauses, H asks for a hint, M mutes.</p>
   <div data-overlays>
-    <div class="relay-overlay" data-overlay="start">
-      <h3>Link the reactor</h3>
-      <p>Twist each relay so power flows from the reactor to the beacon before the move budget runs out. Lit tiles carry power.</p>
-      <div class="relay-overlay-row">
+    <div class="chime-overlay" data-overlay="start">
+      <h3>Hear it, play it back</h3>
+      <p>Four pads sing a short tune that grows by one note each round. Repeat all twelve rounds to win. A wrong pad costs a life; you get three.</p>
+      <div class="chime-overlay-row">
         <button type="button" class="button" data-action="start">Play</button>
-        <button type="button" class="button" data-action="levels">Levels</button>
       </div>
     </div>
-    <div class="relay-overlay" data-overlay="paused" hidden>
+    <div class="chime-overlay" data-overlay="paused" hidden>
       <h3>Paused</h3>
-      <p>The board waits. Nothing ticks while you think.</p>
-      <div class="relay-overlay-row">
+      <p>The tune waits. Resume replays the current round from the top.</p>
+      <div class="chime-overlay-row">
         <button type="button" class="button" data-action="resume">Resume</button>
-        <button type="button" class="button" data-action="retry">Retry level</button>
+        <button type="button" class="button" data-action="replay">Restart run</button>
       </div>
     </div>
-    <div class="relay-overlay" data-overlay="complete" hidden>
-      <h3>Relay linked</h3>
+    <div class="chime-overlay" data-overlay="complete" hidden>
+      <h3>Out of chimes</h3>
       <p data-complete-text></p>
-      <div class="relay-overlay-row">
-        <button type="button" class="button" data-action="next">Next level</button>
-        <button type="button" class="button" data-action="levels">Levels</button>
+      <div class="chime-overlay-row">
+        <button type="button" class="button" data-action="replay">Try again</button>
       </div>
     </div>
-    <div class="relay-overlay" data-overlay="campaign" hidden>
-      <h3>All six relays hum</h3>
-      <p data-campaign-text></p>
-      <div class="relay-overlay-row">
-        <button type="button" class="button" data-action="again">Play again</button>
-        <button type="button" class="button" data-action="levels">Levels</button>
-      </div>
-    </div>
-    <div class="relay-overlay" data-overlay="stuck" hidden>
-      <h3>Out of moves</h3>
-      <p>The budget ran out before the beacon lit. Retry deals a fresh scramble of the same level.</p>
-      <div class="relay-overlay-row">
-        <button type="button" class="button" data-action="retry">Retry</button>
-        <button type="button" class="button" data-action="levels">Levels</button>
-      </div>
-    </div>
-    <div class="relay-overlay" data-overlay="levels" hidden>
-      <h3>Levels</h3>
-      <p>Six short relays. Later ones unlock as you link earlier ones.</p>
-      <div class="relay-levels" data-level-list></div>
-      <div class="relay-overlay-row">
-        <button type="button" class="button" data-action="close">Close</button>
+    <div class="chime-overlay" data-overlay="victory" hidden>
+      <h3>All twelve rounds ring out</h3>
+      <p data-victory-text></p>
+      <div class="chime-overlay-row">
+        <button type="button" class="button" data-action="replay">Play again</button>
       </div>
     </div>
   </div>
-  <noscript><p>Star Relay needs JavaScript to play: every move is computed locally in your browser.</p></noscript>
+  <noscript><p>Star Chime needs JavaScript to play: the tune is sequenced locally in your browser.</p></noscript>
 </section>
+
   <div class="about-layout">
-    <aside><p class="eyebrow">How to play</p><p class="about-motto">Slow hands.<br />Lit paths.</p></aside>
+    <aside><p class="eyebrow">How to play</p><p class="about-motto">Soft ears.<br />Sure hands.</p></aside>
     <div class="article-body">
       <h2>How to play</h2>
-      <p>Tap a tile to rotate it clockwise; keyboard players move focus with the arrows and rotate with R, Space or Enter. Lit tiles carry power from the reactor to the beacon — link them before the move budget runs out. P or Esc pauses, N retries the level with a fresh scramble, M mutes the bleeps.</p>
+      <p>Watch the four pads glow and sing, then tap them back in order — or press keys 1 to 4. Each round adds one note up to twelve rounds. A wrong pad costs a life; you get three. P or Esc pauses, H spends a hint (two per round), M mutes the tones.</p>
       <h2>Restart</h2>
-      <p>Every retry deals a fresh scramble of the same level, and your unlocked levels plus best score stay in this browser. Open Levels any time to replay an unlocked stage.</p>
+      <p>Every run restarts at round one with three fresh lives, and your best score stays in this browser. Press Replay (or Enter) any time for a fresh tune.</p>
       <h2>Devlog</h2>
-      <p>The second arcade ship is the deliberate opposite of the first: no canvas, no animation loop, no timer. Star Relay renders real button tiles on a CSS grid and keeps every rule in a small state machine that only runs when the player acts, so the page does zero render work while idle. Boards generate from a solved path and then scramble, which keeps all six levels solvable by construction without a solver. Power flow is recomputed on each move and lit through token colors, and progress plus best score live in guarded integer browser keys. Sound is a few oscillator bleeps created after the first gesture, with a mute switch.</p>
+      <p>The fourth arcade ship is an audio-first memory game built on the Web Audio oscillator voice the earlier games introduced, now carrying the melody instead of accenting it. The rules live in a small state machine that only wakes on player input or a single playback timer, so the page rests silent while idle. Twelve rounds quicken the flash from 450ms toward a 280ms floor, three lives forgive slips, and two hints per round replay the next note. Best score rests in a guarded browser key. Lesson one: melody is memory with the lights on. Lesson two: silence between notes matters as much as the notes.</p>
     </div>
   </div>
 </div>
