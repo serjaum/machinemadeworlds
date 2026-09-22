@@ -315,6 +315,15 @@
     "body": "Temperature is the sampling setting that controls how random a language model's next token looks, sharpening the distribution low for steady answers and flattening it high for varied ones. How it works Each step produces scores over the vocabulary and temperature divides them before sampling, so a near-zero value collapses choice onto the single best token while a value near one keeps the natural spread. Low settings suit extraction, classification, and anything graded against a right answer, because repetition beats surprise. Higher settings suit brainstorming and drafting, where a wider draw brings fresh phrasing at the cost of occasional drift. Teams pair it with nucleus sampling to cap the long tail, then fix one value per use case so behavior stays comparable across evaluations. Builders reach for temperature whenever output style must match the job: near zero for factual and repeatable work, higher for exploration where variety pays its way."
   },
   {
+    "url": "/posts/glossary-vector-database/",
+    "title": "What is Vector database?",
+    "description": "A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.",
+    "date": "2026-09-22",
+    "topic": "essays",
+    "topic_name": "Essays",
+    "body": "A vector database is a store built to keep embedding vectors and return the nearest ones to a query vector. How it works Each passage is turned into embeddings once, then filed under an approximate nearest-neighbor index that trades a little exactness for millisecond lookups at scale. At query time the same embedding step converts the question into a vector, the index returns the closest candidates, and metadata filters narrow them to the right collection or date range. That candidate set becomes the retrieved evidence for grounded generation, which is why retrieval quality decides answer quality. Exact search would scan everything; the index structure keeps the hot path fast as collections grow. Builders treat the index as versioned data: one fixed embedding model per collection, measured recall on sample queries, and filters before scale."
+  },
+  {
     "url": "/posts/gpt-6-astra-launch/",
     "title": "GPT-6 Astra: Benchmarks, Pricing, and What Solo Builders Should Do",
     "description": "GPT-6 Astra launched Sep 3, 2026: computer-use leader, 1.05M context, $10/$50 pricing. Benchmarks, limits, and solo-builder takeaways.",
