@@ -1,0 +1,47 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": "seo/per-post-og-images",
+  "commit": "e629801",
+  "date": "2026-09-22",
+  "description": "Every journal post and build-log entry now unfurls its own orbital share card with title, topic and date; indexes keep the generic brand card.",
+  "draft": false,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "Shares from different posts were visually identical because every page emitted the same brand card. Detail pages now render a deterministic per-post card while indexes keep the fallback.",
+  "mac_id": "MAC-782",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": 106,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/106",
+  "reasoning": {
+    "DEV": "The generator renders every detail card from checked-in content with the existing palette and orbital geometry. The builder stages each card with a content hash and points detail pages at their own image with title-derived alt text. The suite pins per-post uniqueness against the generic fallback, and the full run stays green with byte-identical rebuilds.",
+    "SEC": "Not evidenced in the linked record. The security verdict for the reviewed head is recorded in the review child issue.",
+    "QA": "Not evidenced in the linked record. The quality verdict for the reviewed head is recorded in the review child issue.",
+    "Director": "The change adds per-post share cards with no visual change to page chrome or the generic fallback. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head."
+  },
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-22",
+      "rationale": "Rendered deterministic per-post cards with the builder wiring and updated tests.",
+      "sha": "e6298010fb49c0650cdd8029d2b368636cc5f8df",
+      "stage": "Share-card generator",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-22",
+      "rationale": "Opened the pull request from the feature branch with the cards and the log entry.",
+      "sha": "e6298010fb49c0650cdd8029d2b368636cc5f8df",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "title": "Per-post share cards for journal and build-log pages",
+  "topic": "design"
+}

@@ -3,6 +3,10 @@
 
 Content lives in content/posts/*.json + matching HTML fragments. Layout lives
 in templates/. No runtime rendering, fetches, plugins, or build dependencies.
+
+Per-post share cards (MAC-778) are the one exception: scripts/generate-og-images.py
+renders them with Pillow at build time and is imported lazily, so a builder
+without Pillow still publishes with the generic social-card fallback.
 """
 from datetime import date, datetime, timezone
 from email.utils import format_datetime
@@ -11,6 +15,7 @@ from html import escape, unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from string import Template
+import importlib.util
 import json
 import math
 import re
@@ -1051,6 +1056,37 @@ def build(root=ROOT):
             target = staging / 'assets' / name
             target.parent.mkdir(exist_ok=True)
             target.write_bytes(data)
+    # MAC-778 per-post share cards: deterministic 1200x630 PNGs rendered at
+    # build time (scripts/generate-og-images.py, Pillow) and content-hashed
+    # like every other asset under assets/og/. Detail pages opt into their
+    # own card; every other page keeps the generic fallback. Any generation
+    # failure falls back to the generic card, never a broken og:image.
+    # Keyed by page URL, not slug: a post and a build-log entry may share a
+    # slug, and each page must carry its own card (the content hash in the
+    # filename keeps the staged files distinct).
+    og_assets = {}
+    try:
+        og_spec = importlib.util.spec_from_file_location(
+            'mmw_og_images', root / 'scripts' / 'generate-og-images.py')
+        og_module = importlib.util.module_from_spec(og_spec)
+        og_spec.loader.exec_module(og_module)
+        og_dir = staging / 'assets' / 'og'
+        og_dir.mkdir(exist_ok=True)
+        for item in posts + entries:
+            png = og_module.card_png_bytes(item['title'], item['topic_name'],
+                                           item['date_label'], site['name'])
+            if len(png) > 1024 * 1024:
+                raise ValueError('OG card exceeds 1MB hard cap: %s' % item['slug'])
+            if len(png) > 300 * 1024:
+                print('WARNING: OG card %s is %d bytes (target <300KB)'
+                      % (item['slug'], len(png)), file=sys.stderr)
+            name = '%s.%s.png' % (item['slug'], sha256(png).hexdigest()[:12])
+            (og_dir / name).write_bytes(png)
+            og_assets[item['url']] = '/assets/og/' + name
+    except Exception as error:
+        print('WARNING: per-post OG cards unavailable (%s); using generic fallback'
+              % error, file=sys.stderr)
+        og_assets = {}
 
     def game_head(slug=None):
         """Head tags for arcade pages: every game stylesheet plus the one
@@ -1069,11 +1105,20 @@ def build(root=ROOT):
         return '\n    ' + '\n    '.join(tags)
 
     def render(path, title, description, content, kind='WebPage', post=None, article=False,
-                 breadcrumbs=None, extra_js=''):
+                 breadcrumbs=None, extra_js='', og_image=None, og_image_alt=None):
         canonical = site['url'] + path
         # MAC-167 share card: one brand raster card (1200x630 PNG) for every
         # page. Site-wide defaults live here; the template only interpolates.
-        og_image = site['url'] + assets['social-card.png']
+        # MAC-778: detail pages pass their own card (full URL) plus a
+        # title-derived alt; everything else keeps the generic fallback.
+        per_post = og_image is not None
+        image_url = og_image or site['url'] + assets['social-card.png']
+        if og_image_alt:
+            alt_text = og_image_alt
+        elif per_post and post:
+            alt_text = '%s — %s · %s' % (title, post['topic_name'], site['name'])
+        else:
+            alt_text = 'Machine Made Worlds — a journal of artificial intelligence'
         schema = {'@context': 'https://schema.org', '@type': kind, 'name': title,
                   'url': canonical, 'inLanguage': 'en'}
         if post:
@@ -1082,8 +1127,8 @@ def build(root=ROOT):
                           mainEntityOfPage=canonical,
                           author={'@type': 'Organization', 'name': site['name']},
                           publisher={'@type': 'Organization', 'name': site['name']})
-            if article:
-                schema['image'] = og_image
+            if article or per_post:
+                schema['image'] = image_url
         if article and post:
             stamp = lambda day: day + 'T00:00:00+00:00'
             article_meta = (
@@ -1119,10 +1164,10 @@ def build(root=ROOT):
                         og_type='article' if post else 'website', jsonld=jsonld,
                         jsonld_extra=jsonld_extra,
                         css=assets['site.css'], js=assets['site.js'], favicon=assets['favicon.svg'],
-                        logo=assets['logo.svg'], og_image=og_image,
+                        logo=assets['logo.svg'], og_image=escape(image_url),
                         og_image_width='1200', og_image_height='630',
                         og_image_type='image/png',
-                        og_image_alt='Machine Made Worlds — a journal of artificial intelligence',
+                        og_image_alt=escape(alt_text),
                         twitter_card='summary_large_image', article_meta=article_meta,
                         theme_init=(root / 'templates/theme-init.js').read_text(encoding='utf-8').strip(),
                         content=content, year=max((p['date'][:4] for p in posts), default='2026'),
@@ -1233,10 +1278,19 @@ def build(root=ROOT):
                            related=''.join(card(q, True) for q in related),
                            index_url=index_url, index_label=index_label,
                            back_label=back_label, related_label=related_label)
+        # MAC-778: each detail page carries its own card; a missing entry
+        # falls back to the generic card (never a broken og:image).
+        card_path = og_assets.get(p['url'])
+        if card_path is not None:
+            card_url = site['url'] + card_path
+            card_alt = '%s — %s · %s' % (p['title'], p['topic_name'], site['name'])
+        else:
+            card_url, card_alt = None, None
         render(p['url'], p['title'], p['description'], content, 'BlogPosting', post=p, article=article,
                breadcrumbs=[(index_label, index_url),
                             (p['topic_name'], '/topics/' + p['topic'] + '/'),
-                            (p['title'], p['url'])])
+                            (p['title'], p['url'])],
+               og_image=card_url, og_image_alt=card_alt)
 
     for p in posts:
         # Glossary terms link back to the glossary hub (breadcrumb,
