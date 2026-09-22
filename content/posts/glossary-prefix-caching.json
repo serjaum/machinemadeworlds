@@ -1,0 +1,10 @@
+{
+  "title": "What is Prefix caching?",
+  "description": "Prefix caching reuses stored attention work across requests that share the same opening tokens. How it hits, and how builders keep it hot.",
+  "date": "2026-09-22",
+  "topic": "local-ai",
+  "kind": "Glossary",
+  "lead": "Prefix caching keeps the attention state computed for a request's opening tokens so a later request with the same byte-identical prefix reuses it instead of recomputing prefill. It saves GPU compute across requests, fires only on exact prefix matches, and rewards stable-content-first prompt layouts.",
+  "featured": false,
+  "draft": false
+}

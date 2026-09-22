@@ -1,0 +1,10 @@
+{
+  "title": "What is Prompt caching?",
+  "description": "Prompt caching is a provider-billed discount for reusing a stable prompt prefix. What it caches, what it costs, and where the breakpoints go.",
+  "date": "2026-09-22",
+  "topic": "local-ai",
+  "kind": "Glossary",
+  "lead": "Prompt caching is a hosted provider reusing the attention state behind a stable prompt prefix and billing the reused input tokens at a vendor-reported discount. It saves money on repeated system prompts and tool definitions, requires an exact prefix match, and depends on breakpoint placement.",
+  "featured": false,
+  "draft": false
+}

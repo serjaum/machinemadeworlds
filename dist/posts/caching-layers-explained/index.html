@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache</title>
+    <meta name="description" content="KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/caching-layers-explained/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/og/caching-layers-explained.a92037dc9d51.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache — Local AI · Machine Made Worlds" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/og/caching-layers-explained.a92037dc9d51.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache" />
+    <meta property="og:description" content="KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/caching-layers-explained/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-22T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-22T00:00:00+00:00" />
+    <meta property="article:section" content="Local AI" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache", "url": "https://machinemadeworlds.com/posts/caching-layers-explained/", "inLanguage": "en", "headline": "Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache", "description": "KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it.", "datePublished": "2026-09-22", "dateModified": "2026-09-22", "mainEntityOfPage": "https://machinemadeworlds.com/posts/caching-layers-explained/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/og/caching-layers-explained.a92037dc9d51.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Local AI", "item": "https://machinemadeworlds.com/topics/local-ai/"}, {"@type": "ListItem", "position": 3, "name": "Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache", "item": "https://machinemadeworlds.com/posts/caching-layers-explained/"}]}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/games/" >Arcade</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/local-ai/">Local AI</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      Comparison <span class="tiny-rule" aria-hidden="true"></span> Local AI
+    </p>
+    <h1>Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache</h1>
+    <p class="article-lead">Verdict first: the KV cache speeds up the single request you are already running, prefix caching reuses that work across requests with the same opening tokens, prompt caching turns that reuse into a vendor-reported billing discount, and semantic caching skips the model entirely on paraphrased repeats at the cost of threshold tuning you must own.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-22">Sep 22, 2026</time> · 7 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-progress" hidden aria-hidden="true"></div>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#layers-at-a-glance">Layers at a glance</a><a href="#kv-cache-the-per-request-speed-lever">KV cache: the per-request speed lever</a><a href="#prefix-caching-cross-request-reuse-on-your-server">Prefix caching: cross-request reuse on your server</a><a href="#prompt-caching-the-provider-billed-version-of-prefix-reuse">Prompt caching: the provider-billed version of prefix reuse</a><a href="#semantic-cache-skipping-the-call-by-meaning">Semantic cache: skipping the call by meaning</a><a href="#honest-limits">Honest limits</a><a href="#questions-and-answers">Questions and answers</a>
+        </nav>
+      </details>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p><strong>Verdict first:</strong> the <a href="/posts/glossary-kv-cache/">KV cache</a> speeds up the single request you are already running, prefix caching reuses that work across requests sharing the same opening tokens, prompt caching turns that reuse into a vendor-reported billing discount, and semantic caching skips the model entirely on paraphrased repeats at the cost of threshold tuning you must own. The four layers stack rather than substitute: keep the KV cache healthy, structure prompts so prefix reuse can fire, let the provider discount the stable prefix, and add a semantic layer only where paraphrase repeats justify a vector store. This guide expands the memory story from <a href="/posts/glossary-kv-cache/">the KV cache entry</a> and the framing story from <a href="/posts/glossary-system-prompt/">the system prompt entry</a>, with sizing context from <a href="/posts/quantized-models-explained/">the quantization guide</a> and <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>, first covered alongside <a href="/posts/ai-news-2026-09-21/">the September 21 digest</a>.</p>
+<h2 id="layers-at-a-glance">Layers at a glance</h2>
+<p>The grid below summarizes the four layers. The first three reuse exact token prefixes and are correctness-neutral; the fourth matches by meaning and can return a wrong answer with a normal success status (<a href="https://www.dailydoseofds.com/p/kv-vs-prefix-vs-prompt-vs-semantic-caching/">Daily Dose of Data Science, August 28, 2026</a>; <a href="https://blog.traversaal.ai/llm-caching-strategies-kv-prefix-prompt-semantic/">Traversaal, September 7, 2026</a>).</p>
+<table tabindex="0" aria-label="Article data"><caption>Caching layers at a glance</caption><thead><tr><th scope="col">Layer</th><th scope="col">Stack position</th><th scope="col">Resource saved</th><th scope="col">Scope</th><th scope="col">Needs custom infra</th></tr></thead><tbody><tr><th scope="row">KV cache</th><td><a href="/posts/glossary-inference/">Inference</a> engine, GPU memory</td><td>Attention recomputation within one request</td><td>Single request</td><td>No, built into every serving engine (<a href="https://packet.ai/blog/what-is-kv-cache-cross-model-transfer">packet.ai KV cache guide</a>)</td></tr><tr><th scope="row">Prefix caching</th><td>Inference server block manager</td><td>Prefill compute on shared opening tokens</td><td>Cross-request, exact prefix match</td><td>No, server configuration only (<a href="https://packet.ai/blog/vllm-prefix-caching">packet.ai prefix caching guide</a>)</td></tr><tr><th scope="row">Prompt caching</th><td>Provider billing boundary</td><td>Billed input tokens on the cached prefix</td><td>Cross-request, exact prefix match</td><td>No, provider feature with breakpoints (<a href="https://explainx.ai/blog/prompt-caching-llm-cost-optimization-2026">explainx.ai prompt caching guide</a>)</td></tr><tr><th scope="row">Semantic cache</th><td>Application layer, vector store</td><td>Full inference call, input and output tokens</td><td>Cross-request, similarity match</td><td>Yes, <a href="/posts/glossary-embeddings/">embeddings</a> plus vector index and TTL policy (<a href="https://blog.traversaal.ai/llm-caching-strategies-exact-match-semantic-prompt-kv-cache-guide/">Traversaal caching strategies guide</a>)</td></tr></tbody></table>
+<h2 id="kv-cache-the-per-request-speed-lever">KV cache: the per-request speed lever</h2>
+<p>Each attention layer computes key and value tensors per token; the KV cache keeps them so every new token attends to stored history instead of recomputing the whole sequence (<a href="https://packet.ai/blog/what-is-kv-cache-cross-model-transfer">packet.ai KV cache guide</a>). It never lowers a hosted bill by itself: it buys faster decoding inside one call at the price of GPU memory that grows with context length times concurrent sessions. On your own hardware the same tradeoff appears as context-size settings: larger contexts hold longer sessions but reserve more memory per slot, so parallel request capacity drops, exactly the sizing math in <a href="/posts/quantized-models-explained/">the quantization guide</a>. Local-runner note: no flag is needed to benefit, but size the run so the cache fits — short <code>--max-model-len</code> windows and quantized weights leave more room for concurrent sessions than a full context you never fill.</p>
+<h2 id="prefix-caching-cross-request-reuse-on-your-server">Prefix caching: cross-request reuse on your server</h2>
+<p>Prefix caching keeps finished KV blocks indexed so a later request with a byte-identical opening prefix reuses them instead of recomputing prefill (<a href="https://packet.ai/blog/vllm-prefix-caching">packet.ai prefix caching guide</a>; <a href="https://www.dailydoseofds.com/p/kv-vs-prefix-vs-prompt-vs-semantic-caching/">Daily Dose of Data Science, August 28, 2026</a>). Blocks are matched by a chained hash over token IDs, so any reordering, timestamp, or user ID injected ahead of the stable content breaks the whole match silently. Local-runner notes, verified against current upstream sources during implementation: in vLLM, automatic prefix caching is enabled by default on the current engine (<code>enable_prefix_caching: bool = True</code> in the engine cache configuration), controlled from the command line with <code>--enable-prefix-caching</code> and explicitly disabled with <code>--no-enable-prefix-caching</code>, with the block hash selectable via <code>--prefix-caching-hash-algo</code>; in llama.cpp, reusable prompt state is managed with <code>--prompt-cache FNAME</code> plus <code>--prompt-cache-all</code>, and <code>--keep N</code> controls how many initial-prompt tokens are retained on context reset. Stable-content-first layout is the rule in both: system instructions, tool definitions, and frozen reference documents up front in a fixed order, conversation history and per-request values at the end.</p>
+<h2 id="prompt-caching-the-provider-billed-version-of-prefix-reuse">Prompt caching: the provider-billed version of prefix reuse</h2>
+<p>Prompt caching is a hosted provider running prefix reuse on its own hardware and discounting the reused input tokens, with the cached object still being KV tensors behind an exact-prefix match (<a href="https://www.dailydoseofds.com/p/kv-vs-prefix-vs-prompt-vs-semantic-caching/">Daily Dose of Data Science, August 28, 2026</a>; <a href="https://explainx.ai/blog/prompt-caching-llm-cost-optimization-2026">explainx.ai prompt caching guide</a>). Vendor-reported economics, labeled as vendor-reported and subject to change: Anthropic charges a vendor-reported 1.25x premium on the base input rate to write a cache entry and a vendor-reported 0.1x rate to read it, with a higher write multiplier on longer retention, and current OpenAI models apply the same pair of vendor-reported multipliers (<a href="https://www.dailydoseofds.com/p/kv-vs-prefix-vs-prompt-vs-semantic-caching/">Daily Dose of Data Science</a>; <a href="https://explainx.ai/blog/what-is-a-system-prompt-complete-guide-2026">explainx.ai system prompt guide</a>). Check the provider price page before budgeting; no figure here is a quote. Provider mechanics differ: Anthropic uses explicit <code>cache_control</code> breakpoints marking the end of the stable prefix, while OpenAI-style caching is automatic above a minimum prefix size (<a href="https://explainx.ai/blog/prompt-caching-llm-cost-optimization-2026">explainx.ai prompt caching guide</a>). The layout rule from <a href="/posts/glossary-system-prompt/">the system prompt entry</a> applies directly: never interpolate dates, user IDs, or mode flags into the cached prefix; inject dynamic context in later messages instead.</p>
+<h2 id="semantic-cache-skipping-the-call-by-meaning">Semantic cache: skipping the call by meaning</h2>
+<p>A semantic cache embeds the incoming prompt, runs a nearest-neighbor search over stored prompts, and returns a stored response when similarity clears a threshold — saving input and output tokens together because the model never runs (<a href="https://blog.traversaal.ai/llm-caching-strategies-kv-prefix-prompt-semantic/">Traversaal, September 7, 2026</a>). That is also why it is the only layer here that can be confidently wrong: lower the threshold and paraphrase coverage climbs alongside the false-positive rate, while every request pays an <a href="/posts/glossary-embeddings/">embedding</a> round trip including every miss. Threshold and TTL pitfalls: published defaults range widely (roughly 0.75 to 0.97 depending on who you ask), which means the threshold is a property of your traffic, not a value to copy — start near 0.90 to 0.95 on low-stakes FAQ-like traffic, replay real query pairs before widening, exclude personalized, stateful, and time-sensitive categories outright, and give volatile entries short TTLs with event-driven purges rather than one global TTL. Embeddings for the index itself run fine on local hardware; see <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a> for the sizing.</p>
+<h2 id="honest-limits">Honest limits</h2>
+<p>Three limits keep this guide honest. First, the 1.25x-write and 0.1x-read multipliers are vendor-reported figures carried from secondary guides to provider price pages, not measurements from this site; verify them against the live provider pricing before making any budget claim. Second, exact-prefix layers fail silently on structure: a single reordered document, a timestamp at the top, or a growing history inserted mid-prefix collapses hit rates toward zero with no error, so prefix discipline is an ongoing deployment artifact, not a one-time setting. Third, semantic caching trades correctness for coverage in a way the other layers never do — a wrong cached answer returns with a normal success status — so high-stakes domains should keep thresholds near exact-match territory or skip the layer, and every layer needs its own hit-rate and quality logging to avoid double-counting savings when two layers fire on the same request.</p>
+<h2 id="questions-and-answers">Questions and answers</h2>
+<h3>What is the difference between KV cache, prefix caching, prompt caching, and semantic cache?</h3>
+<p>The KV cache stores attention tensors for one request; prefix caching keeps those tensors on the server for later requests with the same opening tokens; prompt caching is the provider-billed version of that reuse with a vendor-reported discount; a semantic cache stores finished responses keyed by embedding similarity and skips the model on paraphrase matches.</p>
+<h3>When does provider prompt caching make a semantic cache redundant?</h3>
+<p>Rarely. Prompt caching discounts matched input prefixes at the billing boundary while semantic caching eliminates the whole call at the application layer; they target different cost drivers and compound when stacked, with the semantic layer checked first and the provider prefix firing on whatever falls through.</p>
+<h3>How should local runners structure prompts for prefix hits?</h3>
+<p>Put stable content first in a fixed order — system instructions, tool definitions, frozen documents — and dynamic content last. Keep vLLM prefix caching enabled unless every prompt is unique or isolation demands it, reuse llama.cpp prompt-cache files across sessions sharing the same initial prompt, and confirm behavior with the server hit counters rather than assuming.</p>
+<h3>What similarity threshold should a semantic cache use?</h3>
+<p>Whatever your false-positive budget allows on your own query pairs. Start conservative near 0.90 to 0.95 on low-stakes traffic, measure hit rate against wrong-answer rate side by side, and exclude legal, medical, financial, and other high-stakes categories until replay testing justifies inclusion.</p>
+<h3>Where do I go next on this site?</h3>
+<p>Read <a href="/posts/glossary-kv-cache/">what the KV cache is</a> and <a href="/posts/glossary-system-prompt/">what a system prompt is</a>, size your card with <a href="/posts/quantized-models-explained/">the quantization guide</a>, plan the embedding side with <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>, then catch the wider context in <a href="/posts/ai-news-2026-09-21/">the September 21 digest</a>.</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Glossary</span>
+  </div>
+  <h3><a href="/posts/glossary-prompt-caching/">What is Prompt caching?</a></h3>
+  <p>Prompt caching is a provider-billed discount for reusing a stable prompt prefix. What it caches, what it costs, and where the breakpoints go.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-22">Sep 22, 2026</time>
+      <span aria-hidden="true">·</span> 1 min read</span
+    ><a class="story-arrow" href="/posts/glossary-prompt-caching/" aria-label="Read What is Prompt caching?">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/local-ai/">Local AI</a
+    ><span>Glossary</span>
+  </div>
+  <h3><a href="/posts/glossary-prefix-caching/">What is Prefix caching?</a></h3>
+  <p>Prefix caching reuses stored attention work across requests that share the same opening tokens. How it hits, and how builders keep it hot.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-22">Sep 22, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/glossary-prefix-caching/" aria-label="Read What is Prefix caching?">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/games/">Arcade</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>

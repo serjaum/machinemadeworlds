@@ -1,0 +1,10 @@
+{
+  "title": "Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache",
+  "description": "KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it.",
+  "date": "2026-09-22",
+  "topic": "local-ai",
+  "kind": "Comparison",
+  "lead": "Verdict first: the KV cache speeds up the single request you are already running, prefix caching reuses that work across requests with the same opening tokens, prompt caching turns that reuse into a vendor-reported billing discount, and semantic caching skips the model entirely on paraphrased repeats at the cost of threshold tuning you must own.",
+  "featured": false,
+  "draft": false
+}
