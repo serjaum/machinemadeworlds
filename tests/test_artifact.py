@@ -55,8 +55,9 @@ class ArtifactTests(unittest.TestCase):
                 self.assertNotIn(file.suffix, ('.md', '.py'))
                 self.assertNotIn(file.name, ('.env', 'site.json'))
         self.assertFalse((ROOT / 'dist/styles.css').exists())
-        for file in (ROOT / 'dist/assets').iterdir():
-            self.assertRegex(file.name, r'\.[a-f0-9]{12}\.')
+        for file in (ROOT / 'dist/assets').rglob('*'):
+            if file.is_file():
+                self.assertRegex(file.name, r'\.[a-f0-9]{12}\.')
 
     def test_byte_identical_rebuild(self):
         before = {p.relative_to(ROOT / 'dist'): p.read_bytes() for p in (ROOT / 'dist').rglob('*') if p.is_file()}
@@ -70,8 +71,10 @@ class ArtifactTests(unittest.TestCase):
         # MAC-167: the brand social card is scraper-only (og/twitter meta,
         # never an in-page <img>/preload), so it sits outside the
         # render-blocking weight budget; its own <300KB cap is pinned in
-        # test_share_meta. Page HTML delta here is the ~+300B of new meta.
-        inpage = [p for p in assets if not p.name.startswith('social-card.')]
+        # test_share_meta. MAC-778 per-post cards under assets/og/ are
+        # scraper-only too. Page HTML delta here is the ~+300B of new meta.
+        inpage = [p for p in assets
+                  if not p.name.startswith('social-card.') and p.name != 'og']
         self.assertTrue(any(p.name.startswith('social-card.') for p in assets),
                         'Brand social card must ship')
         home = (dist / 'index.html').read_bytes()

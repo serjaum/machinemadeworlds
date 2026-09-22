@@ -1,0 +1,25 @@
+{
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "branch": null,
+  "commit": "n/a",
+  "date": "2026-09-22",
+  "description": "Every journal post and build-log entry now unfurls its own orbital share card with title, topic and date; indexes keep the generic brand card.",
+  "draft": true,
+  "featured": false,
+  "kind": "Shipped",
+  "lead": "Shares from different posts were visually identical because every page emitted the same brand card. Detail pages now render a deterministic per-post card while indexes keep the fallback.",
+  "mac_id": "MAC-782",
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "merge_sha": null,
+  "pr": null,
+  "pr_url": null,
+  "reasoning": {},
+  "stages": [],
+  "title": "Per-post share cards for journal and build-log pages",
+  "topic": "design"
+}
