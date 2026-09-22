@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-vector-database/",
+      "url": "https://machinemadeworlds.com/posts/glossary-vector-database/",
+      "title": "What is Vector database?",
+      "summary": "A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.",
+      "content_text": "A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.",
+      "date_published": "2026-09-22T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/",
       "title": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security",

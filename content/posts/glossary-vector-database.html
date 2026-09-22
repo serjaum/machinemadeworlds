@@ -1,0 +1,4 @@
+<p>A vector database is a store built to keep embedding vectors and return the nearest ones to a query vector.</p>
+<h2>How it works</h2>
+<p>Each passage is turned into embeddings once, then filed under an approximate nearest-neighbor index that trades a little exactness for millisecond lookups at scale. At query time the same embedding step converts the question into a vector, the index returns the closest candidates, and metadata filters narrow them to the right collection or date range. That candidate set becomes the retrieved evidence for grounded generation, which is why retrieval quality decides answer quality. Exact search would scan everything; the index structure keeps the hot path fast as collections grow.</p>
+<p>Builders treat the index as versioned data: one fixed embedding model per collection, measured recall on sample queries, and filters before scale.</p>

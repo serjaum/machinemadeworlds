@@ -1,0 +1,10 @@
+{
+  "title": "What is Vector database?",
+  "description": "A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.",
+  "date": "2026-09-22",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "A vector database is a purpose-built store for embedding vectors that returns the closest matches to a query by meaning rather than by keyword. It pairs an approximate nearest-neighbor index with metadata filters and plain horizontal scaling, so a retrieval layer can fetch the right passages in milliseconds. Builders use it as the memory behind grounded answers: chunk, embed, store once, then retrieve the top passages at query time and hand them to the model.",
+  "featured": false,
+  "draft": false
+}
