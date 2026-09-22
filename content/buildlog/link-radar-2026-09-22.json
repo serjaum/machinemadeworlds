@@ -11,7 +11,7 @@
   "pr": 108,
   "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/108",
   "branch": "feat/link-radar-2026-09-22",
-  "commit": "7f408215",
+  "commit": "2290f1bb",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
   "agents": [
@@ -26,7 +26,7 @@
       "agent": "DEV",
       "at": "2026-09-22",
       "rationale": "Ran scheduled collection and drafted five fresh links with this log entry.",
-      "sha": "7f408215",
+      "sha": "2290f1bb",
       "stage": "Scheduled run",
       "verdict": "done"
     },
@@ -34,7 +34,7 @@
       "agent": "DEV",
       "at": "2026-09-22",
       "rationale": "Opened pull request from the radar branch with post and log entry.",
-      "sha": "7f408215",
+      "sha": "2290f1bb",
       "stage": "Pull request",
       "verdict": "done"
     }
