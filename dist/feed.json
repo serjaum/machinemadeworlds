@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-22/",
+      "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-22/",
+      "title": "Link radar, September 22, 2026",
+      "summary": "Five reads: PR page GA, credential inventory exports, Grok 4.7 in Copilot, OpenAI Academy paths, and math-AI advisory group.",
+      "content_text": "Five reads: PR page GA, credential inventory exports, Grok 4.7 in Copilot, OpenAI Academy paths, and math-AI advisory group.",
+      "date_published": "2026-09-22T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/",
       "title": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security",
