@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security</title>
+    <meta name="description" content="AI news digest Sep 22: MiMo-V2.6 open weights, single-GPU Xing agent, MiniMax Code, JetBrains Air, Plugin4Shell, Grok 4.7." />
+    <link rel="canonical" href="https://machinemadeworlds.com/posts/ai-news-2026-09-22/" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f8f4" />
+    <script>
+      /* Resolve a saved choice before CSS/first paint. New readers get light. */
+try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}
+    </script>
+    <link rel="stylesheet" href="/assets/site.543d6bfc2a05.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.0c1ba05130de.svg" />
+    <meta property="og:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Machine Made Worlds — a journal of artificial intelligence" />
+    <meta name="twitter:image" content="https://machinemadeworlds.com/assets/social-card.e221b17d562f.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Machine Made Worlds"
+      href="/feed.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="Machine Made Worlds"
+      href="/feed.json"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Machine Made Worlds" />
+    <meta property="og:title" content="AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security" />
+    <meta property="og:description" content="AI news digest Sep 22: MiMo-V2.6 open weights, single-GPU Xing agent, MiniMax Code, JetBrains Air, Plugin4Shell, Grok 4.7." />
+    <meta property="og:url" content="https://machinemadeworlds.com/posts/ai-news-2026-09-22/" />
+    <meta name="twitter:card" content="summary_large_image" />
+<meta property="article:published_time" content="2026-09-22T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2026-09-22T00:00:00+00:00" />
+    <meta property="article:section" content="Automation" />
+    <meta property="article:author" content="Machine Made Worlds" />
+        <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BlogPosting", "name": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security", "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/", "inLanguage": "en", "headline": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security", "description": "AI news digest Sep 22: MiMo-V2.6 open weights, single-GPU Xing agent, MiniMax Code, JetBrains Air, Plugin4Shell, Grok 4.7.", "datePublished": "2026-09-22", "dateModified": "2026-09-22", "mainEntityOfPage": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/", "author": {"@type": "Organization", "name": "Machine Made Worlds"}, "publisher": {"@type": "Organization", "name": "Machine Made Worlds"}, "image": "https://machinemadeworlds.com/assets/social-card.e221b17d562f.png"}
+    </script>
+    <script type="application/ld+json">
+      {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "The journal", "item": "https://machinemadeworlds.com/blog/"}, {"@type": "ListItem", "position": 2, "name": "Automation", "item": "https://machinemadeworlds.com/topics/automation/"}, {"@type": "ListItem", "position": 3, "name": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security", "item": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/"}]}
+    </script>
+    <script src="/assets/site.f7ceb0112d60.js" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1540728078261973" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="masthead" data-od-id="masthead">
+      <div class="container masthead-inner">
+        <a class="brand" href="/" aria-label="Machine Made Worlds, home"
+          ><img class="brand-mark" src="/assets/logo.80cd4030aa0a.svg" width="52" height="52" alt="" /><span
+            >machine made worlds<span class="brand-caption"
+              >A journal of artificial intelligence</span
+            ></span
+          ></a
+        >
+        <nav class="navigation" aria-label="Main navigation">
+          <a href="/" >Home</a
+          ><a href="/blog/" >Journal</a
+          ><a href="/build-log/" >Build Log</a
+          ><a href="/games/" >Arcade</a
+          ><a href="/about/" >About</a>
+        </nav>
+        <form class="masthead-search" action="/search/" method="get" role="search">
+          <label class="sr-only" for="site-search">Search articles</label>
+          <input id="site-search" name="q" type="search" placeholder="Search articles…"
+            autocomplete="off" data-global-search maxlength="120" />
+        </form>
+        <button
+          type="button"
+          class="theme-toggle"
+          data-theme-toggle
+          hidden
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <span class="theme-symbol" aria-hidden="true">◐</span
+          ><span data-theme-label>Dark</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><article class="container article-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/blog/">The journal</a><span aria-hidden="true">/</span
+    ><a href="/topics/automation/">Automation</a>
+  </nav>
+  <header class="article-heading" data-od-id="article-heading">
+    <p class="eyebrow">
+      News digest <span class="tiny-rule" aria-hidden="true"></span> Automation
+    </p>
+    <h1>AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security</h1>
+    <p class="article-lead">Open weights with receipts, agents that fit on one GPU, and a hard lesson in plugin pinning. Xiaomi published both its new flagship models and the multi-million-dollar training bill behind them, a 29B agentic model targets a single consumer graphics card, MiniMax open-sourced a terminal coding agent, JetBrains stitched its agent tooling into one system, researchers showed how a git naming trick defeats plugin locks on four coding agents, Claude Code learned to read the shared AGENTS.md format, and Grok 4.7 pushed coding speed up and prices down. Every summary is in our own words; follow the links for the original reporting.</p>
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">m</span>
+      <div>
+        <span>Machine Made Worlds</span
+        ><span class="meta"
+          ><time datetime="2026-09-22">Sep 22, 2026</time> · 6 min read</span
+        >
+      </div>
+    </div>
+  </header>
+  <div class="reading-progress" hidden aria-hidden="true"></div>
+  <div class="reading-layout">
+    <aside class="reading-sidebar" >
+      <details class="toc-details">
+        <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
+        <nav class="toc" aria-label="In this article">
+          <a href="#xiaomi-open-sources-mimo-v2-6-and-publishes-the-3-47m-reinforcement-learning-bill">Xiaomi open-sources MiMo-V2.6 and publishes the $3.47M reinforcement-learning bill</a><a href="#china-telecom-ships-xing4-0-29b-an-agentic-model-that-fits-on-one-consumer-gpu">China Telecom ships Xing4.0-29B, an agentic model that fits on one consumer GPU</a><a href="#minimax-open-sources-minimax-code-a-terminal-coding-agent-under-mit">MiniMax open-sources MiniMax Code, a terminal coding agent under MIT</a><a href="#jetbrains-bundles-its-agent-tooling-into-jetbrains-air-ides-teams-governance">JetBrains bundles its agent tooling into JetBrains Air: IDEs, teams, governance</a><a href="#plugin4shell-one-git-naming-trick-defeats-plugin-locks-on-four-coding-agents">Plugin4Shell: one git naming trick defeats plugin locks on four coding agents</a><a href="#claude-code-reads-agents-md-ending-the-two-instruction-file-era">Claude Code reads AGENTS.md, ending the two-instruction-file era</a><a href="#grok-4-7-targets-coding-and-knowledge-work-at-lower-prices">Grok 4.7 targets coding and knowledge work at lower prices</a>
+        </nav>
+      </details>
+      <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
+    </aside>
+    <div class="article-body" data-od-id="article-body">
+      <!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p>Open weights arrive with their training bills attached, coding agents get both new powers and new warnings, and an IDE veteran tries to govern the whole agentic workflow. Seven stories, each summarized in our own words with a link to the original reporting.</p>
+<h2 id="xiaomi-open-sources-mimo-v2-6-and-publishes-the-3-47m-reinforcement-learning-bill">Xiaomi open-sources MiMo-V2.6 and publishes the $3.47M reinforcement-learning bill</h2>
+<p>Xiaomi released the MiMo-V2.6 series as open weights, led by a Pro mixture-of-experts model with about a trillion total parameters alongside a smaller Flash sibling, both handling text, image, video, and audio in a long <a href="/posts/glossary-context-window/">context window</a>. The unusual part is not the weights but the paperwork: the team streamed its reinforcement-learning run in public, reporting roughly 750,000 trajectories per model over six days with itemized costs near $2.62 million for Pro and $850,000 for Flash, including restarts caused by memory and infrastructure failures. The package also includes thousands of training environments, the RL framework pieces, and a small distilled model for further experiments.</p>
+<p>For builders, the release is two assets in one: capable permissively licensed checkpoints plus a rare public record of what post-training at this scale actually costs and where it breaks. Treat vendor <a href="/posts/glossary-benchmark/">benchmark</a> figures as progress markers from the team's own harness rather than independent leaderboard entries, and verify them on your own workloads before committing.</p>
+<p>Read the full story at <a href="https://technode.com/2026/09/22/xiaomi-open-sources-mimo-v2-6-models-after-scaling-reinforcement-learning/">TechNode</a> (September 22, 2026).</p>
+<h2 id="china-telecom-ships-xing4-0-29b-an-agentic-model-that-fits-on-one-consumer-gpu">China Telecom ships Xing4.0-29B, an agentic model that fits on one consumer GPU</h2>
+<p>China Telecom AI released Xing4.0-29B-A4B, a 29-billion-parameter agentic model with only 4 billion parameters active per token, aimed at running tool-using agent workloads outside the data center. With low-bit <a href="/posts/glossary-quantization/">quantization</a> the team says it fits in about 15 GB of memory, so a single consumer-grade graphics card can host it while the same weights also serve enterprise deployments. The model is available through public code and weight hubs for developers to download and try.</p>
+<p>The builder signal is the shrinking gap between hosted agent APIs and hardware you already own: planning, tool calls, and multi-step tasks no longer strictly require a cluster. As always with vendor releases, confirm the agentic <a href="/posts/glossary-benchmark/">benchmarks</a> on your own tasks and check the license file before shipping anything commercial.</p>
+<p>Read the full story at <a href="https://markets.businessinsider.com/news/stocks/china-telecom-ai-officially-releases-xing4-0-29b-agentic-large-model-for-single-gpu-deployment-1036562639">Markets Insider</a> (September 22, 2026).</p>
+<h2 id="minimax-open-sources-minimax-code-a-terminal-coding-agent-under-mit">MiniMax open-sources MiniMax Code, a terminal coding agent under MIT</h2>
+<p>MiniMax published the source for MiniMax Code, a terminal coding agent that reads projects, edits files, and runs tests from the command line, with both an interactive interface and a headless mode for scripts and CI. The first-party code carries the MIT license and speaks the Agent Client Protocol, so it can plug into editors that support the standard, work with the vendor's accounts or third-party model endpoints, and run against bring-your-own keys. The separate desktop application stays closed and is distributed on its own.</p>
+<p>For local-first teams this is a practical new option next to the closed CLIs: inspectable terminal-agent code you can fork, wire into pipelines, and point at your own models. Review the repository scope before adopting, since only the terminal, headless, and protocol components are open.</p>
+<p>Read the full story at <a href="https://technode.com/2026/09/21/minimax-open-sources-minimax-code-terminal-coding-agent/">TechNode</a> (September 21, 2026).</p>
+<h2 id="jetbrains-bundles-its-agent-tooling-into-jetbrains-air-ides-teams-governance">JetBrains bundles its agent tooling into JetBrains Air: IDEs, teams, governance</h2>
+<p>JetBrains gathered its agentic development work under one banner called JetBrains Air, spanning the coding experience inside its IDEs, a new team-coordination layer, and a governance layer for policy, auditability, and AI cost control. The pitch is that generating code was the easy part and the real bottleneck is verifying, coordinating, and accounting for agent work across an organization. The system stays open to third-party models and agents through a standard client protocol plus a registry for discovering compatible agents.</p>
+<p>Teams drowning in agent sprawl should watch the governance and shared-context pieces rather than the code-generation demos: one policy set, one cost view, and provenance that survives switching vendors. Availability rolls out in stages, so confirm what is shipping versus preview before planning a migration.</p>
+<p>Read the full story at <a href="https://blog.jetbrains.com/blog/2026/09/22/introducing-jetbrains-air/">The JetBrains Blog</a> (September 22, 2026).</p>
+<h2 id="plugin4shell-one-git-naming-trick-defeats-plugin-locks-on-four-coding-agents">Plugin4Shell: one git naming trick defeats plugin locks on four coding agents</h2>
+<p>Researchers at Air Security disclosed a flaw affecting plugin installation in Claude Code, Codex, GitHub Copilot, and the Gemini CLI, where the SHA pinning meant to lock each plugin to reviewed code can be bypassed with crafted branch names. Because some agents refresh plugins automatically in the background, a trusted plugin could be swapped for malicious code with no click from the victim, running with the developer's own file and credential access. Two vendors have shipped fixes while one ships none and the last tool is being retired rather than patched.</p>
+<p>The operator takeaways are immediate: update the affected agents, audit which marketplaces your plugins come from, and treat auto-update plus broad plugin permissions as a real attack surface. The deeper lesson is architectural: the same design error appeared in four products from four companies, so verify the update mechanism itself instead of assuming a hash check means safety.</p>
+<p>Read the full story at <a href="https://thenextweb.com/news/plugin4shell-ai-coding-agents-zero-click-rce-sha-pinning">The Next Web</a> (September 21, 2026).</p>
+<h2 id="claude-code-reads-agents-md-ending-the-two-instruction-file-era">Claude Code reads AGENTS.md, ending the two-instruction-file era</h2>
+<p>Anthropic added support for the shared AGENTS.md instruction format in Claude Code, so projects without a CLAUDE.md file now have their agent instructions picked up from the same file that Codex and other tools already read. Teams running several coding agents on one repository can stop maintaining two parallel instruction files and drifting out of sync. Project-specific Claude features and a feature-flag dependency for some enterprise setups remain caveats, with configuration options to control which files are read.</p>
+<p>The practical move is simple: consolidate shared conventions into AGENTS.md and keep genuinely Claude-specific instructions separate where supported. Small standardization wins like this compound across every agent run in CI and on every developer machine.</p>
+<p>Read the full story at <a href="https://www.infoworld.com/article/4224410/claude-code-now-also-accepts-instructions-in-openais-agents-md-format.html">InfoWorld</a> (September 21, 2026).</p>
+<h2 id="grok-4-7-targets-coding-and-knowledge-work-at-lower-prices">Grok 4.7 targets coding and knowledge work at lower prices</h2>
+<p>SpaceXAI introduced Grok 4.7 as its strongest model for coding and knowledge tasks, available through its editor integrations, build tools, API, and third-party platforms. Pricing starts at a few dollars per million tokens with a faster tier trading double speed for double price, while running on a larger base model at the same cost and speed as its predecessor. The release frames throughput and price per task, not just benchmark scores, as the headline.</p>
+<p>For builders choosing a coding backend, evaluate it the same way the vendor prices it: timed runs on your own repositories measuring tokens per merged change rather than headline claims. A cheaper fast tier is only a win if output quality holds on your stack.</p>
+<p>Read the full story at <a href="https://dataconomy.com/2026/09/22/grok-4-7-faster-coding-lower-pricing/">Dataconomy</a> (September 22, 2026).</p>
+
+      <aside class="callout follow-block" data-od-id="follow-block">
+        <h2>Follow the journal.</h2>
+        <p>Enjoyed this? Follow the journal for tomorrow's digest.</p>
+        <a class="button" href="/newsletter/"
+          >Follow here <span aria-hidden="true">→</span></a
+        >
+      </aside>
+      <div class="article-end">
+        <span aria-hidden="true">m·w</span
+        ><a href="/blog/">← Back to the journal</a>
+      </div>
+    </div>
+  </div>
+  <section class="related" aria-labelledby="related-heading">
+    <div class="section-heading">
+      <h2 id="related-heading">Keep exploring.</h2>
+      <a class="text-link" href="/blog/">All articles ↗</a>
+    </div>
+    <div class="related-grid"><article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>Radar</span>
+  </div>
+  <h3><a href="/posts/link-radar-2026-09-21/">Link radar, September 21, 2026</a></h3>
+  <p>Five reads: Copilot review UX, coverage rulesets, npm stage-only tokens, model deprecations, and embedded AI evaluation.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/link-radar-2026-09-21/" aria-label="Read Link radar, September 21, 2026">↗</a>
+  </div>
+</article>
+<article class="story compact" data-search-item>
+  <div class="story-meta">
+    <a class="topic-label" href="/topics/automation/">Automation</a
+    ><span>News digest</span>
+  </div>
+  <h3><a href="/posts/ai-news-2026-09-21/">AI news digest — September 21, 2026: compact builders, paper agents, judge the judges</a></h3>
+  <p>AI news digest Sep 21: Qwen-Image-2.1 7B, Jev plus open Kev decision models, Atria Dawn MIT agent, Paper2Agent, virtual biotech, ScientistTwo.</p>
+  <div class="story-foot">
+    <span
+      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      <span aria-hidden="true">·</span> 6 min read</span
+    ><a class="story-arrow" href="/posts/ai-news-2026-09-21/" aria-label="Read AI news digest — September 21, 2026: compact builders, paper agents, judge the judges">↗</a>
+  </div>
+</article>
+</div>
+  </section>
+</article>
+</main>
+    <footer class="footer" data-od-id="footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href="/"
+          ><img class="footer-mark" src="/assets/logo.80cd4030aa0a.svg" width="28" height="28" alt="" loading="lazy" />machine made worlds<span aria-hidden="true">.</span></a
+        >
+        <p>A little less noise.<br />A little more understanding.</p>
+        <nav aria-label="Footer">
+          <a href="/blog/">The journal</a><a href="/glossary/">Glossary</a><a href="/build-log/">Build log</a><a href="/metrics/">Metrics</a><a href="/prices/">Prices</a><a href="/benchmarks/">Benchmarks</a><a href="/games/">Arcade</a><a href="/about/">About us</a
+          ><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/newsletter/">Newsletter</a><a href="/feed.xml">RSS feed ↗</a><a href="/feed.json">JSON feed ↗</a>
+        </nav>
+      </div>
+      <div class="container footer-bottom">
+        <span>© 2026 Machine Made Worlds</span
+        ><span>Made for curious minds. Built for reading.</span
+        ><a href="#main">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
