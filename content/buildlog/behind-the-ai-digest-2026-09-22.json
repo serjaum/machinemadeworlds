@@ -7,7 +7,7 @@
     "Director"
   ],
   "branch": null,
-  "commit": "TBD",
+  "commit": "c687d60",
   "date": "2026-09-22",
   "description": "How the September 22 digest shipped: seven builder stories with 200-verified links, same-PR log entry, parallel reviews on the exact head, then merge and live verification.",
   "draft": false,
@@ -31,7 +31,7 @@
       "agent": "DEV",
       "at": "2026-09-22",
       "rationale": "Ran scheduled collection and drafted seven fresh stories with this log entry.",
-      "sha": "TBD",
+      "sha": "c687d60",
       "stage": "Scheduled run",
       "verdict": "done"
     },
@@ -39,7 +39,7 @@
       "agent": "DEV",
       "at": "2026-09-22",
       "rationale": "Opened pull request from the digest branch with post and log entry.",
-      "sha": "TBD",
+      "sha": "c687d60",
       "stage": "Pull request",
       "verdict": "done"
     }
