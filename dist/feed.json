@@ -29,6 +29,39 @@
       ]
     },
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-prompt-caching/",
+      "url": "https://machinemadeworlds.com/posts/glossary-prompt-caching/",
+      "title": "What is Prompt caching?",
+      "summary": "Prompt caching is a provider-billed discount for reusing a stable prompt prefix. What it caches, what it costs, and where the breakpoints go.",
+      "content_text": "Prompt caching is a provider-billed discount for reusing a stable prompt prefix. What it caches, what it costs, and where the breakpoints go.",
+      "date_published": "2026-09-22T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/glossary-prefix-caching/",
+      "url": "https://machinemadeworlds.com/posts/glossary-prefix-caching/",
+      "title": "What is Prefix caching?",
+      "summary": "Prefix caching reuses stored attention work across requests that share the same opening tokens. How it hits, and how builders keep it hot.",
+      "content_text": "Prefix caching reuses stored attention work across requests that share the same opening tokens. How it hits, and how builders keep it hot.",
+      "date_published": "2026-09-22T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
+      "id": "https://machinemadeworlds.com/posts/caching-layers-explained/",
+      "url": "https://machinemadeworlds.com/posts/caching-layers-explained/",
+      "title": "Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache",
+      "summary": "KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it.",
+      "content_text": "KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it.",
+      "date_published": "2026-09-22T00:00:00+00:00",
+      "tags": [
+        "local-ai"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/",
       "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-22/",
       "title": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security",

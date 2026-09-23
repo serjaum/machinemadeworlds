@@ -16,6 +16,30 @@
     "topic": "essays"
   },
   {
+    "url": "/posts/glossary-prompt-caching/",
+    "title": "What is Prompt caching?",
+    "description": "Prompt caching is a provider-billed discount for reusing a stable prompt prefix. What it caches, what it costs, and where the breakpoints go.",
+    "date": "2026-09-22",
+    "reading": 1,
+    "topic": "local-ai"
+  },
+  {
+    "url": "/posts/glossary-prefix-caching/",
+    "title": "What is Prefix caching?",
+    "description": "Prefix caching reuses stored attention work across requests that share the same opening tokens. How it hits, and how builders keep it hot.",
+    "date": "2026-09-22",
+    "reading": 2,
+    "topic": "local-ai"
+  },
+  {
+    "url": "/posts/caching-layers-explained/",
+    "title": "Caching Layers Explained: KV Cache vs Prefix vs Prompt vs Semantic Cache",
+    "description": "KV cache, prefix caching, prompt caching, and semantic cache compared: what each reuses, what it saves, and how local runners configure it.",
+    "date": "2026-09-22",
+    "reading": 7,
+    "topic": "local-ai"
+  },
+  {
     "url": "/posts/ai-news-2026-09-22/",
     "title": "AI news digest — September 22, 2026: open agent models, JetBrains Air, coding-agent security",
     "description": "AI news digest Sep 22: MiMo-V2.6 open weights, single-GPU Xing agent, MiniMax Code, JetBrains Air, Plugin4Shell, Grok 4.7.",
