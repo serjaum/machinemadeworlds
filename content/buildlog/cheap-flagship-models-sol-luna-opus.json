@@ -1,0 +1,55 @@
+{
+  "title": "Behind the cheap-flagship comparison post",
+  "description": "How the Sol vs Luna vs Opus 5.5 evergreen comparison was scoped, drafted, and shipped with vendor-cited figures and a same-PR log entry.",
+  "date": "2026-09-23",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "One new comparison plus this log entry ship in the same pull request, with security and quality verdicts recorded in the linked review threads.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-828",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; PR number, branch, head SHA and merge record are updated here after opening and release approval.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Verified the private remote and push access, then branched fresh from main.",
+      "sha": "22a3b39",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Drafted the Sol vs Luna vs Opus 5.5 comparison with cited figures, the distribution pack, and this entry.",
+      "sha": "22a3b39",
+      "stage": "Comparison draft and pack",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Rebuilt the site, ran the test suite and the secret scan, then opened the pull request.",
+      "sha": "22a3b39",
+      "stage": "Build verify and pull request",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The comparison reuses the established verdict-first format with no new components, scripts, or styles: verdict, head-to-head grid with every figure vendor-cited or marked unverified, per-model cards, a self-host table, and workload caveats. Internal links tie it to the Astra launch piece, the Jev comparison, the prices and benchmarks pages, and the September 22 digest. The deterministic build, the test suite, and the presence gate pass on the change.",
+    "Director": "This change adds one content page through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel. Release approval fires only when both verdicts pass that exact head.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head, including the buildlog-presence check, is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread."
+  }
+}
