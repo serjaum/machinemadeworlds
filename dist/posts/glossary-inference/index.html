@@ -114,7 +114,7 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
       <details class="toc-details">
         <summary class="toc-summary"><span class="eyebrow">In this article</span></summary>
         <nav class="toc" aria-label="In this article">
-          <a href="#how-it-works">How it works</a><a href="#related-terms">Related terms</a>
+          <a href="#how-it-works">How it works</a><a href="#go-deeper">Go deeper</a><a href="#related-terms">Related terms</a>
         </nav>
       </details>
       <a class="text-link" href="/feed.xml">Follow the journal ↗</a>
@@ -124,6 +124,9 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <h2 id="how-it-works">How it works</h2>
 <p>A finished model loads its weights into memory and pushes each fresh prompt through them in a single forward pass, emitting one token at a time until the answer is complete. Batching groups many requests onto the same hardware while cached prefixes skip repeated work, so throughput climbs without any new learning. Training spends weeks shaping the weights while serving spends that investment in milliseconds per request, which is why cost per million tokens is the number every product team watches. Answers draw only on what the model already holds, so freshness and factuality rest on the training cutoff plus any retrieval layered on top.</p>
 <p>Builders reach for inference tuning whenever answers must be fast and cheap: batching requests, caching shared prefixes, and serving compact models where full precision cannot pay its way.</p>
+<h2 id="go-deeper">Go deeper</h2>
+<p>Each agent turn is one inference decision among many; see <a href="/posts/glossary-ai-agent/">what an AI agent is</a> for the loop that chains them.</p>
+<ul><li>See also <a href="/posts/glossary-ai-agent/">AI agent</a>, which repeats inference inside a decide-act-observe loop.</li></ul>
 <h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-benchmark/">Benchmark</a></li><li><a href="/posts/glossary-context-window/">Context window</a></li><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li></ul>
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
@@ -148,13 +151,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-vector-database/">What is Vector database?</a></h3>
-  <p>A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.</p>
+  <h3><a href="/posts/glossary-ai-agent/">What is AI agent?</a></h3>
+  <p>An AI agent is a model running a tool-use loop with stop rules and human gates. What autonomy means, and how agents differ from chatbots.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-22">Sep 22, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-vector-database/" aria-label="Read What is Vector database?">↗</a>
+      ><time datetime="2026-09-23">Sep 23, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/glossary-ai-agent/" aria-label="Read What is AI agent?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
@@ -162,13 +165,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-system-prompt/">What is System prompt?</a></h3>
-  <p>A system prompt is the hidden instruction block that sets a model&#x27;s role, rules, and tone. What it controls and how builders shape it.</p>
+  <h3><a href="/posts/glossary-vector-database/">What is Vector database?</a></h3>
+  <p>A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      ><time datetime="2026-09-22">Sep 22, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-system-prompt/" aria-label="Read What is System prompt?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-vector-database/" aria-label="Read What is Vector database?">↗</a>
   </div>
 </article>
 </div>

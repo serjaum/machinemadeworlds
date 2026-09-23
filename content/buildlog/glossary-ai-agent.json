@@ -1,0 +1,55 @@
+{
+  "title": "Glossary entry: what an AI agent is",
+  "description": "A new glossary page defines the AI agent as a tool-use loop with stop rules, links five sibling terms, and ships cross-links plus this log entry in one change.",
+  "date": "2026-09-23",
+  "topic": "essays",
+  "kind": "Shipped",
+  "lead": "One glossary page lands with its cross-links and this log entry: the agent page defines the perceive-decide-act loop with stop rules and human gates, points at five sibling terms, and the sibling pages point back.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-824",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "sha": "22a3b39",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Drafted the agent page from the glossary pattern with its cross-links and this entry.",
+      "sha": "22a3b39",
+      "stage": "Agent page and cross-links",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Opened the pull request with the page and the log entry.",
+      "sha": "22a3b39",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The page reuses the established glossary pattern with no new components, scripts, or styles, carrying a lead definition plus one builder section with outbound links. The sibling edits only extend existing related-link blocks, and the glossary index picks up the new page automatically. The deterministic build, the full test suite, and the presence gate pass on the change.",
+    "Director": "This change adds one content page through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues. Release approval fires only when both verdicts pass that exact head.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head, including the buildlog-presence check, is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread."
+  }
+}
