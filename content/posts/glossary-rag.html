@@ -3,4 +3,5 @@
 <p>When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector embeddings. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is.</p>
 <p>Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw.</p>
 <h2>Go deeper</h2>
-<p>For the full local walkthrough, read <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a>, with the retrieval half covered in <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>.</p>
+<p>For the full local walkthrough, read <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a>, with the retrieval half covered in <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>, and the acting half in <a href="/posts/glossary-ai-agent/">what an AI agent is</a>.</p>
+<ul><li>See also <a href="/posts/glossary-ai-agent/">AI agent</a>, which wraps retrieval in a tool-using loop.</li></ul>

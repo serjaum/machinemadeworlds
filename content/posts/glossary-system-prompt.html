@@ -2,3 +2,6 @@
 <h2>How it works</h2>
 <p>Providers slot these instructions above every user message, so they frame the whole exchange while staying invisible to the reader. A good block names the role, states the hard constraints, fixes the output shape, and lists what to refuse, in that order of importance. Because the block consumes context on every call, long preambles cost tokens and can crowd out retrieved evidence, which is why teams keep it short and move examples into the conversation or tools. It steers strongly but never guarantees obedience: hostile user text can still pull the model off script, so refusal rules get tested against injection attempts rather than trusted on paper.</p>
 <p>Builders treat the system prompt as versioned configuration: shortest sufficient instructions, reviewed like code, and evaluated against the behaviors each release must keep.</p>
+<h2>Go deeper</h2>
+<p>The block sets the rules for every loop that follows; see <a href="/posts/glossary-ai-agent/">what an AI agent is</a> for the tool-use loop it governs.</p>
+<ul><li>See also <a href="/posts/glossary-ai-agent/">AI agent</a>, which runs these instructions inside a tool-using loop.</li></ul>

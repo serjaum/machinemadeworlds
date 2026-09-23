@@ -1,0 +1,10 @@
+{
+  "title": "What is AI agent?",
+  "description": "An AI agent is a model running a tool-use loop with stop rules and human gates. What autonomy means, and how agents differ from chatbots.",
+  "date": "2026-09-23",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "An AI agent is a language model wrapped in a perceive-decide-act loop that calls tools, reads what comes back, and keeps going until a stop rule fires or a human gate asks for approval.",
+  "featured": false,
+  "draft": false
+}
