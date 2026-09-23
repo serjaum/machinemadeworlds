@@ -879,6 +879,12 @@ LLMS_STATIC_PAGES = (
     ('/benchmarks/', 'Model benchmarks', 'Public eval scores for reference, refreshed weekly.'),
 )
 
+LLMS_OPTIONAL_PAGES = (
+    ('/newsletter/', 'Newsletter', 'Follow the journal by feed reader: daily AI digest, link radar and glossary over RSS or JSON.'),
+    ('/privacy/', 'Privacy', 'Privacy notice: what data this site handles and why.'),
+    ('/terms/', 'Terms', 'Terms of use for the site and its companion services.'),
+)
+
 
 def _llms_single_line(text):
     """Collapse a metadata field to one plain-text line for the index."""
@@ -905,11 +911,14 @@ def llms_curated(site, posts, entries):
               _llms_single_line(p['description'])) for p in entries[:LLMS_BUILDLOG_LIMIT]]
     rows += [('Data pages', '%s — %s' % (title, site['name']), base + path, description)
              for path, title, description in LLMS_STATIC_PAGES]
-    # Overflow prefers evergreen + latest: drop older build-log rows first,
-    # then older journal rows; glossary and static pages always stay.
+    rows += [('Optional', '%s — %s' % (title, site['name']), base + path, description)
+             for path, title, description in LLMS_OPTIONAL_PAGES]
+    # Overflow prefers evergreen + latest: drop secondary Optional rows
+    # first, then older build-log rows, then older journal rows; glossary
+    # and static data pages always stay.
     while len(rows) > LLMS_LINK_CAP:
         for index in range(len(rows) - 1, -1, -1):
-            if rows[index][0] in ('Build Log', 'Journal'):
+            if rows[index][0] in ('Optional', 'Build Log', 'Journal'):
                 del rows[index]
                 break
         else:
@@ -918,20 +927,27 @@ def llms_curated(site, posts, entries):
 
 
 def render_llms_txt(site, posts, entries, put):
-    """Build-time llms.txt + llms-full.txt (MAC-391).
+    """Build-time llms.txt + llms-full.txt (MAC-391, MAC-840).
 
-    llms.txt is the curated Markdown index of canonical absolute URLs.
+    llms.txt is the curated Markdown index of canonical absolute URLs,
+    following the llmstxt.org spec order: H1 title, blockquote summary,
+    detail paragraphs, then H2 file lists with a trailing conventional
+    ``## Optional`` section for secondary pages an agent may skip.
     llms-full.txt repeats the same index header, then concatenates each
     listed page's title, URL and body text stripped of HTML, capped so the
-    corpus stays a cheap single fetch (overflow drops older build-log
-    entries first, then older journal posts, never the evergreen
-    glossary). Pure function of content + site.json: no timestamps, no git
-    data, no network — byte-identical across rebuilds."""
+    corpus stays a cheap single fetch (overflow sheds the secondary
+    Optional rows first, then older build-log entries, then older journal
+    posts; never the evergreen glossary or data pages). Pure function of
+    content + site.json: no timestamps, no git data, no network —
+    byte-identical across rebuilds."""
     rows = llms_curated(site, posts, entries)
-    lines = ['# Machine Made Worlds', '', site['description'].strip(), '',
+    lines = ['# Machine Made Worlds', '',
+             '> ' + site['description'].strip(), '',
              'Machine-readable index of canonical pages. '
-             'Full text: ' + site['url'] + '/llms-full.txt', '']
-    for section in ('Journal', 'Glossary', 'Build Log', 'Data pages'):
+             'Full text: ' + site['url'] + '/llms-full.txt', '',
+             'Sitemap: ' + site['url'] + '/sitemap.xml. '
+             'Feed: ' + site['url'] + '/feed.xml', '']
+    for section in ('Journal', 'Glossary', 'Build Log', 'Data pages', 'Optional'):
         section_rows = [row for row in rows if row[0] == section]
         if not section_rows:
             continue
@@ -946,11 +962,14 @@ def render_llms_txt(site, posts, entries, put):
         bodies[site['url'] + p['url']] = _llms_single_line(plain(p['body']))
     for path, title, description in LLMS_STATIC_PAGES:
         bodies.setdefault(site['url'] + path, description)
+    for path, title, description in LLMS_OPTIONAL_PAGES:
+        bodies.setdefault(site['url'] + path, description)
     blocks, ranks = [], {}
     for order, (section, title, url, _) in enumerate(rows):
-        # Higher drop rank is shed first under the byte cap; glossary and
-        # static pages are never shed (rank -1).
-        ranks[url] = -1 if section in ('Glossary', 'Data pages') else 0
+        # Higher drop rank is shed first under the byte cap; the secondary
+        # Optional rows shed before Journal/Build Log (rank 1 > 0), while
+        # glossary and static pages are never shed (rank -1).
+        ranks[url] = 1 if section == 'Optional' else (-1 if section in ('Glossary', 'Data pages') else 0)
         blocks.append((url, '## %s\n%s\n\n%s\n' % (title, url, bodies.get(url, ''))))
     shed = sorted(((ranks[url], order) for order, (url, _) in enumerate(blocks)), reverse=True)
     keep = set(range(len(blocks)))

@@ -41,8 +41,47 @@ class LlmsTxtTests(unittest.TestCase):
         self.assertTrue(self.index.startswith('# Machine Made Worlds\n'))
         self.assertIn(self.site['description'], self.index)
         self.assertIn(self.site['url'] + '/llms-full.txt', self.index)
-        for section in ('## Journal', '## Glossary', '## Build Log', '## Data pages'):
+        for section in ('## Journal', '## Glossary', '## Build Log', '## Data pages',
+                        '## Optional'):
             self.assertIn(section, self.index)
+
+    def test_spec_blockquote_summary_after_h1(self):
+        """MAC-840: llmstxt.org spec puts a blockquote summary after the H1."""
+        lines = self.index.splitlines()
+        self.assertEqual(lines[0], '# Machine Made Worlds')
+        self.assertEqual(lines[1], '')
+        self.assertTrue(lines[2].startswith('> '), lines[2][:80])
+        self.assertIn(self.site['description'], lines[2])
+
+    def test_spec_section_order_and_optional_last(self):
+        """MAC-840: H2 file lists follow the spec order; Optional closes."""
+        positions = {}
+        for section in ('## Journal', '## Glossary', '## Build Log',
+                        '## Data pages', '## Optional'):
+            self.assertIn(section, self.index)
+            positions[section] = self.index.index(section)
+        ordered = ['## Journal', '## Glossary', '## Build Log',
+                   '## Data pages', '## Optional']
+        self.assertEqual(sorted(positions, key=positions.get), ordered)
+
+    def test_optional_rows_are_secondary_and_canonical(self):
+        """MAC-840: Optional lists secondary sitemap pages agents may skip."""
+        optional = False
+        optional_urls = []
+        for line in self.index.splitlines():
+            if line == '## Optional':
+                optional = True
+                continue
+            if line.startswith('## '):
+                optional = False
+                continue
+            if optional and line.startswith('- ['):
+                match = LINK.match(line)
+                self.assertIsNotNone(match, line)
+                optional_urls.append(match.group('url'))
+        self.assertGreaterEqual(len(optional_urls), 2)
+        for url in optional_urls:
+            self.assertIn(url, self.sitemap_urls, url)
 
     def test_rows_capped_single_line_and_canonical(self):
         self.assertLessEqual(len(self.rows), builder.LLMS_LINK_CAP)
