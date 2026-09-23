@@ -453,6 +453,7 @@ stage.addEventListener('click', function (ev) {
 document.addEventListener('keydown', function (ev) {
   var code = ev.code || ev.key;
   if (code === 'KeyM') { doAction('mute'); return; }
+  if (code === 'KeyD') { if (board && !shown) doAction('daily'); return; }
   if (code === 'KeyN') { if (board && !shown) doAction('retry'); return; }
   if (code === 'KeyP' || code === 'Escape') {
     if (shown === 'paused') doAction('resume');

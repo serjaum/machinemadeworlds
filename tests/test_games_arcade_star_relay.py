@@ -164,7 +164,7 @@ class RelaySourceTests(unittest.TestCase):
                         "'close'", "'daily'"):
             self.assertIn(action, self.js)
         for key in ('ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
-                    'KeyR', 'KeyP', 'KeyM', 'KeyN', 'Escape', 'Enter', 'Space'):
+                    'KeyR', 'KeyP', 'KeyM', 'KeyN', 'KeyD', 'Escape', 'Enter', 'Space'):
             self.assertIn(key, self.js)
         self.assertIn('AudioContext', self.js)
         self.assertIn('textContent', self.js)

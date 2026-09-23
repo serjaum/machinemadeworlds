@@ -18,6 +18,7 @@
 .relay-overlay p { margin: 0 0 var(--s2); color: var(--muted); font-size: 14px; }
 .relay-overlay-row { display: flex; flex-wrap: wrap; gap: var(--s1); }
 .relay-levels { display: flex; flex-wrap: wrap; gap: var(--s1); margin: 0 0 var(--s2); padding: 0; list-style: none; }
+.relay-levels[data-level-list] { display: block; margin-bottom: 0; }
 .relay-group { margin: var(--s2) 0 var(--s1); color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .02em; }
 .relay-level { min-height: 44px; padding: 8px 14px; background: var(--raised); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; font-size: 14px; cursor: pointer; }
 .relay-level:disabled { opacity: .45; cursor: default; }
