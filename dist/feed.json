@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-ai-agent/",
+      "url": "https://machinemadeworlds.com/posts/glossary-ai-agent/",
+      "title": "What is AI agent?",
+      "summary": "An AI agent is a model running a tool-use loop with stop rules and human gates. What autonomy means, and how agents differ from chatbots.",
+      "content_text": "An AI agent is a model running a tool-use loop with stop rules and human gates. What autonomy means, and how agents differ from chatbots.",
+      "date_published": "2026-09-23T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-22/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-22/",
       "title": "Link radar, September 22, 2026",

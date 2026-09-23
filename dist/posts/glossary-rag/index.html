@@ -125,7 +125,8 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
 <p>When a question arrives, a retriever searches a document collection for the passages most relevant to it, usually by comparing vector <a href="/posts/glossary-embeddings/">embeddings</a>. Those passages are placed into the model context next to the question, and the model drafts its answer from that supplied evidence. Because the evidence is fresh and inspectable, answers stay current without retraining and can point at the sources they used. The quality of the whole system rests on the retrieval step: unrelated passages yield unrelated answers no matter how strong the writer model is.</p>
 <p>Builders reach for this pattern whenever answers must cite company docs, recent events, or private data the base model never saw.</p>
 <h2 id="go-deeper">Go deeper</h2>
-<p>For the full local walkthrough, read <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a>, with the retrieval half covered in <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>.</p>
+<p>For the full local walkthrough, read <a href="/posts/rag-on-your-own-machine/">RAG on your own machine</a>, with the retrieval half covered in <a href="/posts/embeddings-on-consumer-gpus/">embeddings on consumer GPUs</a>, and the acting half in <a href="/posts/glossary-ai-agent/">what an AI agent is</a>.</p>
+<ul><li>See also <a href="/posts/glossary-ai-agent/">AI agent</a>, which wraps retrieval in a tool-using loop.</li></ul>
 <h2 id="related-terms">Related terms</h2><ul><li><a href="/posts/glossary-benchmark/">Benchmark</a></li><li><a href="/posts/glossary-context-window/">Context window</a></li><li><a href="/posts/glossary-embeddings/">Embeddings</a></li><li><a href="/posts/glossary-fine-tuning/">Fine-tuning</a></li></ul>
       <aside class="callout follow-block" data-od-id="follow-block">
         <h2>Follow the journal.</h2>
@@ -150,13 +151,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-vector-database/">What is Vector database?</a></h3>
-  <p>A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.</p>
+  <h3><a href="/posts/glossary-ai-agent/">What is AI agent?</a></h3>
+  <p>An AI agent is a model running a tool-use loop with stop rules and human gates. What autonomy means, and how agents differ from chatbots.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-22">Sep 22, 2026</time>
-      <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-vector-database/" aria-label="Read What is Vector database?">↗</a>
+      ><time datetime="2026-09-23">Sep 23, 2026</time>
+      <span aria-hidden="true">·</span> 2 min read</span
+    ><a class="story-arrow" href="/posts/glossary-ai-agent/" aria-label="Read What is AI agent?">↗</a>
   </div>
 </article>
 <article class="story compact" data-search-item>
@@ -164,13 +165,13 @@ try{if(localStorage.getItem("mmw-theme")==="dark")document.documentElement.datas
     <a class="topic-label" href="/topics/essays/">Essays</a
     ><span>Glossary</span>
   </div>
-  <h3><a href="/posts/glossary-system-prompt/">What is System prompt?</a></h3>
-  <p>A system prompt is the hidden instruction block that sets a model&#x27;s role, rules, and tone. What it controls and how builders shape it.</p>
+  <h3><a href="/posts/glossary-vector-database/">What is Vector database?</a></h3>
+  <p>A vector database stores embedding vectors so search finds meaning, not keywords. How similarity indexes work and how builders use them.</p>
   <div class="story-foot">
     <span
-      ><time datetime="2026-09-21">Sep 21, 2026</time>
+      ><time datetime="2026-09-22">Sep 22, 2026</time>
       <span aria-hidden="true">·</span> 1 min read</span
-    ><a class="story-arrow" href="/posts/glossary-system-prompt/" aria-label="Read What is System prompt?">↗</a>
+    ><a class="story-arrow" href="/posts/glossary-vector-database/" aria-label="Read What is Vector database?">↗</a>
   </div>
 </article>
 </div>
