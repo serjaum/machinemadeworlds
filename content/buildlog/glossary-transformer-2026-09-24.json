@@ -8,10 +8,10 @@
   "featured": false,
   "draft": false,
   "mac_id": "MAC-852",
-  "pr": null,
-  "pr_url": null,
-  "branch": null,
-  "commit": "n/a",
+  "pr": 116,
+  "pr_url": "https://github.com/serjaum/machinemadeworlds/pull/116",
+  "branch": "feat/glossary-transformer-2026-09-24",
+  "commit": "b98efb5f",
   "merge_sha": null,
   "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
   "agents": [
@@ -25,7 +25,7 @@
       "agent": "DEV",
       "at": "2026-09-24",
       "rationale": "Verified the remote and login, then branched from the fresh main line.",
-      "sha": "0000000",
+      "sha": "b98efb5f",
       "stage": "Hosting preflight and branch",
       "verdict": "done"
     },
@@ -33,7 +33,7 @@
       "agent": "DEV",
       "at": "2026-09-24",
       "rationale": "Shipped the term page, the social pack, and the backlog flip with this entry.",
-      "sha": "0000000",
+      "sha": "b98efb5f",
       "stage": "Glossary term and pack",
       "verdict": "done"
     },
@@ -41,7 +41,7 @@
       "agent": "DEV",
       "at": "2026-09-24",
       "rationale": "Opened the pull request with the term and the log entry.",
-      "sha": "0000000",
+      "sha": "b98efb5f",
       "stage": "Pull request",
       "verdict": "done"
     }
