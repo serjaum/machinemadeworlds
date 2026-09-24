@@ -1,0 +1,17 @@
+<!-- Article body only. No header, footer, h1, script or inline styles. -->
+<p>Signal, not noise: five primary-source reads from September 22 and 23, each with a two-line note on why it matters for builders.</p>
+<h2>Security improvements for SSH</h2>
+<p>GitHub is removing RSA keys using SHA-1 and the older Diffie-Hellman key exchange from SSH, requiring new RSA keys to be at least 3072 bits, and adding a post-quantum key exchange option, with brownouts before final removal. Audit CI runners, deploy keys, and old clients now, and prefer Ed25519 keys so the brownouts pass unnoticed.</p>
+<p>Read the full story at <a href="https://github.blog/changelog/2026-09-22-security-improvements-for-ssh/">GitHub Changelog</a> (September 22, 2026).</p>
+<h2>GPT-6 Sol and GPT-6 Luna land in Copilot</h2>
+<p>GitHub Copilot adds two more GPT-6 models next to Astra: Sol as the balanced choice for interactive and agentic coding, and Luna as the lightweight, lowest-cost option for smaller, faster tasks, rolling out gradually across editors, CLI, and mobile. Set your model policy now and route routine completions to Luna so the heavy models only burn budget where they earn it.</p>
+<p>Read the full story at <a href="https://github.blog/changelog/2026-09-22-openais-gpt-6-sol-and-gpt-6-luna-now-available/">GitHub Changelog</a> (September 22, 2026).</p>
+<h2>Claude Opus 5.5 arrives in Copilot</h2>
+<p>Anthropic's newest Opus model is available in Copilot for agentic coding and long-running tasks, resolving about as well as Opus 5 with far fewer steps and tokens, recovering quickly from multistep errors, and watermarking text outputs at no extra cost. Trial it on your longest agent runs first and compare step counts and token burn before changing team defaults.</p>
+<p>Read the full story at <a href="https://github.blog/changelog/2026-09-22-claude-opus-5-5-is-now-available-in-github-copilot/">GitHub Changelog</a> (September 22, 2026).</p>
+<h2>Local sandboxing in the Copilot app</h2>
+<p>The Copilot app now offers per-project local sandboxing that bounds filesystem, network, and credential access for repository sessions, off by default and toggleable per session, with the shell failing closed when the OS cannot enforce the policy. Turn it on for every project where agents touch real checkouts so one stray command cannot reach secrets or the wider network.</p>
+<p>Read the full story at <a href="https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app/">GitHub Changelog</a> (September 23, 2026).</p>
+<h2>Claude finds a CRISPR-like enzyme system</h2>
+<p>Anthropic's new life-sciences group let roughly 950 Claude agents search DNA databases for 21 hours, and one spotted a never-described enzyme system pairing a reverse transcriptase with an array of evenly spaced DNA repeats expressed as short RNAs, now shared as an early preprint with lab work ongoing. Study the pipeline shape, not just the biology: massive agent-led hypothesis generation with human lab validation is a template for discovery work in any data-rich field.</p>
+<p>Read the full story at <a href="https://www.anthropic.com/news/claude-discovers-novel-enzyme-system">Anthropic</a> (September 23, 2026).</p>

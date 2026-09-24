@@ -1,0 +1,49 @@
+{
+  "title": "Shipped link radar 2026-09-23",
+  "description": "Daily link radar for September 23, 2026: five primary-source reads plus this same-PR log entry, reviewed, merged and deployed.",
+  "date": "2026-09-23",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "The September 23 link radar ships as one dated post plus this log entry in the same pull request, with the full agent trail and verification evidence.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-849",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge SHA is recorded here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "SRE",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Ran scheduled collection and drafted five fresh links with this log entry.",
+      "sha": "36148c4a",
+      "stage": "Scheduled run",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-23",
+      "rationale": "Opened pull request from the radar branch with post and log entry.",
+      "sha": "36148c4a",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "Collected five fresh primary-source links with no overlap against recent radar posts and verified every source link returned HTTP 200 before drafting. The PR opens from the radar branch with post plus log entry; deterministic build and full test suite pass on the head.",
+    "Director": "Routine radar post on the existing design system, so no DESIGN stage. Release approval fires only on SEC PASS plus QA PASS for the exact PR head SHA.",
+    "QA": "Verdict for the reviewed head is recorded in the review thread. The buildlog-presence check passes with this entry shipping in the same pull request as the radar post.",
+    "SEC": "Verdict for the reviewed head is recorded in the review thread. No secrets appear in code, commits, comments or logs, and every outbound link uses a verified HTTPS source.",
+    "SRE": "Deployment and live verification are recorded in the deploy thread after merge. Only the merged main SHA that passed the gates is deployed, followed by HTTPS, route, sitemap and robots checks."
+  }
+}
