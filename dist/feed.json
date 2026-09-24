@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/glossary-transformer/",
+      "url": "https://machinemadeworlds.com/posts/glossary-transformer/",
+      "title": "What is Transformer?",
+      "summary": "A transformer reads a passage at once with self-attention, weighing every word against the others. How attention blocks work and how builders use them.",
+      "content_text": "A transformer reads a passage at once with self-attention, weighing every word against the others. How attention blocks work and how builders use them.",
+      "date_published": "2026-09-24T00:00:00+00:00",
+      "tags": [
+        "essays"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/cheap-flagship-models-sol-luna-opus/",
       "url": "https://machinemadeworlds.com/posts/cheap-flagship-models-sol-luna-opus/",
       "title": "Cheap Flagships: GPT-6 Sol vs Luna vs Opus 5.5",

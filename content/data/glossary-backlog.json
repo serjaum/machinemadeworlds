@@ -124,7 +124,7 @@
    ],
    "order": 13,
    "slug": "transformer",
-   "status": "open",
+   "status": "shipped",
    "term": "Transformer"
   },
   {
@@ -322,6 +322,25 @@
    "slug": "model-router",
    "status": "open",
    "term": "Model router"
+  },
+  {
+   "aliases": [
+    "speculative decoding"
+   ],
+   "order": 35,
+   "slug": "speculative-decoding",
+   "status": "open",
+   "term": "Speculative decoding"
+  },
+  {
+   "aliases": [
+    "red teaming",
+    "red-teaming"
+   ],
+   "order": 36,
+   "slug": "red-teaming",
+   "status": "open",
+   "term": "Red teaming"
   }
  ]
 }

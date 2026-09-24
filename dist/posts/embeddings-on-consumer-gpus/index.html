@@ -138,7 +138,7 @@ curl http://localhost:11434/api/embed \
 curl http://localhost:8080/embedding -d '{"content": "quantization trades precision for memory"}'</code></pre>
 <p>This path shines when Ollama does not package the exact model you want, or when you need the server on a nonstandard port inside a larger compose stack.</p>
 <p>Option three is plain Python with sentence-transformers, which skips the server entirely and is ideal for one-off indexing scripts, following the patterns in the <a href="https://www.sbert.net/">official documentation</a>:</p>
-<pre tabindex="0" role="region" aria-label="Code example"><code>from sentence_transformers import SentenceTransformer
+<pre tabindex="0" role="region" aria-label="Code example"><code>from sentence_<a href="/posts/glossary-transformer/">transformers</a> import SentenceTransformer
 model = SentenceTransformer("nomic-ai/nomic-embed-text-v1")
 vectors = model.encode(["quantization trades precision for memory"],
                        normalize_embeddings=True)</code></pre>

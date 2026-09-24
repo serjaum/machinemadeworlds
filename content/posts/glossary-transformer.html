@@ -1,0 +1,4 @@
+<p>A transformer is a neural network that weighs every token in a passage against every other token at once, using self-attention instead of reading word by word.</p>
+<h2>How it works</h2>
+<p>Each attention head scores how much every token should attend to the rest, so pronouns, subjects, and distant clauses connect directly no matter how far apart they sit. Stacked layers mix these signals with feed-forward steps while positional marks keep word order, turning a flat sequence into layered meaning in parallel rather than one step at a time. Training on next-token or masked-token prediction tunes these weights until the network generalizes across translation, summary, and chat. Parallel reads make large-scale training practical where step-by-step readers stall.</p>
+<p>Builders treat the pretrained checkpoint as the starting point: ground it with retrieval, measure behavior on real tasks, and tune further only where the scores demand it.</p>

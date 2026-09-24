@@ -1,0 +1,55 @@
+{
+  "title": "Thirteenth glossary term: transformer",
+  "description": "The weekday glossary gains its thirteenth explainer: transformer, the architecture that reads everything at once with attention. The backlog flips to shipped with order and aliases kept, two fresh terms keep the open queue above twenty, and this log entry ships in the same change.",
+  "date": "2026-09-24",
+  "topic": "automation",
+  "kind": "Shipped",
+  "lead": "One new definition on schedule: the glossary runbook ships its thirteenth term in backlog order, with the page, the backlog flip, two replacement backlog entries, the social pack, and this log entry landing together.",
+  "featured": false,
+  "draft": false,
+  "mac_id": "MAC-852",
+  "pr": null,
+  "pr_url": null,
+  "branch": null,
+  "commit": "n/a",
+  "merge_sha": null,
+  "merge_note": "Merge pending; the merge record is updated here after release approval and merge.",
+  "agents": [
+    "DEV",
+    "SEC",
+    "QA",
+    "Director"
+  ],
+  "stages": [
+    {
+      "agent": "DEV",
+      "at": "2026-09-24",
+      "rationale": "Verified the remote and login, then branched from the fresh main line.",
+      "sha": "0000000",
+      "stage": "Hosting preflight and branch",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-24",
+      "rationale": "Shipped the term page, the social pack, and the backlog flip with this entry.",
+      "sha": "0000000",
+      "stage": "Glossary term and pack",
+      "verdict": "done"
+    },
+    {
+      "agent": "DEV",
+      "at": "2026-09-24",
+      "rationale": "Opened the pull request with the term and the log entry.",
+      "sha": "0000000",
+      "stage": "Pull request",
+      "verdict": "done"
+    }
+  ],
+  "reasoning": {
+    "DEV": "The term reuses the established glossary page pattern with no new components, scripts, or styles, carrying a one-line definition plus a short explainer section and a builder-angle closing line. The backlog entry keeps its order and aliases while flipping to shipped, two fresh open terms keep the queue above twenty, and the beside-each-article pack stays out of the published pages by construction.",
+    "Director": "This change adds one glossary term through the existing post system with no visual or structural change elsewhere. Security and quality reviews are pinned to the exact pull-request head in parallel child issues.",
+    "QA": "Not evidenced in the linked record yet. The quality verdict for the reviewed head, including the buildlog-presence check, is recorded in the review thread.",
+    "SEC": "Not evidenced in the linked record yet. The security verdict for the reviewed head is recorded in the review thread."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "What is Transformer?",
+  "description": "A transformer reads a passage at once with self-attention, weighing every word against the others. How attention blocks work and how builders use them.",
+  "date": "2026-09-24",
+  "topic": "essays",
+  "kind": "Glossary",
+  "lead": "A transformer is a neural network design that reads a whole passage at once, letting every token weigh every other token through self-attention instead of reading left to right. Stacks of attention plus feed-forward blocks learn which words matter to each other, so one architecture handles translation, summarization, chat, and code with only the training objective changed. Builders use it as the engine inside modern language models: pick a pretrained checkpoint, then prompt, retrieve, or fine-tune it for the task at hand.",
+  "featured": false,
+  "draft": false
+}
