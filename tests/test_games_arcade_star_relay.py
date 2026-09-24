@@ -1,4 +1,4 @@
-"""Star Relay arcade contract (MAC-700 parent spec sections 5-10).
+"""Star Relay arcade contract (MAC-700 parent spec sections 5-10, MAC-843 second pack).
 
 Run: python -m pytest tests/test_games_arcade_star_relay.py -q
 Gates: /games/star-relay/ renders the DOM-grid variant; zero external
@@ -6,8 +6,10 @@ URLs/imports/sinks in game files; JS <= 20KB and CSS <= 8KB unminified;
 page weight (HTML+CSS+JS excl. shared chrome) <= 45KB; zero render work
 idle (no RAF); pause/retry/level/mute hooks; reduced-motion branch plus
 manual still toggle; single live region; 44px targets; sampled contrast
-on real token pairs; all 6 levels solvable by construction (node-driven
-generation test with a static fallback); no secrets.
+on real token pairs; all 12 levels plus the daily board solvable by
+construction (node-driven generation test with a static fallback);
+daily determinism (same UTC date, UTC seed math, no storage writes);
+no secrets.
 """
 import importlib.util
 import json
@@ -104,6 +106,9 @@ class RelayRouteTests(unittest.TestCase):
         self.assertIn('How to play', self.page)
         self.assertIn('Devlog', self.page)
         self.assertIn('no canvas, no animation loop, no timer', self.page)
+        self.assertIn('Twelve relays in two packs', self.page)
+        self.assertIn('All twelve relays hum', self.page)
+        self.assertIn('1 / 12', self.page)
         self.assertIn('<noscript>', self.page)
 
     def test_single_live_region_outside_hud(self):
@@ -155,10 +160,11 @@ class RelaySourceTests(unittest.TestCase):
                      'data-overlay', 'data-level-list'):
             self.assertIn(hook, self.js)
         for action in ("'pause'", "'retry'", "'levels'", "'motion'",
-                       "'start'", "'mute'", "'resume'", "'next'", "'again'"):
+                        "'start'", "'mute'", "'resume'", "'next'", "'again'",
+                        "'close'", "'daily'"):
             self.assertIn(action, self.js)
         for key in ('ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
-                    'KeyR', 'KeyP', 'KeyM', 'KeyN', 'Escape', 'Enter', 'Space'):
+                    'KeyR', 'KeyP', 'KeyM', 'KeyN', 'KeyD', 'Escape', 'Enter', 'Space'):
             self.assertIn(key, self.js)
         self.assertIn('AudioContext', self.js)
         self.assertIn('textContent', self.js)
@@ -207,14 +213,37 @@ class RelaySourceTests(unittest.TestCase):
 
     def test_metadata_levels_match_script(self):
         meta = json.loads(GAME_JSON.read_text(encoding='utf-8'))
-        self.assertEqual(len(meta['levels']), 6)
-        script_levels = re.findall(
-            r"\{ size: (\d), slack: (\d), tees: (\d), walls: (\d) \}", self.js)
-        self.assertEqual(len(script_levels), 6)
+        self.assertEqual(len(meta['levels']), 12)
+        block = re.search(r'var LEVELS=\[(.*?)\];', self.js, re.S).group(1)
+        script_levels = re.findall(r'\[(\d+),(\d+),(\d+),(\d+)\]', block)
+        self.assertEqual(len(script_levels), 12)
         for (size, slack, tees, walls), level in zip(script_levels, meta['levels']):
             self.assertEqual(
                 (int(size), int(slack), int(tees), int(walls)),
                 (level['size'], level['slack'], level['tees'], level['walls']))
+        expected = [(4, 4, 0, 0), (4, 4, 1, 0), (5, 6, 1, 2), (5, 6, 2, 3),
+                    (5, 8, 2, 4), (5, 8, 3, 5), (6, 10, 3, 5), (6, 10, 3, 6),
+                    (6, 12, 4, 7), (6, 12, 4, 8), (6, 12, 5, 8), (6, 14, 5, 9)]
+        self.assertEqual([(l['size'], l['slack'], l['tees'], l['walls'])
+                          for l in meta['levels']], expected)
+
+    def test_second_pack_daily_and_progress_gates(self):
+        self.assertIn('dailySeedUTC', self.js)
+        self.assertIn('generateDaily', self.js)
+        self.assertIn('getUTCFullYear', self.js)
+        self.assertIn('Relay I', self.js)
+        self.assertIn('Relay II', self.js)
+        self.assertIn('relay-group', (ROOT / 'assets/games/star-relay.css').read_text(encoding='utf-8'))
+        self.assertIn('/ 12', self.js)
+        self.assertIn('Daily', self.js)
+        self.assertIn('All twelve relays hum', self.js)
+        self.assertIn('LEVELS.length - 1', self.js)
+        self.assertRegex(self.js, r'var DAILY=\[6,12,4,7\];')
+        for fname, end in (('function generateDaily', 'function flow'),
+                           ('function startDaily', 'function turn')):
+            chunk = self.js.split(fname)[1].split(end)[0]
+            for marker in ('PROGRESS_KEY', 'BEST_KEY', 'saveInt', 'unlocked', 'banked'):
+                self.assertNotIn(marker, chunk, fname)
 
 
 class RelayBudgetTests(unittest.TestCase):
@@ -250,11 +279,11 @@ class RelayContrastTests(unittest.TestCase):
 
 class RelaySolvabilityTests(unittest.TestCase):
     @unittest.skipUnless(shutil.which('node'), 'node is required for the generation gate')
-    def test_all_six_levels_solvable_by_construction(self):
+    def test_all_twelve_levels_and_daily_solvable_by_construction(self):
         harness = (
             "const R = require(%s);" % json.dumps(str(GAME_JS)) +
-            "for (let L = 0; L < 6; L++) {"
-            "  if (R.LEVELS.length !== 6) throw new Error('level count');"
+            "if (R.LEVELS.length !== 12) throw new Error('level count ' + R.LEVELS.length);"
+            "for (let L = 0; L < 12; L++) {"
             "  for (let a = 0; a < 6; a++) {"
             "    const g = R.generate(L, a);"
             "    if (R.flow(g.tiles, g.size, g.row).won) throw new Error('pre-solved L' + L);"
@@ -264,10 +293,32 @@ class RelaySolvabilityTests(unittest.TestCase):
             "    if (g.budget !== g.optimal + g.slack) throw new Error('budget L' + L);"
             "  }"
             "}"
+            "if (R.dailySeedUTC(new Date(Date.UTC(2026, 8, 23))) !== 20260923)"
+            "  throw new Error('daily seed math');"
+            "const dA = R.generateDaily('2026-09-23', 0);"
+            "const dB = R.generateDaily(20260923, 0);"
+            "if (!dA.daily || dA.seed !== 20260923) throw new Error('daily flags');"
+            "if (JSON.stringify(dA.tiles) !== JSON.stringify(dB.tiles))"
+            "  throw new Error('daily string/int seed parity');"
+            "for (let a = 0; a < 6; a++) {"
+            "  const g = R.generateDaily('2026-09-23', a);"
+            "  const h = R.generateDaily('2026-09-23', a);"
+            "  if (JSON.stringify(g.tiles) !== JSON.stringify(h.tiles))"
+            "    throw new Error('daily determinism a' + a);"
+            "  if (g.size !== 6 || g.slack !== 12) throw new Error('daily spec');"
+            "  if (R.flow(g.tiles, g.size, g.row).won) throw new Error('daily pre-solved');"
+            "  const fixed = g.tiles.map((t, i) => Object.assign({}, t,"
+            "    { rot: (t.rot + R.fixCost(t.base, t.rot, g.home[i])) % 4 }));"
+            "  if (!R.flow(fixed, g.size, g.row).won) throw new Error('daily unsolvable');"
+            "  if (g.budget !== g.optimal + g.slack) throw new Error('daily budget');"
+            "}"
+            "const dX = R.generateDaily('2026-09-24', 0);"
+            "if (JSON.stringify(dX.tiles) === JSON.stringify(dA.tiles))"
+            "  throw new Error('daily does not vary by date');"
             "console.log('SOLVABILITY OK');"
         )
         proc = subprocess.run(['node', '-e', harness], capture_output=True,
-                              text=True, timeout=120)
+                              text=True, timeout=180)
         self.assertEqual(proc.returncode, 0, proc.stderr[-2000:])
         self.assertIn('SOLVABILITY OK', proc.stdout)
 

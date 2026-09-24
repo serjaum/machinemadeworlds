@@ -518,16 +518,18 @@ def game_page_copy(root, g):
             crumb='Star Relay', eyebrow='Star Relay',
             headline='Link the reactor to the beacon<span class="accent-dot">.</span>',
             standfirst=('A turn-based relay puzzle. Rotate tiles to carry power across '
-                        'six quiet levels — no timer, just a move budget.'),
+                        'twelve quiet levels in two packs plus a daily board — '
+                        'no timer, just a move budget.'),
             stage=(root / 'templates/game-stage-relay.html').read_text(encoding='utf-8'),
             motto='Slow hands.<br />Lit paths.',
             howto=('Tap a tile to rotate it clockwise; keyboard players move focus with the '
                    'arrows and rotate with R, Space or Enter. Lit tiles carry power from the '
-                   'reactor to the beacon — link them before the move budget runs out. '
-                   'P or Esc pauses, N retries the level with a fresh scramble, M mutes the bleeps.'),
+                    'reactor to the beacon — link them before the move budget runs out. '
+                    'P or Esc pauses, N retries the level with a fresh scramble, D jumps '
+                    'to the daily board, M mutes the bleeps.'),
             restart=('Every retry deals a fresh scramble of the same level, and your unlocked '
-                     'levels plus best score stay in this browser. Open Levels any time '
-                     'to replay an unlocked stage.'))
+                      'levels plus best score stay in this browser. Open Levels any time '
+                      'to replay an unlocked stage or play the daily board.'))
     if g['slug'] == 'star-drift':
         return dict(
             crumb='Star Drift', eyebrow='Star Drift',

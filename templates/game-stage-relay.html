@@ -2,7 +2,7 @@
   <h2 id="game-title" class="sr-only">Star Relay game</h2>
   <div class="relay-board" data-relay-board role="group" aria-label="Relay grid: rotate tiles to link the reactor to the beacon"></div>
   <dl class="game-hud" aria-label="Game status">
-    <div><dt>Level</dt><dd data-hud="level">1 / 6</dd></div>
+    <div><dt>Level</dt><dd data-hud="level">1 / 12</dd></div>
     <div><dt>Moves left</dt><dd data-hud="moves">0</dd></div>
     <div><dt>Score</dt><dd data-hud="score">0</dd></div>
     <div><dt>Best</dt><dd data-hud="best">0</dd></div>
@@ -13,10 +13,11 @@
     <button type="button" class="button" data-action="pause">Pause</button>
     <button type="button" class="button" data-action="retry">Retry</button>
     <button type="button" class="button" data-action="levels">Levels</button>
+    <button type="button" class="button" data-action="daily">Daily</button>
     <button type="button" class="button" data-action="motion" aria-pressed="false">Motion on</button>
     <button type="button" class="button" data-action="mute" aria-pressed="false">Mute</button>
   </div>
-  <p class="game-hint">Tap a tile (or focus it and press R, Space or Enter) to rotate it. Arrows move focus, P pauses, N retries, M mutes.</p>
+  <p class="game-hint">Tap a tile (or focus it and press R, Space or Enter) to rotate it. Arrows move focus, P pauses, N retries, D plays the daily board, M mutes.</p>
   <div data-overlays>
     <div class="relay-overlay" data-overlay="start">
       <h3>Link the reactor</h3>
@@ -43,7 +44,7 @@
       </div>
     </div>
     <div class="relay-overlay" data-overlay="campaign" hidden>
-      <h3>All six relays hum</h3>
+      <h3>All twelve relays hum</h3>
       <p data-campaign-text></p>
       <div class="relay-overlay-row">
         <button type="button" class="button" data-action="again">Play again</button>
@@ -60,7 +61,7 @@
     </div>
     <div class="relay-overlay" data-overlay="levels" hidden>
       <h3>Levels</h3>
-      <p>Six short relays. Later ones unlock as you link earlier ones.</p>
+      <p>Twelve relays in two packs, plus a daily board. Relay II unlocks as you link Relay I.</p>
       <div class="relay-levels" data-level-list></div>
       <div class="relay-overlay-row">
         <button type="button" class="button" data-action="close">Close</button>
