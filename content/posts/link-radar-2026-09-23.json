@@ -5,6 +5,6 @@
   "topic": "automation",
   "kind": "Radar",
   "lead": "SSH changes, GPT-6 Sol and Luna, Opus 5.5, Copilot sandboxing, and a CRISPR-like enzyme find led September 22 and 23: five verified primary-source reads with builder notes. Each summary below is in our own words; follow the links for the originals.",
-  "featured": false,
+  "featured": true,
   "draft": false
 }
