@@ -88,6 +88,27 @@ class GlossaryTests(unittest.TestCase):
         out = module.autolink_glossary(body, [('hallucination', '/posts/glossary-hallucination/')])
         self.assertEqual(out, body)
 
+    def test_autolink_skips_code_and_pre_segments(self):
+        module = load_builder('mmw_build_glossary_code')
+        links = [('transformers', '/posts/glossary-transformer/')]
+        code = '<pre><code>from sentence_transformers import SentenceTransformer</code></pre>'
+        self.assertEqual(module.autolink_glossary(code, links), code)
+        inline = '<p>Use <code>transformers</code> here.</p>'
+        self.assertEqual(module.autolink_glossary(inline, links), inline)
+        mixed = ('<p>Transformers changed NLP.</p>' + code)
+        out = module.autolink_glossary(mixed, links)
+        self.assertIn('<a href="/posts/glossary-transformer/">Transformers</a>', out)
+        self.assertNotIn('<code><a', out)
+        self.assertNotIn('<pre><a', out)
+        self.assertIn('sentence_transformers', out)
+        self.assertNotIn('sentence_<a', out)
+
+    def test_autolink_ignores_underscore_boundaries(self):
+        module = load_builder('mmw_build_glossary_underscore')
+        links = [('transformers', '/posts/glossary-transformer/')]
+        body = '<p>from sentence_transformers import util</p>'
+        self.assertEqual(module.autolink_glossary(body, links), body)
+
     def test_glossary_page_skips_self_link_but_links_outward(self):
         module = load_builder('mmw_build_glossary_self')
         body = '<p>Prompt injection differs from jailbreaking.</p>'
