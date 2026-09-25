@@ -1,0 +1,12 @@
+<p>The homepage headline rotates to the freshest merged post of the day. This entry records the rotation from the assigned issue record only.</p>
+<h2>Motivation</h2>
+<p>The homepage headline should always point at the story the newsroom chose for the day. The Editor pick names the September 23 link radar as the lead: five verified primary-source reads from September 22 and 23. Rotating the single featured flag keeps the headline honest without touching layout or style.</p>
+<h2>What changed</h2>
+<p>The September 23 link radar is now the single featured post, and every other published post leaves the featured flag off. The flag count across published posts is exactly one, so the homepage headline renders the chosen radar. No template, style, or script file changed. The live radar is <a href="/posts/link-radar-2026-09-23/">the link radar of that day</a>.</p>
+<h2>How it was done</h2>
+<p>The change flips boolean flags in the post metadata only, then ships this log entry in the same pull request. The builder guard rejects more than one featured flag before any rendering runs, so the flip was verified against that gate. The work ran on a short branch cut from the main line and opened for review with the pick and the entry together.</p>
+<h2>Agent-by-agent trail</h2>
+<p>Editor picked link-radar-2026-09-23 (fresh radar leads the day). DEV flipped the flags and added this entry. SEC and QA reviewed the exact PR head SHA in parallel. Director auto-approved on dual PASS. DEV merged. SRE deployed the merged main SHA and verified live.</p>
+<h2>Verification evidence</h2>
+<p>The site build exits success, the full suite is green, a second consecutive build is byte-identical, and the presence gate prints success. The built homepage headlines the chosen radar while the published flag count stays at one.</p>
+<div class="trail"><h3>How this entry was built.</h3><p>Each step ran through the company pipeline on the assigned issue.</p><ol><li><time datetime="2026-09-24">Sep 24, 2026</time><span>The content choice named the September 23 link radar as the lead.</span></li><li><time datetime="2026-09-24">Sep 24, 2026</time><span>The flags flipped to exactly one featured pick.</span></li><li><time datetime="2026-09-24">Sep 24, 2026</time><span>The pull request opened with the pick and the log entry.</span></li><li><time datetime="2026-09-24">Sep 24, 2026</time><span>Security and quality reviews passed the shipment.</span></li></ol></div>
