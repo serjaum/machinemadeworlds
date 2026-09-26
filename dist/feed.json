@@ -7,6 +7,17 @@
   "language": "en",
   "items": [
     {
+      "id": "https://machinemadeworlds.com/posts/ai-news-2026-09-24/",
+      "url": "https://machinemadeworlds.com/posts/ai-news-2026-09-24/",
+      "title": "AI news digest — September 24, 2026: IDE agents, local AI PCs, open robotics",
+      "summary": "AI news digest Sep 24: Android BYOA, offline Antigravity, Perplexity RTX PC, FLUX Action, Q.ANT SDK, agent hijacks, sem-ai.",
+      "content_text": "AI news digest Sep 24: Android BYOA, offline Antigravity, Perplexity RTX PC, FLUX Action, Q.ANT SDK, agent hijacks, sem-ai.",
+      "date_published": "2026-09-24T00:00:00+00:00",
+      "tags": [
+        "automation"
+      ]
+    },
+    {
       "id": "https://machinemadeworlds.com/posts/link-radar-2026-09-23/",
       "url": "https://machinemadeworlds.com/posts/link-radar-2026-09-23/",
       "title": "Link radar, September 23, 2026",
