@@ -1,0 +1,10 @@
+{
+  "title": "Link radar, September 24, 2026",
+  "description": "Five reads: proof-of-presence checks, review config, Node 24 migration, OTel data, and C++ indexing.",
+  "date": "2026-09-24",
+  "topic": "automation",
+  "kind": "Radar",
+  "lead": "Proof-of-presence checks, review defaults, Node 24 migration, agent observability, and C++ indexing led September 23 and 24: five verified primary-source reads with builder notes. Each summary below is in our own words; follow the links for the originals.",
+  "featured": false,
+  "draft": false
+}
